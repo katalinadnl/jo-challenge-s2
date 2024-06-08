@@ -1,0 +1,112 @@
+//ici il faut ajouter les caratcteristiques des variables globales : h1, h2, p, etc..
+//Ajouter que des styles globaux comme font-size ou font weight, line-height etc.
+//les paddings ou margin des balises du text (h, p ou autre) se mettent dans les styles specifique de chaque page, car on peut avoir besoin d'avoir un padding plus grad ou plus petit selon le cas
+
+@import 'variables';
+@import 'mixin';
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  @include h1-font;
+}
+
+h2 {
+  font-weight: bold;
+  margin: rem(60) 0 rem(30) 0;
+  @include h2-font;
+}
+
+h3 {
+  font-weight: bold;
+  @include h3-font;
+}
+
+h4 {
+  font-weight: bold;
+  @include h4-font;
+}
+
+h5 {
+  font-weight: bold;
+  @include h5-font;
+}
+
+h6 {
+  font-weight: bold;
+  @include h6-font;
+}
+
+p {
+  @include p-font;
+}
+
+
+.page-size {
+  margin: auto;
+  width: rem(1400);
+}
+
+.nav {
+  align-items: center;
+  border-radius: rem(15);
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: rem(90);
+  justify-content: space-around;
+  padding: 0;
+  position: fixed;
+  top: rem(20);
+  width: rem(1400);
+  .logo-navbar {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 50%;
+    }
+  }
+  @include navbar;
+}
+
+.nav__link {
+  display: block;
+  padding: rem(12) rem(18);
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.nav__link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#app {
+  align-items: center;
+  display: flex;
+  line-height: 1.5;
+  flex-direction: column;
+  font-weight: 500;
+  margin-top: rem(120);
+}
+
+.site-footer {
+  .page-size {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .socials {
+      a {
+        margin: 0 rem(15);
+        text-decoration: none;
+      }
+    }
+    p {
+      margin: rem(60) 0 rem(30) 0;
+    }
+  }
+}

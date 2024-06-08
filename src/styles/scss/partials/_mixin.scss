@@ -1,0 +1,94 @@
+@import 'variables';
+
+@mixin navbar {
+  @media screen and (min-width: $resolution-phone) {
+    display: none;
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    display: flex;
+  }
+}
+
+@mixin h1-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(48);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(60);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(72);
+  }
+}
+
+@mixin h2-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(36);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(48);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(60);
+  }
+}
+
+@mixin h3-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(30);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(36);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(48);
+  }
+}
+
+@mixin h4-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(24);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(30);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(36);
+  }
+}
+
+@mixin h5-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(18);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(24);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(30);
+  }
+}
+
+@mixin h6-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(14);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(18);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(24);
+  }
+}
+
+@mixin p-font {
+  @media screen and (min-width: $resolution-phone) {
+    font-size: rem(12);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    font-size: rem(14);
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    font-size: rem(18);
+  }
+}
