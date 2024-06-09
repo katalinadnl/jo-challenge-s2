@@ -1,2 +1,4 @@
 node_modules
 /src/styles/css/
+.DS_Store
+.idea
