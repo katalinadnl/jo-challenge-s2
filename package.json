@@ -1,0 +1,22 @@
+{
+  "name": "jo-challenge-s2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/js/index.js",
+  "scripts": {
+    "start": "node server.js",
+    "start-watch": "node --watch -- server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "sass --style=compressed src/styles/scss:src/styles/css",
+    "watch-scss": "npm run scss && sass --watch src/styles/scss:src/styles/css",
+    "watch": "run-p watch-scss start-watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sass": "^1.32.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
