@@ -1,4 +1,8 @@
 import AbstractView from "./AbstractView.js";
+import { getNavbarHtml } from "./navbar.js";
+import { getFooterHtml } from "./Footer.js";
+
+
 
 export default class extends AbstractView {
     constructor(params) {
@@ -8,8 +12,12 @@ export default class extends AbstractView {
 
     async getHtml() {
         return `
+            ${getNavbarHtml()}
             <h1>Carte intéractive</h1>
-            <p>Ne vous perdez plus !</p>
+            <div class="page-size">
+                <p>Ne vous perdez plus !</p>
+            </div>
+            ${getFooterHtml()}
         `;
     }
 }

@@ -1,4 +1,7 @@
 import AbstractView from "./AbstractView.js";
+import { getNavbarHtml } from "./navbar.js";
+import { getFooterHtml } from "./Footer.js";
+
 
 export default class extends AbstractView {
     constructor(params) {
@@ -8,8 +11,12 @@ export default class extends AbstractView {
 
     async getHtml() {
         return `
+            ${getNavbarHtml()}
             <h1>Événements</h1>
-            <p>Retrouvez tous nos événements ici !</p>
+            <div class="page-size">
+                <p>Retrouvez tous nos événements ici !</p>
+            </div>    
+            ${getFooterHtml()}
         `;
     }
 }
