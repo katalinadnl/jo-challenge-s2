@@ -67,7 +67,7 @@ export function getFooterHtml() {
                 <p>Jeux Olympiques © 2024. All rights reserved</p>
                 <div class="logo-footer">
                     <a href="/">
-                        <img src="/src/styles/images/logo_desktop.png">
+                        <img src="/styles/images/logo_desktop.png">
                     </a>
                 </div>
             </div>

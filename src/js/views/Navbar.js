@@ -4,7 +4,7 @@ export function getNavbarHtml() {
             <nav class="nav">
                 <div class="logo-navbar">
                     <a href="/">
-                        <img src="/src/styles/images/logo_desktop.png">
+                        <img src="/styles/images/logo_desktop.png">
                     </a>
                 </div>
                 <a href="/" class="nav__link home" data-link>Accueil</a>
