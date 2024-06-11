@@ -1,9 +1,9 @@
 import Events from "./views/Events.js";
 import Agenda from "./views/Agenda.js";
 import Map from "./views/Map.js";
-import Search from "./views/Search.js";
 import Spots from "./views/Spots.js";
 import Home from "./views/Home";
+import Page404 from "./views/Page404";
 
 console.log("Hello, World!");
 
@@ -29,8 +29,8 @@ const router = async () => {
         { path: "/evenements", view: Events },
         { path: "/agenda", view: Agenda },
         { path: "/carte", view: Map },
-        { path: "/recherche", view: Search },
-        { path: "/spots", view: Spots }
+        { path: "/spots", view: Spots },
+        { path: "/*", view: Page404 }
     ];
 
     const potentialMatches = routes.map(route => {
@@ -53,6 +53,8 @@ const router = async () => {
 
     document.querySelector("#root").innerHTML = await view.getHtml();
 };
+
+
 
 window.addEventListener("popstate", router);
 
