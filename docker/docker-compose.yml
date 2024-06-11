@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    image: jo-challenge-s2
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "4000:80"
+    volumes:
+      - ../src:/usr/share/nginx/html
