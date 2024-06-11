@@ -2,8 +2,8 @@ import Events from "./views/Events.js";
 import Agenda from "./views/Agenda.js";
 import Map from "./views/Map.js";
 import Spots from "./views/Spots.js";
-import Home from "./views/Home.js";
-import Page404 from "./views/Page404.js";
+import Home from "./views/Home";
+import Page404 from "./views/Page404";
 
 console.log("Hello, World!");
 

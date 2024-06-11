@@ -2,8 +2,6 @@ import AbstractView from "./AbstractView.js";
 import { getNavbarHtml } from "./navbar.js";
 import { getFooterHtml } from "./Footer.js";
 
-
-
 export default class extends AbstractView {
     constructor(params) {
         super(params);
@@ -17,45 +15,10 @@ export default class extends AbstractView {
             <div class="page-size">
                 <p>
                     C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
-                    C'est les Jeux Olympiques ! Anne Hidalgo va se baigner dans la Seine !!!
+                    <!-- Répétition du texte pour l'exemple -->
                 </p>
                 <p>
-                        <a href="/events" data-link>Voici nos prochains événements</a>.
+                    <a href="/evenements" data-link>Voici nos prochains événements</a>.
                 </p>
             </div>
             ${getFooterHtml()}
