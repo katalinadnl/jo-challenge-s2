@@ -23,10 +23,56 @@ export function getNavbarStructure() {
                             }
                         ]
                     },
-                    { tag: "a", props: { href: "/", class: "nav__link home", "data-link": true }, children: ["Accueil"] },
-                    { tag: "a", props: { href: "/agenda", class: "nav__link events", "data-link": true }, children: ["Agenda"] },
-                    { tag: "a", props: { href: "/spots", class: "nav__link spots", "data-link": true }, children: ["Spots"] },
-                    { tag: "a", props: { href: "/map", class: "nav__link diary", "data-link": true }, children: ["Carte"] }
+                    {
+                        tag: "div",
+                        props: { class: "nav-link" },
+                        children: [
+                            {
+                                tag: "a",
+                                props: { href: "/evenements", class: "nav__link events", "data-link": true },
+                                children: [
+                                    {
+                                        tag: "img",
+                                        props: { src: "../../styles/images/Event.png", class: "nav-icon" }
+                                    },
+                                    "Événements"
+                                ]
+                            },
+                            {
+                                tag: "a",
+                                props: { href: "/carte", class: "nav__link map", "data-link": true },
+                                children: [
+                                    {
+                                        tag: "img",
+                                        props: { src: "../../styles/images/map.png", class: "nav-icon" }
+                                    },
+                                    "Carte"
+                                ]
+                            },
+                            {
+                                tag: "a",
+                                props: { href: "/agenda", class: "nav__link diary", "data-link": true },
+                                children: [
+                                    {
+                                        tag: "img",
+                                        props: { src: "../../styles/images/Agenda.png", class: "nav-icon" }
+                                    },
+                                    "Agenda"
+                                ]
+                            },
+                            {
+                                tag: "a",
+                                props: { href: "/spots", class: "nav__link spots", "data-link": true },
+                                children: [
+                                    {
+                                        tag: "img",
+                                        props: { src: "../../styles/images/spots.png", class: "nav-icon" }
+                                    },
+                                    "Spots"
+                                ]
+                            }
+                        ]
+                    }
                 ]
             }
         ]
