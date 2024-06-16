@@ -8,8 +8,8 @@ import Page404Struct from "./views/Page404Struct.js";
 export default {
     "/": HomeStruct,
     "/agenda": AgendaStruct,
-    "/events": EventsStruct,
-    "/map": MapStruct,
+    "/evenements": EventsStruct,
+    "/carte": MapStruct,
     "/spots": SpotsStruct,
     "*": Page404Struct
 };
