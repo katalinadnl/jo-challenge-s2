@@ -6,37 +6,35 @@
 @import 'mixin';
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Olympic Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Olympic Headline', sans-serif;
 }
 
 h1 {
-  font-weight: bold;
   @include h1-font;
 }
 
 h2 {
-  font-weight: bold;
   margin: rem(60) 0 rem(30) 0;
   @include h2-font;
 }
 
 h3 {
-  font-weight: bold;
   @include h3-font;
 }
 
 h4 {
-  font-weight: bold;
   @include h4-font;
 }
 
 h5 {
-  font-weight: bold;
   @include h5-font;
 }
 
 h6 {
-  font-weight: bold;
   @include h6-font;
 }
 
