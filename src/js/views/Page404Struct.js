@@ -1,6 +1,6 @@
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function Page404Struct() {
+export default function Page404Struct(props = {}) {
     return {
         tag: "div",
         children: [
@@ -12,7 +12,7 @@ export default function Page404Struct() {
                 tag: "p",
                 children: ["Page not found!"]
             },
-            getFooterStructure()
+            getFooterStructure(props.footer)
         ]
     };
 }

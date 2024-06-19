@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function AgendaStruct() {
+export default function AgendaStruct(props = {}) {
     return {
         tag: "div",
         children: [
@@ -20,7 +20,7 @@ export default function AgendaStruct() {
                     }
                 ]
             },
-            getFooterStructure()
+            getFooterStructure(props.footer)
         ]
     };
 }

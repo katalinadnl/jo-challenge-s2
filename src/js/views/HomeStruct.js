@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function HomeStruct() {
+export default function HomeStruct(props = {}) {
     return {
         tag: "div",
         props: { class: "page-size" },
@@ -73,7 +73,7 @@ export default function HomeStruct() {
                         },
                         {
                             tag: "img",
-                            props: { src: "img/map.png", alt: "Carte interactive" }
+                            props: { src: "", alt: "Carte interactive" }
                         },
                         {
                             tag: "h6",
@@ -81,7 +81,7 @@ export default function HomeStruct() {
                         }
                     ]
                 },
-            getFooterStructure()
+            getFooterStructure(props.footer)
         ]
     };
 }

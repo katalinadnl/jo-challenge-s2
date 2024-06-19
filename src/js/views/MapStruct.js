@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function MapStruct() {
+export default function MapStruct(props = {}) {
     return {
         tag: "div",
         children: [
@@ -20,7 +20,7 @@ export default function MapStruct() {
                     }
                 ]
             },
-            getFooterStructure()
+            getFooterStructure(props.footer)
         ]
     };
 }
