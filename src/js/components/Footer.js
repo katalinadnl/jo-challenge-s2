@@ -6,7 +6,7 @@ const defaultFooterProps = {
         { href: "https://www.instagram.com/Paris2024", imgSrc: "../../styles/images/Instagram.png" },
         { href: "https://www.linkedin.com/Paris2024", imgSrc: "../../styles/images/LinkedIn.png" },
         { href: "https://www.youtube.com/Paris2024", imgSrc: "../../styles/images/Youtube.png" },
-        { href: "https://www.tiktok.com/Paris2024", imgSrc: "../../styles/images/TikTok.png" }
+        { href: "", imgSrc: "../../styles/images/TikTok.png" }
     ]
 };
 

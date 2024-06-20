@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function HomeStruct(props = {}) {
+export default function HomeStruct() {
     return {
         tag: "div",
         props: { class: "page-size" },
@@ -81,7 +81,7 @@ export default function HomeStruct(props = {}) {
                         }
                     ]
                 },
-            getFooterStructure(props.footer)
+            getFooterStructure()
         ]
     };
 }

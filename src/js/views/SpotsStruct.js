@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function SpotsStruct(props = {}) {
+export default function SpotsStruct() {
     return {
         tag: "div",
         children: [
@@ -20,7 +20,7 @@ export default function SpotsStruct(props = {}) {
                     }
                 ]
             },
-            getFooterStructure(props.footer)
+            getFooterStructure()
         ]
     };
 }
