@@ -27,27 +27,39 @@
   }
   @media screen and (min-width: $resolution-tablet) {
     display: flex;
-    width: 95%;
+    width: 85%;
     .logo-navbar {
       img {
         width: 85px;
       }
     }
+    .nav-link {
+      a.nav__link {
+        padding: 0;
+      }
+    }
   }
   @media screen and (min-width: $resolution-small-desktop) {
-    width: rem(1400);
     .logo-navbar {
       img {
         width: 70%;
       }
     }
+    .nav-link {
+      a.nav__link {
+        padding: rem(12) rem(18);
+      }
+    }
+  }
+  @media screen and (min-width: $resolution-large-desktop) {
+    width: rem(1400);
   }
 }
 @mixin page--size {
   @media screen and (min-width: $resolution-phone) {
     width: 95%;
   }
-  @media screen and (min-width: $resolution-small-desktop) {
+  @media screen and (min-width: $resolution-large-desktop) {
     width: calc($page-size * 1px);
   }
 }
