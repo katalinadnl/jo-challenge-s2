@@ -1,4 +1,42 @@
-export function getFooterStructure() {
+const defaultFooterProps = {
+    footerText: "Retrouvez-nous!",
+    socialLinks: [
+        { href: "https://www.facebook.com/Paris2024", imgSrc: "../../styles/images/Facebook.png" },
+        { href: "https://x.com/Paris2024", imgSrc: "../../styles/images/Twitter.png" },
+        { href: "https://www.instagram.com/Paris2024", imgSrc: "../../styles/images/Instagram.png" },
+        { href: "https://www.linkedin.com/Paris2024", imgSrc: "../../styles/images/LinkedIn.png" },
+        { href: "https://www.youtube.com/Paris2024", imgSrc: "../../styles/images/Youtube.png" },
+        { href: "", imgSrc: "../../styles/images/TikTok.png" }
+    ]
+};
+
+function validateFooterProps(props) {
+    let { footerText, socialLinks } = props;
+
+    if (typeof footerText !== 'string') {
+        console.error('La propriété "footerText" doit être une chaîne de caractères');
+        footerText = defaultFooterProps.footerText;
+    }
+
+    if (!Array.isArray(socialLinks)) {
+        console.error('La propriété "socialLinks" doit être un tableau comprenant une image et un lien pour chaque réseau social');
+        socialLinks = defaultFooterProps.socialLinks;
+    } else {
+        socialLinks = socialLinks.map(link => {
+            if (typeof link.href !== 'string' || typeof link.imgSrc !== 'string') {
+                console.error('Chaque élément de "socialLinks" doit être un objet avec les propriétés "href" et "imgSrc" de type chaîne de caractères');
+                return defaultFooterProps.socialLinks.find(defaultLink => defaultLink.href === link.href) || defaultFooterProps.socialLinks[0];
+            }
+            return link;
+        });
+    }
+
+    return { footerText, socialLinks };
+}
+
+export function getFooterStructure(props = {}) {
+    const finalProps = validateFooterProps({ ...defaultFooterProps, ...props });
+
     return {
         tag: "footer",
         props: { class: "site-footer" },
@@ -9,73 +47,21 @@ export function getFooterStructure() {
                 children: [
                     {
                         tag: "h2",
-                        children: ["Retrouvez-nous"]
+                        children: [finalProps.footerText]
                     },
                     {
                         tag: "div",
                         props: { class: "socials" },
-                        children: [
-                            {
-                                tag: "a",
-                                props: { href: "https://www.facebook.com/Paris2024" },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: "../../styles/images/Facebook.png" }
-                                    }
-                                ]                            },
-                            {
-                                tag: "a",
-                                props: { href: "https://x.com/Paris2024" },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: "../../styles/images/Twitter.png" }
-                                    }
-                                ]
-                            },
-                            {
-                                tag: "a",
-                                props: { href: "https://www.instagram.com/paris2024/" },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: "../../styles/images/Instagram.png" }
-                                    }
-                                ]
-                            },
-                            {
-                                tag: "a",
-                                props: { href: "https://x.com/Paris2024" },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: "../../styles/images/Tiktok.png" }
-                                    }
-                                ]
-                            },
-                            {
-                                tag: "a",
-                                props: { href: "https://www.youtube.com/channel/UCg4W1uf-i5X1nVaeWJsKuyA" },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: "../../styles/images/youtube.png" }
-                                    }
-                                ]
-                            },
-                            {
-                                tag: "a",
-                                props: { href: "https://www.linkedin.com/company/paris-2024/" },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: "../../styles/images/LinkedIn.png" }
-                                    }
-                                ]
-                            }
-
-                        ]
+                        children: finalProps.socialLinks.map(link => ({
+                            tag: "a",
+                            props: { href: link.href },
+                            children: [
+                                {
+                                    tag: "img",
+                                    props: { src: link.imgSrc }
+                                }
+                            ]
+                        }))
                     },
                     {
                         tag: "div",

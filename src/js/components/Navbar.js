@@ -1,79 +1,90 @@
-export function getNavbarStructure() {
+const defaultNavbarProps = {
+    navLinks: [
+        {href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png"},
+        {href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png"},
+        {href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png"},
+        {href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png"}
+    ],
+    logoSrc: "../../styles/images/logo_desktop.png"
+};
+
+function validateNavbarProps(props) {
+    let {navLinks, logoSrc} = props;
+
+    if (!Array.isArray(navLinks)) {
+        console.error('La propriété "navLinks" doit être un tableau comprenant un objet pour chaque lien de navigation');
+        navLinks = defaultNavbarProps.navLinks;
+    } else {
+        navLinks = navLinks.map(link => {
+            if (typeof link.href !== 'string' || typeof link.text !== 'string' || typeof link.imgSrc !== 'string') {
+                console.error('Chaque élément de "navLinks" doit être un objet avec les propriétés "href", "text" et "imgSrc" de type chaîne de caractères');
+                return defaultNavbarProps.navLinks.find(defaultLink => defaultLink.href === link.href) || defaultNavbarProps.navLinks[0];
+            }
+            return link;
+        });
+    }
+
+    if (typeof logoSrc !== 'string') {
+        console.error('La propriété "logoSrc" doit être une chaîne de caractères');
+        logoSrc = defaultNavbarProps.logoSrc;
+    }
+
+    return {navLinks, logoSrc};
+}
+
+export function getNavbarStructure(props = {}) {
+    const finalProps = validateNavbarProps({...defaultNavbarProps, ...props});
+
     return {
         tag: "div",
-        props: { class: "navbar" },
+        props: {class: "page-size"},
         children: [
             {
-                tag: "div",
-                props: { class: "page-size" },
+                props: {class: "navbar"},
                 children: [
                     {
-                        tag: "nav",
-                        props: { class: "nav" },
+                        tag: "div",
+                        props: {class: "page-size"},
                         children: [
                             {
-                                tag: "div",
-                                props: { class: "logo-navbar" },
+
+                                tag: "nav",
+                                props: {class: "nav"},
                                 children: [
                                     {
-                                        tag: "a",
-                                        props: { href: "/" },
+                                        tag: "div",
+                                        props: {class: "logo-navbar"},
                                         children: [
                                             {
-                                                tag: "img",
-                                                props: { src: "../../styles/images/logo_desktop.png" }
+                                                tag: "a",
+                                                props: {href: "/"},
+                                                children: [
+                                                    {
+                                                        tag: "img",
+                                                        props: {src: finalProps.logoSrc}
+                                                    }
+                                                ]
                                             }
                                         ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag: "div",
-                                props: { class: "nav-link" },
-                                children: [
-                                    {
-                                        tag: "a",
-                                        props: { href: "/evenements", class: "nav__link events", "data-link": true },
-                                        children: [
-                                            {
-                                                tag: "img",
-                                                props: { src: "../../styles/images/Event.png", class: "nav-icon" }
-                                            },
-                                            "Événements"
-                                        ]
                                     },
                                     {
-                                        tag: "a",
-                                        props: { href: "/carte", class: "nav__link map", "data-link": true },
-                                        children: [
-                                            {
-                                                tag: "img",
-                                                props: { src: "../../styles/images/map.png", class: "nav-icon" }
+                                        tag: "div",
+                                        props: {class: "nav-link"},
+                                        children: finalProps.navLinks.map(link => ({
+                                            tag: "a",
+                                            props: {
+                                                href: link.href,
+                                                class: `nav__link ${link.text.toLowerCase()}`,
+                                                "data-link": true
                                             },
-                                            "Carte"
-                                        ]
-                                    },
-                                    {
-                                        tag: "a",
-                                        props: { href: "/agenda", class: "nav__link diary", "data-link": true },
-                                        children: [
-                                            {
-                                                tag: "img",
-                                                props: { src: "../../styles/images/Agenda.png", class: "nav-icon" }
-                                            },
-                                            "Agenda"
-                                        ]
-                                    },
-                                    {
-                                        tag: "a",
-                                        props: { href: "/spots", class: "nav__link spots", "data-link": true },
-                                        children: [
-                                            {
-                                                tag: "img",
-                                                props: { src: "../../styles/images/spots.png", class: "nav-icon" }
-                                            },
-                                            "Spots"
-                                        ]
+                                            children: [
+                                                {
+                                                    tag: "img",
+                                                    props: {src: link.imgSrc, class: "nav-icon"}
+                                                },
+                                                link.text
+                                            ]
+                                        }))
                                     }
                                 ]
                             }
