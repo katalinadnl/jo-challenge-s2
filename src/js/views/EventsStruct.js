@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
-export default function EventsStruct(props = {}) {
+export default function EventsStruct() {
     return {
         tag: "div",
         children: [
@@ -20,7 +20,7 @@ export default function EventsStruct(props = {}) {
                     }
                 ]
             },
-            getFooterStructure(props.footer)
+            getFooterStructure()
         ]
     };
 }
