@@ -1,6 +1,6 @@
 export function getFooterStructure() {
     return {
-        tag: "div",
+        tag: "footer",
         props: { class: "site-footer" },
         children: [
             {

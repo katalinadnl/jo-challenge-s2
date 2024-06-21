@@ -1,11 +1,54 @@
 @import 'variables';
 
+@mixin phone {
+  @media screen and (min-width: $resolution-phone) {
+    @content
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: $resolution-tablet) {
+    @content
+  }
+}
+@mixin small-desktop {
+  @media screen and (min-width: $resolution-small-desktop) {
+    @content
+  }
+}
+@mixin large-desktop {
+  @media screen and (min-width: $resolution-large-desktop) {
+    @content
+  }
+}
+
 @mixin navbar {
   @media screen and (min-width: $resolution-phone) {
     display: none;
   }
   @media screen and (min-width: $resolution-tablet) {
     display: flex;
+    width: 95%;
+    .logo-navbar {
+      img {
+        width: 85px;
+      }
+    }
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    width: rem(1400);
+    .logo-navbar {
+      img {
+        width: 70%;
+      }
+    }
+  }
+}
+@mixin page--size {
+  @media screen and (min-width: $resolution-phone) {
+    width: 95%;
+  }
+  @media screen and (min-width: $resolution-small-desktop) {
+    width: calc($page-size * 1px);
   }
 }
 
