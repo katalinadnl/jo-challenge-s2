@@ -1,15 +1,15 @@
 const defaultNavbarProps = {
     navLinks: [
-        { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
-        { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
-        { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
-        { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
+        {href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png"},
+        {href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png"},
+        {href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png"},
+        {href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png"}
     ],
     logoSrc: "../../styles/images/logo_desktop.png"
 };
 
 function validateNavbarProps(props) {
-    let { navLinks, logoSrc } = props;
+    let {navLinks, logoSrc} = props;
 
     if (!Array.isArray(navLinks)) {
         console.error('La propriété "navLinks" doit être un tableau comprenant un objet pour chaque lien de navigation');
@@ -29,50 +29,66 @@ function validateNavbarProps(props) {
         logoSrc = defaultNavbarProps.logoSrc;
     }
 
-    return { navLinks, logoSrc };
+    return {navLinks, logoSrc};
 }
 
 export function getNavbarStructure(props = {}) {
-    const finalProps = validateNavbarProps({ ...defaultNavbarProps, ...props });
+    const finalProps = validateNavbarProps({...defaultNavbarProps, ...props});
 
     return {
         tag: "div",
-        props: { class: "page-size" },
+        props: {class: "page-size"},
         children: [
             {
-                tag: "nav",
-                props: { class: "nav" },
+                props: {class: "navbar"},
                 children: [
                     {
                         tag: "div",
-                        props: { class: "logo-navbar" },
+                        props: {class: "page-size"},
                         children: [
                             {
-                                tag: "a",
-                                props: { href: "/" },
+
+                                tag: "nav",
+                                props: {class: "nav"},
                                 children: [
                                     {
-                                        tag: "img",
-                                        props: { src: finalProps.logoSrc }
+                                        tag: "div",
+                                        props: {class: "logo-navbar"},
+                                        children: [
+                                            {
+                                                tag: "a",
+                                                props: {href: "/"},
+                                                children: [
+                                                    {
+                                                        tag: "img",
+                                                        props: {src: finalProps.logoSrc}
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        tag: "div",
+                                        props: {class: "nav-link"},
+                                        children: finalProps.navLinks.map(link => ({
+                                            tag: "a",
+                                            props: {
+                                                href: link.href,
+                                                class: `nav__link ${link.text.toLowerCase()}`,
+                                                "data-link": true
+                                            },
+                                            children: [
+                                                {
+                                                    tag: "img",
+                                                    props: {src: link.imgSrc, class: "nav-icon"}
+                                                },
+                                                link.text
+                                            ]
+                                        }))
                                     }
                                 ]
                             }
                         ]
-                    },
-                    {
-                        tag: "div",
-                        props: { class: "nav-link" },
-                        children: finalProps.navLinks.map(link => ({
-                            tag: "a",
-                            props: { href: link.href, class: `nav__link ${link.text.toLowerCase()}`, "data-link": true },
-                            children: [
-                                {
-                                    tag: "img",
-                                    props: { src: link.imgSrc, class: "nav-icon" }
-                                },
-                                link.text
-                            ]
-                        }))
                     }
                 ]
             }

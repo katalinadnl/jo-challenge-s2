@@ -38,7 +38,7 @@ export function getFooterStructure(props = {}) {
     const finalProps = validateFooterProps({ ...defaultFooterProps, ...props });
 
     return {
-        tag: "div",
+        tag: "footer",
         props: { class: "site-footer" },
         children: [
             {
