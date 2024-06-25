@@ -36,6 +36,24 @@ import { getFooterStructure } from "../components/Footer.js";
     }
 ];
 
+const tags = [  
+    {
+        tag: "p",
+        children: ["Lieu"],
+    },
+    {
+        tag: "p",
+        children: ["Sport"],
+    },
+    {
+        tag: "p",
+        props: { class: "card-tag" },
+        children: ["Capacité d'accueil"],
+    }
+
+
+]
+
 export default function SpotsStruct() {
    
     return {
@@ -108,16 +126,17 @@ export default function SpotsStruct() {
                             children: cards.map(card => ({
                                 tag: "div",
                                 props: { class: "card" },
-                                
-                                children:  [
+                                children: [
+                                    {
                                     tag: "div",
                                     props: { class: "tag-list" },
-                                    children: spots.map(spot => ({
+                                    children: tags.map(tag => ({
                                         tag: "div",
                                         props: { class: "card-tag" },
-                                    }))
-                                ]
                             }))
+                        }
+                        ]
+                        }))
                         }
                         ]
                     }
