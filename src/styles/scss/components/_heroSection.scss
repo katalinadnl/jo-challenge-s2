@@ -1,0 +1,51 @@
+/* Add this to your CSS file */
+.hero-section {
+    position: relative;
+    background-size: cover;
+    height: 650px;
+
+    @media (max-width: 767px) {
+        height: 400px;
+    }
+}
+
+.hero-container {
+    position: relative;
+    height: 100%;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 104px 0 0 104px;
+    color: white;
+
+    @media (max-width: 767px) {
+        padding: 40px 0 0 40px;
+    }
+
+    h1 {
+        margin-bottom: 0;
+    }
+}
+
+.line-and-text {
+    display: flex;
+    align-items: center;
+}
+
+.line {
+    width: 2px;
+    height: 60px;
+    background-color: white;
+    margin-right: 12px; /* Set the gap between the line and the text */
+}
+
+.line-and-text p {
+    width: 520px; /* Set the width of the paragraph */
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
+}
