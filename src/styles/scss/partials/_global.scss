@@ -59,6 +59,7 @@ p {
   justify-content: space-between;
   padding: 0;
   position: fixed;
+  z-index: 100;
   top: rem(20);
   .logo-navbar {
     margin-left: rem(50);

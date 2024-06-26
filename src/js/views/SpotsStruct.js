@@ -139,7 +139,26 @@ export default function SpotsStruct() {
                                         props: { class: "card-tag" },
                                         children: tag.children
                             }))
-                        }
+                        },
+                        {
+                            tag: "div",
+                            props: { class: "card-infos" },
+                            children: [
+                                {
+                                    tag: "h3",
+                                    children: ["Parc Montsouris"]
+                                },
+                                {
+                                    tag: "p",
+                                    children: ["7 rue adrienne Lecouvreur, 75019 Paris"]
+                                },
+                                {
+                                    tag: "a",
+                                    props: { class: "card-infos-button", href: "/map", imgSrc: "../styles/images/toMapButton.png" },
+                                },
+                            
+                            ]
+                        },
                         ]
                         }))
                         }
