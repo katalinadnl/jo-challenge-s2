@@ -5,8 +5,8 @@ justify-content: center;
 
 
 .spots-list{
-    max-width: 80vw;
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    margin: 0 auto;
 }

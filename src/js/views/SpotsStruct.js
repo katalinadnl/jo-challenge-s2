@@ -1,6 +1,8 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 
+
+//const à changer plus tard pour récupérer les données de la base de données
   const cards = [
     {
         tag: "div",
@@ -39,10 +41,12 @@ import { getFooterStructure } from "../components/Footer.js";
 const tags = [  
     {
         tag: "p",
+        props: { class: "card-tag" },
         children: ["Lieu"],
     },
     {
         tag: "p",
+        props: { class: "card-tag" },
         children: ["Sport"],
     },
     {
@@ -131,8 +135,9 @@ export default function SpotsStruct() {
                                     tag: "div",
                                     props: { class: "tag-list" },
                                     children: tags.map(tag => ({
-                                        tag: "div",
+                                        tag: "div", 
                                         props: { class: "card-tag" },
+                                        children: tag.children
                             }))
                         }
                         ]

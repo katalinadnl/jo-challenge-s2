@@ -1,6 +1,16 @@
     .slider{
-        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: auto;
         display: flex;     
         gap: 24px;   
     
+    }
+
+    .slider::-webkit-scrollbar {
+        display: none;
+      }
+
+    .slider {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
     }
