@@ -1,3 +1,9 @@
 node_modules
 /src/styles/css/
+.idea
+.DS_Store
+/src/.DS_Store
+/src/styles/.DS_Store
+/src/.idea
+/src/styles/.idea
 
