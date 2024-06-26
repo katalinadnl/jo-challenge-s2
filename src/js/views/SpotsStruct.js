@@ -1,6 +1,14 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
-
+import { createHeroComponent } from "../components/HeroSection.js";
+//add by Catalina
+const eventsHeroContent = {
+    backgroundImage: "",
+    headingText: "Découvrez les meilleurs spots",
+    paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
+    height: "650px"
+};
+//finish add by Catalina
 
 //const à changer plus tard pour récupérer les données de la base de données
   const cards = [
@@ -38,7 +46,7 @@ import { getFooterStructure } from "../components/Footer.js";
     }
 ];
 
-const tags = [  
+const tags = [
     {
         tag: "p",
         props: { class: "card-tag" },
@@ -59,11 +67,12 @@ const tags = [
 ]
 
 export default function SpotsStruct() {
-   
+
     return {
         tag: "div",
         children: [
             getNavbarStructure(),
+            createHeroComponent(eventsHeroContent),
             {
                 tag: "h1",
                 children: ["Découvrez les meilleurs spots"]
@@ -135,7 +144,7 @@ export default function SpotsStruct() {
                                     tag: "div",
                                     props: { class: "tag-list" },
                                     children: tags.map(tag => ({
-                                        tag: "div", 
+                                        tag: "div",
                                         props: { class: "card-tag" },
                                         children: tag.children
                             }))
@@ -156,7 +165,7 @@ export default function SpotsStruct() {
                                     tag: "a",
                                     props: { class: "card-infos-button", href: "/map", imgSrc: "../styles/images/toMapButton.png" },
                                 },
-                            
+
                             ]
                         },
                         ]
@@ -164,7 +173,7 @@ export default function SpotsStruct() {
                         }
                         ]
                     }
-                
+
                 ]
             },
             getFooterStructure()
