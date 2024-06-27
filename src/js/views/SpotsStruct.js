@@ -3,41 +3,6 @@ import { getFooterStructure } from "../components/Footer.js";
 
 
 //const à changer plus tard pour récupérer les données de la base de données
-  const cards = [
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    },
-    {
-        tag: "div",
-        props: { class: "card" },
-    }
-];
-
 const tags = [  
     {
         tag: "p",
@@ -54,9 +19,55 @@ const tags = [
         props: { class: "card-tag" },
         children: ["Capacité d'accueil"],
     }
-
-
 ]
+
+ const card = 
+    { 
+        tag: "div",
+        props: { class: "card" },
+        children: [
+            {
+            tag: "div",
+            props: { class: "tag-list" },
+            children: tags.map(tag => ({
+                tag: "div", 
+                props: { class: "card-tag" },
+                children: tag.children
+            }))
+            },
+            {
+                tag: "div",
+                props: { class: "card-infos" },
+                children: [
+                    {
+                        tag: "h3",
+                        children: ["Parc Montsouris"]
+                    },
+                    {
+                        tag: "p",
+                        children: ["7 rue adrienne Lecouvreur, 75019 Paris"]
+                    },
+                    {
+                        tag: "a",
+                        props: { class: "card-infos-button", href: "/carte" },
+                        children: [
+                            {
+                                tag: "img",
+                                props: { src: "../../styles/images/bouton-voir-sur-carte.svg" }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+
+    };
+
+const cards =  Array(15).fill(card);
+
+//test d'héritage
+//checkbox pour toggle la class hide sur les cards : 
+
 
 export default function SpotsStruct() {
    
@@ -76,7 +87,12 @@ export default function SpotsStruct() {
                         tag: "p",
                         props: { class: "header-desc" },
                         children: ["Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil"]
+                    },
+                    {
+                        tag: "input",
+                        props: { type: "checkbox", id: "toggle" },
                     }
+                    
                 ]
             },
             {
@@ -130,36 +146,7 @@ export default function SpotsStruct() {
                             children: cards.map(card => ({
                                 tag: "div",
                                 props: { class: "card" },
-                                children: [
-                                    {
-                                    tag: "div",
-                                    props: { class: "tag-list" },
-                                    children: tags.map(tag => ({
-                                        tag: "div", 
-                                        props: { class: "card-tag" },
-                                        children: tag.children
-                            }))
-                        },
-                        {
-                            tag: "div",
-                            props: { class: "card-infos" },
-                            children: [
-                                {
-                                    tag: "h3",
-                                    children: ["Parc Montsouris"]
-                                },
-                                {
-                                    tag: "p",
-                                    children: ["7 rue adrienne Lecouvreur, 75019 Paris"]
-                                },
-                                {
-                                    tag: "a",
-                                    props: { class: "card-infos-button", href: "/map", imgSrc: "../styles/images/toMapButton.png" },
-                                },
-                            
-                            ]
-                        },
-                        ]
+                                children: card.children
                         }))
                         }
                         ]
