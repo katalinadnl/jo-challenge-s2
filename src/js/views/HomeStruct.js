@@ -4,7 +4,6 @@ import { createHeroComponent } from "../components/HeroSection.js";
 
 //added by catalina
 const eventsHeroContent = {
-    backgroundImage: "",
     headingText: "Jeux Olympiques 2024",
     paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
     height: "750px"
@@ -14,7 +13,7 @@ const eventsHeroContent = {
 export default function HomeStruct() {
     return {
         tag: "div",
-        props: { class: "body-content" },
+        props: { class: "home body-content" },
         children: [
             getNavbarStructure(),
             createHeroComponent(eventsHeroContent),

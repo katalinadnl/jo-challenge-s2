@@ -3,7 +3,6 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 
 const eventsHeroContent = {
-    backgroundImage: "../../styles/images/natation.jpg",
     headingText: "Agenda Olympique Paris 2024",
     paragraphText: "Ne manquez aucun moment clé des Jeux Olympiques de Paris 2024. Vivez l'excitation des compétitions en temps réel",
     height: "650px"
@@ -12,7 +11,7 @@ const eventsHeroContent = {
 export default function EventsStruct() {
     return {
         tag: "div",
-        props: { class: "body-content" },
+        props: { class: "agenda body-content" },
         children: [
             getNavbarStructure(),
             createHeroComponent(eventsHeroContent),

@@ -12,6 +12,7 @@ const eventsHeroContent = {
 export default function MapStruct() {
     return {
         tag: "div",
+        props: { class: "map" },
         children: [
             getNavbarStructure(),
             createHeroComponent(eventsHeroContent),
