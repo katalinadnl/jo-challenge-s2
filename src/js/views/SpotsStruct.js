@@ -70,6 +70,7 @@ export default function SpotsStruct() {
 
     return {
         tag: "div",
+        props: { class: "spots" },
         children: [
             getNavbarStructure(),
             createHeroComponent(eventsHeroContent),
