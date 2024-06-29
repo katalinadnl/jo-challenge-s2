@@ -27,6 +27,16 @@
   }
   @media screen and (min-width: $resolution-tablet) {
     display: flex;
+    justify-content: center;
+  }
+}
+
+@mixin nav-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    display: none;
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    display: flex;
     width: 85%;
     .logo-navbar {
       img {
@@ -53,14 +63,6 @@
   }
   @media screen and (min-width: $resolution-large-desktop) {
     width: rem(1400);
-  }
-}
-@mixin page--size {
-  @media screen and (min-width: $resolution-phone) {
-    width: 95%;
-  }
-  @media screen and (min-width: $resolution-large-desktop) {
-    width: calc($page-size * 1px);
   }
 }
 

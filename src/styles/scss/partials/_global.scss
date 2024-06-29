@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 .body-content {
   display: flex;
   flex-direction: column;
+  padding: rem(104);
 }
 
 h1 {
@@ -46,10 +47,8 @@ h6 {
 p {
   @include p-font;
 }
-
-.page-size {
-  margin: auto;
-  @include page--size;
+.navbar {
+  @include navbar;
 }
 
 .nav {
@@ -98,7 +97,7 @@ p {
       }
     }
   }
-  @include navbar;
+  @include nav-responsive;
 }
 
 
