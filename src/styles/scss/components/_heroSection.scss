@@ -1,12 +1,9 @@
 /* Add this to your CSS file */
-.hero-section {
-    position: relative;
+.body-content .hero-section {
     background-size: cover;
     height: 650px;
-
-    @media (max-width: 767px) {
-        height: 400px;
-    }
+    padding: 0;
+    margin: 0 rem(-104);
 }
 
 .hero-container {
@@ -33,6 +30,7 @@
 .line-and-text {
     display: flex;
     align-items: center;
+    margin-bottom: rem(38);
 }
 
 .line {

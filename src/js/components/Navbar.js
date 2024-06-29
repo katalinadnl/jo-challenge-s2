@@ -37,56 +37,48 @@ export function getNavbarStructure(props = {}) {
 
     return {
         tag: "div",
-        props: {class: "page-size"},
         children: [
             {
                 props: {class: "navbar"},
                 children: [
                     {
-                        tag: "div",
-                        props: {class: "page-size"},
+                        tag: "nav",
+                        props: {class: "nav"},
                         children: [
                             {
-
-                                tag: "nav",
-                                props: {class: "nav"},
+                                tag: "div",
+                                props: {class: "logo-navbar"},
                                 children: [
                                     {
-                                        tag: "div",
-                                        props: {class: "logo-navbar"},
+                                        tag: "a",
+                                        props: {href: "/"},
                                         children: [
                                             {
-                                                tag: "a",
-                                                props: {href: "/"},
-                                                children: [
-                                                    {
-                                                        tag: "img",
-                                                        props: {src: finalProps.logoSrc}
-                                                    }
-                                                ]
+                                                tag: "img",
+                                                props: {src: finalProps.logoSrc}
                                             }
                                         ]
-                                    },
-                                    {
-                                        tag: "div",
-                                        props: {class: "nav-link"},
-                                        children: finalProps.navLinks.map(link => ({
-                                            tag: "a",
-                                            props: {
-                                                href: link.href,
-                                                class: `nav__link ${link.text.toLowerCase()}`,
-                                                "data-link": true
-                                            },
-                                            children: [
-                                                {
-                                                    tag: "img",
-                                                    props: {src: link.imgSrc, class: "nav-icon"}
-                                                },
-                                                link.text
-                                            ]
-                                        }))
                                     }
                                 ]
+                            },
+                            {
+                                tag: "div",
+                                props: {class: "nav-link"},
+                                children: finalProps.navLinks.map(link => ({
+                                    tag: "a",
+                                    props: {
+                                        href: link.href,
+                                        class: `nav__link ${link.text.toLowerCase()}`,
+                                        "data-link": true
+                                    },
+                                    children: [
+                                        {
+                                            tag: "img",
+                                            props: {src: link.imgSrc, class: "nav-icon"}
+                                        },
+                                        link.text
+                                    ]
+                                }))
                             }
                         ]
                     }
