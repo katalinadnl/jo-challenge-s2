@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 .body-content {
   display: flex;
   flex-direction: column;
-  padding: rem(104);
+  @include body-content-responsive;
 }
 
 h1 {
@@ -24,7 +24,8 @@ h1 {
 }
 
 h2 {
-  margin: rem(60) 0 rem(30) 0;
+  margin-top: rem(29);
+  margin-bottom: rem(0);
   @include h2-font;
 }
 
@@ -47,59 +48,6 @@ h6 {
 p {
   @include p-font;
 }
-.navbar {
-  @include navbar;
-}
-
-.nav {
-  border-radius: rem(15);
-  background: $white;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  width: 1100px;
-  height: 120px;
-  flex-shrink: 0;
-  justify-content: space-between;
-  padding: 0;
-  position: fixed;
-  z-index: 100;
-  top: rem(20);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  .logo-navbar {
-    margin-left: rem(50);
-  }
-  .nav-link {
-    align-items: center;
-    display: flex;
-    a.nav__link {
-      align-items: center;
-      display: flex;
-      color: $black;
-      flex-direction: column;
-      font-weight: 500;
-      margin: 0 rem(35);
-      text-decoration: none;
-      &:hover {
-        border-radius: 50%;
-        &.événements {
-          background-color: $light-blue;
-        }
-        &.agenda {
-          background-color: $light-green;
-        }
-        &.carte {
-          background-color: $light-red;
-        }
-        &.spots {
-          background-color: $light-yellow;
-        }
-      }
-    }
-  }
-  @include nav-responsive;
-}
-
 
 #root {
   line-height: 1.5;
@@ -107,20 +55,25 @@ p {
 }
 
 .site-footer {
-  .page-size {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: rem(77);
+  h5 {
+    margin: 0 0 rem(38) 0;
+  }
+  .socials {
+    display: inline-flex;
     justify-content: center;
-    flex-direction: column;
-    .socials {
-      a {
-        margin: 0 rem(15);
-        text-decoration: none;
-      }
+    align-items: center;
+    gap: 41px;
+    margin-bottom: rem(44);
+    a {
+      text-decoration: none;
     }
-    p {
-      margin: rem(60) 0 rem(30) 0;
-    }
+  }
+  p {
+    margin: 0 0 rem(44) 0;
   }
 }
 
