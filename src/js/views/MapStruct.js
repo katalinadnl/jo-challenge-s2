@@ -3,9 +3,9 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 //added by Catalina
 const eventsHeroContent = {
-    backgroundImage: "",
+    backgroundImage: "../../styles/images/fireworks.jpg",
     headingText: "Carte intéractive",
-    paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
+    paragraphText: " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
     height: "650px"
 };
 
@@ -34,6 +34,23 @@ function createGMap() {
 }
 
 //finish added by Catalina
+
+// Fonction pour créer le composant de filtre
+function createFilterComponent() {
+    return {
+        tag: "div",
+        props: { class: "filter-component" },
+        children: [
+            { tag: "select", props: { class: "filter", id: "eventType" }, children: [{ tag: "option", props: { value: "" }, children: ["Épreuve"] }] },
+            { tag: "select", props: { class: "filter", id: "date" }, children: [{ tag: "option", props: { value: "" }, children: ["Date"] }] },
+            { tag: "select", props: { class: "filter", id: "location" }, children: [{ tag: "option", props: { value: "" }, children: ["Lieu"] }] },
+            { tag: "select", props: { class: "filter", id: "category" }, children: [{ tag: "option", props: { value: "" }, children: ["Catégorie"] }] },
+            { tag: "select", props: { class: "filter", id: "sport" }, children: [{ tag: "option", props: { value: "" }, children: ["Sport"] }] },
+            { tag: "button", props: { class: "filter-button", id: "applyFilters" }, children: ["Appliquer"] }
+        ]
+    };
+}
+
 export default function MapStruct() {
     return {
         tag: "div",
@@ -50,15 +67,23 @@ export default function MapStruct() {
                         tag: "div",
                         props: { class: "map" },
                         children: [
-
+                            {
+                                tag: "h2",
+                                children: ["BIENVENUE SUR LA CARTE INTERACTIVE DES JEUX OLYMPIQUES"]
+                            },
                             {
                                 tag: "p",
-                                children: ["Ne vous perdez plus !"]
+                                children: [
+                                    "Explorez les différents sites et événements des Jeux Olympiques avec notre carte interactive.",
+                                    { tag: "br" },
+                                    "Utilisez les filtres ci-dessous pour personnaliser vos recherches et découvrir les événements par date, type et localisation."
+                                ]
                             },
+                            createFilterComponent(),
                             {
                                 tag: "div",
                                 props: { class:"map-item", id: "map"}
-
+                
                             },
                             createGMap(),
                         ]
