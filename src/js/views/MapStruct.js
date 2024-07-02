@@ -6,7 +6,6 @@ const eventsHeroContent = {
     backgroundImage: "",
     headingText: "Carte intéractive",
     paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
-    height: "650px"
 };
 
 function createGMap() {

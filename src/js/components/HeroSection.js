@@ -1,7 +1,7 @@
-export function createHeroComponent({ headingText, paragraphText, height, videoSrc }) {
+export function createHeroComponent({ headingText, paragraphText, videoSrc }) {
     return {
         tag: "section",
-        props: { class: "hero-section", style: `height: ${height}` },
+        props: { class: "hero-section"},
         children: [
             {
                 tag: "div",

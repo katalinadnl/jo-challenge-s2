@@ -5,7 +5,6 @@ import { createHeroComponent } from "../components/HeroSection.js";
 const eventsHeroContent = {
     headingText: "Agenda Olympique Paris 2024",
     paragraphText: "Ne manquez aucun moment clé des Jeux Olympiques de Paris 2024. Vivez l'excitation des compétitions en temps réel",
-    height: "650px"
 };
 
 export default function EventsStruct() {

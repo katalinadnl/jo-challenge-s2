@@ -1,6 +1,6 @@
 .spots {
     .hero-section {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 52.5%, rgba(0, 0, 0, 0.67) 89%), url(../images/Spots-hero.png) lightgray 50% / cover no-repeat;
+        @include hero-section-spots-responsive;
     }
 
 }

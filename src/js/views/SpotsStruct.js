@@ -6,7 +6,6 @@ const eventsHeroContent = {
     backgroundImage: "",
     headingText: "Découvrez les meilleurs spots",
     paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
-    height: "650px"
 };
 //finish add by Catalina
 
