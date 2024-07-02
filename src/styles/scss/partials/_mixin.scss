@@ -168,7 +168,14 @@
   }
 }
 
-
+@mixin hero-text-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    padding: 0 rem(15);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    padding: 0 rem(104);
+  }
+}
 
 @mixin map-item-responsive {
   @media screen and (min-width: $resolution-phone) {

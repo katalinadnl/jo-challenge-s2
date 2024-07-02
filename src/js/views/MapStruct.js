@@ -30,7 +30,6 @@ function createGMap() {
     }
 
 
-
     initMap();
 }
 
