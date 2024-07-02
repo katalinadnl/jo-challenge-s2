@@ -1,39 +1,13 @@
-const defaultNavbarProps = {
-    navLinks: [
-        { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
-        { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
-        { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
-        { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
-    ],
-    logoSrc: "../../styles/images/logo_desktop.png"
-};
-
-function validateNavbarProps(props) {
-    let { navLinks, logoSrc } = props;
-
-    if (!Array.isArray(navLinks)) {
-        console.error('La propriété "navLinks" doit être un tableau comprenant un objet pour chaque lien de navigation');
-        navLinks = defaultNavbarProps.navLinks;
-    } else {
-        navLinks = navLinks.map(link => {
-            if (typeof link.href !== 'string' || typeof link.text !== 'string' || typeof link.imgSrc !== 'string') {
-                console.error('Chaque élément de "navLinks" doit être un objet avec les propriétés "href", "text" et "imgSrc" de type chaîne de caractères');
-                return defaultNavbarProps.navLinks.find(defaultLink => defaultLink.href === link.href) || defaultNavbarProps.navLinks[0];
-            }
-            return link;
-        });
-    }
-
-    if (typeof logoSrc !== 'string') {
-        console.error('La propriété "logoSrc" doit être une chaîne de caractères');
-        logoSrc = defaultNavbarProps.logoSrc;
-    }
-
-    return { navLinks, logoSrc };
-}
-
 export function getNavbarStructure(props = {}) {
-    const finalProps = validateNavbarProps({ ...defaultNavbarProps, ...props });
+    const finalProps = {
+        navLinks: props.navLinks || [
+            { href: "/evenements", text: "Events", imgSrc: "../../styles/images/Event.png" },
+            { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
+            { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
+            { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
+        ],
+        logoSrc: props.logoSrc || "../../styles/images/logo_desktop.png"
+    };
 
     return {
         tag: "header",
@@ -229,4 +203,3 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Element(s) not found:", { burgerButton, overlay, contentblurred, burgerNavbar, closeButton });
     }
 });
-

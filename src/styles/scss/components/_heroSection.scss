@@ -1,8 +1,13 @@
+@import '../partials/_mixin.scss';
+@import '../partials/_variables.scss';
+
 .body-content .hero-section {
     background-size: cover;
     height: 650px;
     padding: 0;
     margin: 0 rem(-104);
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-container {
@@ -15,11 +20,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 104px 0 0 104px;
     color: white;
     h1 {
         margin-bottom: 0;
     }
+    @include hero-text-responsive;
 }
 
 .line-and-text {
