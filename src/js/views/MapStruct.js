@@ -3,7 +3,6 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 //added by Catalina
 const eventsHeroContent = {
-    backgroundImage: "../../styles/images/fireworks.jpg",
     headingText: "Carte intéractive",
     paragraphText: " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
     height: "650px"
@@ -83,7 +82,7 @@ export default function MapStruct() {
                             {
                                 tag: "div",
                                 props: { class:"map-item", id: "map"}
-                
+
                             },
                             createGMap(),
                         ]
