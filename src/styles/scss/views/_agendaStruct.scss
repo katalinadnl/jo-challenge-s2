@@ -3,4 +3,20 @@
         @include hero-section-agenda-responsive;
     }
 
+    section {
+        .subtitle {
+            margin-top: 0;
+        }
+        .calendar-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .text-calendar {
+                width: 500px;
+            }
+
+        }
+    }
+
 }
