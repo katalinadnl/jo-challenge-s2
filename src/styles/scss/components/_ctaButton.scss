@@ -1,0 +1,28 @@
+@import '../partials/_mixin.scss';
+@import '../partials/_variables.scss';
+
+.cta-container {
+  .cta-white {
+    border: 2px solid black;
+    border-radius: 41px;
+    cursor: pointer;
+    padding: 4px 27px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+    font-size: rem(18);
+    width: rem(200);
+    height: rem(54);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 5px 4px 0 rgba(129, 129, 129, 0.50);
+    &:hover {
+      box-shadow: none;
+      transform: translate3d(7px, 6px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    }
+  }
+  @include cta-container-responsive;
+}

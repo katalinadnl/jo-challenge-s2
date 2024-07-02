@@ -5,7 +5,6 @@ import { createHeroComponent } from "../components/HeroSection.js";
 const eventsHeroContent = {
     headingText: "Carte intéractive",
     paragraphText: " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
-    height: "650px"
 };
 
 function createGMap() {

@@ -1,7 +1,7 @@
 export function getNavbarStructure(props = {}) {
     const finalProps = {
         navLinks: props.navLinks || [
-            { href: "/evenements", text: "Events", imgSrc: "../../styles/images/Event.png" },
+            { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
             { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
             { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
             { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }

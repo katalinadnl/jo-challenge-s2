@@ -12,9 +12,11 @@
 @import "./partials/spotsList";
 @import "./partials/slider";
 
-@import "./components/heroSection";
-@import "./components/navbar";
-@import "./components/cards";
+@import "./components/_navbar.scss";
+@import "./components/_heroSection.scss";
+@import "./components/_cards.scss";
+@import "./components/_footer.scss";
+@import "./components/_ctaButton.scss";
 
 @import "./views/homeStruct";
 @import "./views/agendaStruct";

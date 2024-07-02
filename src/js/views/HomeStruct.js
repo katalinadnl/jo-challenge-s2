@@ -1,15 +1,24 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
+import {getCtaButtonStructure} from "../components/CtaButton.js";
 
 //added by catalina
 const eventsHeroContent = {
     headingText: "Jeux Olympiques 2024",
     paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
-    height: "750px",
     videoSrc: "../../styles/video/PARIS_JO.mov"
 };
-//finish added by catalina
+
+const ctaButtonSpots = {
+    paragraphText: "En savoir plus",
+    href: "/spots"
+};
+
+const ctaButtonEvents = {
+    paragraphText: "En savoir plus",
+    href: "/evenements"
+};
 
 export default function HomeStruct() {
     return {
@@ -34,17 +43,7 @@ export default function HomeStruct() {
                                 tag: "p",
                                 children: ["Découvrez les lieux emblématiques des compétitions."]
                             },
-                            {
-                                tag: "div",
-                                props: { class: "cta-container" },
-                                children: [
-                                    {
-                                        tag: "a",
-                                        props: { class: "cta-white", href: "/spots" },
-                                        children: ["En savoir plus"]
-                                    }
-                                ]
-                            }
+                            getCtaButtonStructure(ctaButtonSpots)
                         ]
                     },
                     {
@@ -59,17 +58,7 @@ export default function HomeStruct() {
                                 tag: "p",
                                 children: ["Explorez les sports qui feront vibrer la France."]
                             },
-                            {
-                                tag: "div",
-                                props: { class: "cta-container" },
-                                children: [
-                                    {
-                                        tag: "a",
-                                        props: { class: "cta-white", href: "/evenements" },
-                                        children: ["En savoir plus"]
-                                    }
-                                ]
-                            }
+                            getCtaButtonStructure(ctaButtonEvents)
                         ]
                     },
                     {
