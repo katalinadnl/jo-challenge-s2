@@ -1,4 +1,4 @@
-export function cardsComponent({ type, title, description }) {
+export function cardsComponent({ type, title, description, label1, label2, label3, address, buttonDetails, buttonMap }) {
     if (type === "event") {
         return {
             tag: "div",
@@ -19,7 +19,7 @@ export function cardsComponent({ type, title, description }) {
                         },
                         {
                             tag: "div",
-                            props: { class: "card-description" },
+                            props: { class: "card-description spots-card-description" },
                             children: [description]
                         }
                     ]
@@ -30,11 +30,33 @@ export function cardsComponent({ type, title, description }) {
     if (type === "spot") {
         return {
             tag: "div",
-            props: { class: "spot-card card" },
+            props: { class: "spots-card" },
             children: [
                 {
+                tag: "div",
+                props: { class: "label-list" },
+                children : [
+                    {
+                    tag: "p",
+                    props: { class: "spots-card-label" },
+                    children: [label1],
+                    },
+                    {
+                        tag: "p",
+                        props: { class: "spots-card-label" },
+                        children: [label2],
+                    },
+                    {
+                        tag: "p",
+                        props: { class: "spots-card-label" },
+                        children: [label3],
+                    },
+                    ]
+                },
+
+                {
                     tag: "div",
-                    props: { class: "text-section" },
+                    props: { class: "spots-card-description" },
                     children: [
                         {
                             tag: "h4",
@@ -42,14 +64,29 @@ export function cardsComponent({ type, title, description }) {
                         },
                         {
                             tag: "div",
-                            props: { class: "card-description" },
-                            children: [description]
-                        }
+                            props: { class: "spots-card-buttons " },
+                            children:
+                            [
+                        
+                            {
+                                tag: "div",
+                                props: { class: "spots-card-button spots-card-button-details" },
+                                children: [buttonDetails]
+                            },
+                            {
+                                tag: "div",
+                                props: { class: "spots-card-button spots-card-button-map" },
+                                children: [buttonMap]
+                            }
+                        ]
+                        },
                     ]
                 }
             ]
+            }
+            
         };
-    }
+    
     if (type === "map") {
         return {
             tag: "div",
@@ -73,8 +110,8 @@ export function cardsComponent({ type, title, description }) {
             ]
         };
     }
-}
 
+}
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', toggleDescription);
