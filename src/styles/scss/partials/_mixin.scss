@@ -192,6 +192,9 @@
       .line {
         background-color: black;
       }
+      h1 {
+        text-align: center;
+      }
     }
   }
   @media screen and (min-width: $resolution-tablet) {
@@ -204,6 +207,9 @@
     .line-and-text {
       .line {
         background-color: white;
+      }
+      h1 {
+        text-align: center;
       }
     }
   }

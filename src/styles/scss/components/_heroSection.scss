@@ -22,6 +22,7 @@
     color: white;
     h1 {
         margin-bottom: 0;
+        text-align: left;
     }
     @include hero-text-responsive;
 }
@@ -41,9 +42,9 @@
 
 .line-and-text p {
     width: 520px;
-
     @media (max-width: 767px) {
         width: 100%;
+
     }
 }
 
