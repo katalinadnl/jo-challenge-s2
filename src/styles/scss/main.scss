@@ -1,16 +1,16 @@
-@import "./partials/functions";
-@import "./partials/variables";
-@import "./partials/global";
-@import "./partials/block";
-@import "./partials/button";
-@import "./partials/mixin";
-@import "./partials/font";
-@import "./partials/grid";
+@import "./partials/_functions.scss";
+@import "./partials/_variables.scss";
+@import "./partials/_global.scss";
+@import "./partials/_block.scss";
+@import "./partials/_button.scss";
+@import "./partials/_mixin.scss";
+@import "./partials/_font.scss";
+@import "./partials/_grid.scss";
 
 
-@import "./partials/card";
-@import "./partials/spotsList";
-@import "./partials/slider";
+@import "./partials/_card.scss";
+@import "./partials/_spotsList.scss";
+@import "./partials/_slider.scss";
 
 @import "./components/_navbar.scss";
 @import "./components/_heroSection.scss";
@@ -18,9 +18,9 @@
 @import "./components/_footer.scss";
 @import "./components/_ctaButton.scss";
 
-@import "./views/homeStruct";
-@import "./views/agendaStruct";
-@import "./views/eventsStruct";
-@import "./views/spotsStruct";
-@import "./views/mapStruct";
+@import "./views/_homeStruct.scss";
+@import "./views/_agendaStruct.scss";
+@import "./views/_eventsStruct.scss";
+@import "./views/_spotsStruct.scss";
+@import "./views/_mapStruct.scss";
 
