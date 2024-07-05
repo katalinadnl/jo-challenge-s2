@@ -5,11 +5,12 @@ import MapStruct from "./views/MapStruct.js";
 import SpotsStruct from "./views/SpotsStruct.js";
 import Page404Struct from "./views/Page404Struct.js";
 
-export default {
-    "/": HomeStruct,
-    "/agenda": AgendaStruct,
-    "/evenements": EventsStruct,
-    "/carte": MapStruct,
-    "/spots": SpotsStruct,
-    "*": Page404Struct
+export const routes = {
+    '/evenements': EventsStruct,
+    '/': HomeStruct,
+    '/agenda': AgendaStruct,
+    '/carte': MapStruct,
+    '/spots': SpotsStruct,
+    '*': Page404Struct
 };
+

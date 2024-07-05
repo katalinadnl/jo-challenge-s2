@@ -7,4 +7,5 @@ node_modules
 /src/.idea
 /src/styles/.idea
 /docker-compose.yml
+/src/js/.DS_Store
 
