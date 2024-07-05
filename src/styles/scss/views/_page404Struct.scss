@@ -1,0 +1,18 @@
+@import '../partials/_mixin.scss';
+
+.page404 {
+  .body-content {
+    .section1 {
+      display: flex;
+      justify-content: space-around;
+      margin-top: rem(198);
+      .description404 {
+        display: flex;
+        flex-direction: column;
+        .cta404 {
+          color: black;
+        }
+      }
+    }
+  }
+}
