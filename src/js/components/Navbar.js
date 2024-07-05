@@ -49,8 +49,14 @@ export function getNavbarStructure(props = {}) {
                                     },
                                     children: [
                                         {
-                                            tag: "img",
-                                            props: { src: link.imgSrc, class: "nav-icon" }
+                                            tag: "div",
+                                            props: { class: "img-link-navbar" },
+                                            children: [
+                                                {
+                                                    tag: "img",
+                                                    props: { src: link.imgSrc, class: "nav-icon" }
+                                                }
+                                            ]
                                         },
                                         link.text
                                     ]
