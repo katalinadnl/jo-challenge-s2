@@ -24,7 +24,7 @@
       display: flex;
       justify-content: center;
       height: 52px;
-      margin: rem(14) rem(26) rem(14) rem(312);
+      margin-right: rem(26);
       width: 52px;
       cursor: pointer;
       position: relative;
@@ -90,15 +90,9 @@
   text-align: center;
   display: flex;
   align-items: center;
-
-  .logo-navbar {
-    margin-left: rem(50);
-  }
-
   .nav-link {
     align-items: center;
     display: flex;
-
     a.nav__link {
       align-items: center;
       display: flex;
@@ -107,10 +101,8 @@
       font-weight: 500;
       margin: 0 rem(35);
       text-decoration: none;
-
       &:hover {
         border-radius: 50%;
-
         &.événements {
           background-color: $light-blue;
         }
@@ -152,7 +144,6 @@
         display: flex;
         justify-content: center;
         height: 52px;
-        margin: rem(13) rem(26) rem(83) rem(137);
         width: 52px;
         cursor: pointer;
         position: relative;

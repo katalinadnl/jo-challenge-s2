@@ -24,9 +24,11 @@
 @mixin body-content-responsive {
   @media screen and (min-width: $resolution-phone) {
     padding: 0 rem(15);
+    margin-top: 140px;
   }
   @media screen and (min-width: $resolution-tablet) {
     padding: 0 rem(104);
+    margin-top: 0;
   }
 }
 
@@ -57,6 +59,7 @@
     display: flex;
     width: 85%;
     .logo-navbar {
+      margin-left: rem(16);
       img {
         width: 85px;
       }
@@ -69,6 +72,7 @@
   }
   @media screen and (min-width: $resolution-small-desktop) {
     .logo-navbar {
+      margin-left: rem(50);
       img {
         width: 70%;
       }
@@ -80,7 +84,8 @@
     }
   }
   @media screen and (min-width: $resolution-large-desktop) {
-    width: rem(1400);
+    width: rem(1100);
+    height: rem(120);
   }
 }
 
@@ -168,7 +173,102 @@
   }
 }
 
+@mixin hero-text-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    align-items: center;
+    background-color: white;
+    border-top-left-radius: rem(5) rem(5);
+    border-top-right-radius: rem(5) rem(5);
+    color: black;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 rem(16);
+    padding: 0 rem(15);
+    display: flex;
+    text-align: center;
+    bottom: rem(-150);
 
+    .line-and-text {
+      .line {
+        background-color: black;
+      }
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    background-color: transparent;
+    color: white;
+    display: block;
+    margin: 0;
+    padding: 0 rem(104);
+    bottom: 0;
+    .line-and-text {
+      .line {
+        background-color: white;
+      }
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@mixin hero-section-home-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    background: url(../video/PARIS_JO.mov);
+    height: rem(550);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 66.29%, rgba(0, 0, 0, 0.20) 100%), url(../video/PARIS_JO.mov);
+    height: rem(750);
+  }
+}
+
+@mixin hero-section-spots-responsive{
+  @media screen and (min-width: $resolution-phone) {
+    background: url(../images/Spots-hero.png) lightgray 50% / cover no-repeat;
+    height: rem(550);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 52.5%, rgba(0, 0, 0, 0.67) 89%), url(../images/Spots-hero.png) lightgray 50% / cover no-repeat;
+    height: rem(650);
+  }
+}
+
+@mixin hero-section-agenda-responsive{
+  @media screen and (min-width: $resolution-phone) {
+    background: url(../images/natation.jpg) lightgray 1.199px -188.208px / 100% 174.545% no-repeat;
+    height: rem(550);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 60%, rgba(0, 0, 0, 0.25) 64.41%), url(../images/natation.jpg) lightgray 1.199px -188.208px / 100% 174.545% no-repeat;
+    height: rem(650);
+  }
+}
+
+@mixin hero-section-event-responsive{
+  @media screen and (min-width: $resolution-phone) {
+    background: url(../images/ski.jpg) lightgray 0.812px -0.096px / 100% 172.973% no-repeat;
+    height: rem(550);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%), url(../images/ski.jpg) lightgray 0.812px -0.096px / 100% 172.973% no-repeat;
+    height: rem(650);
+  }
+}
+
+@mixin hero-section-map-responsive{
+  @media screen and (min-width: $resolution-phone) {
+    background: url(../images/natation.jpg) lightgray 1.199px -188.208px / 100% 174.545% no-repeat;
+    height: rem(550);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 60%, rgba(0, 0, 0, 0.25) 64.41%), url(../images/natation.jpg) lightgray 1.199px -188.208px / 100% 174.545% no-repeat;
+    height: rem(650);
+  }
+}
 
 @mixin map-item-responsive {
   @media screen and (min-width: $resolution-phone) {
@@ -202,9 +302,10 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
   }
   @media screen and (min-width: $resolution-tablet) {
     flex-direction: row;
-    justify-content: flex-end;
   }
 }

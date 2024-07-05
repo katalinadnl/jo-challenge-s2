@@ -1,6 +1,22 @@
 .agenda {
     .hero-section {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 60%, rgba(0, 0, 0, 0.25) 64.41%), url(../images/natation.jpg) lightgray 1.199px -188.208px / 100% 174.545% no-repeat;
+        @include hero-section-agenda-responsive;
+    }
+
+    section {
+        .subtitle {
+            margin-top: 0;
+        }
+        .calendar-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .text-calendar {
+                width: 500px;
+            }
+
+        }
     }
 
 }

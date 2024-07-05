@@ -1,45 +1,50 @@
+@import '../partials/_mixin.scss';
+@import '../partials/_variables.scss';
+
 .body-content .hero-section {
     background-size: cover;
     height: 650px;
     padding: 0;
     margin: 0 rem(-104);
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-container {
     position: relative;
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-text {
     position: absolute;
-    bottom: 0;
     left: 0;
-    padding: 104px 0 0 104px;
     color: white;
     h1 {
         margin-bottom: 0;
+        text-align: left;
     }
+    @include hero-text-responsive;
 }
 
 .line-and-text {
     display: flex;
     align-items: center;
     margin-bottom: rem(38);
+    text-align: left;
 }
 
 .line {
     width: 2px;
     height: 60px;
-    background-color: white;
     margin-right: 12px;
 }
 
 .line-and-text p {
     width: 520px;
-
     @media (max-width: 767px) {
         width: 100%;
+
     }
 }
 
@@ -49,6 +54,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: unset;
     z-index: -1;
 }

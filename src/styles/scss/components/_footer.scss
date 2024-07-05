@@ -1,0 +1,26 @@
+@import '../partials/_variables.scss';
+
+.site-footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: rem(77);
+  h5 {
+    margin: 0 0 rem(38) 0;
+  }
+  .socials {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: rem(44);
+    width: rem(300);
+    a {
+      text-decoration: none;
+    }
+  }
+  p {
+    margin: 0 0 rem(44) 0;
+  }
+}
+
+
