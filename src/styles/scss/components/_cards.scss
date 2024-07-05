@@ -1,3 +1,7 @@
+@import '../partials/variables';
+@import '../partials/mixin';
+@import '../partials/functions';
+
 .event-card {
     &.card {
         width: 350px;
@@ -44,5 +48,94 @@
             }
         }
     }
+}
+
+.spots-card{
+    width: rem(350);
+    //height: 475px;
+    aspect-ratio: 14/19;
+    position: relative;
+    border-radius: rem(4);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-image:
+    linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+     url("../images/daphne-be-frenchie-MEdhnk_6Hn4-unsplash.jpg");
+    background-size: cover;
+    flex-shrink: 0;
+
+
+    &-label{
+        padding: rem(3) rem(9);
+        max-height: rem(29);
+        background-color: rgb(255, 255, 255, 0.5);
+        border : rem(1) Solid $black;
+        border-radius: rem(8);
+        color: $black;
+        font-size: rem(12);
+        font-weight: 700;
+        border-radius: rem(4);
+        margin: 0;
+    }
+
+
+    &-description{
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-height: rem(350);
+        width: 100%;
+        padding: rem(16);
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        p, h4{
+            margin: 0px !important;
+            max-width: 60%;
+            line-height: 1;
+        }
+
+    }
+
+    &-buttons{
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-button{
+        max-width: 45%;
+        padding: rem(8) rem(18);
+        border: rem(1) solid $white;
+        border-radius: rem(50);
+
+        &-details{
+            bottom: rem(16);
+            left: rem(16);
+
+        }
+        &-map{
+            bottom: rem(16);
+            right: rem(16);
+        }
+    }
+}
+.spots-card:not(:hover) .spots-card-buttons {
+    display: none;
+}
+
+
+.label-list{
+    position: absolute;
+    top: rem(16);
+    right: rem(16);
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: rem(8);
+    max-width: 50%;
 }
 

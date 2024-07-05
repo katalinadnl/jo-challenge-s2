@@ -1,6 +1,37 @@
 .spots {
     .hero-section {
-        @include hero-section-spots-responsive;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%), url(../images/ski.jpg) lightgray 0.812px -0.096px / 100% 172.973% no-repeat;
+        @include hero-section-spots-responsive;    
+     }
+}
+
+.spots-list-container{
+    display: flex;
+    justify-content: center;
+    }
+    
+    
+    .spots-list{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin: 0 auto;
     }
 
-}
+    .slider{
+        overflow-y: hidden;
+        overflow-x: auto;
+        display: flex;     
+        gap: 24px;   
+    
+    }
+
+    .slider::-webkit-scrollbar {
+        display: none;
+      }
+
+    .slider {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    }
