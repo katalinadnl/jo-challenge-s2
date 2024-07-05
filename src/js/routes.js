@@ -6,7 +6,7 @@ import SpotsStruct from "./views/SpotsStruct.js";
 import InformationsStruct from "./views/InformationsStruct.js";
 import Page404Struct from "./views/Page404Struct.js";
 
-export default {
+export const routes = {
     "/": HomeStruct,
     "/agenda": AgendaStruct,
     "/evenements": EventsStruct,

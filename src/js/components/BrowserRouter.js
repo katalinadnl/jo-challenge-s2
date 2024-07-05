@@ -1,32 +1,41 @@
-//utilise le history API pour gérer les changements de page sans recharger la page
 import generateStructure from "../core/generateStructure.js";
 
-export default function BrowserRouter(rootElement, routes) {
-    //const oldPushState = window.history.pushState;
-    //window.history.pushState = function (data, title, url) {
-    //  oldPushState.call(window.history, data, title, url);
-    //  window.dispatchEvent(new Event("popstate"));
-    //};
-    function managePath() {
-        const path = window.location.pathname;
-        const pageGenerator = routes[path] ?? routes["*"];
-        return pageGenerator();
-    }
+const BrowserRouter = function (routes, rootElement) {
+    const generatePage = () => {
+        const pathname = window.location.pathname;
+        const route = routes[pathname] || routes['*'];
 
-    window.addEventListener("popstate", function () {
-        rootElement.replaceChild(
-            generateStructure(managePath()),
-            rootElement.childNodes[0]
-        );
-    });
-    window.addEventListener("pushstate", function () {
-        rootElement.replaceChild(
-            generateStructure(managePath()),
-            rootElement.childNodes[0]
-        );
-    });
-    rootElement.appendChild(generateStructure(managePath()));
-}
+        if (route) {
+            const Component = route;
+            const props = {};
+            const componentInstance = new Component(props);
+            const structure = componentInstance.render();
+
+            if (rootElement.childNodes.length) {
+                rootElement.replaceChild(
+                    generateStructure(structure),
+                    rootElement.childNodes[0],
+                );
+            } else {
+                rootElement.appendChild(generateStructure(structure));
+            }
+        } else {
+            console.error(`Pas de route pour la route "${pathname}"`);
+        }
+    };
+
+    generatePage();
+
+    const oldPushState = history.pushState;
+    history.pushState = function (state, title, url) {
+        oldPushState.call(history, state, title, url);
+        window.dispatchEvent(new Event('popstate'));
+    };
+
+    window.onpopstate = generatePage;
+};
+
+export default BrowserRouter;
 
 export function BrowserLink(props) {
     return {

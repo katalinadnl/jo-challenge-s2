@@ -2,6 +2,7 @@ import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import { cardsComponent } from "../components/cards.js";
+import Component  from "../components/Component.js";
 
 const eventsHeroContent = {
     headingText: "Découvrez les meilleurs spots",
@@ -24,74 +25,75 @@ const cardspot = {
 
 const cards = cardsComponent(cardspot);
 
-export default function SpotsStruct() {
-   
-    return {
-        tag: "div",
-        props: { class: "spots body-content" },
-        children: [
-          getNavbarStructure(),
-          createHeroComponent(eventsHeroContent),
-            {
-                tag: "h1",
-                children: [""]
-            },
-           
-            {
-                tag: "section",
-                props: { class: "section-selection" },
-                children: [
-                    {
-                        tag: "h2",
-                        children: ["Notre sélection"]
-                    },
-                    {
-                        tag: "p",
-                        children: ["Les plus beaux spots de Paris"]
-                    },
-                    {
-                        tag: "div",
-                        props: { class: "slider-container" },
-                        children: [
-                            {
-                                tag: "div",
-                                props: { class: "slider" },
-                                children: Array(6).fill(cards)
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                tag: "section",
-                props: { class: "section-selection" },
-                children: [
-                    {
-                        tag: "h2",
-                        children: ["Trouvez l'endroit idéal"]
-                    },
-                    {
-                        tag: "p",
-                        children: ["Dénichez le spot qu’il vous faut avec notre filtre de recherche"]
-                    },
-                    {
-                        tag: "div",
-                        props: { class: "spots-list-container", id: "spots-list-container" },
-                        children: [
-                            {
+export default class SpotsStruct extends Component {
+    render() {
+        return {
+            tag: "div",
+            props: { class: "spots body-content" },
+            children: [
+            getNavbarStructure(),
+            createHeroComponent(eventsHeroContent),
+                {
+                    tag: "h1",
+                    children: [""]
+                },
+
+                {
+                    tag: "section",
+                    props: { class: "section-selection" },
+                    children: [
+                        {
+                            tag: "h2",
+                            children: ["Notre sélection"]
+                        },
+                        {
+                            tag: "p",
+                            children: ["Les plus beaux spots de Paris"]
+                        },
+                        {
                             tag: "div",
-                            props: { class: "spots-list" },
-                            children: Array(15).fill(cards)
-                            
+                            props: { class: "slider-container" },
+                            children: [
+                                {
+                                    tag: "div",
+                                    props: { class: "slider" },
+                                    children: Array(6).fill(cards)
+                                }
+                            ]
                         }
-                        ]
-                    }
-                
-                ]
-            },
-            getFooterStructure()
-        ]
-    };
+                    ]
+                },
+                {
+                    tag: "section",
+                    props: { class: "section-selection" },
+                    children: [
+                        {
+                            tag: "h2",
+                            children: ["Trouvez l'endroit idéal"]
+                        },
+                        {
+                            tag: "p",
+                            children: ["Dénichez le spot qu’il vous faut avec notre filtre de recherche"]
+                        },
+                        {
+                            tag: "div",
+                            props: { class: "spots-list-container", id: "spots-list-container" },
+                            children: [
+                                {
+                                tag: "div",
+                                props: { class: "spots-list" },
+                                children: Array(15).fill(cards)
+
+                            }
+                            ]
+                        }
+
+                    ]
+                },
+                getFooterStructure()
+            ]
+        };
+    }
 }
 
 

@@ -1,4 +1,5 @@
 import { getFooterStructure } from "../components/Footer.js";
+import Component  from "../components/Component.js";
 import { getNavbarStructure } from "../components/Navbar.js";
 
 function createCarousel() {
@@ -33,7 +34,8 @@ function createCarousel() {
 }
 
 export default function Page404Struct() {
-    return {
+    render()
+        return {
         tag: "div",
         props: { class: "page404" },
         children: [
