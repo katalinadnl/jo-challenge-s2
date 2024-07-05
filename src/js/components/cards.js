@@ -2,7 +2,9 @@ export function cardsComponent({ type, title, description, label1, label2, label
     if (type === "event") {
         return {
             tag: "div",
-            props: { class: "event-card card", onclick: "toggleDescription(event)" },
+            props: { class: "event-card card", onclick: function () {
+                window.location.href = "/events/1";
+            } },
             children: [
                 {
                     tag: "div",
@@ -67,7 +69,7 @@ export function cardsComponent({ type, title, description, label1, label2, label
                             props: { class: "spots-card-buttons " },
                             children:
                             [
-                        
+
                             {
                                 tag: "div",
                                 props: { class: "spots-card-button spots-card-button-details" },
@@ -84,33 +86,8 @@ export function cardsComponent({ type, title, description, label1, label2, label
                 }
             ]
             }
-            
-        };
-    
-    if (type === "map") {
-        return {
-            tag: "div",
-            props: { class: "map-card card"},
-            children: [
-                {
-                    tag: "div",
-                    props: { class: "text-section" },
-                    children: [
-                        {
-                            tag: "h4",
-                            children: [title]
-                        },
-                        {
-                            tag: "div",
-                            props: { class: "card-description" },
-                            children: [description]
-                        }
-                    ]
-                }
-            ]
-        };
-    }
 
+        };
 }
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.card').forEach(card => {

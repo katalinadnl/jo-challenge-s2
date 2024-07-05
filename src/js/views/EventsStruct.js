@@ -1,6 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
+import Component  from "../components/Component.js";
 import { cardsComponent } from "../components/cards.js";
 
 const eventsHeroContent = {
@@ -12,48 +13,38 @@ const cardevent = {
     type: "event",
     title: "Cérémonie d'ouverture",
     description: "Assistez à la cérémonie d'ouverture des Jeux Olympiques de Paris 2024, un spectacle inoubliable pour tous les fans de sport."
-}
+};
 
-const apiUrl = 'https://data.paris2024.org/api/explore/v2.1/catalog/datasets/'; // Replace with actual endpoint
-
-async function fetchOlympicsData() {
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        console.log(data); // Replace with code to display data
-    } catch (error) {
-        console.error('Error fetching data:', error);
+export default class EventsStruct extends Component {
+    render() {
+        return {
+            tag: "div",
+            props: { class: "event" },
+            children: [
+                getNavbarStructure(),
+                createHeroComponent(eventsHeroContent),
+                {
+                    tag: "main",
+                    props: { class: "body-content" },
+                    children: [
+                        cardsComponent(cardevent),
+                        {
+                            tag: "section",
+                            onClick: "/events/1",
+                            props: { class: "events-content" },
+                            children: [
+                                {
+                                    tag: "div",
+                                    props: { class: "page-size" },
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                getFooterStructure()
+            ]
+        };
     }
 }
 
-fetchOlympicsData();
-
-export default function EventsStruct() {
-    return {
-        tag: "div",
-        props: { class: "event" },
-        children: [
-            getNavbarStructure(),
-            createHeroComponent(eventsHeroContent),
-            {
-                tag: "main",
-                props: { class: "body-content" },
-                children: [
-                    cardsComponent(cardevent),
-                    {
-                        tag: "section",
-                        props: { class: "events-content" },
-                        children: [
-                            {
-                                tag: "div",
-                                props: { class: "page-size" },
-                                children: []
-                            }
-                        ]
-                    }
-                ]
-            },
-            getFooterStructure()
-        ]
-    };
-}
