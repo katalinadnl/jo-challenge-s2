@@ -33,52 +33,53 @@ function createCarousel() {
     };
 }
 
-export default function Page404Struct() {
-    render()
+export default class Page404Struct extends Component {
+    render() {
         return {
-        tag: "div",
-        props: { class: "page404" },
-        children: [
-            getNavbarStructure(),
-            {
-                tag: "main",
-                props: { class: "body-content" },
-                children: [
-                    {
-                        tag: "section",
-                        props: { class: "section1" },
-                        children: [
-                            {
-                                tag: "div",
-                                props: { class: "description404"},
-                                children: [
-                                    {
-                                        tag: "h1",
-                                        children: ["Erreur 404"]
-                                    },
-                                    {
-                                        tag: "p",
-                                        children: ["Page non trouvée"]
-                                    },
-                                    {
-                                        tag: "a",
-                                        props: { class:"cta404", href: "/" },
-                                        children: ["Retour à l'accueil?"]
-                                    },
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                props: { class: "img404" },
-                                children:[
-                                    createCarousel()
-                                ]
-                            },
-                        ]
-                    }
-                ]
-            },
-            getFooterStructure()
-        ]
-    };
+            tag: "div",
+            props: {class: "page404"},
+            children: [
+                getNavbarStructure(),
+                {
+                    tag: "main",
+                    props: {class: "body-content"},
+                    children: [
+                        {
+                            tag: "section",
+                            props: {class: "section1"},
+                            children: [
+                                {
+                                    tag: "div",
+                                    props: {class: "description404"},
+                                    children: [
+                                        {
+                                            tag: "h1",
+                                            children: ["Erreur 404"]
+                                        },
+                                        {
+                                            tag: "p",
+                                            children: ["Page non trouvée"]
+                                        },
+                                        {
+                                            tag: "a",
+                                            props: {class: "cta404", href: "/"},
+                                            children: ["Retour à l'accueil?"]
+                                        },
+                                    ]
+                                },
+                                {
+                                    tag: "div",
+                                    props: {class: "img404"},
+                                    children: [
+                                        createCarousel()
+                                    ]
+                                },
+                            ]
+                        }
+                    ]
+                },
+                getFooterStructure()
+            ]
+        };
+    }
 }
