@@ -1,5 +1,6 @@
 import Component from "./Component.js";
 
+
 export default class CardComponent extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +20,7 @@ export default class CardComponent extends Component {
                 tag: "div",
                 props: {
                     class: "event-card card",
-                    onclick: this.toggleDescription,
+                    onclick: this.toggleDescription
                 },
                 children: [
                     {

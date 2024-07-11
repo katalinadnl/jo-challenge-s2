@@ -1,3 +1,4 @@
+import generateStructure from '../core/generateStructure.js'; // import the generateStructure function
 // This is a base class for all components. It has a setState method which updates the state and re-renders the component.
 export default class Component {
 
