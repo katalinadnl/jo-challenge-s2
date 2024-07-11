@@ -1,5 +1,6 @@
 // This is a base class for all components. It has a setState method which updates the state and re-renders the component.
 export default class Component {
+
   constructor(props = {}) {
       this.state = {};
       this.props = props;

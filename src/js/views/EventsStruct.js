@@ -2,7 +2,7 @@ import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import Component from "../components/Component.js";
-import { cardsComponent } from "../components/cards.js";
+import CardComponent from "../components/CardComponent.js";
 
 const eventsHeroContent = {
     headingText: "DÉCOUVREZ LES ÉVÉNEMENTS QUI VOUS PLAISENT",
@@ -14,6 +14,7 @@ const cardevent = {
     title: "Cérémonie d'ouverture",
     description: "Assistez à la cérémonie d'ouverture des Jeux Olympiques de Paris 2024, un spectacle inoubliable pour tous les fans de sport."
 };
+
 
 export default class EventsStruct extends Component {
     render() {
@@ -27,10 +28,10 @@ export default class EventsStruct extends Component {
                     tag: "main",
                     props: { class: "body-content" },
                     children: [
-                        cardsComponent(cardevent),
+                        new CardComponent(cardevent).render(),
                         {
                             tag: "section",
-                            props: { class: "events-content", onClick: () => window.history.pushState({}, null, '/evenements/1') },
+                            props: { class: "events-content", },
                             children: [
                                 {
                                     tag: "div",

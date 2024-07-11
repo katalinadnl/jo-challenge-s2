@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
-import { cardsComponent } from "../components/cards.js";
+//import { CardComponent } from "../components/CardComponent.js";
 import Component  from "../components/Component.js";
 
 const eventsHeroContent = {
@@ -23,7 +23,7 @@ const cardspot = {
 
 
 
-const cards = cardsComponent(cardspot);
+//const cards = cardsComponent(cardspot);
 
 export default class SpotsStruct extends Component {
     render() {
@@ -57,7 +57,7 @@ export default class SpotsStruct extends Component {
                                 {
                                     tag: "div",
                                     props: { class: "slider" },
-                                    children: Array(6).fill(cards)
+                                    //children: Array(6).fill(cards)
                                 }
                             ]
                         }
@@ -82,7 +82,7 @@ export default class SpotsStruct extends Component {
                                 {
                                 tag: "div",
                                 props: { class: "spots-list" },
-                                children: Array(15).fill(cards)
+                                //children: Array(15).fill(cards)
 
                             }
                             ]

@@ -4,7 +4,6 @@ export default class CardComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { expanded: false };
-        this.toggleDescription = this.toggleDescription.bind(this);
     }
 
     toggleDescription() {
@@ -20,7 +19,7 @@ export default class CardComponent extends Component {
                 tag: "div",
                 props: {
                     class: "event-card card",
-                    onclick: this.toggleDescription
+                    onclick: this.toggleDescription,
                 },
                 children: [
                     {
@@ -39,7 +38,7 @@ export default class CardComponent extends Component {
                             {
                                 tag: "div",
                                 props: {
-                                    class: "card-description spots-card-description",
+                                    class: "card-description ",
                                     style: { display: expanded ? 'block' : 'none' }
                                 },
                                 children: [description]
