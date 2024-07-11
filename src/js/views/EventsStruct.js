@@ -1,7 +1,7 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
-import Component  from "../components/Component.js";
+import Component from "../components/Component.js";
 import { cardsComponent } from "../components/cards.js";
 
 const eventsHeroContent = {
@@ -30,8 +30,7 @@ export default class EventsStruct extends Component {
                         cardsComponent(cardevent),
                         {
                             tag: "section",
-                            onClick: "/events/1",
-                            props: { class: "events-content" },
+                            props: { class: "events-content", onClick: () => window.history.pushState({}, null, '/evenements/1') },
                             children: [
                                 {
                                     tag: "div",
@@ -47,4 +46,3 @@ export default class EventsStruct extends Component {
         };
     }
 }
-

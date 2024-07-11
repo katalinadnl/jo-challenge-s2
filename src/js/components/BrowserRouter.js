@@ -3,10 +3,10 @@ import generateStructure from "../core/generateStructure.js";
 const BrowserRouter = function (routes, rootElement) {
     const generatePage = () => {
         const pathname = window.location.pathname;
-        const route = routes[pathname] || routes['*'];
+        const route = routes.find(route => route.path === pathname) || routes.find(route => route.path === '*');
 
         if (route) {
-            const Component = route;
+            const Component = route.component;
             const props = {};
             const componentInstance = new Component(props);
             const structure = componentInstance.render();
@@ -20,7 +20,7 @@ const BrowserRouter = function (routes, rootElement) {
                 rootElement.appendChild(generateStructure(structure));
             }
         } else {
-            console.error(`Pas de route pour la route "${pathname}"`);
+            console.error(`No route found for path "${pathname}"`);
         }
     };
 
