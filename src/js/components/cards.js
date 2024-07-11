@@ -3,7 +3,7 @@ export function cardsComponent({ type, title, description, label1, label2, label
         return {
             tag: "div",
             props: { class: "event-card card", onclick: function () {
-                window.location.href = "/events/1";
+                window.location.href = "/evenements";
             } },
             children: [
                 {
