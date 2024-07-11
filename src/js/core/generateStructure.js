@@ -6,24 +6,39 @@ export default function generateStructure(structure) { // function to generate t
 
         const element = document.createElement(struct.tag); // create the element with the tag
 
-        if (struct.props) { // if the element has props
-            Object.keys(struct.props).forEach(attr => { // for each prop
-                const value = struct.props[attr]; // get the value of the prop
-
-                if (attr.startsWith('on')) { // if the prop starts with 'on'
-                    element.addEventListener(attr.toLowerCase().substring(2), value); // add an event listener
-                } else if (attr === 'style') { // if the prop is style
-                    Object.assign(element.style, value); // assign the style to the element
+        if (struct.props) {
+            for (const propName in struct.props) {
+                if (propName === "style") {
+                    Object.assign(element.style, struct.props[propName]);
+                } else if (propName.startsWith("data-")) {
+                    element.dataset[propName.replace("data-", "")] =
+                        struct.props[propName];
                 } else {
-                    element.setAttribute(attr, value); // set the attribute of the element
+                    element.setAttribute(propName, struct.props[propName]);
                 }
-            });
+            }
         }
 
-        if (struct.children) { // if the element has children
-            struct.children.forEach(child => { // for each child
-                element.appendChild(createElement(child));  // append the child to the element
-            });
+        if (struct.events) {
+            for (const eventName in struct.events) {
+                for (const eventListeners of struct.events[eventName]) {
+                    element.addEventListener(eventName, eventListeners);
+                }
+            }
+        }
+
+        if (structure.children) { // if children exist
+            for (const child of structure.children) {   // loop through children
+                let subChild; // create subChild
+                if (typeof child === "string") { // if child is a string
+                    subChild = document.createTextNode(child); // create text node
+                } else if (typeof child === "object" && child !== null) { // if child is an object
+                    subChild = generateStructure(child); // create element
+                }
+                if (subChild) {
+                    element.appendChild(subChild); // append child
+                }
+            }
         }
 
         return element;

@@ -4,23 +4,31 @@ import Component from "./Component.js";
 export default class CardComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = { expanded: false };
-    }
-
-    toggleDescription() {
-        this.setState({ expanded: !this.state.expanded });
+        this.state = { expanded : false };
     }
 
     render() {
         const { type, title, description, label1, label2, label3, address, buttonDetails, buttonMap } = this.props;
         const { expanded } = this.state;
 
+        console.log(this.props);
+        console.log(this.state);
+
         if (type === "event") {
             return {
                 tag: "div",
+                events: {
+                    click: [
+                        function (event) {
+                            event.preventDefault();
+                            console.log(this.state);
+
+
+                        },
+                    ],
+                },
                 props: {
                     class: "event-card card",
-                    onclick: this.toggleDescription
                 },
                 children: [
                     {
