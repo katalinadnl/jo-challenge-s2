@@ -9,11 +9,10 @@ const eventsHeroContent = {
     paragraphText: "Explorez les moments inoubliables des Jeux Olympiques de Paris 2024 et trouvez les événements qui vous passionnent.",
 };
 
-const cardevent = {
+const cardEventProps = {
     title: "Cérémonie d'ouverture",
     description: "Assistez à la cérémonie d'ouverture des Jeux Olympiques de Paris 2024, un spectacle inoubliable pour tous les fans de sport."
 };
-
 
 export default class EventsStruct extends Component {
     render() {
@@ -27,10 +26,10 @@ export default class EventsStruct extends Component {
                     tag: "main",
                     props: { class: "body-content" },
                     children: [
-                        new CardComponent(cardevent).render(),
+                        new CardComponent(cardEventProps).render(),
                         {
                             tag: "section",
-                            props: { class: "events-content", },
+                            props: { class: "events-content" },
                             children: [
                                 {
                                     tag: "div",
