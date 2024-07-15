@@ -1,64 +1,65 @@
 import Component from "./Component.js";
 
-
 export default class CardComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { expanded : false };
+    constructor() {
+        super();
+        this.state = {expanded: false};
     }
 
     render() {
-        const { type, title, description, label1, label2, label3, address, buttonDetails, buttonMap } = this.props;
-        const { expanded } = this.state;
+        const {title, description, label1, label2, label3, address, buttonDetails, buttonMap} = this.props;
+        const {expanded} = this.state;
 
+        console.log('props')
         console.log(this.props);
-        console.log(this.state);
+        console.log('state')
+        console.log(expanded);
 
-        if (type === "event") {
-            return {
-                tag: "div",
-                events: {
-                    click: [
-                        function (event) {
-                            event.preventDefault();
-                            console.log(this.state);
-
-
-                        },
-                    ],
-                },
-                props: {
-                    class: "event-card card",
-                },
-                children: [
-                    {
-                        tag: "div",
-                        props: { class: "date-time" },
-                        children: ["30/07 | 11:30"]
+        return {
+            tag: "div",
+            events: {
+                click: [
+                    function (event) {
+                        event.preventDefault();
+                        this.state = {expanded: expanded ? false : true};
                     },
-                    {
-                        tag: "div",
-                        props: { class: "text-section", style: { height: expanded ? '100%' : '180px' } },
-                        children: [
-                            {
-                                tag: "h4",
-                                children: [title]
+                ],
+            },
+            props: {
+                class: "event-card card",
+            },
+            children: [
+                {
+                    tag: "div",
+                    props: {class: "date-time"},
+                    children: ["30/07 | 11:30"]
+                },
+                {
+                    tag: "div",
+                    props: {class: "text-section", style: {height: expanded ? '100%' : '180px'}},
+                    children: [
+                        {
+                            tag: "h4",
+                            children: [title]
+                        },
+                        {
+                            tag: "div",
+                            props: {
+                                class: "card-description ",
+                                style: {display: expanded ? 'block' : 'none'}
                             },
-                            {
-                                tag: "div",
-                                props: {
-                                    class: "card-description ",
-                                    style: { display: expanded ? 'block' : 'none' }
-                                },
-                                children: [description]
-                            }
-                        ]
-                    }
-                ]
-            };
-        }
+                            children: [description]
+                        }
+                    ]
+                }
+            ]
+        };
+    }
+}
 
-        if (type === "spot") {
+
+
+        /*if (type === "spot") {
             return {
                 tag: "div",
                 props: { class: "spots-card" },
@@ -112,8 +113,4 @@ export default class CardComponent extends Component {
                     }
                 ]
             };
-        }
-
-        return null;
-    }
-}
+        }*/

@@ -10,7 +10,6 @@ const eventsHeroContent = {
 };
 
 const cardevent = {
-    type: "event",
     title: "Cérémonie d'ouverture",
     description: "Assistez à la cérémonie d'ouverture des Jeux Olympiques de Paris 2024, un spectacle inoubliable pour tous les fans de sport."
 };

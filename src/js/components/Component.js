@@ -8,7 +8,7 @@ export default class Component {
   }
 
   setState(newState) { // method to update the state
-      this.state = { ...this.state, ...newState }; // update the state
+      this.state = newState; // update the state
       const rootElement = document.getElementById('root'); // get the root element
       const routes = window.routes; // get the routes
       const currentPath = window.location.pathname; // get the current path

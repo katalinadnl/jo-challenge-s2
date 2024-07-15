@@ -1,10 +1,22 @@
 export default function generateStructure(structure) { // function to generate the structure of the page
     const createElement = (struct) => { // function to create the elements of the page
-        if (typeof struct === 'string') { // if the element is a string
-            return document.createTextNode(struct); // return the text node
+        let element;
+
+        if (typeof struct.type === 'string') { // if the element is a string
+            if (struct.type === 'TEXT_NODE') { // if the element is a text node
+                return document.createTextNode(struct.content); // create a text node
+            }
+             element = document.createElement(struct.type);
+        } else if (typeof struct === 'object') {
+            element = document.createElement(struct.tag);
+        } else {
+            const state = struct.state || {};
+            const props = struct.props || {};
+
+            const instance = new struct(props, state);
+            element = this.createElement(instance.render());
         }
 
-        const element = document.createElement(struct.tag); // create the element with the tag
 
         if (struct.props) {
             for (const propName in struct.props) {
