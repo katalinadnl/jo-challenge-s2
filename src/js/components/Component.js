@@ -1,30 +1,39 @@
-import generateStructure from '../core/generateStructure.js'; // import the generateStructure function
+import { generateStructure }  from "../core/generateStructure.js";// import the generateStructure function
 // This is a base class for all components. It has a setState method which updates the state and re-renders the component.
 export default class Component {
 
-  constructor(props = {}) {
-      this.state = {};
-      this.props = props;
-  }
+    constructor(props = {}) {
+        this.state = {};
+        this.props = props;
+    }
 
-  setState(newState) { // method to update the state
-      this.state = newState; // update the state
-      const rootElement = document.getElementById('root'); // get the root element
-      const routes = window.routes; // get the routes
-      const currentPath = window.location.pathname; // get the current path
-      const route = routes.find(route => route.path === currentPath) || routes.find(route => route.path === "*"); // find the route
-      if (route) { // if the route is found
-          const ComponentClass = route.component; // get the component class
-          const componentInstance = new ComponentClass(this.props); // create a new instance of the component
-          const structure = componentInstance.render(); // get the structure of the component
-          rootElement.replaceChild( // replace the child node
-              generateStructure(structure),
-              rootElement.childNodes[0]
-          );
-      }
-  }
+    setState(newState) { // method to update the state
+        this.state = newState; // update the state
+        this.updateComponent(); // call the updateComponent
+    }
 
-  render() {
-      return null;
-  }
+    updateComponent() { // method to update the component
+        const newStructure = this.render(); // call the render method
+        const newElement = generateStructure(newStructure); // generate the new structure
+        const element = this.rootElement; // get the root element
+        console.log(element);
+        const parent = element.parentElement; // get the parent element
+
+        if (parent && currentElement) {
+
+            parent.replaceChild(oldElement, currentElement);
+
+            this.rootElement = newElement;
+        }
+
+    }
+
+    setRoot(element) { // method to set the root element
+        this.rootElement = element; // set the root element
+    }
+
+
+    render() {
+        return null;
+    }
 }

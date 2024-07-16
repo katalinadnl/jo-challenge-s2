@@ -15,6 +15,10 @@ const cardEventProps = {
 };
 
 export default class EventsStruct extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return {
             tag: "div",

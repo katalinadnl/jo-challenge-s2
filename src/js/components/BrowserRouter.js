@@ -1,26 +1,28 @@
-import generateStructure from "../core/generateStructure.js";
+import { generateStructure, createElement, isClassComponent }  from "../core/generateStructure.js";
 
 const BrowserRouter = function (routes, rootElement) { // function to handle the browser routing
     const generatePage = () => { // function to generate the page
         const pathname = window.location.pathname; // get the pathname
         const route = routes.find(route => route.path === pathname) || routes.find(route => route.path === '*'); // find the route
-
-        if (route) { // if the route is found
-            const Component = route.component; // get the component
-            const props = {};
-            const componentInstance = new Component(props); // create a new instance of the component
-            const structure = componentInstance.render(); // get the structure of the component
-
-            if (rootElement.childNodes.length) { // if the root element has child nodes
-                rootElement.replaceChild( // replace the child node
-                    generateStructure(structure), // generate the structure
-                    rootElement.childNodes[0], // get the first child node
-                );
+        let g;
+        if (route) {
+            if(isClassComponent(route.component)) {
+                const component = route.component;
+                const page = createElement(component);
+                g = generateStructure(page);
+            } else if (typeof route.component === "function") {
+                g = new route.component();
             } else {
-                rootElement.appendChild(generateStructure(structure)); // append the structure to the root element
+                g = generateStructure(route.component);
+            }
+
+            if (rootElement.childNodes.length) {
+                rootElement.replaceChild(g, rootElement.childNodes[0]);
+            } else {
+                rootElement.appendChild(g);
             }
         } else {
-            console.error(`No route found for path "${pathname}"`);
+            console.error(`Pas de route pour la route "${pathname}"`);
         }
     };
 
