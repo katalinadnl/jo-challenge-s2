@@ -14,6 +14,7 @@ const eventsHeroContent = {
 
 let map;
 let markers = [];
+let sitesData = []; // Variable pour stocker les sites
 
 // Fetch data from API
 async function fetchData() {
@@ -40,7 +41,7 @@ function populateDropdowns(data) {
     const site = record.fields;
     sportsSet.add(site.sports);
     locationsSet.add(site.nom_site);
-    spotsSet.add(site.address || site.nom_site); 
+    spotsSet.add(site.address || site.nom_site);
     datesSet.add(site.start_date);
   });
 
@@ -49,26 +50,26 @@ function populateDropdowns(data) {
     option.value = sport;
     option.textContent = sport;
     sportDropdown.appendChild(option);
-});
+  });
 
   locationsSet.forEach((location) => {
-      const option = document.createElement("option");
-      option.value = location;
-      option.textContent = location;
-      locationDropdown.appendChild(option);
-    });
-    
-    spotsSet.forEach((spot) => {
-        const option = document.createElement("option");
-        option.value = spot;
-        option.textContent = spot;
+    const option = document.createElement("option");
+    option.value = location;
+    option.textContent = location;
+    locationDropdown.appendChild(option);
+  });
+
+  spotsSet.forEach((spot) => {
+    const option = document.createElement("option");
+    option.value = spot;
+    option.textContent = spot;
     spotDropdown.appendChild(option);
   });
 
   datesSet.forEach((date) => {
     const option = document.createElement("option");
-    option.value = date;
-    option.textContent = new Date(date).toLocaleDateString();
+    option.value = new Date(date).toISOString().split("T")[0]; // Format ISO
+    option.textContent = new Date(date).toLocaleDateString('fr-FR'); // Format localisé
     dateDropdown.appendChild(option);
   });
 }
@@ -76,12 +77,11 @@ function populateDropdowns(data) {
 // Function to add markers to the map
 function addMarkers(sites, Marker) {
   clearMarkers();
-  const customIconUrl = "../../styles/images/icone_courir.png"; 
+  const customIconUrl = "../../styles/images/icone_courir.png";
   sites.forEach((site) => {
-
     // Extraire la latitude et la longitude des données de site
-    let lat = parseFloat(site.fields.latitude.replace(',', '.'));
-    let lng = parseFloat(site.fields.longitude.replace(',', '.'));
+    let lat = parseFloat(site.fields.latitude.replace(",", "."));
+    let lng = parseFloat(site.fields.longitude.replace(",", "."));
 
     // Si les valeurs sont invalides, essayer d'utiliser les coordonnées de géométrie
     if (isNaN(lat) || isNaN(lng)) {
@@ -98,16 +98,16 @@ function addMarkers(sites, Marker) {
     }
 
     const marker = new Marker({
-        position: { lat: lat, lng: lng },
-        map,
-        title: site.fields.nom_site,
-        icon: {
-          url: customIconUrl, 
-          scaledSize: new google.maps.Size(55, 55), // Définir la taille de l'icône
-        },
-      });
-      markers.push(marker);
+      position: { lat: lat, lng: lng },
+      map,
+      title: site.fields.nom_site,
+      icon: {
+        url: customIconUrl,
+        scaledSize: new google.maps.Size(55, 55), // Définir la taille de l'icône
+      },
     });
+    markers.push(marker);
+  });
 }
 
 // Function to clear existing markers from the map
@@ -116,11 +116,39 @@ function clearMarkers() {
   markers = [];
 }
 
+// Function to get filter values
+function getFilterValues() {
+  const sport = document.getElementById("sport").value;
+  const location = document.getElementById("location").value;
+  const spot = document.getElementById("spot").value;
+  const date = document.getElementById("date").value;
+  return { sport, location, spot, date };
+}
+
+// Function to filter sites based on filters applied
+function filterSites(sites, filters) {
+  return sites.filter((site) => {
+    const matchesSport = !filters.sport || site.fields.sports === filters.sport;
+    const matchesLocation = !filters.location || site.fields.nom_site === filters.location;
+    const matchesSpot = !filters.spot || (site.fields.address && site.fields.address.includes(filters.spot)) || site.fields.nom_site.includes(filters.spot);
+    const matchesDate = !filters.date || new Date(site.fields.start_date).toISOString().split("T")[0] === filters.date;
+    return matchesSport && matchesLocation && matchesSpot && matchesDate;
+  });
+}
+
 // Initialize and populate dropdowns and map on page load
 document.addEventListener("DOMContentLoaded", async () => {
   const data = await fetchData();
+  sitesData = data; // Stocker les données des sites
   populateDropdowns(data);
-  createGMap(data); 
+  createGMap(data);
+
+  // Ajouter le gestionnaire d'événements pour le bouton "Appliquer"
+  document.getElementById("applyFilters").addEventListener("click", () => {
+    const filters = getFilterValues();
+    const filteredSites = filterSites(sitesData, filters);
+    addMarkers(filteredSites, google.maps.Marker);
+  });
 });
 
 // Function to create the Google Map and add markers
@@ -137,8 +165,8 @@ async function createGMap(sites) {
       b = window;
     b = b[c] || (b[c] = {});
     var d = b.maps || (b.maps = {}),
-    r = new Set(),
-    e = new URLSearchParams(),
+      r = new Set(),
+      e = new URLSearchParams(),
       u = () =>
         h ||
         (h = new Promise(async (f, n) => {
@@ -165,61 +193,94 @@ async function createGMap(sites) {
     // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
     // Add other bootstrap parameters as needed, using camel case.
   });
-  
+
   // initMap is now async
   async function initMap() {
-      // Request libraries when needed, not in the script tag.
-      const { Map } = await google.maps.importLibrary("maps");
-      const { Marker } = await google.maps.importLibrary("marker");
-      // Short namespaces can be used.
-      map = new Map(document.getElementById("map"), {
-          center: { lat: 48.86010463673363, lng: 2.2933603275527727 },
-          zoom: 12,
-        });
-        
-        addMarkers(sites, Marker); // Add markers to the map with fetched data
-    }
-    
-    initMap();
-}
+    // Request libraries when needed, not in the script tag.
+    const { Map } = await google.maps.importLibrary("maps");
+    const { Marker } = await google.maps.importLibrary("marker");
+    // Short namespaces can be used.
+    map = new Map(document.getElementById("map"), {
+      center: { lat: 48.86010463673363, lng: 2.2933603275527727 },
+      zoom: 12,
+    });
 
+    addMarkers(sites, Marker); // Add markers to the map with fetched data
+  }
+
+  initMap();
+}
 
 // Function to create the filter component
 function createFilterComponent() {
-    return {
-        tag: "div",
-        props: { class: "filter-component" },
+  return {
+    tag: "div",
+    props: { class: "filter-component" },
+    children: [
+      {
+        tag: "select",
+        props: { class: "filter", id: "sport" },
         children: [
-            {
-                tag: "select",
-                props: { class: "filter", id: "sport" },
-                children: [
-                    { tag: "option", props: { value: "" }, children: ["Sport"] },
-                ],
-            },
-            {
-                tag: "select",
-                props: { class: "filter", id: "date" },
-                children: [{ tag: "option", props: { value: "" }, children: ["Date"] }],
-            },
-            {
-                tag: "select",
-                props: { class: "filter", id: "location" },
-                children: [{ tag: "option", props: { value: "" }, children: ["Lieu"] }],
-            },
-            {
-                tag: "select",
-                props: { class: "filter", id: "spot" },
-                children: [{ tag: "option", props: { value: "" }, children: ["Spot"] }],
-            },
-            {
-                tag: "button",
-                props: { class: "filter-button", id: "applyFilters" },
-                children: ["Appliquer"],
-            },
+          { tag: "option", props: { value: "" }, children: ["Sport"] },
         ],
-    };
+      },
+      {
+        tag: "select",
+        props: { class: "filter", id: "date" },
+        children: [{ tag: "option", props: { value: "" }, children: ["Date"] }],
+      },
+      {
+        tag: "select",
+        props: { class: "filter", id: "location" },
+        children: [{ tag: "option", props: { value: "" }, children: ["Lieu"] }],
+      },
+      {
+        tag: "select",
+        props: { class: "filter", id: "spot" },
+        children: [{ tag: "option", props: { value: "" }, children: ["Spot"] }],
+      },
+      {
+        tag: "button",
+        props: { class: "filter-button", id: "applyFilters" },
+        children: ["Appliquer"],
+      },
+    ],
+  };
 }
+
+// Function to create the results section with cards
+function createResultsSection() {
+  return {
+    tag: "section",
+    props: { class: "results-section" },
+    children: [
+      {
+        tag: "h2",
+        children: ["Résultats"],
+      },
+      {
+        tag: "div",
+        props: { class: "results-cards", id: "results-cards" },
+        children: Array(3).fill(cards), // Placeholder for 3 cards
+      },
+    ],
+  };
+}
+
+// Placeholder card data
+const cardData = {
+  type: "spot",
+  label1: "Lieu",
+  label2: "Sport",
+  label3: "Capacité d'accueil",
+  title: "Parc Montsouris",
+  address: "7 rue adrienne Lecouvreur, 75019 Paris",
+  buttonDetails: "Voir en détails",
+  buttonMap: "Voir sur la carte",
+};
+
+// Generate cards
+const cards = cardsComponent(cardData);
 
 export default class MapStruct extends Component {
   render() {
@@ -257,6 +318,21 @@ export default class MapStruct extends Component {
                   props: { class: "map-item", id: "map" },
                 },
               ],
+            },
+          ],
+        },
+        {
+          tag: "section",
+          props: { class: "results-section" },
+          children: [
+            {
+              tag: "h2",
+              children: ["Résultats"],
+            },
+            {
+              tag: "div",
+              props: { class: "results-cards", id: "results-cards" },
+              children: Array(3).fill(cards), // Placeholder for 3 cards
             },
           ],
         },
