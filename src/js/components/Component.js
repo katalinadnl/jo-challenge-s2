@@ -8,28 +8,24 @@ export default class Component {
     }
 
     setState(newState) { // method to update the state
-        this.state = newState; // update the state
+        this.state = { ...this.state, ...newState }; // update the state
         this.updateComponent(); // call the updateComponent
     }
 
     updateComponent() { // method to update the component
-        const newStructure = this.render(); // call the render method
-        const newElement = generateStructure(newStructure); // generate the new structure
-        const element = this.rootElement; // get the root element
-        console.log(element);
+        this.isRender = false; // set the isRender to false
+        const newElement = generateStructure(this.render()); // generate the new structure
+        const element = this.__rootElement; // get the root element
         const parent = element.parentElement; // get the parent element
 
-        if (parent && currentElement) {
-
-            parent.replaceChild(oldElement, currentElement);
-
-            this.rootElement = newElement;
+        if (parent && element) {
+            parent.replaceChild(newElement, element);
+            this.__rootElement = element;
         }
-
     }
 
     setRoot(element) { // method to set the root element
-        this.rootElement = element; // set the root element
+        this.__rootElement = element; // set the root element
     }
 
 

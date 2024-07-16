@@ -60,7 +60,11 @@ export function createHeroComponent({ headingText, paragraphText, videoSrc }) {
                         children: [
                             {
                                 tag: "h1",
-                                children: [headingText]
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: headingText
+                                }
+                                ]
                             },
                             {
                                 tag: "div",
@@ -72,7 +76,10 @@ export function createHeroComponent({ headingText, paragraphText, videoSrc }) {
                                     },
                                     {
                                         tag: "p",
-                                        children: [paragraphText]
+                                        children: [{
+                                            tag: 'TEXT_NODE',
+                                            content: paragraphText
+                                        }]
                                     }
                                 ]
                             }

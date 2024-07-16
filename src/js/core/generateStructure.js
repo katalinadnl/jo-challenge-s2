@@ -65,6 +65,8 @@
     return createElement(structure); // return the element
 }*/
 
+import Component from "../components/Component.js";
+
 export function isClassComponent(component) {
     if (typeof component !== 'function') {
         return false;
@@ -114,11 +116,11 @@ export function createElement(component, props, ...children) {
 }
 
 export function generateStructure(structure) {
-    if (structure.type === 'TEXT_NODE') {
+    if (structure.tag === 'TEXT_NODE') {
         return document.createTextNode(structure.content);
     }
 
-    const element = document.createElement(structure.type);
+    const element = document.createElement(structure.tag);
 
     if (structure.children) {
         structure.children.forEach(child => {
@@ -148,8 +150,8 @@ export function generateStructure(structure) {
         }
     }
 
-    if (structure.instance && structure.instance.setRootElement) {
-        structure.instance.setRootElement(element);
+    if (structure.instance && structure.instance.setRoot) {
+        structure.instance.setRoot(element);
 
         if (structure.instance.isRender && structure.instance.componentDidMount) {
             structure.instance.componentDidMount();
@@ -159,3 +161,7 @@ export function generateStructure(structure) {
     return element;
 }
 
+export const DOM = {
+    createElement,
+    Component: Component,
+}

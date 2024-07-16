@@ -1,14 +1,14 @@
-import Component from "./Component.js";
+import {DOM} from "../core/generateStructure.js";
 
-export default class CardComponent extends Component {
+export default class CardComponent extends DOM.Component {
     constructor(props) {
         super(props);
         this.state = { expanded: false };
     }
 
     handleClick = (event) => {
-        console.log("click");
         event.preventDefault();
+        console.log(this.state.expanded);
         this.setState({ expanded: !this.state.expanded });
     }
 
@@ -32,11 +32,17 @@ export default class CardComponent extends Component {
                 },
                 {
                     tag: "div",
-                    props: { class: "text-section", style: { height: expanded ? '100%' : '180px' } },
+                    props: { class: "text-section", style: { height: expanded ? '100%' : '300%' } },
                     children: [
                         {
                             tag: "h4",
-                            children: [title]
+                            children: [
+                                {
+                                    tag: 'TEXT_NODE',
+                                    content: title,
+                                },
+                            ],
+
                         },
                         {
                             tag: "div",
@@ -44,7 +50,12 @@ export default class CardComponent extends Component {
                                 class: "card-description",
                                 style: { display: expanded ? 'block' : 'none' }
                             },
-                            children: [description]
+                            children: [
+                                {
+                                    tag: 'TEXT_NODE',
+                                    content: description,
+                                },
+                            ],
                         }
                     ]
                 }

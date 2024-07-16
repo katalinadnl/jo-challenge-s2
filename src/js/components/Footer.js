@@ -6,8 +6,8 @@ export function getFooterStructure(props = {}) {
             { href: "https://x.com/Paris2024", imgSrc: "../../styles/images/Twitter.png" },
             { href: "https://www.instagram.com/Paris2024", imgSrc: "../../styles/images/Instagram.png" },
             { href: "https://www.linkedin.com/Paris2024", imgSrc: "../../styles/images/LinkedIn.png" },
-            { href: "https://www.youtube.com/Paris2024", imgSrc: "../../styles/images/Youtube.png" },
-            { href: "", imgSrc: "../../styles/images/TikTok.png" }
+            { href: "https://www.youtube.com/Paris2024", imgSrc: "../../styles/images/YouTube.png" },
+            { href: "", imgSrc: "../../styles/images/Tiktok.png" }
         ]
     };
 

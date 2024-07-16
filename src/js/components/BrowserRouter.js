@@ -1,4 +1,4 @@
-import { generateStructure, createElement, isClassComponent }  from "../core/generateStructure.js";
+import {generateStructure, createElement, isClassComponent, DOM} from "../core/generateStructure.js";
 
 const BrowserRouter = function (routes, rootElement) { // function to handle the browser routing
     const generatePage = () => { // function to generate the page
@@ -8,7 +8,7 @@ const BrowserRouter = function (routes, rootElement) { // function to handle the
         if (route) {
             if(isClassComponent(route.component)) {
                 const component = route.component;
-                const page = createElement(component);
+                const page = DOM.createElement(component);
                 g = generateStructure(page);
             } else if (typeof route.component === "function") {
                 g = new route.component();
