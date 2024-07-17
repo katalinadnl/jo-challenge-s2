@@ -14,7 +14,7 @@ export default class AgendaStruct extends Component  {
             tag: "div",
             props: { class: "agenda" },
             children: [
-                getNavbarStructure(),
+                new getNavbarStructure().render(),
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",

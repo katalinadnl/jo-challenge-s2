@@ -39,7 +39,7 @@ export default class Page404Struct extends Component {
             tag: "div",
             props: {class: "page404"},
             children: [
-                getNavbarStructure(),
+                new getNavbarStructure().render(),
                 {
                     tag: "main",
                     props: {class: "body-content"},

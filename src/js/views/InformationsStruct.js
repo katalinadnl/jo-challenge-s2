@@ -7,7 +7,7 @@ export default function InformationsStruct() {
         tag: "div",
         props: { class: "information" },
         children: [
-            getNavbarStructure(),
+            new getNavbarStructure().render(),
             {
                 tag: "main",
                 props: { class: "body-content" },

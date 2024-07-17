@@ -27,7 +27,7 @@ export default class HomeStruct extends Component {
             tag: "div",
             props: { class: "home" },
             children: [
-                getNavbarStructure(),
+                new getNavbarStructure().render(),
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",
@@ -39,11 +39,21 @@ export default class HomeStruct extends Component {
                             children: [
                                 {
                                     tag: "h2",
-                                    children: ["Les différents spots"]
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Les différents spots",
+                                        },
+                                    ]
                                 },
                                 {
                                     tag: "p",
-                                    children: ["Découvrez les lieux emblématiques des compétitions."]
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Découvrez les lieux emblématiques des compétitions.",
+                                        }
+                                    ]
                                 },
                                 getCtaButtonStructure(ctaButtonSpots)
                             ]
@@ -54,11 +64,21 @@ export default class HomeStruct extends Component {
                             children: [
                                 {
                                     tag: "h2",
-                                    children: ["Les différents sports olympiques"]
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Les différents sports olympiques",
+                                        }
+                                    ]
                                 },
                                 {
                                     tag: "p",
-                                    children: ["Explorez les sports qui feront vibrer la France."]
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Explorez les sports qui feront vibrer la France.",
+                                        }
+                                    ]
                                 },
                                 getCtaButtonStructure(ctaButtonEvents)
                             ]
@@ -69,11 +89,21 @@ export default class HomeStruct extends Component {
                             children: [
                                 {
                                     tag: "h2",
-                                    children: ["La carte"]
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "La carte",
+                                        }
+                                    ]
                                 },
                                 {
                                     tag: "p",
-                                    children: ["Planifiez facilement vos sorties avec notre carte interactive."]
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Planifiez facilement vos sorties avec notre carte interactive.",
+                                        }
+                                    ]
                                 },
                                 {
                                     tag: "div",
@@ -85,15 +115,28 @@ export default class HomeStruct extends Component {
                                             children: [
                                                 {
                                                     tag: "h3",
-                                                    children: ["Planifiez vos sorties en un clin d'œil. Paris n'a jamais été aussi accessible !"]
+                                                    children: [
+                                                        {
+                                                            tag: 'TEXT_NODE',
+                                                            content: "Planifiez vos sorties en un clin d'œil. Paris n'a jamais été aussi accessible !",
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     tag: "p",
-                                                    children: ["Explorez les événements sportifs et les meilleurs spots de Paris grâce à notre carte interactive. Que vous soyez amateur de sport ou simplement à la recherche de nouvelles expériences, cette carte vous guidera à travers les incontournables de la capitale."]
+                                                    children: [
+                                                        {
+                                                            tag: 'TEXT_NODE',
+                                                            content: "Explorez les événements sportifs et les meilleurs spots de Paris grâce à notre carte interactive. Que vous soyez amateur de sport ou simplement à la recherche de nouvelles expériences, cette carte vous guidera à travers les incontournables de la capitale.",
+                                                        }]
                                                 },
                                                 {
                                                     tag: "h6",
-                                                    children: ["Appuyez sur la carte pour plus de détails"]
+                                                    children: [
+                                                        {
+                                                            tag: 'TEXT_NODE',
+                                                            content: "Appuyez sur la carte pour plus de détails",
+                                                        }]
                                                 }
                                             ]
                                         },

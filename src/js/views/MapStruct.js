@@ -2,6 +2,7 @@ import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import Component  from "../components/Component.js";
+import { DOM } from "../core/generateStructure.js";
 //added by Catalina
 const eventsHeroContent = {
     headingText: "Carte intéractive",
@@ -86,14 +87,13 @@ function createFilterComponent() {
     };
 }
 
-export default class MapStruct extends Component {
+export default class MapStruct extends DOM.Component {
     render() {
         return {
             tag: "div",
             props: { class: "map body-content" },
             children: [
-
-                getNavbarStructure(),
+                new getNavbarStructure().render(),
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "section",
@@ -118,10 +118,10 @@ export default class MapStruct extends Component {
                                 createFilterComponent(),
                                 {
                                     tag: "div",
-                                    props: { class:"map-item", id: "map"}
-
+                                    props: { class:"map-item", id: "map"},
+                                    children: createGMap()
                                 },
-                                createGMap(),
+
                             ]
                         },
                     ]

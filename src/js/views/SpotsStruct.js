@@ -31,7 +31,7 @@ export default class SpotsStruct extends Component {
             tag: "div",
             props: { class: "spots body-content" },
             children: [
-            getNavbarStructure(),
+            new getNavbarStructure().render(),
             createHeroComponent(eventsHeroContent),
                 {
                     tag: "h1",
