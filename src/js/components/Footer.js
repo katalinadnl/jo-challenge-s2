@@ -17,7 +17,12 @@ export function getFooterStructure(props = {}) {
         children: [
             {
                 tag: "h5",
-                children: [finalProps.footerText]
+                children: [
+                    {
+                        tag: 'TEXT_NODE',
+                        content: finalProps.footerText,
+                    }
+                ]
             },
             {
                 tag: "div",
@@ -36,7 +41,13 @@ export function getFooterStructure(props = {}) {
             {
                 tag: "p",
                 props: { class: "copyright" },
-                children: ["Jeux Olympiques © 2024. All rights reserved"]
+                children: [
+                    {
+                        tag: 'TEXT_NODE',
+                        content: ["Jeux Olympiques © 2024. All rights reserved"],
+                    },
+                ],
+
             },
             {
                 tag: "div",
