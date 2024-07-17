@@ -1,14 +1,15 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
-import Component  from "../components/Component.js";
+import CardComponent from "../components/CardComponent.js";
+import { DOM } from "../core/generateStructure.js";
 
 const eventsHeroContent = {
     headingText: "Agenda Olympique Paris 2024",
     paragraphText: "Ne manquez aucun moment clé des Jeux Olympiques de Paris 2024. Vivez l'excitation des compétitions en temps réel",
 };
 
-export default class AgendaStruct extends Component  {
+export default class AgendaStruct extends DOM.Component  {
     render () {
         return {
             tag: "div",
@@ -35,7 +36,10 @@ export default class AgendaStruct extends Component  {
                                 {
                                     tag: "p",
                                     props: { class: "subtitle" },
-                                    children: ["Planifiez votre expérience olympique avec notre calendrier interactif"]
+                                    children: [{
+                                        tag: 'TEXT_NODE',
+                                        content: "Planifiez votre expérience olympique avec notre calendrier interactif",
+                                    }]
                                 },
                                 {
                                     tag: "div",
@@ -44,7 +48,10 @@ export default class AgendaStruct extends Component  {
                                         {
                                             tag: "p",
                                             props: { class: "text-calendar" },
-                                            children: ["Notre calendrier des événements vous permet de rester à jour avec le programme complet des Jeux. Organisé par jour et par sport, vous pouvez facilement trouver quand et où vos événements préférés auront lieu. Utilisez notre fonctionnalité d'ajout au calendrier pour ne rater aucun moment crucial – suivez les finales passionnantes ou soutenez vos athlètes favoris en un clic. Restez engagé grâce à des mises à jour en temps réel et des rappels personnalisés."]
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: "Notre calendrier des événements vous permet de rester à jour avec le programme complet des Jeux. Organisé par jour et par sport, vous pouvez facilement trouver quand et où vos événements préférés auront lieu. Utilisez notre fonctionnalité d'ajout au calendrier pour ne rater aucun moment crucial – suivez les finales passionnantes ou soutenez vos athlètes favoris en un clic. Restez engagé grâce à des mises à jour en temps réel et des rappels personnalisés.",
+                                            }]
                                         }
                                     ]
                                 }
@@ -58,12 +65,18 @@ export default class AgendaStruct extends Component  {
                                 {
                                     tag: "h2",
                                     props: { class: "title" },
-                                    children: ["Et alors? C'est quand les JO?"]
+                                    children: [{
+                                        tag: 'TEXT_NODE',
+                                        content: "Et alors? C'est quand les JO?",
+                                    }]
                                 },
                                 {
                                     tag: "p",
                                     props: { class: "subtitle" },
-                                    children: ["Explorez chaque sport avec nos cartes détaillées. Que vous aimiez la rapidité du tir à l'arc, l'endurance du marathon ou l'intensité du basketball, chaque discipline vous réserve des moments inoubliables"]
+                                    children: [{
+                                        tag: 'TEXT_NODE',
+                                        content: "Explorez chaque sport avec nos cartes détaillées. Que vous aimiez la rapidité du tir à l'arc, l'endurance du marathon ou l'intensité du basketball, chaque discipline vous réserve des moments inoubliables",
+                                    }]
                                 },
                                 {
                                     tag: "div",
@@ -72,7 +85,10 @@ export default class AgendaStruct extends Component  {
                                         {
                                             tag: "h3",
                                             props: { class: "today-title" },
-                                            children: ["Aujourd'hui"]
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: "Aujourd'hui",
+                                            }]
                                         },
                                         {
                                             tag: "div",
@@ -89,7 +105,10 @@ export default class AgendaStruct extends Component  {
                                         {
                                             tag: "h3",
                                             props: { class: "this-week-title" },
-                                            children: ["Cette semaine"]
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: "Cette semaine",
+                                            }]
                                         },
                                         {
                                             tag: "div",

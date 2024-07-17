@@ -9,7 +9,6 @@ const eventsHeroContent = {
   paragraphText: " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
 };
 
-
 let map;
 let markers = [];
 let sitesData = []; // Variable pour stocker les sites

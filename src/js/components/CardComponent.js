@@ -29,7 +29,10 @@ export default class CardComponent extends DOM.Component {
                     {
                         tag: "div",
                         props: { class: "date-time" },
-                        children: ["30/07 | 11:30"]
+                        children: [{
+                            tag: 'TEXT_NODE',
+                            content: "30/07 | 11:30",
+                        }]
                     },
                     {
                         tag: "div",

@@ -54,16 +54,25 @@ export default class Page404Struct extends Component {
                                     children: [
                                         {
                                             tag: "h1",
-                                            children: ["Erreur 404"]
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: "Erreur 404",
+                                            }]
                                         },
                                         {
                                             tag: "p",
-                                            children: ["Page non trouvée"]
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: "Page non trouvée",
+                                            }]
                                         },
                                         {
                                             tag: "a",
                                             props: {class: "cta404", href: "/"},
-                                            children: ["Retour à l'accueil?"]
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: "Retour à l'accueil?",
+                                            }]
                                         },
                                     ]
                                 },

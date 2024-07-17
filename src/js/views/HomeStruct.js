@@ -2,7 +2,8 @@ import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import {getCtaButtonStructure} from "../components/CtaButton.js";
-import Component  from "../components/Component.js";
+import CardComponent from "../components/CardComponent.js";
+import { DOM } from "../core/generateStructure.js";
 
 //added by catalina
 const eventsHeroContent = {
@@ -21,7 +22,7 @@ const ctaButtonEvents = {
     href: "/evenements"
 };
 
-export default class HomeStruct extends Component {
+export default class HomeStruct extends DOM.Component {
     render() {
         return {
             tag: "div",
