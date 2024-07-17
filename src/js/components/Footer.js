@@ -6,8 +6,8 @@ export function getFooterStructure(props = {}) {
             { href: "https://x.com/Paris2024", imgSrc: "../../styles/images/Twitter.png" },
             { href: "https://www.instagram.com/Paris2024", imgSrc: "../../styles/images/Instagram.png" },
             { href: "https://www.linkedin.com/Paris2024", imgSrc: "../../styles/images/LinkedIn.png" },
-            { href: "https://www.youtube.com/Paris2024", imgSrc: "../../styles/images/Youtube.png" },
-            { href: "", imgSrc: "../../styles/images/TikTok.png" }
+            { href: "https://www.youtube.com/Paris2024", imgSrc: "../../styles/images/YouTube.png" },
+            { href: "", imgSrc: "../../styles/images/Tiktok.png" }
         ]
     };
 
@@ -17,7 +17,12 @@ export function getFooterStructure(props = {}) {
         children: [
             {
                 tag: "h5",
-                children: [finalProps.footerText]
+                children: [
+                    {
+                        tag: 'TEXT_NODE',
+                        content: finalProps.footerText,
+                    }
+                ]
             },
             {
                 tag: "div",
@@ -36,7 +41,13 @@ export function getFooterStructure(props = {}) {
             {
                 tag: "p",
                 props: { class: "copyright" },
-                children: ["Jeux Olympiques © 2024. All rights reserved"]
+                children: [
+                    {
+                        tag: 'TEXT_NODE',
+                        content: ["Jeux Olympiques © 2024. All rights reserved"],
+                    },
+                ],
+
             },
             {
                 tag: "div",

@@ -6,7 +6,12 @@ export function getCtaButtonStructure({paragraphText, href}) {
             {
                 tag: "a",
                 props: { class: "cta-white", href: href },
-                children: [paragraphText]
+                children: [
+                    {
+                        tag: 'TEXT_NODE',
+                        content: paragraphText,
+                    },
+                ],
             }
         ]
     };

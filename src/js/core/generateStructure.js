@@ -1,40 +1,100 @@
-export default function generateStructure(structure) {
-    if (structure && typeof structure === 'object' && structure.tag) {
-        const elem = document.createElement(structure.tag); // create element with tag
+import Component from "../components/Component.js";
 
-        if (structure.props) { // if props exist
-            for (const propName in structure.props) { // loop through props
-                if (structure.props.hasOwnProperty(propName)) { // check if the property is directly on the object
-                    if (/^on[A-Z]/.test(propName)) { // if propName starts with on
-                        elem.addEventListener( // add event listener
-                            propName.slice(2).toLowerCase(), // event name
-                            structure.props[propName] // event handler
-                        );
-                    } else if (/^data[A-Z]/.test(propName)) { // if propName starts with data
-                        elem.dataset[propName.slice(4).toLowerCase()] = structure.props[propName]; // set dataset
-                    } else {
-                        elem.setAttribute(propName, structure.props[propName]); // set attribute
-                    }
-                }
-            }
+export function isClassComponent(component) {
+    if (typeof component !== 'function') {
+        return false;
+    }
+    try {
+        component();
+        return false;
+    } catch (error) {
+        if (/^[C|c]lass constructor/.test(error.message)) {
+            return true;
         }
+        return false;
+    }
+}
 
-        if (structure.children) { // if children exist
-            for (const child of structure.children) {   // loop through children
-                let subChild; // create subChild
-                if (typeof child === "string") { // if child is a string
-                    subChild = document.createTextNode(child); // create text node
-                } else if (typeof child === "object" && child !== null) { // if child is an object
-                    subChild = generateStructure(child); // create element
-                }
-                if (subChild) {
-                    elem.appendChild(subChild); // append child
-                }
-            }
-        }
-        return elem;
+export function createElement(component, props, ...children) {
+    if (isClassComponent(component)) {
+        const instance = new component(props);
+        component = instance.render();
+        component.instance = instance;
+        instance.isRender = true;
+    } else if (typeof component === "function") {
+        return component(props);
     }
 
-    // Default case if structure is undefined or invalid
-    return document.createElement("div");
+    if (typeof component === "object") {
+        component.props = { ...component.props, ...props };
+
+        if (!component.children) component.children = [];
+
+        children.forEach((child) => {
+            if (Array.isArray(child)) {
+                component.children.push(...child);
+            } else {
+                component.children.push(child);
+            }
+        });
+
+        return component;
+    } else {
+        return {
+            type: component,
+            props: props,
+            children: children,
+        };
+    }
+}
+
+export function generateStructure(structure) {
+    if (structure.tag === 'TEXT_NODE') {
+        return document.createTextNode(structure.content);
+    }
+
+    const element = document.createElement(structure.tag);
+
+    if (structure.children) {
+        structure.children.forEach(child => {
+            const childNode = generateStructure(child);
+            element.appendChild(childNode);
+        });
+    }
+
+    if (structure.props) {
+        for (const propName in structure.props) {
+            if (propName === "style") {
+                Object.assign(element.style, structure.props[propName]);
+            } else if (propName.startsWith("data-")) {
+                element.dataset[propName.replace("data-", "")] =
+                    structure.props[propName];
+            } else {
+                element.setAttribute(propName, structure.props[propName]);
+            }
+        }
+    }
+
+    if (structure.events) {
+        for (const eventName in structure.events) {
+            for (const eventListeners of structure.events[eventName]) {
+                element.addEventListener(eventName, eventListeners);
+            }
+        }
+    }
+
+    if (structure.instance && structure.instance.setRoot) {
+        structure.instance.setRoot(element);
+
+        if (structure.instance.isRender && structure.instance.componentDidMount) {
+            structure.instance.componentDidMount();
+        }
+    }
+
+    return element;
+}
+
+export const DOM = {
+    createElement,
+    Component: Component,
 }

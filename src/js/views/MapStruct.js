@@ -1,16 +1,13 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
-import { cardsComponent } from "../components/cards.js";
-import Component from "../components/Component.js";
+import { DOM } from "../core/generateStructure.js";
+import CardComponent from "../components/CardComponent.js";
 
-// Added by Catalina
 const eventsHeroContent = {
   headingText: "Carte intéractive",
-  paragraphText:
-    " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
+  paragraphText: " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
 };
-// Finish added by Catalina
 
 let map;
 let markers = [];
@@ -220,29 +217,28 @@ function createFilterComponent() {
       {
         tag: "select",
         props: { class: "filter", id: "sport" },
-        children: [
-          { tag: "option", props: { value: "" }, children: ["Sport"] },
+        children: [{ tag: "option", props: { value: "" }, children: [{ tag: 'TEXT_NODE', content: "Sport",}] },
         ],
       },
       {
         tag: "select",
         props: { class: "filter", id: "date" },
-        children: [{ tag: "option", props: { value: "" }, children: ["Date"] }],
+        children: [{ tag: "option", props: { value: "" }, children: [{ tag: 'TEXT_NODE', content: "Date",}] }],
       },
       {
         tag: "select",
         props: { class: "filter", id: "location" },
-        children: [{ tag: "option", props: { value: "" }, children: ["Lieu"] }],
+        children: [{ tag: "option", props: { value: "" }, children: [{ tag: 'TEXT_NODE', content: "Lieu",}] }],
       },
       {
         tag: "select",
         props: { class: "filter", id: "spot" },
-        children: [{ tag: "option", props: { value: "" }, children: ["Spot"] }],
+        children: [{ tag: "option", props: { value: "" }, children: [{ tag: 'TEXT_NODE', content: "Spot",}] }],
       },
       {
         tag: "button",
         props: { class: "filter-button", id: "applyFilters" },
-        children: ["Appliquer"],
+        children: [{ tag: 'TEXT_NODE', content: "Appliquer",}],
       },
     ],
   };
@@ -256,7 +252,7 @@ function createResultsSection() {
     children: [
       {
         tag: "h2",
-        children: ["Résultats"],
+        children: [{ tag: 'TEXT_NODE', content: "Résultats"}],
       },
       {
         tag: "div",
@@ -268,76 +264,87 @@ function createResultsSection() {
 }
 
 // Placeholder card data
-const cardData = {
+const cardData = [{
   type: "spot",
   label1: "Lieu",
   label2: "Sport",
   label3: "Capacité d'accueil",
   title: "Parc Montsouris",
-  address: "7 rue adrienne Lecouvreur, 75019 Paris",
+  //address: "7 rue adrienne Lecouvreur, 75019 Paris",
   buttonDetails: "Voir en détails",
   buttonMap: "Voir sur la carte",
-};
+}];
 
 // Generate cards
-const cards = cardsComponent(cardData);
+//const cards = cardsComponent(cardData);
 
-export default class MapStruct extends Component {
-  render() {
-    return {
-      tag: "div",
-      props: { class: "map body-content" },
-      children: [
-        getNavbarStructure(),
-        createHeroComponent(eventsHeroContent),
-        {
-          tag: "section",
-          props: { class: "section1" },
-          children: [
-            {
-              tag: "div",
-              props: { class: "map" },
-              children: [
-                {
-                  tag: "h2",
-                  children: [
-                    "BIENVENUE SUR LA CARTE INTERACTIVE DES JEUX OLYMPIQUES",
-                  ],
-                },
-                {
-                  tag: "p",
-                  children: [
-                    "Explorez les différents sites et événements des Jeux Olympiques avec notre carte interactive.",
-                    { tag: "br" },
-                    "Utilisez les filtres ci-dessous pour personnaliser vos recherches et découvrir les événements par date, type et localisation.",
-                  ],
-                },
-                createFilterComponent(),
-                {
-                  tag: "div",
-                  props: { class: "map-item", id: "map" },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          tag: "section",
-          props: { class: "results-section" },
-          children: [
-            {
-              tag: "h2",
-              children: ["Résultats"],
-            },
-            {
-              tag: "div",
-              props: { class: "results-cards", id: "results-cards" },
-              children: Array(3).fill(cards), // Placeholder for 3 cards
-            },
-          ],
-        },
-        getFooterStructure(),
-      ],
-    };
+
+export default class MapStruct extends DOM.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      const cardComponents = cardData.map(cardProps =>
+        DOM.createElement(CardComponent, cardProps, [])
+      );
+
+      return {
+        tag: "div",
+        props: { class: "map body-content" },
+        children: [
+          new getNavbarStructure().render(),
+          createHeroComponent(eventsHeroContent),
+          {
+            tag: "section",
+            props: { class: "section1" },
+            children: [
+              {
+                tag: "div",
+                props: { class: "map" },
+                children: [
+                  {
+                    tag: "h2",
+                    children: [
+                      { tag: 'TEXT_NODE', content: "BIENVENUE SUR LA CARTE INTERACTIVE DES JEUX OLYMPIQUES" }
+                    ],
+                  },
+                  {
+                    tag: "p",
+                    children: [
+                      { tag: 'TEXT_NODE', content: "Explorez les différents sites et événements des Jeux Olympiques avec notre carte interactive." },
+                      { tag: "br" },
+                      { tag: 'TEXT_NODE', content: "Utilisez les filtres ci-dessous pour personnaliser vos recherches et découvrir les événements par date, type et localisation." }
+                    ],
+                  },
+                  createFilterComponent(),
+                  {
+                    tag: "div",
+                    props: { class: "map-item", id: "map" },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            tag: "section",
+            props: { class: "results-section" },
+            children: [
+              {
+                tag: "h2",
+                children: [
+                  { tag: 'TEXT_NODE', content: "Résultats" }
+                ],
+              },
+              {
+                tag: "div",
+                props: { class: "results-cards", id: "results-cards" },
+                children: cardComponents
+              },
+            ],
+          },
+          getFooterStructure(),
+        ],
+      };
+    }
   }
-}

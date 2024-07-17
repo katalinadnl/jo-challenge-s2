@@ -1,37 +1,73 @@
 import { getNavbarStructure } from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
-import { cardsComponent } from "../components/cards.js";
-import Component  from "../components/Component.js";
+import CardComponent from "../components/CardComponent.js";
+import { DOM } from "../core/generateStructure.js";
 
 const eventsHeroContent = {
     headingText: "Découvrez les meilleurs spots",
     paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
 };
 
-const cardspot = {
+const cardspot = [{
     type: "spot",
     label1: "Lieu",
     label2: "Sport",
     label3: "Capacité d'accueil",
     //labels: [label1, label2, label3],
     title: "Parc Montsouris",
-    address: "7 rue adrienne Lecouvreur, 75019 Paris",
+    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
     buttonDetails: "Voir en détails",
     buttonMap: "Voir sur la carte"
-}
+},{
+    type: "spot",
+    label1: "Lieu",
+    label2: "Sport",
+    label3: "Capacité d'accueil",
+    //labels: [label1, label2, label3],
+    title: "Parc Montsouris",
+    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
+    buttonDetails: "Voir en détails",
+    buttonMap: "Voir sur la carte"
+},{
+    type: "spot",
+    label1: "Lieu",
+    label2: "Sport",
+    label3: "Capacité d'accueil",
+    //labels: [label1, label2, label3],
+    title: "Parc Montsouris",
+    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
+    buttonDetails: "Voir en détails",
+    buttonMap: "Voir sur la carte"
+},{
+    type: "spot",
+    label1: "Lieu",
+    label2: "Sport",
+    label3: "Capacité d'accueil",
+    //labels: [label1, label2, label3],
+    title: "Parc Montsouris",
+    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
+    buttonDetails: "Voir en détails",
+    buttonMap: "Voir sur la carte"
+}]
 
 
 
-const cards = cardsComponent(cardspot);
+//const cards = cardsComponent(cardspot);
 
-export default class SpotsStruct extends Component {
+export default class SpotsStruct extends DOM.Component {
+    constructor(props) {
+        super(props);
+    };
     render() {
+        const cardComponents = cardspot.map(cardProps =>
+            DOM.createElement(CardComponent, cardProps, [])
+        );
         return {
             tag: "div",
             props: { class: "spots body-content" },
             children: [
-            getNavbarStructure(),
+            new getNavbarStructure().render(),
             createHeroComponent(eventsHeroContent),
                 {
                     tag: "h1",
@@ -44,11 +80,17 @@ export default class SpotsStruct extends Component {
                     children: [
                         {
                             tag: "h2",
-                            children: ["Notre sélection"]
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: "Notre sélection",
+                            }]
                         },
                         {
                             tag: "p",
-                            children: ["Les plus beaux spots de Paris"]
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: "Les plus beaux spots de Paris",
+                            }]
                         },
                         {
                             tag: "div",
@@ -57,7 +99,7 @@ export default class SpotsStruct extends Component {
                                 {
                                     tag: "div",
                                     props: { class: "slider" },
-                                    children: Array(6).fill(cards)
+                                    children: cardComponents //Array(6).fill(cards)
                                 }
                             ]
                         }
@@ -69,11 +111,17 @@ export default class SpotsStruct extends Component {
                     children: [
                         {
                             tag: "h2",
-                            children: ["Trouvez l'endroit idéal"]
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: "Trouvez l'endroit idéal",
+                            }]
                         },
                         {
                             tag: "p",
-                            children: ["Dénichez le spot qu’il vous faut avec notre filtre de recherche"]
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: "Dénichez le spot qu’il vous faut avec notre filtre de recherche",
+                            }]
                         },
                         {
                             tag: "div",
@@ -82,7 +130,7 @@ export default class SpotsStruct extends Component {
                                 {
                                 tag: "div",
                                 props: { class: "spots-list" },
-                                children: Array(15).fill(cards)
+                                children: cardComponents //Array(15).fill(cards)
 
                             }
                             ]
