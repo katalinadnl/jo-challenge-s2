@@ -27,7 +27,10 @@ export default class AgendaStruct extends Component  {
                                 {
                                     tag: "h2",
                                     props: { class: "title" },
-                                    children: ["Calendrier des événements"]
+                                    children: [{
+                                        tag: 'TEXT_NODE',
+                                        content: "Calendrier des événements",
+                                    }]
                                 },
                                 {
                                     tag: "p",
