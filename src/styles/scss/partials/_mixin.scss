@@ -220,11 +220,11 @@
 
 @mixin hero-section-home-responsive {
   @media screen and (min-width: $resolution-phone) {
-    background: url(../video/PARIS_JO.mov);
+    background: url(../video/video_paris_JO2024.mov);
     height: rem(550);
   }
   @media screen and (min-width: $resolution-tablet) {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 66.29%, rgba(0, 0, 0, 0.20) 100%), url(../video/PARIS_JO.mov);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 66.29%, rgba(0, 0, 0, 0.20) 100%), url(../video/video_paris_JO2024.mov);
     height: rem(750);
   }
 }
