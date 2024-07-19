@@ -45,6 +45,9 @@
 @mixin burgermenu-responsive {
   @media screen and (min-width: $resolution-phone) {
     display: block;
+    &.active {
+      display: none;
+    }
   }
   @media screen and (min-width: $resolution-tablet) {
     display: none;

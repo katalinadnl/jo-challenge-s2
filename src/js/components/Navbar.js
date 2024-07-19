@@ -1,7 +1,5 @@
 import { DOM } from "../core/generateStructure.js";
 
-
-
 export default class getNavbarStructure extends DOM.Component {
     constructor(props) {
         super(props);
@@ -14,8 +12,14 @@ export default class getNavbarStructure extends DOM.Component {
         this.setState({ isBurgerMenuOpen: !this.state.isBurgerMenuOpen });
     }
 
+
     render() {
         const { isBurgerMenuOpen } = this.state;
+        const action = isBurgerMenuOpen ? 'add' : 'remove';
+        document.querySelectorAll('section, footer').forEach(element => {
+            element.classList[action]('blurred');
+        });
+
         const finalProps = {
             navLinks: [
                 { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
@@ -90,7 +94,7 @@ export default class getNavbarStructure extends DOM.Component {
                 {
                     tag: "div",
                     props: {
-                        class: "burgermenu ${isBurgerMenuOpen ? 'active' : ''}",
+                        class: `burgermenu ${isBurgerMenuOpen ? 'active' : ''}`,
                     },
                     children: [
                         {
@@ -104,18 +108,9 @@ export default class getNavbarStructure extends DOM.Component {
                                         click: [this.toggleBurgerMenu],
                                     },
                                     children: [
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line" }
-                                        }
+                                        { tag: "div", props: { class: "burgermenu-line" } },
+                                        { tag: "div", props: { class: "burgermenu-line" } },
+                                        { tag: "div", props: { class: "burgermenu-line" } }
                                     ]
                                 },
                                 {
@@ -133,63 +128,86 @@ export default class getNavbarStructure extends DOM.Component {
                                             ]
                                         }
                                     ]
-                                },
+                                }
                             ]
                         }
                     ]
                 },
                 {
                     tag: "div",
-                    props: { class: `burgermenu-on ${isBurgerMenuOpen ? 'active' : ''}`,
-                        children: [
+                    props: {
+                        class: `burgermenu-on ${isBurgerMenuOpen ? 'active' : ''}`,
+                    },
+                    children: [
                         {
                             tag: "div",
-                            props: { class: "burgermenu-close", onClick: this.toggleBurgerMenu },
+                            props: { class: "burgermenu-close" },
+                            events: {
+                                click: [this.toggleBurgerMenu],
+                            },
                             children: [
                                 {
                                     tag: "div",
                                     props: { class: "burgermenu-button-close" },
                                     children: [
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line close" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line close" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line close" }
-                                        }
+                                        { tag: "div", props: { class: "burgermenu-line close" } },
+                                        { tag: "div", props: { class: "burgermenu-line close" } },
+                                        { tag: "div", props: { class: "burgermenu-line close" } }
                                     ]
-                                },
+                                }
                             ]
                         },
                         {
-                            tag: "nav",
-                            props: { class: "burgermenu-navbar" },
-                            children: finalProps.navLinks.map(link => ({
-                                tag: "a",
-                                props: {
-                                    href: link.href,
-                                    class: `burgermenu-nav__link ${link.text.toLowerCase()}`,
-                                    "data-link": true
+                            tag: "div",
+                            props: { class: "burgermenu-icon-link" },
+                            children: [
+                                {
+                                    tag: "nav",
+                                    props: { class: "burgermenu-navbar logo" },
+                                    children: [
+                                        {
+                                            tag: "div",
+                                            props: { class: "burgermenu-logo-navbar" },
+                                            children: [
+                                                {
+                                                    tag: "a",
+                                                    props: { href: "/" },
+                                                    children: [
+                                                        {
+                                                            tag: "img",
+                                                            props: { src: finalProps.logoSrc }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
-                                children: [
-                                    {
-                                        tag: "img",
-                                        props: { src: link.imgSrc, class: "burgermenu-nav-icon" }
-                                    },
-                                    {
-                                        tag: 'TEXT_NODE',
-                                        content: link.text,
-                                    }
-                                ]
-                            }))
+                                {
+                                    tag: "nav",
+                                    props: { class: "burgermenu-navbar icon" },
+                                    children: finalProps.navLinks.map(link => ({
+                                        tag: "a",
+                                        props: {
+                                            href: link.href,
+                                            class: `burgermenu-nav__link ${link.text.toLowerCase()}`,
+                                            "data-link": true
+                                        },
+                                        children: [
+                                            {
+                                                tag: "img",
+                                                props: { src: link.imgSrc, class: "burgermenu-nav-icon" }
+                                            },
+                                            {
+                                                tag: 'TEXT_NODE',
+                                                content: link.text,
+                                            }
+                                        ]
+                                    }))
+                                }
+                            ]
                         }
-                        ]
-                    }
+                    ]
                 }
             ]
         };

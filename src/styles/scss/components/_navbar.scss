@@ -195,56 +195,68 @@
         }
       }
 
-      .burgermenu-button-close.active .burgermenu-line:nth-child(1) {
+      .burgermenu-button-close .burgermenu-line.close:nth-child(1) {
         transform: rotate(45deg);
         top: rem(24);
       }
 
-      .burgermenu-button-close.active .burgermenu-line:nth-child(2) {
+      .burgermenu-button-close .burgermenu-line.close:nth-child(2) {
         opacity: 0;
       }
 
-      .burgermenu-button-close.active .burgermenu-line:nth-child(3) {
+      .burgermenu-button-close .burgermenu-line.close:nth-child(3) {
         transform: rotate(-45deg);
         top: rem(24);
       }
     }
-
-    .burgermenu-navbar {
+    .burgermenu-icon-link {
       display: flex;
       flex-direction: column-reverse;
-      align-items: center;
-      justify-content: center;
       height: 100%;
       width: 100%;
-
-      .burgermenu-logo-navbar {
-        margin-bottom: rem(20);
-
-        a {
-          img {
-            max-width: 150px;
-          }
-        }
-      }
-
-      .burgermenu-nav-link {
+      .burgermenu-navbar {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 80%;
-        justify-content: space-evenly;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
 
-        .nav__link {
+        &.logo {
+          height: 20%;
+        }
+        .burgermenu-logo-navbar {
+          margin-bottom: rem(20);
+
+          a {
+            img {
+              max-width: 150px;
+            }
+          }
+        }
+
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 80%;
+          text-decoration: none;
           color: $black;
           margin-bottom: rem(20);
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          font-size: rem(16);
+
+
+          .nav__link {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            font-size: rem(16);
+          }
+        }
+        &.icon {
+          margin-top: 20%;
         }
       }
+
     }
   }
 }
