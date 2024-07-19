@@ -19,8 +19,17 @@ export default class Component {
         const parent = element.parentElement; // get the parent element
 
         if (parent && element) {
+            if (this.componentWillUnmount) {
+                this.componentWillUnmount();
+            }
+
             parent.replaceChild(newElement, element);
-            this.__rootElement = element;
+
+            if (this.componentDidUpdate) {
+                this.componentDidUpdate();
+            }
+
+            this.__rootElement = newElement;
         }
     }
 

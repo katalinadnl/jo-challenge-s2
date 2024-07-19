@@ -13,10 +13,9 @@ export default class CardComponent extends DOM.Component {
     }
 
     render() {
-        const { type, title, date, image, description, label1, label2, label3, buttonDetails, buttonMap } = this.props;
         const { expanded } = this.state;
 
-        if (type === "event") {
+        if (this.props.type === "event") {
             return {
                 tag: "div",
                 events: {
@@ -24,9 +23,7 @@ export default class CardComponent extends DOM.Component {
                 },
                 props: {
                     class: "event-card card",
-                    style: {
-                        backgroundImage: `url(${image})`,
-                    }
+
                 },
                 children: [
                     {
@@ -34,19 +31,21 @@ export default class CardComponent extends DOM.Component {
                         props: { class: "date-time" },
                         children: [{
                             tag: 'TEXT_NODE',
-                            content: date,
+                            content: this.props.date,
                         }]
                     },
                     {
                         tag: "div",
-                        props: { class: "text-section", style: { height: expanded ? '100%' : '200px' } },
+                        props: {
+                            class: expanded === true ? "text-section-expanded" : "text-section"
+                        },
                         children: [
                             {
                                 tag: "h4",
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: title,
+                                        content: this.props.title,
                                     },
                                 ],
 
@@ -55,12 +54,11 @@ export default class CardComponent extends DOM.Component {
                                 tag: "div",
                                 props: {
                                     class: "card-description",
-                                    style: { display: expanded ? 'block' : 'none' }
                                 },
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: description,
+                                        content: this.props.description,
                                     },
                                 ],
                             }

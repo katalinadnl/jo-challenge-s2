@@ -3,30 +3,17 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
-import { fetchEvents } from "../api/fetchEventsData.js";
+import { fetchEventsData } from "../api/fetchData.js";
 
 const eventsHeroContent = {
     headingText: "DÉCOUVREZ LES ÉVÉNEMENTS QUI VOUS PLAISENT",
     paragraphText: "Explorez les moments inoubliables des Jeux Olympiques de Paris 2024 et trouvez les événements qui vous passionnent.",
 };
 
+// Function to format the date
 function formatDate(dateString) {
-    const [date] = dateString.split('T');
-    const [year, month, day] = date.split('-');
+    const [year, month, day] = dateString.split('-');
     return `${day}/${month}/${year}`;
-}
-
-function truncateDescription(title, description, maxLength = 250) {
-    if (title.length < 40) {
-        if (description.length > maxLength) {
-            return `${description.substring(0, maxLength)}...`;
-        }
-    } else {
-        if (description.length > 100) {
-            return `${description.substring(0, 100)}...`;
-        }
-    }
-    return description;
 }
 
 export default class EventsStruct extends DOM.Component {
@@ -38,25 +25,17 @@ export default class EventsStruct extends DOM.Component {
     }
 
     async componentDidMount() {
-        try {
-            const eventsData = await fetchEvents();
-            console.log('Events data:', eventsData); // Debugging statement
-
-            const cardComponents = eventsData.map(event => {
-                const cardProps = {
-                    type: "event",
-                    title: event.title,
-                    date: formatDate(event.starting_date),
-                    description: truncateDescription(event.title || "Title not provided", event.description || "Description not provided"),
-                    image: event.photo_link || "path/to/default/image.jpg"
-                };
-                console.log('Card props:', cardProps); // Debugging statement
-                return DOM.createElement(CardComponent, cardProps, []);
-            });
-            this.setState({ cardComponents });
-        } catch (error) {
-            console.error('Error in componentDidMount:', error); // Debugging statement
-        }
+        const eventsData = await fetchEventsData();
+        const cardComponents = eventsData.map(event => {
+            const cardProps = {
+                type: "event",
+                title: event.fields.sports,
+                date: formatDate(event.fields.start_date),
+                description: "Description not provided"
+            };
+            return DOM.createElement(CardComponent, cardProps, []);
+        });
+        this.setState({ cardComponents });
     }
 
     render() {
@@ -83,12 +62,13 @@ export default class EventsStruct extends DOM.Component {
                                 },
                                 {
                                     tag: "div",
-                                    props: { class: "events-cards", id: "events-cards" },
+                                    props: { class: "events-cards" },
                                     children: cardComponents,
                                 },
                             ],
+
                         },
-                    ]
+                    ],
                 },
                 getFooterStructure()
             ]
