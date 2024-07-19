@@ -13,9 +13,19 @@ const finalProps = {
 export class getNavbarStructure extends DOM.Component {
     constructor(props) {
         super(props);
+        this.state = { isBurgerMenuOpen: false };
+        // Lier la méthode toggleBurgerMenu au contexte de this
+        this.toggleBurgerMenu = this.toggleBurgerMenu.bind(this);
+    }
+
+    toggleBurgerMenu(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setState({ isBurgerMenuOpen: !this.state.isBurgerMenuOpen });
     }
 
     render() {
+        const { isBurgerMenuOpen } = this.state;
         return {
             tag: "header",
             props: { class: "header-container" },
@@ -78,7 +88,9 @@ export class getNavbarStructure extends DOM.Component {
                 },
                 {
                     tag: "div",
-                    props: { class: "burgermenu" },
+                    props: {
+                        class: "burgermenu ${isBurgerMenuOpen ? 'active' : ''}",
+                    },
                     children: [
                         {
                             tag: "div",
@@ -87,6 +99,9 @@ export class getNavbarStructure extends DOM.Component {
                                 {
                                     tag: "div",
                                     props: { class: "burgermenu-button" },
+                                    events: {
+                                        click: this.toggleBurgerMenu
+                                    },
                                     children: [
                                         {
                                             tag: "div",
@@ -124,11 +139,11 @@ export class getNavbarStructure extends DOM.Component {
                 },
                 {
                     tag: "div",
-                    props: { class: "burgermenu-on" },
-                    children: [
+                    props: { class: `burgermenu-on ${isBurgerMenuOpen ? 'active' : ''}`,
+                        children: [
                         {
                             tag: "div",
-                            props: { class: "burgermenu-close" },
+                            props: { class: "burgermenu-close", onClick: this.toggleBurgerMenu },
                             children: [
                                 {
                                     tag: "div",
@@ -153,79 +168,29 @@ export class getNavbarStructure extends DOM.Component {
                         {
                             tag: "nav",
                             props: { class: "burgermenu-navbar" },
-                            children: [
-                                {
-                                    tag: "div",
-                                    props: { class: "burgermenu-logo-navbar" },
-                                    children: [
-                                        {
-                                            tag: "a",
-                                            props: { href: "/" },
-                                            children: [
-                                                {
-                                                    tag: "img",
-                                                    props: { src: finalProps.logoSrc }
-                                                }
-                                            ]
-                                        }
-                                    ]
+                            children: finalProps.navLinks.map(link => ({
+                                tag: "a",
+                                props: {
+                                    href: link.href,
+                                    class: `burgermenu-nav__link ${link.text.toLowerCase()}`,
+                                    "data-link": true
                                 },
-                                {
-                                    tag: "div",
-                                    props: { class: "burgermenu-nav-link" },
-                                    children: finalProps.navLinks.map(link => ({
-                                        tag: "a",
-                                        props: {
-                                            href: link.href,
-                                            class: `nav__link ${link.text.toLowerCase()}`,
-                                            "data-link": true
-                                        },
-                                        children: [
-                                            {
-                                                tag: "img",
-                                                props: { src: link.imgSrc, class: "burgermenu-nav-icon" }
-                                            },
-                                            {
-                                                tag: 'TEXT_NODE',
-                                                content: link.text,
-                                            }
-                                        ]
-                                    }))
-                                }
-                            ]
+                                children: [
+                                    {
+                                        tag: "img",
+                                        props: { src: link.imgSrc, class: "burgermenu-nav-icon" }
+                                    },
+                                    {
+                                        tag: 'TEXT_NODE',
+                                        content: link.text,
+                                    }
+                                ]
+                            }))
                         }
-                    ]
+                        ]
+                    }
                 }
             ]
         };
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const burgerButton = document.querySelector(".burgermenu-button");
-    const overlay = document.querySelector(".burgermenu-on");
-    const contentblurred = document.querySelectorAll("section, footer");
-    const closeButton = document.querySelector(".burgermenu-close .burgermenu-button-close");
-    const burgerNavbar = document.querySelector(".burgermenu-navbar");
-
-    if (burgerButton && overlay && contentblurred.length > 0 && burgerNavbar && closeButton) {
-        const toggleBurgerMenu = () => {
-            overlay.classList.toggle("active");
-            burgerButton.classList.toggle("active");
-            closeButton.classList.toggle("active");
-            burgerNavbar.style.display = overlay.classList.contains("active") ? "none" : "flex";
-            contentblurred.forEach(section => section.classList.toggle("blurred"));
-        };
-
-        burgerButton.addEventListener("click", toggleBurgerMenu);
-        closeButton.addEventListener("click", toggleBurgerMenu);
-    } else {
-        console.error("Element(s) not found:", {
-            burgerButton,
-            overlay,
-            contentblurred,
-            burgerNavbar,
-            closeButton
-        });
-    }
-});
