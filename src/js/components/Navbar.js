@@ -22,9 +22,9 @@ export default class getNavbarStructure extends DOM.Component {
 
         const finalProps = {
             navLinks: [
-                { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
+                { href: "/sports", text: "Sports", imgSrc: "../../styles/images/Event.png" },
                 { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
-                { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
+                { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Agenda.png" },
                 { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
             ],
             logoSrc: "../../styles/images/logo_desktop.png"
