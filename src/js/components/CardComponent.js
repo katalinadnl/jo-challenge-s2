@@ -23,7 +23,6 @@ export default class CardComponent extends DOM.Component {
                 },
                 props: {
                     class: "event-card card",
-
                 },
                 children: [
                     {
@@ -37,7 +36,8 @@ export default class CardComponent extends DOM.Component {
                     {
                         tag: "div",
                         props: {
-                            class: expanded === true ? "text-section-expanded" : "text-section"
+                            class: "text-section",
+                            style: { height: expanded ? '100%' : '180px' },
                         },
                         children: [
                             {
@@ -54,6 +54,7 @@ export default class CardComponent extends DOM.Component {
                                 tag: "div",
                                 props: {
                                     class: "card-description",
+                                    style: { display: expanded ? 'block' : 'none' },
                                 },
                                 children: [
                                     {
@@ -61,7 +62,7 @@ export default class CardComponent extends DOM.Component {
                                         content: this.props.description,
                                     },
                                 ],
-                            }
+                            },
                         ]
                     }
                 ]
