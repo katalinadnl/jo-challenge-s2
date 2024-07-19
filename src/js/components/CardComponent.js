@@ -13,7 +13,7 @@ export default class CardComponent extends DOM.Component {
     }
 
     render() {
-        const { type, title, description, label1, label2, label3, buttonDetails, buttonMap } = this.props;
+        const { type, title, date, image, description, label1, label2, label3, buttonDetails, buttonMap } = this.props;
         const { expanded } = this.state;
 
         if (type === "event") {
@@ -24,6 +24,9 @@ export default class CardComponent extends DOM.Component {
                 },
                 props: {
                     class: "event-card card",
+                    style: {
+                        backgroundImage: `url(${image})`,
+                    }
                 },
                 children: [
                     {
@@ -31,12 +34,12 @@ export default class CardComponent extends DOM.Component {
                         props: { class: "date-time" },
                         children: [{
                             tag: 'TEXT_NODE',
-                            content: "30/07 | 11:30",
+                            content: date,
                         }]
                     },
                     {
                         tag: "div",
-                        props: { class: "text-section", style: { height: expanded ? '100%' : '180px' } },
+                        props: { class: "text-section", style: { height: expanded ? '100%' : '200px' } },
                         children: [
                             {
                                 tag: "h4",

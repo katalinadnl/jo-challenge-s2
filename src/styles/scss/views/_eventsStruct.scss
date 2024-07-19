@@ -3,4 +3,9 @@
         @include hero-section-event-responsive;
     }
 
+    .events-cards {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 }
