@@ -66,7 +66,7 @@ export default class CardComponent extends DOM.Component {
                     }
                 ]
             };
-        } else if (type === "spot") {
+        } else if (this.props.type === "spot") {
             return {
                 tag: "div",
                 props: { class: "spots-card" },
@@ -81,7 +81,7 @@ export default class CardComponent extends DOM.Component {
                         children: [
                             {
                                 tag: 'TEXT_NODE',
-                                content: label1,
+                                content: this.props.label1,
                             }
                         ],
                         },
@@ -90,7 +90,7 @@ export default class CardComponent extends DOM.Component {
                             props: { class: "spots-card-label" },
                             children: [{
                                 tag: 'TEXT_NODE',
-                                content: label2,
+                                content: this.props.label2,
                             }],
                         },
                         {
@@ -98,7 +98,7 @@ export default class CardComponent extends DOM.Component {
                             props: { class: "spots-card-label" },
                             children: [{
                                 tag: 'TEXT_NODE',
-                                content: label3,
+                                content: this.props.label3,
                             }],
                         },
                         ]
@@ -112,7 +112,7 @@ export default class CardComponent extends DOM.Component {
                                 tag: "h4",
                                 children: [{
                                     tag: 'TEXT_NODE',
-                                    content: title,
+                                    content: this.props.title,
                                 },]
                             },
                             {
@@ -126,7 +126,7 @@ export default class CardComponent extends DOM.Component {
                                     props: { class: "spots-card-button spots-card-button-details" },
                                     children: [{
                                         tag: 'TEXT_NODE',
-                                        content: buttonDetails,
+                                        content: this.props.buttonDetails,
                                     }]
                                 },
                                 {
@@ -135,7 +135,7 @@ export default class CardComponent extends DOM.Component {
                                     children: [
                                         {
                                             tag: 'TEXT_NODE',
-                                            content: buttonMap,
+                                            content: this.props.buttonMap,
                                         }
 
                                     ]
