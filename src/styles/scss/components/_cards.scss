@@ -2,10 +2,10 @@
 @import '../partials/mixin';
 @import '../partials/functions';
 
-.event-card {
+.sport-card {
     &.card {
         width: 350px;
-        height: 400px;
+        height: 450px;
         flex-shrink: 0;
         background-image: url("../images/ski.jpg");
         background-size: cover;
@@ -139,3 +139,33 @@
     max-width: 50%;
 }
 
+
+.event-card {
+    width: 1200px;
+    height: 350px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    gap: 20px;
+
+    .info {
+        margin-left: auto;
+        margin-right: 20px;
+        margin-top: 16px;
+        padding: 8px 12px;
+        background-color: rgba(255, 255, 255, 0.50);
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+
+    .text-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        color: black;
+    }
+}

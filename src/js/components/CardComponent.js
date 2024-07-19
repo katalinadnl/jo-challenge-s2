@@ -15,14 +15,14 @@ export default class CardComponent extends DOM.Component {
     render() {
         const { expanded } = this.state;
 
-        if (this.props.type === "event") {
+        if (this.props.type === "sport") {
             return {
                 tag: "div",
                 events: {
                     click: [this.handleClick],
                 },
                 props: {
-                    class: "event-card card",
+                    class: "sport-card card",
                 },
                 children: [
                     {
@@ -59,7 +59,7 @@ export default class CardComponent extends DOM.Component {
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: this.props.description,
+                                        content: `Où aller? - ${this.props.site}`,
                                     },
                                 ],
                             },
@@ -147,6 +147,66 @@ export default class CardComponent extends DOM.Component {
                     }
                 ]
             }
+        } else if (this.props.type === "event") {
+            return {
+                tag: "div",
+                props: {
+                    class: "event-card card",
+                },
+                children: [
+                    {
+                        tag: "div",
+                        props: { class: "tags-informations" },
+                        children: [
+                            {
+                                tag: "div",
+                                props: { class: "info" },
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.address,
+                                }]
+                            },
+                            {
+                                tag: "div",
+                                props: { class: "info" },
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.tarif,
+                                }]
+                            },
+                            {
+                                tag: "div",
+                                props: { class: "info" },
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.date,
+                                }]
+                            },
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        props: { class: "text-section" },
+                        children: [
+                            {
+                                tag: "h4",
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.title,
+                                }]
+                            },
+                            {
+                                tag: "div",
+                                props: { class: "card-description" },
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.description,
+                                }]
+                            }
+                        ]
+                    },
+                ]
+            };
         }
 
     }
