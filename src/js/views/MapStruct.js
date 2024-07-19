@@ -1,4 +1,4 @@
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import { DOM } from "../core/generateStructure.js";
@@ -178,9 +178,6 @@ export default class MapStruct extends DOM.Component {
     }
 
     render() {
-      const cardComponents = cardData.map(cardProps =>
-        DOM.createElement(CardComponent, cardProps, [])
-      );
       const navbar = DOM.createElement(getNavbarStructure, []);
 
       return {
