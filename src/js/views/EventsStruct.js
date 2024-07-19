@@ -1,4 +1,4 @@
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure  from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
@@ -36,12 +36,12 @@ export default class EventsStruct extends DOM.Component {
         const cardComponents = cardEventsProps.map(cardProps =>
             DOM.createElement(CardComponent, cardProps, [])
         );
-
+        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "event" },
             children: [
-                new getNavbarStructure().render(),
+                navbar,
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",

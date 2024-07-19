@@ -1,4 +1,4 @@
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import {getCtaButtonStructure} from "../components/CtaButton.js";
@@ -23,12 +23,15 @@ const ctaButtonEvents = {
 };
 
 export default class HomeStruct extends DOM.Component {
+
     render() {
+        const navbar = DOM.createElement(getNavbarStructure, []);
+
         return {
             tag: "div",
             props: { class: "home" },
             children: [
-                new getNavbarStructure().render(),
+                navbar,
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",

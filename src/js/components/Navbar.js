@@ -1,31 +1,32 @@
 import { DOM } from "../core/generateStructure.js";
 
-const finalProps = {
-    navLinks: [
-        { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
-        { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
-        { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
-        { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
-    ],
-    logoSrc: "../../styles/images/logo_desktop.png"
-};
 
-export class getNavbarStructure extends DOM.Component {
+
+export default class getNavbarStructure extends DOM.Component {
     constructor(props) {
         super(props);
         this.state = { isBurgerMenuOpen: false };
-        // Lier la méthode toggleBurgerMenu au contexte de this
-        this.toggleBurgerMenu = this.toggleBurgerMenu.bind(this);
     }
 
-    toggleBurgerMenu(event) {
+    toggleBurgerMenu = (event) => {
         event.preventDefault();
-        event.stopPropagation();
+        console.log(this.state.isBurgerMenuOpen);
         this.setState({ isBurgerMenuOpen: !this.state.isBurgerMenuOpen });
     }
 
     render() {
         const { isBurgerMenuOpen } = this.state;
+        const finalProps = {
+            navLinks: [
+                { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
+                { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
+                { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
+                { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
+            ],
+            logoSrc: "../../styles/images/logo_desktop.png"
+        };
+        this.props = finalProps;
+
         return {
             tag: "header",
             props: { class: "header-container" },
@@ -100,7 +101,7 @@ export class getNavbarStructure extends DOM.Component {
                                     tag: "div",
                                     props: { class: "burgermenu-button" },
                                     events: {
-                                        click: this.toggleBurgerMenu
+                                        click: [this.toggleBurgerMenu],
                                     },
                                     children: [
                                         {

@@ -1,4 +1,4 @@
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
@@ -63,11 +63,12 @@ export default class SpotsStruct extends DOM.Component {
         const cardComponents = cardspot.map(cardProps =>
             DOM.createElement(CardComponent, cardProps, [])
         );
+        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "spots body-content" },
             children: [
-            new getNavbarStructure().render(),
+            navbar,
             createHeroComponent(eventsHeroContent),
                 {
                     tag: "h1",
