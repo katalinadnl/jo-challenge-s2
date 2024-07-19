@@ -1,4 +1,4 @@
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
@@ -11,11 +11,12 @@ const eventsHeroContent = {
 
 export default class AgendaStruct extends DOM.Component  {
     render () {
+        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "agenda" },
             children: [
-                new getNavbarStructure().render(),
+                navbar,
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",

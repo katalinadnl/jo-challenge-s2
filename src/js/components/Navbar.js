@@ -1,21 +1,36 @@
 import { DOM } from "../core/generateStructure.js";
 
-const finalProps = {
-    navLinks: [
-        { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
-        { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
-        { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
-        { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
-    ],
-    logoSrc: "../../styles/images/logo_desktop.png"
-};
-
-export class getNavbarStructure extends DOM.Component {
+export default class getNavbarStructure extends DOM.Component {
     constructor(props) {
         super(props);
+        this.state = { isBurgerMenuOpen: false };
     }
 
+    toggleBurgerMenu = (event) => {
+        event.preventDefault();
+        console.log(this.state.isBurgerMenuOpen);
+        this.setState({ isBurgerMenuOpen: !this.state.isBurgerMenuOpen });
+    }
+
+
     render() {
+        const { isBurgerMenuOpen } = this.state;
+        const action = isBurgerMenuOpen ? 'add' : 'remove';
+        document.querySelectorAll('section, footer').forEach(element => {
+            element.classList[action]('blurred');
+        });
+
+        const finalProps = {
+            navLinks: [
+                { href: "/evenements", text: "Événements", imgSrc: "../../styles/images/Event.png" },
+                { href: "/carte", text: "Carte", imgSrc: "../../styles/images/map.png" },
+                { href: "/agenda", text: "Agenda", imgSrc: "../../styles/images/Agenda.png" },
+                { href: "/spots", text: "Spots", imgSrc: "../../styles/images/spots.png" }
+            ],
+            logoSrc: "../../styles/images/logo_desktop.png"
+        };
+        this.props = finalProps;
+
         return {
             tag: "header",
             props: { class: "header-container" },
@@ -78,7 +93,9 @@ export class getNavbarStructure extends DOM.Component {
                 },
                 {
                     tag: "div",
-                    props: { class: "burgermenu" },
+                    props: {
+                        class: `burgermenu ${isBurgerMenuOpen ? 'active' : ''}`,
+                    },
                     children: [
                         {
                             tag: "div",
@@ -87,19 +104,13 @@ export class getNavbarStructure extends DOM.Component {
                                 {
                                     tag: "div",
                                     props: { class: "burgermenu-button" },
+                                    events: {
+                                        click: [this.toggleBurgerMenu],
+                                    },
                                     children: [
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line" }
-                                        }
+                                        { tag: "div", props: { class: "burgermenu-line" } },
+                                        { tag: "div", props: { class: "burgermenu-line" } },
+                                        { tag: "div", props: { class: "burgermenu-line" } }
                                     ]
                                 },
                                 {
@@ -117,67 +128,69 @@ export class getNavbarStructure extends DOM.Component {
                                             ]
                                         }
                                     ]
-                                },
+                                }
                             ]
                         }
                     ]
                 },
                 {
                     tag: "div",
-                    props: { class: "burgermenu-on" },
+                    props: {
+                        class: `burgermenu-on ${isBurgerMenuOpen ? 'active' : ''}`,
+                    },
                     children: [
                         {
                             tag: "div",
                             props: { class: "burgermenu-close" },
+                            events: {
+                                click: [this.toggleBurgerMenu],
+                            },
                             children: [
                                 {
                                     tag: "div",
                                     props: { class: "burgermenu-button-close" },
                                     children: [
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line close" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line close" }
-                                        },
-                                        {
-                                            tag: "div",
-                                            props: { class: "burgermenu-line close" }
-                                        }
+                                        { tag: "div", props: { class: "burgermenu-line close" } },
+                                        { tag: "div", props: { class: "burgermenu-line close" } },
+                                        { tag: "div", props: { class: "burgermenu-line close" } }
                                     ]
-                                },
+                                }
                             ]
                         },
                         {
-                            tag: "nav",
-                            props: { class: "burgermenu-navbar" },
+                            tag: "div",
+                            props: { class: "burgermenu-icon-link" },
                             children: [
                                 {
-                                    tag: "div",
-                                    props: { class: "burgermenu-logo-navbar" },
+                                    tag: "nav",
+                                    props: { class: "burgermenu-navbar logo" },
                                     children: [
                                         {
-                                            tag: "a",
-                                            props: { href: "/" },
+                                            tag: "div",
+                                            props: { class: "burgermenu-logo-navbar" },
                                             children: [
                                                 {
-                                                    tag: "img",
-                                                    props: { src: finalProps.logoSrc }
+                                                    tag: "a",
+                                                    props: { href: "/" },
+                                                    children: [
+                                                        {
+                                                            tag: "img",
+                                                            props: { src: finalProps.logoSrc }
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
                                     ]
                                 },
                                 {
-                                    tag: "div",
-                                    props: { class: "burgermenu-nav-link" },
+                                    tag: "nav",
+                                    props: { class: "burgermenu-navbar icon" },
                                     children: finalProps.navLinks.map(link => ({
                                         tag: "a",
                                         props: {
                                             href: link.href,
-                                            class: `nav__link ${link.text.toLowerCase()}`,
+                                            class: `burgermenu-nav__link ${link.text.toLowerCase()}`,
                                             "data-link": true
                                         },
                                         children: [
@@ -200,32 +213,3 @@ export class getNavbarStructure extends DOM.Component {
         };
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const burgerButton = document.querySelector(".burgermenu-button");
-    const overlay = document.querySelector(".burgermenu-on");
-    const contentblurred = document.querySelectorAll("section, footer");
-    const closeButton = document.querySelector(".burgermenu-close .burgermenu-button-close");
-    const burgerNavbar = document.querySelector(".burgermenu-navbar");
-
-    if (burgerButton && overlay && contentblurred.length > 0 && burgerNavbar && closeButton) {
-        const toggleBurgerMenu = () => {
-            overlay.classList.toggle("active");
-            burgerButton.classList.toggle("active");
-            closeButton.classList.toggle("active");
-            burgerNavbar.style.display = overlay.classList.contains("active") ? "none" : "flex";
-            contentblurred.forEach(section => section.classList.toggle("blurred"));
-        };
-
-        burgerButton.addEventListener("click", toggleBurgerMenu);
-        closeButton.addEventListener("click", toggleBurgerMenu);
-    } else {
-        console.error("Element(s) not found:", {
-            burgerButton,
-            overlay,
-            contentblurred,
-            burgerNavbar,
-            closeButton
-        });
-    }
-});

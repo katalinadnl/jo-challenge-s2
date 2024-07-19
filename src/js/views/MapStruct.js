@@ -150,7 +150,7 @@ function createResultsSection() {
     buttonDetails: "Voir en détails",
     buttonMap: "Voir sur la carte",
   }];
-  
+
   const cardComponents = cardData.map(cardProps =>
     DOM.createElement(CardComponent, cardProps, [])
   );
@@ -178,13 +178,16 @@ export default class MapStruct extends DOM.Component {
     }
 
     render() {
-      console.log('Rendering MapStruct component'); // Debugging
+      const cardComponents = cardData.map(cardProps =>
+        DOM.createElement(CardComponent, cardProps, [])
+      );
+      const navbar = DOM.createElement(getNavbarStructure, []);
 
       return {
         tag: "div",
         props: { class: "map body-content" },
         children: [
-          new getNavbarStructure().render(),
+          navbar,
           createHeroComponent(eventsHeroContent),
           {
             tag: "section",

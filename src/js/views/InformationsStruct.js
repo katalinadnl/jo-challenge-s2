@@ -1,15 +1,16 @@
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 
 export default class InformationsStruct extends DOM.Component{
     render() {
+        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "information" },
             children: [
-                new getNavbarStructure().render(),
+                navbar,
                 {
                     tag: "main",
                     props: { class: "body-content" },

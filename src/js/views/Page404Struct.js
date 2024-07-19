@@ -1,6 +1,6 @@
 import { getFooterStructure } from "../components/Footer.js";
 import Component  from "../components/Component.js";
-import { getNavbarStructure } from "../components/Navbar.js";
+import getNavbarStructure from "../components/Navbar.js";
 
 function createCarousel() {
     const images = [
@@ -35,11 +35,12 @@ function createCarousel() {
 
 export default class Page404Struct extends Component {
     render() {
+        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: {class: "page404"},
             children: [
-                new getNavbarStructure().render(),
+                navbar,
                 {
                     tag: "main",
                     props: {class: "body-content"},
