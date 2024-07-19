@@ -4,9 +4,9 @@ import { createHeroComponent } from "../components/HeroSection.js";
 import { DOM } from "../core/generateStructure.js";
 import CardComponent from "../components/CardComponent.js";
 import { fetchEventsData } from "../api/fetchData.js";
-import { populateDropdowns } from "../components/populateDropdowns.js";
-import { addMarkers, clearMarkers } from "../components/mapFunctions.js";
-import { getFilterValues, filterSites } from "../components/filterFunctions.js";
+import { populateDropdowns } from "../functions/populateDropdowns.js";
+import { addMarkers, clearMarkers } from "../functions/mapFunctions.js";
+import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
 
 const eventsHeroContent = {
   headingText: "Carte intéractive",

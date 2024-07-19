@@ -28,7 +28,7 @@
         }
 
         .text-section {
-
+            height: 150px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -44,6 +44,27 @@
 
             .card-description {
                 display: none;
+                color: white;
+            }
+        }
+
+        .text-section-expanded {
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            border-radius: 0px 0px 5px 5px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+            color: white;
+            transition: height 0.3s ease;
+
+            h4 {
+                margin: 0px;
+            }
+
+            .card-description {
+                display: block;
                 color: white;
             }
         }
