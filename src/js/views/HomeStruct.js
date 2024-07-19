@@ -9,7 +9,7 @@ import { DOM } from "../core/generateStructure.js";
 const eventsHeroContent = {
     headingText: "Jeux Olympiques 2024",
     paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
-    videoSrc: "../../styles/video/PARIS_JO.mov"
+    videoSrc: "../../styles/video/video_paris_JO2024.mov"
 };
 
 const ctaButtonSpots = {
