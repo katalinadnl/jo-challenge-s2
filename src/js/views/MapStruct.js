@@ -7,6 +7,7 @@ import { fetchEventsData } from "../api/fetchData.js";
 import { populateDropdowns } from "../functions/populateDropdowns.js";
 import { addMarkers, clearMarkers } from "../functions/mapFunctions.js";
 import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
+import { updateResultsSection } from "../functions/updateResultsSection.js";
 
 const eventsHeroContent = {
   headingText: "Carte intéractive",
@@ -24,16 +25,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const data = await fetchEventsData();
     sitesData = data; // Stocker les données des sites
-    console.log('Fetched data:', data); // Debugging
+    console.log('Fetched data:', data); 
     populateDropdowns(data);
     await createGMap(data); // Ensure createGMap is awaited if it contains asynchronous operations
+    
+    // Afficher toutes les cartes par défaut
+    updateResultsSection(sitesData);
 
     // Ajouter le gestionnaire d'événements pour le bouton "Appliquer"
     document.getElementById("applyFilters").addEventListener("click", () => {
       const filters = getFilterValues();
       const filteredSites = filterSites(sitesData, filters);
-      console.log('Filtered sites:', filteredSites); // Debugging
+      console.log('Filtered sites:', filteredSites); 
+      clearMarkers(markers); // Clear previous markers
       addMarkers(filteredSites, google.maps.Marker, map, markers); // Pass the markers array
+
+      // Afficher les cartes filtrées
+      updateResultsSection(filteredSites);
     });
   } catch (error) {
     console.error('Error during initialization:', error);
@@ -141,20 +149,6 @@ function createFilterComponent() {
 
 // Function to create the results section with cards
 function createResultsSection() {
-  const cardData = [{
-    type: "spot",
-    label1: "Lieu",
-    label2: "Sport",
-    label3: "Capacité d'accueil",
-    title: "Parc Montsouris",
-    buttonDetails: "Voir en détails",
-    buttonMap: "Voir sur la carte",
-  }];
-
-  const cardComponents = cardData.map(cardProps =>
-    DOM.createElement(CardComponent, cardProps, [])
-  );
-
   return {
     tag: "section",
     props: { class: "results-section" },
@@ -166,60 +160,60 @@ function createResultsSection() {
       {
         tag: "div",
         props: { class: "results-cards", id: "results-cards" },
-        children: cardComponents, // Placeholder for 3 cards
+        children: [], // Initial empty results
       },
     ],
   };
 }
 
 export default class MapStruct extends DOM.Component {
-    constructor(props) {
-      super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-      const navbar = DOM.createElement(getNavbarStructure, []);
+  render() {
+    const navbar = DOM.createElement(getNavbarStructure, []);
 
-      return {
-        tag: "div",
-        props: { class: "map body-content" },
-        children: [
-          navbar,
-          createHeroComponent(eventsHeroContent),
-          {
-            tag: "section",
-            props: { class: "section1" },
-            children: [
-              {
-                tag: "div",
-                props: { class: "map" },
-                children: [
-                  {
-                    tag: "h2",
-                    children: [
-                      { tag: 'TEXT_NODE', content: "BIENVENUE SUR LA CARTE INTERACTIVE DES JEUX OLYMPIQUES" }
-                    ],
-                  },
-                  {
-                    tag: "p",
-                    children: [
-                      { tag: 'TEXT_NODE', content: "Explorez les différents sites et événements des Jeux Olympiques avec notre carte interactive." },
-                      { tag: "br" },
-                      { tag: 'TEXT_NODE', content: "Utilisez les filtres ci-dessous pour personnaliser vos recherches et découvrir les événements par date, type et localisation." }
-                    ],
-                  },
-                  createFilterComponent(),
-                  {
-                    tag: "div",
-                    props: { class: "map-item", id: "map" },
-                  },
-                ],
-              },
-            ],
-          },
-          createResultsSection(),
-          getFooterStructure(),
-        ],
-      };
-    }
+    return {
+      tag: "div",
+      props: { class: "map body-content" },
+      children: [
+        navbar,
+        createHeroComponent(eventsHeroContent),
+        {
+          tag: "section",
+          props: { class: "section1" },
+          children: [
+            {
+              tag: "div",
+              props: { class: "map" },
+              children: [
+                {
+                  tag: "h2",
+                  children: [
+                    { tag: 'TEXT_NODE', content: "BIENVENUE SUR LA CARTE INTERACTIVE DES JEUX OLYMPIQUES" }
+                  ],
+                },
+                {
+                  tag: "p",
+                  children: [
+                    { tag: 'TEXT_NODE', content: "Explorez les différents sites et événements des Jeux Olympiques avec notre carte interactive." },
+                    { tag: "br" },
+                    { tag: 'TEXT_NODE', content: "Utilisez les filtres ci-dessous pour personnaliser vos recherches et découvrir les événements par date, type et localisation." }
+                  ],
+                },
+                createFilterComponent(),
+                {
+                  tag: "div",
+                  props: { class: "map-item", id: "map" },
+                },
+              ],
+            },
+          ],
+        },
+        createResultsSection(),
+        getFooterStructure(),
+      ],
+    };
+  }
 }
