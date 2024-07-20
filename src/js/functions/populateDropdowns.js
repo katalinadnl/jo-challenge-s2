@@ -1,5 +1,3 @@
-// src/js/components/populateDropdowns.js
-
 export function populateDropdowns(data) {
     const sportDropdown = document.getElementById("sport");
     const locationDropdown = document.getElementById("location");
