@@ -1,4 +1,4 @@
-export async function fetchEvents() {
+/*export async function fetchEvents() {
     const rowsPerPage = 100;
     let allRecords = [];
     let start = 0;
@@ -29,4 +29,11 @@ export async function fetchEvents() {
         console.error('Error fetching events data:', error); // Debugging statement
         return [];
     }
+}*/
+export async function fetchEvents() {
+    const response = await fetch(
+        "https://data.paris2024.org/api/explore/v2.1/catalog/datasets/games_map_events_fr/records?rows=10"
+    );
+    const data = await response.json();
+    return data.results;
 }
