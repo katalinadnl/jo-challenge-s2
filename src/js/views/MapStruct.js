@@ -7,7 +7,7 @@ import { fetchEventsData } from "../api/fetchData.js";
 import { populateDropdowns } from "../functions/populateDropdowns.js";
 import { addMarkers, clearMarkers } from "../functions/mapFunctions.js";
 import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
-import { updateResultsSection } from "../functions/updateResultsSection.js";
+import { updateResultsSection } from "../functions/updateResultsSection.js"; // Correct import
 
 const eventsHeroContent = {
   headingText: "Carte intéractive",
@@ -20,12 +20,16 @@ let sitesData = []; // Variable pour stocker les sites
 
 // Initialize and populate dropdowns and map on page load
 document.addEventListener("DOMContentLoaded", async () => {
+  if (!document.getElementById("map")) {
+    return; // If there is no map element, exit the initialization
+  }
+
   console.log('DOMContentLoaded event fired'); // Debugging
 
   try {
     const data = await fetchEventsData();
     sitesData = data; // Stocker les données des sites
-    console.log('Fetched data:', data); 
+    console.log('Fetched data:', data); // Debugging
     populateDropdowns(data);
     await createGMap(data); // Ensure createGMap is awaited if it contains asynchronous operations
     
@@ -33,16 +37,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateResultsSection(sitesData);
 
     // Ajouter le gestionnaire d'événements pour le bouton "Appliquer"
-    document.getElementById("applyFilters").addEventListener("click", () => {
-      const filters = getFilterValues();
-      const filteredSites = filterSites(sitesData, filters);
-      console.log('Filtered sites:', filteredSites); 
-      clearMarkers(markers); // Clear previous markers
-      addMarkers(filteredSites, google.maps.Marker, map, markers); // Pass the markers array
+    const applyFiltersButton = document.getElementById("applyFilters");
+    if (applyFiltersButton) {
+      applyFiltersButton.addEventListener("click", () => {
+        const filters = getFilterValues();
+        const filteredSites = filterSites(sitesData, filters);
+        console.log('Filtered sites:', filteredSites); // Debugging
+        clearMarkers(markers); // Clear previous markers
+        addMarkers(filteredSites, google.maps.Marker, map, markers); // Pass the markers array
 
-      // Afficher les cartes filtrées
-      updateResultsSection(filteredSites);
-    });
+        // Afficher les cartes filtrées
+        updateResultsSection(filteredSites);
+      });
+    }
   } catch (error) {
     console.error('Error during initialization:', error);
   }
