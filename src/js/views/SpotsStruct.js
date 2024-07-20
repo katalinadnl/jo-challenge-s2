@@ -9,60 +9,54 @@ const eventsHeroContent = {
     paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
 };
 
-const cardspot = [{
-    type: "spot",
-    label1: "Lieu",
-    label2: "Sport",
-    label3: "Capacité d'accueil",
-    //labels: [label1, label2, label3],
-    title: "Parc Montsouris",
-    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
-    buttonDetails: "Voir en détails",
-    buttonMap: "Voir sur la carte"
-},{
-    type: "spot",
-    label1: "Lieu",
-    label2: "Sport",
-    label3: "Capacité d'accueil",
-    //labels: [label1, label2, label3],
-    title: "Parc Montsouris",
-    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
-    buttonDetails: "Voir en détails",
-    buttonMap: "Voir sur la carte"
-},{
-    type: "spot",
-    label1: "Lieu",
-    label2: "Sport",
-    label3: "Capacité d'accueil",
-    //labels: [label1, label2, label3],
-    title: "Parc Montsouris",
-    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
-    buttonDetails: "Voir en détails",
-    buttonMap: "Voir sur la carte"
-},{
-    type: "spot",
-    label1: "Lieu",
-    label2: "Sport",
-    label3: "Capacité d'accueil",
-    //labels: [label1, label2, label3],
-    title: "Parc Montsouris",
-    //address: "7 rue adrienne Lecouvreur, 75019 Paris",
-    buttonDetails: "Voir en détails",
-    buttonMap: "Voir sur la carte"
-}]
 
-
-
-//const cards = cardsComponent(cardspot);
 
 export default class SpotsStruct extends DOM.Component {
-    constructor(props) {
-        super(props);
-    };
+    constructor(props) { 
+        super(props); 
+        this.state = { 
+            cardspot: [],
+        };
+    }
+
+    async fetchCardSpotData() {
+        try {
+            const response = await fetch('https://data.paris2024.org/api/explore/v2.1/catalog/datasets/games_map_events_fr/records');
+            const data = await response.json();
+            console.log(data); // Log the data to inspect its structure
+
+            // Ensure records exist and map them correctly
+            if (data.results) {
+            const cardspot = data.results ? data.result.map(result => ({
+                SportLabel: result.title,
+                StartDateLabel: result.starting_date,
+                EndDateLabel: result.ending_date,
+                SiteName: result.location,
+                buttonDetails: "Voir en détails",
+                buttonMap: "Voir sur la carte" 
+            })) : [];
+            this.setState({ cardspot });
+        } else {
+            console.error('No results found in the API response');
+            this.setState({ cardspot: [] });
+        }
+    } catch (error) {
+        console.error('Error fetching card spot data:', error);
+    }
+}
+    componentDidMount() {
+        this.fetchCardSpotData();
+    }
+
+
     render() {
-        const cardComponents = cardspot.map(cardProps =>
-            DOM.createElement(CardComponent, cardProps, [])
-        );
+        const { cardspot } = this.state;
+
+        const cardComponents = cardspot.length > 0 
+        ? cardspot.map(cardProps => DOM.createElement(CardComponent, cardProps, []))
+        : [{ tag: 'p', children: [{ tag: 'TEXT_NODE', content: 'Loading spots...' }] }];
+
+
         const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
@@ -144,5 +138,4 @@ export default class SpotsStruct extends DOM.Component {
         };
     }
 }
-
 

@@ -1,6 +1,8 @@
 import {DOM} from "../core/generateStructure.js";
 
-export default class CardComponent extends DOM.Component {
+
+
+export default class CardSpotComponent extends DOM.Component {
     constructor(props) {
         super(props);
         this.state = { expanded: false };
@@ -13,10 +15,10 @@ export default class CardComponent extends DOM.Component {
     }
 
     render() {
+        const { type, title, description, label1, label2, label3, buttonDetails, buttonMap } = this.props;
         const { expanded } = this.state;
-        const { type, SportLabel, StartDateLabel, EndDateLabel, SiteName, buttonDetails, buttonMap } = this.props;
 
-        if (this.props.type === "event") {
+        if (type === "event") {
             return {
                 tag: "div",
                 events: {
@@ -31,22 +33,19 @@ export default class CardComponent extends DOM.Component {
                         props: { class: "date-time" },
                         children: [{
                             tag: 'TEXT_NODE',
-                            content: this.props.date,
+                            content: "30/07 | 11:30",
                         }]
                     },
                     {
                         tag: "div",
-                        props: {
-                            class: "text-section",
-                            style: { height: expanded ? '100%' : '180px' },
-                        },
+                        props: { class: "text-section", style: { height: expanded ? '100%' : '180px' } },
                         children: [
                             {
                                 tag: "h4",
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: this.props.title,
+                                        content: title,
                                     },
                                 ],
 
@@ -55,20 +54,20 @@ export default class CardComponent extends DOM.Component {
                                 tag: "div",
                                 props: {
                                     class: "card-description",
-                                    style: { display: expanded ? 'block' : 'none' },
+                                    style: { display: expanded ? 'block' : 'none' }
                                 },
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: this.props.description,
+                                        content: description,
                                     },
                                 ],
-                            },
+                            }
                         ]
                     }
                 ]
             };
-        } else if (this.props.type === "spot") {
+        } else if (type === "spot") {
             return {
                 tag: "div",
                 props: { class: "spots-card" },
@@ -83,7 +82,7 @@ export default class CardComponent extends DOM.Component {
                         children: [
                             {
                                 tag: 'TEXT_NODE',
-                                content: this.props.SportLabel,
+                                content: label1,
                             }
                         ],
                         },
@@ -92,7 +91,7 @@ export default class CardComponent extends DOM.Component {
                             props: { class: "spots-card-label" },
                             children: [{
                                 tag: 'TEXT_NODE',
-                                content: this.props.StartDateLabel,
+                                content: label2,
                             }],
                         },
                         {
@@ -100,7 +99,7 @@ export default class CardComponent extends DOM.Component {
                             props: { class: "spots-card-label" },
                             children: [{
                                 tag: 'TEXT_NODE',
-                                content: this.props.EndDateLabel,
+                                content: label3,
                             }],
                         },
                         ]
@@ -114,7 +113,7 @@ export default class CardComponent extends DOM.Component {
                                 tag: "h4",
                                 children: [{
                                     tag: 'TEXT_NODE',
-                                    content: this.props.SiteName,
+                                    content: title,
                                 },]
                             },
                             {
@@ -128,7 +127,7 @@ export default class CardComponent extends DOM.Component {
                                     props: { class: "spots-card-button spots-card-button-details" },
                                     children: [{
                                         tag: 'TEXT_NODE',
-                                        content: this.props.buttonDetails,
+                                        content: buttonDetails,
                                     }]
                                 },
                                 {
@@ -137,7 +136,7 @@ export default class CardComponent extends DOM.Component {
                                     children: [
                                         {
                                             tag: 'TEXT_NODE',
-                                            content: this.props.buttonMap,
+                                            content: buttonMap,
                                         }
 
                                     ]
