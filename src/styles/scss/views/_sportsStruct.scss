@@ -6,7 +6,35 @@
     .sport-cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        gap: rem(40);
+
+        @media screen and (max-width: $resolution-large-desktop) {
+            gap: rem(0);
+            justify-content: space-between;
+        }
+        @media screen and (max-width: $resolution-tablet) {
+            justify-content: center;
+        }
+
     }
+    .slider-container {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .slider-container::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari, Opera */
+    }
+
+    .slider-slide {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        min-width: 200px;  /* Adjust this width based on your card size */
+        margin-right: 10px;  /* Space between slides */
+    }
+
 
 }
