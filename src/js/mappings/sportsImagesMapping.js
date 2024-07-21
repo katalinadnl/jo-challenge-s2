@@ -1,57 +1,84 @@
 const imageMapping = {
-    "Athlétisme (ATH)": "../../sources/sports/Athlétisme_(ATH).png",
-    "Athlétisme marche (ATW)": "../../sources/sports/Athlétisme_marche_(ATW).jpg",
-    "Aviron (ROW)": "../../sources/sports/Aviron_(ROW).png",
-    "Badminton (BDM)": "../../sources/sports/Badminton_(BDM).png",
-    "Basketball fauteuil (PWBK)": "../../sources/sports/Basketball_fauteuil_(PWBK).jpg",
-    "Basketball": "../../sources/sports/Basketball.png",
-    "BMX freestyle (BMF)": "../../sources/sports/BMX_freestyle_(BMF).png",
-    "BMX Racing (BMX)": "../../sources/sports/BMX_Racing_(BMX).jpg",
-    "Boccia (PBOC)": "../../sources/sports/Boccia_(PBOC).webp",
-    "Boxe (BOX)": "../../sources/sports/Boxe_(BOX).png",
+    "Para Triathlon (PTRI)": "../../sources/sports/PTRI.jpg",
+    "Football (FBL)": "../../sources/sports/FBL.jpg",
+    "Volley-ball de plage (VBV)": "../../sources/sports/VBV.png",
+    "Escrime fauteuil (PWFE), Para Taekwondo (PTKW)": "../../sources/sports/PWFE.jpg",
+    "Basketball fauteuil (PWBK)": "../../sources/sports/PWBK.jpg",
+    "Athlétisme - arrivée Marathon (ATM), Cyclisme sur route - départ Contre-la-montre (CRD), Tir à l'arc (ARC)": "../../sources/sports/CRD.jpg",
+    "Escalade (CLB)": "../../sources/sports/CLB.png",
+    "Skateboard (SKB)": "../../sources/sports/SKB.png",
+    "Parc Urbain la Concorde (FCO)": "../../sources/sports/FCO.png",
+    "Boxe (BOX), Pentathlon moderne (MDN)": "../../sources/sports/BOX.png",
     "Canoë-kayak slalom (CSL)": "../../sources/sports/Canoë_kayak_slalom.jpg",
-    "Cécifoot (PFBB)": "../../sources/sports/Cécifoot_(PFBB).jpg",
-    "Cérémonie d'ouverture Paralympique (POC)": "../../sources/sports/Cérémonie_d_ouverture_Paralympique_(POC).jpg",
-    "Cyclisme sur piste (CTR)": "../../sources/sports/Cyclisme_sur_piste_(CTR).png",
-    "Cyclisme sur route - arrivée Contre-la-montre (CRD)": "../../sources/sports/Cyclisme_sur_route_arrivée_Contre_la_montre_(CRD).jpg",
-    "Cyclisme VTT (MTB)": "../../sources/sports/Cyclisme_VTT.jpg",
-    "Escalade (CLB)": "../../sources/sports/Escalade_(CLB).png",
-    "Escrime (FEN)": "../../sources/sports/Escrime_(FEN).png",
-    "Escrime fauteuil (PWFE)": "../../sources/sports/Escrime_fauteuil_(PWFE).jpg",
-    "Football (FBL)": "../../sources/sports/Football_(FBL).jpg",
-    "Goalball (PGBL)": "../../sources/sports/Goalball_(PGBL).jpg",
-    "Golf (GLF)": "../../sources/sports/Golf_(GLF).png",
-    "Gymnastique artistique (GAR)": "../../sources/sports/Gymnastique_artistique.jpg",
-    "Handball (HBL)": "../../sources/sports/Handball_(HBL).jpg",
-    "Hockey (HOC)": "../../sources/sports/Hockey_(HOC).png",
-    "Judo (JUD)": "../../sources/sports/Judo_(JUD).png",
-    "Natation artistique (SWA)": "../../sources/sports/Natation_artistique_(SWA).jpg",
-    "Natation (SWM), Water-polo (WPO)": "../../sources/sports/Natation_(SWM).jpg",
-    "Para Athlétisme (PATH)": "../../sources/sports/Para_Athlétisme_(PATH).jpg",
-    "Para Athlétisme - départ Marathon (PATM)": "../../sources/sports/Para_Athlétisme_départ_Marathon_(PATM).jpeg",
-    "Para Aviron (PROW)": "../../sources/sports/Para_Aviron_(PROW).jpg",
-    "Para badminton (PBDM)": "../../sources/sports/Para_badminton_(PBDM).png",
-    "Para Cyclisme sur piste (PCTR)": "../../sources/sports/Para_Cyclisme_sur_piste_(PCTR).jpg",
-    "Para cyclisme sur route (PCRD)": "../../sources/sports/Para_cyclisme_sur_route_(PCRD).png",
-    "Para Equitation (PEQU)": "../../sources/sports/Para_Equitation_(PEQU).jpg",
-    "Para Natation (PSWM)": "../../sources/sports/Para_Natation_(PSWM).jpg",
-    "Para Tir à l'arc (PARC)": "../../sources/sports/Para_Tir_a_l_arc.jpg",
-    "Para Tir Sportif (PSHO)": "../../sources/sports/Para_Tir_Sportif_(PSHO).jpg",
-    "Para Triathlon (PTRI)": "../../sources/sports/Para_Triathlon_(PTRI).jpg",
-    "Parc Urbain la Concorde (FCO)": "../../sources/sports/Parc_Urbain_la_Concorde_(FCO).png",
-    "Pentathlon moderne (MDN)": "../../sources/sports/Pentathlon_moderne_(MDN).avif",
-    "Rugby fauteuil (PWRU)": "../../sources/sports/Rugby_fauteuil_(PWRU).jpg",
-    "Skateboard (SKB)": "../../sources/sports/Skateboard_(SKB).png",
-    "Sports équestres - dressage (EQD)": "../../sources/sports/Sports_equestres_dressage_(EQD).png",
-    "Surf (SRF)": "../../sources/sports/Surf_(SRF).png",
-    "Tennis de table (TTE)": "../../sources/sports/Tennis_de_table_(TTE).jpg",
-    "Tennis de table para (PTTE)": "../../sources/sports/Tennis_de_table_para_(PTTE).png",
-    "Tennis fauteuil (PWTE)": "../../sources/sports/Tennis_fauteuil_(PWTE).jpg",
-    "Tir (SHO)": "../../sources/sports/Tir_(SHO).jpg",
-    "Voile (SAL)": "../../sources/sports/Voile_(SAL).jpg",
-    "Volley-ball (VVO)": "../../sources/sports/Volley_ball_(VVO).jpg",
-    "Volley-ball de plage (VBV)": "../../sources/sports/Volley_ball_de_plage_(VBV).png",
-    "Volleyball assis (PVBS)": "../../sources/sports/Volleyball_assis_(PVBS).avif"
+    "Cérémonie d'ouverture Paralympique (POC)": "../../sources/sports/POC.jpg",
+    "Golf (GLF)": "../../sources/sports/GLF.png",
+    "Basketball (BKB), Handball (HBL)": "../../sources/sports/Basketball.png",
+    "Tennis de table (TTE)": "../../sources/sports/TTE.jpg",
+    "Tennis de table para (PTTE)": "../../sources/sports/PTTE.png",
+    "Handball (HBL), Haltérophilie (WLF)": "../../sources/sports/HBL.jpg",
+    "Para Athlétisme (PATH), Cérémonie de clôture Paralympique (PCC)": "../../sources/sports/PATH.jpg",
+    "Aviron (ROW), Canoë - course en ligne (CSP)": "../../sources/sports/ROW.png",
+    "Hockey (HOC)": "../../sources/sports/HOC.png",
+    "Cyclisme sur route - arrivée Contre-la-montre (CRD), Natation marathon (OWS), Triathlon (TRI)": "../../sources/sports/CRD.jpg",
+    "Basketball (BKB), Gymnastique artistique (GAR), Gymnastique trampoline (GTR)": "../../sources/sports/GYMART.jpg",
+    "Judo (JUD), Lutte (WRE)": "../../sources/sports/JUD.png",
+    "Badminton (BDM), Gymnastique rythmique (GRY)": "../../sources/sports/BDM.png",
+    "Para badminton (PBDM), Para Haltérophilie (PPWL)": "../../sources/sports/PBDM.png",
+    "Para cyclisme sur route (PCRD)": "../../sources/sports/PCRD.png",
+    "Para Tir Sportif (PSHO)": "../../sources/sports/PSHO.jpg",
+    "Para Natation (PSWM)": "../../sources/sports/PSWM.jpg",
+    "Cécifoot (PFBB)": "../../sources/sports/PFBB.jpg",
+    "Escrime (FEN), Taekwondo (TKW)": "../../sources/sports/FEN.png",
+    "Voile (SAL)": "../../sources/sports/SAL.jpg",
+    "Volleyball assis (PVBS)": "../../sources/sports/PVBS.avif",
+    "Tennis fauteuil (PWTE)": "../../sources/sports/PWTE.jpg",
+    "Tennis (TEN), Boxe (BOX)": "../../sources/sports/Default.png",
+    "Volley-ball (VVO)": "../../sources/sports/VVO.jpg",
+    "Boccia (PBOC)": "../../sources/sports/PBOC.webp",
+    "Surf (SRF)": "../../sources/sports/SRF.png",
+    "Para Cyclisme sur piste (PCTR)": "../../sources/sports/PCRT.jpg",
+    "Sports équestres - dressage (EQD), Sports équestres - concours complet (EQE), Sports équestres - saut d'obstacles (EQJ), Pentathlon moderne (MPN)": "../../sources/sports/EQD.png",
+    "Para Equitation (PEQU)": "../../sources/sports/PEQU.jpg",
+    "Para Aviron (PROW), Para Canoë (PCSP)": "../../sources/sports/PROW.jpg",
+    "Natation artistique (SWA), Plongeon (DIV), Water-polo (WPO)": "../../sources/sports/SWA.jpg",
+    "Para Judo (PJUD), Rugby fauteuil (PWRU)": "../../sources/sports/PWRU.jpg",
+    "Tir (SHO)": "../../sources/sports/SHO.jpg",
+    "Natation (SWM), Water-polo (WPO)": "../../sources/sports/SWM.jpg",
+    "Cyclisme VTT (MTB)": "../../sources/sports/VTT.jpg",
+    "Para Tir à l'arc (PARC), Para Athlétisme - arrivée Marathon (PATM)": "../../sources/sports/PATM.jpeg",
+    "BMX freestyle (BMF)": "../../sources/sports/BMF.png",
+    "Skateboard (SKB)": "../../sources/sports/SKB.png",
+    "Para Athlétisme - départ Marathon (PATM)": "../../sources/sports/PATM.jpeg",
+    "default": "../../sources/sports/Default.png",
+    "Goalball (PGBL)": "../../sources/sports/PGBL.jpg",
+    "Athlétisme (ATH), Rugby à 7 (RU7), Cérémonie de clôture (OCC)": "../../sources/sports/ATH.png",
+    "Athlétisme marche (ATW), Cyclisme sur route - Course sur route (CRD)": "../../sources/sports/ATW.jpg",
+    "Cyclisme sur piste (CTR)": "../../sources/sports/CTR.png",
+    "BMX Racing (BMX)": "../../sources/sports/BMX.jpg",
+
 };
 
 export default imageMapping;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

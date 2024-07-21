@@ -29,22 +29,20 @@ export default class EventsStruct extends DOM.Component {
         const allCardComponents = [];
 
         eventsData.forEach(event => {
-            const sport = event.fields.sports;
-            const imageUrl = imageMapping[sport] || "./../../sources/sports/Football_(FBL).jpg";
-
-            if (!imageMapping[sport]) {
-                console.log(`Missing image for sport: ${sport}`);
-            }
 
             const cardProps = {
                 type: "sport",
-                title: sport,
+                title: event.fields.sports,
                 date: formatDate(event.fields.start_date),
                 site: event.fields.nom_site,
-                image: imageUrl
+                image: imageMapping[event.fields.sports] || imageMapping.default
             };
             const cardComponent = DOM.createElement(CardComponent, cardProps, []);
             allCardComponents.push(cardComponent);
+
+            if (!imageMapping[event.fields.sports]) {
+                console.log(`Missing image for sport: ${event.fields.sports}`);
+            }
 
             if (isToday(event.fields.start_date)) {
                 todayCardComponents.push(cardComponent);
