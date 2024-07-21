@@ -16,13 +16,13 @@ function formatDate(dateString) {
     return `${day}/${month}/${year}`;
 }
 
-function truncateDescription(title, description, maxLength = 250) {
-    if (title.length < 40) {
+function truncateDescription(title, description, maxLength = 350) {
+    if (title.length < 60) {
         if (description.length > maxLength) {
             return `${description.substring(0, maxLength)}...`;
         }
     } else {
-        if (description.length > 100) {
+        if (description.length > 150) {
             return `${description.substring(0, 100)}...`;
         }
     }
@@ -50,6 +50,11 @@ export default class EventsStruct extends DOM.Component {
                     description: truncateDescription(event.title || "Title not provided", event.description || "Description not provided"),
                     tarif: event.tarif,
                     address: event.address,
+                    linkJO: event.external_link || "https://olympics.com/fr/paris-2024",
+                    textLinkJO: "En savoir plus",
+                    linkMap: "/carte",
+                    textLinkMap: "Voir sur la carte",
+
                 };
                 console.log('Card props:', cardProps); // Debugging statement
                 return DOM.createElement(CardComponent, cardProps, []);
@@ -76,18 +81,9 @@ export default class EventsStruct extends DOM.Component {
                     children: [
                         {
                             tag: "section",
-                            props: { class: "events-section" },
-                            children: [
-                                {
-                                    tag: "h2",
-                                    children: [{ tag: 'TEXT_NODE', content: "Événements"}],
-                                },
-                                {
-                                    tag: "div",
-                                    props: { class: "events-cards", id: "events-cards" },
-                                    children: cardComponents,
-                                },
-                            ],
+                            props: { class: "events-cards-section" },
+                            children:
+                                cardComponents,
                         },
                     ]
                 },

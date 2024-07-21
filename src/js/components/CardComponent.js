@@ -1,4 +1,6 @@
 import {DOM} from "../core/generateStructure.js";
+import {getCtaButtonStructure} from "./CtaButton.js";
+
 
 export default class CardComponent extends DOM.Component {
     constructor(props) {
@@ -14,7 +16,6 @@ export default class CardComponent extends DOM.Component {
 
     render() {
         const { expanded } = this.state;
-        const { type, SportLabel, StartDateLabel, EndDateLabel, SiteName, buttonDetails, buttonMap } = this.props;
 
         if (this.props.type === "sport") {
             return {
@@ -148,11 +149,11 @@ export default class CardComponent extends DOM.Component {
                     }
                 ]
             }
-        }else if (this.props.type === "event") {
+        } else if (this.props.type === "event") {
             return {
                 tag: "div",
                 props: {
-                    class: "event-card card",
+                    class: "event-card",
                 },
                 children: [
                     {
@@ -169,19 +170,26 @@ export default class CardComponent extends DOM.Component {
                             },
                             {
                                 tag: "div",
-                                props: { class: "info" },
-                                children: [{
-                                    tag: 'TEXT_NODE',
-                                    content: this.props.tarif,
-                                }]
-                            },
-                            {
-                                tag: "div",
-                                props: { class: "info" },
-                                children: [{
-                                    tag: 'TEXT_NODE',
-                                    content: this.props.date,
-                                }]
+                                props: { class: "tarif-date" },
+                                children: [
+                                    {
+                                        tag: "div",
+                                        props: { class: "info" },
+                                        children: [{
+                                            tag: 'TEXT_NODE',
+                                            content: this.props.tarif,
+                                        }]
+                                    },
+                                    {
+                                        tag: "div",
+                                        props: { class: "info" },
+                                        children: [{
+                                            tag: 'TEXT_NODE',
+                                            content: this.props.date,
+                                        }]
+                                    },
+                             ]
+
                             },
                         ]
                     },
@@ -203,6 +211,51 @@ export default class CardComponent extends DOM.Component {
                                     tag: 'TEXT_NODE',
                                     content: this.props.description,
                                 }]
+                            }
+
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        props: { class: "link" },
+                        children: [
+                            {
+                                tag: "a",
+                                props: {
+                                    class: "link",
+                                    href: this.props.linkJO,
+                                },
+                                children: [
+                                    {
+                                        tag: 'TEXT_NODE',
+                                        content: this.props.textLinkJO,
+                                    },
+                                    {
+                                        tag: 'i',
+                                        props: {
+                                            class: "fa-sharp fa-solid fa-arrow-right fa-lg",
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                tag: "a",
+                                props: {
+                                    class: "link",
+                                    href: this.props.linkMap,
+                                },
+                                children: [
+                                    {
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.textLinkMap,
+                                    },
+                                    {
+                                        tag: 'i',
+                                        props: {
+                                            class: "fa-sharp fa-solid fa-arrow-right fa-lg",
+                                        }
+                                    }
+                                ]
                             }
                         ]
                     },

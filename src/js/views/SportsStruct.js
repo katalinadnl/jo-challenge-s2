@@ -5,10 +5,11 @@ import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 import { fetchEventsData } from "../api/fetchData.js";
 
-const eventsHeroContent = {
-    headingText: "DÉCOUVREZ LES ÉVÉNEMENTS QUI VOUS PLAISENT",
-    paragraphText: "Explorez les moments inoubliables des Jeux Olympiques de Paris 2024 et trouvez les événements qui vous passionnent.",
+const sportsHeroContent = {
+    headingText: "Et alors? C'est quand les JO?",
+    paragraphText: "Explorez chaque sport avec nos cartes détaillées. Que vous aimiez la rapidité du tir à l'arc, l'endurance du marathon ou l'intensité du basketball, chaque discipline vous réserve des moments inoubliables",
 };
+
 
 // Function to format the date
 function formatDate(dateString) {
@@ -45,34 +46,18 @@ export default class EventsStruct extends DOM.Component {
 
         return {
             tag: "div",
-            props: { class: "event" },
+            props: { class: "sport" },
             children: [
                 navbar,
-                createHeroComponent(eventsHeroContent),
+                createHeroComponent(sportsHeroContent),
                 {
                     tag: "main",
                     props: { class: "body-content" },
                     children: [
                         {
                             tag: "section",
-                            props: { class: "events" },
+                            props: {  },
                             children: [
-                                {
-                                    tag: "h2",
-                                    props: { class: "title" },
-                                    children: [{
-                                        tag: 'TEXT_NODE',
-                                        content: "Et alors? C'est quand les JO?",
-                                    }]
-                                },
-                                {
-                                    tag: "p",
-                                    props: { class: "subtitle" },
-                                    children: [{
-                                        tag: 'TEXT_NODE',
-                                        content: "Explorez chaque sport avec nos cartes détaillées. Que vous aimiez la rapidité du tir à l'arc, l'endurance du marathon ou l'intensité du basketball, chaque discipline vous réserve des moments inoubliables",
-                                    }]
-                                },
                                 {
                                     tag: "div",
                                     props: { class: "today" },
@@ -117,11 +102,11 @@ export default class EventsStruct extends DOM.Component {
                         },
                         {
                             tag: "section",
-                            props: { class: "events-section" },
+                            props: { class: "sport-section" },
                             children: [
                                 {
                                     tag: "div",
-                                    props: { class: "events-cards" },
+                                    props: { class: "sport-cards" },
                                     children: cardComponents,
                                 },
                             ],
