@@ -25,6 +25,9 @@ export default class CardComponent extends DOM.Component {
                 },
                 props: {
                     class: "sport-card card",
+                    style: {
+                        backgroundImage: `url(${this.props.image})`
+                    },
                 },
                 children: [
                     {
