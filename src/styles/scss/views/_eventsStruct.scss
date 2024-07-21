@@ -3,10 +3,19 @@
         @include hero-section-event-responsive;
     }
 
-    .events-cards {
+    .events-cards-section {
         display: flex;
         flex-wrap: wrap;
+        gap: rem(32);
         justify-content: space-between;
+        align-items: center;
+        padding: rem(64) rem(0);
+
+        @media screen and (max-width: $resolution-large-desktop) {
+            justify-content: center;
+            align-items: center;
+        }
+
     }
 
 }
