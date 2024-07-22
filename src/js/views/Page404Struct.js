@@ -1,7 +1,7 @@
 import { getFooterStructure } from "../components/Footer.js";
 import Component  from "../components/Component.js";
 import getNavbarStructure from "../components/Navbar.js";
-import {DOM} from "../core/generateStructure";
+import {DOM} from "../core/generateStructure.js";
 
 function createCarousel() {
     const images = [
