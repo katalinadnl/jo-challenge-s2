@@ -1,4 +1,6 @@
 import {DOM} from "../core/generateStructure.js";
+import {getCtaButtonStructure} from "./CtaButton.js";
+
 
 export default class CardComponent extends DOM.Component {
     constructor(props) {
@@ -14,16 +16,18 @@ export default class CardComponent extends DOM.Component {
 
     render() {
         const { expanded } = this.state;
-        const { type, SportLabel, StartDateLabel, EndDateLabel, SiteName, buttonDetails, buttonMap } = this.props;
 
-        if (this.props.type === "event") {
+        if (this.props.type === "sport") {
             return {
                 tag: "div",
                 events: {
                     click: [this.handleClick],
                 },
                 props: {
-                    class: "event-card card",
+                    class: "sport-card card",
+                    style: {
+                        backgroundImage: `url(${this.props.image})`
+                    },
                 },
                 children: [
                     {
@@ -60,7 +64,7 @@ export default class CardComponent extends DOM.Component {
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: this.props.description,
+                                        content: `Où aller? - ${this.props.site}`,
                                     },
                                 ],
                             },
@@ -148,6 +152,118 @@ export default class CardComponent extends DOM.Component {
                     }
                 ]
             }
+        } else if (this.props.type === "event") {
+            return {
+                tag: "div",
+                props: {
+                    class: "event-card",
+                },
+                children: [
+                    {
+                        tag: "div",
+                        props: { class: "tags-informations" },
+                        children: [
+                            {
+                                tag: "div",
+                                props: { class: "info" },
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.address,
+                                }]
+                            },
+                            {
+                                tag: "div",
+                                props: { class: "tarif-date" },
+                                children: [
+                                    {
+                                        tag: "div",
+                                        props: { class: "info" },
+                                        children: [{
+                                            tag: 'TEXT_NODE',
+                                            content: this.props.tarif,
+                                        }]
+                                    },
+                                    {
+                                        tag: "div",
+                                        props: { class: "info" },
+                                        children: [{
+                                            tag: 'TEXT_NODE',
+                                            content: this.props.date,
+                                        }]
+                                    },
+                             ]
+
+                            },
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        props: { class: "text-section" },
+                        children: [
+                            {
+                                tag: "h4",
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.title,
+                                }]
+                            },
+                            {
+                                tag: "div",
+                                props: { class: "card-description" },
+                                children: [{
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.description,
+                                }]
+                            }
+
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        props: { class: "link" },
+                        children: [
+                            {
+                                tag: "a",
+                                props: {
+                                    class: "link",
+                                    href: this.props.linkJO,
+                                },
+                                children: [
+                                    {
+                                        tag: 'TEXT_NODE',
+                                        content: this.props.textLinkJO,
+                                    },
+                                    {
+                                        tag: 'i',
+                                        props: {
+                                            class: "fa-sharp fa-solid fa-arrow-right fa-lg",
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                tag: "a",
+                                props: {
+                                    class: "link",
+                                    href: this.props.linkMap,
+                                },
+                                children: [
+                                    {
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.textLinkMap,
+                                    },
+                                    {
+                                        tag: 'i',
+                                        props: {
+                                            class: "fa-sharp fa-solid fa-arrow-right fa-lg",
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            };
         }
 
     }
