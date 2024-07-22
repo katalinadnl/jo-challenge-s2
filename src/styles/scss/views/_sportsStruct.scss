@@ -2,7 +2,24 @@
     .hero-section {
         @include hero-section-sport-responsive;
     }
-
+    .body-content {
+        .info-slider-sports {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            h6 {
+                color: #18A0FB;
+                transform: rotate(19.078deg);
+                width: rem(318.382);
+            }
+            .arrow-container {
+                margin-right: 300px;
+                img {
+                    transform: rotate(138deg);
+                }
+            }
+        }
+    }
     .sport-cards {
         display: flex;
         flex-wrap: wrap;

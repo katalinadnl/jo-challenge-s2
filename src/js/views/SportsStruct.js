@@ -65,6 +65,35 @@ export default class EventsStruct extends DOM.Component {
                     props: { class: "body-content" },
                     children: [
                         {
+                            tag: "div",
+                            props: { class: "info-slider-sports" },
+                            children: [
+                                {
+                                    tag: "h6",
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Faites défiler horizontalement pour découvrir les événements actuels",
+                                        }
+                                    ]
+                                },
+                                {
+                                    tag: "div",
+                                    props: { class: "arrow-container" },
+                                    children: [
+                                        {
+                                            tag: "img",
+                                            props: {
+                                                src: "../../styles/images/arrow_HP.png",
+                                                alt: "Flèche",
+                                                class: "arrow-desktop"
+                                            },
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                        {
                             tag: "section",
                             props: {},
                             children: [
