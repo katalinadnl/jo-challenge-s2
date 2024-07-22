@@ -9,8 +9,8 @@ import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
 
 const sportsHeroContent = {
-    headingText: "Et alors? C'est quand les JO?",
-    paragraphText: "Explorez chaque sport avec nos cartes détaillées. Que vous aimiez la rapidité du tir à l'arc, l'endurance du marathon ou l'intensité du basketball, chaque discipline vous réserve des moments inoubliables",
+    headingText: "VIVEZ LES PLUS GRANDS ÉVÉNEMENTS SPORTIFS",
+    paragraphText: "Plongez dans l'excitation des compétitions sportives mondiales et découvrez les événements à ne pas manquer cette saison.",
 };
 
 export default class EventsStruct extends DOM.Component {
@@ -40,10 +40,6 @@ export default class EventsStruct extends DOM.Component {
             };
             const cardComponent = DOM.createElement(CardComponent, cardProps, []);
             allCardComponents.push(cardComponent);
-
-            if (!imageMapping[event.fields.sports]) {
-                console.log(`Missing image for sport: ${event.fields.sports}`);
-            }
 
             if (isToday(event.fields.start_date)) {
                 todayCardComponents.push(cardComponent);
@@ -133,8 +129,13 @@ export default class EventsStruct extends DOM.Component {
                             props: { class: "sport-section" },
                             children: [
                                 {
-                                    tag: "h2",
-                                    children: [{ tag: 'TEXT_NODE', content: "Événements"}],
+       
+                                    tag: "h3",
+                                    props: { class: "this-week-title" },
+                                    children: [{
+                                        tag: 'TEXT_NODE',
+                                        content: "Tous les sports",
+                                    }]
                                 },
                                 DOM.createElement(filterComponent, {
                                     /*onChangeEvent = this.render()*/
