@@ -3,8 +3,13 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
+import { fetchSpotsData } from "../api/fetchSpotsData.js";
+import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 
-const eventsHeroContent = {
+import spotsMapping from "../mappings/spotsMapping.js";
+
+
+const spotsHeroContent = {
     headingText: "Découvrez les meilleurs spots",
     paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
 };
@@ -19,51 +24,46 @@ export default class SpotsStruct extends DOM.Component {
         };
     }
 
-    async fetchCardSpotData() {
-        try {
-            const response = await fetch('https://data.paris2024.org/api/explore/v2.1/catalog/datasets/games_map_events_fr/records');
-            const data = await response.json();
-            console.log(data); // Log the data to inspect its structure
+    async componentDidMount() {
+        const spotsData = await fetchSpotsData();
+        const CardComponents = [];
 
-            // Ensure records exist and map them correctly
-            if (data.results) {
-            const cardspot = data.results ? data.result.map(result => ({
-                SportLabel: result.title,
-                StartDateLabel: result.starting_date,
-                EndDateLabel: result.ending_date,
-                SiteName: result.location,
+        spotsData.forEach(event => {
+
+            const cardProps = {
+                type: "spot",
+                SiteName: event.fields.nom_site,
+                SportLabel:  event.fields.sports,
+                StartDateLabel: formatDate(event.fields.start_date),
+                EndDateLabel: formatDate(event.fields.end_date),
+                image: spotsMapping[event.fields.nom_site] || spotsMapping.default, //permet de récupérer l'image correspondant au spot
                 buttonDetails: "Voir en détails",
                 buttonMap: "Voir sur la carte" 
-            })) : [];
-            this.setState({ cardspot });
-        } else {
-            console.error('No results found in the API response');
-            this.setState({ cardspot: [] });
-        }
-    } catch (error) {
-        console.error('Error fetching card spot data:', error);
-    }
-}
-    componentDidMount() {
-        this.fetchCardSpotData();
-    }
 
+
+            };
+            const cardComponent = DOM.createElement(CardComponent, cardProps, []);
+            CardComponents.push(cardComponent);
+
+            if (!spotsMapping[event.fields.spots]) {
+                console.log(`Missing image for spot: ${event.fields.spots}`);
+            }
+        });
+
+        this.setState({ CardComponents });
+    }
 
     render() {
-        const { cardspot } = this.state;
+        const { CardComponents } = this.state;
 
-        const cardComponents = cardspot.length > 0 
-        ? cardspot.map(cardProps => DOM.createElement(CardComponent, cardProps, []))
-        : [{ tag: 'p', children: [{ tag: 'TEXT_NODE', content: 'Loading spots...' }] }];
-
-
+       
         const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "spots body-content" },
             children: [
             navbar,
-            createHeroComponent(eventsHeroContent),
+            createHeroComponent(spotsHeroContent),
                 {
                     tag: "h1",
                     children: [""]
@@ -94,7 +94,7 @@ export default class SpotsStruct extends DOM.Component {
                                 {
                                     tag: "div",
                                     props: { class: "slider" },
-                                    children: cardComponents //Array(6).fill(cards)
+                                    children: CardComponents //Array(6).fill(cards)
                                 }
                             ]
                         }
@@ -125,17 +125,16 @@ export default class SpotsStruct extends DOM.Component {
                                 {
                                 tag: "div",
                                 props: { class: "spots-list" },
-                                children: cardComponents //Array(15).fill(cards)
+                                children: CardComponents //Array(15).fill(cards)
 
                             }
                             ]
                         }
 
                     ]
-                },
+                }, 
                 getFooterStructure()
-            ]
-        };
+           ] 
+        }; 
     }
 }
-
