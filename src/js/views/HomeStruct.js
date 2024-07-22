@@ -1,11 +1,14 @@
 import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
-import {getCtaButtonStructure} from "../components/CtaButton.js";
-import CardComponent from "../components/CardComponent.js";
+import { getCtaButtonStructure } from "../components/CtaButton.js";
 import { DOM } from "../core/generateStructure.js";
+import CardComponent from "../components/CardComponent.js";
+import imageMapping from "../mappings/sportsImagesMapping.js";
+import { fetchEventsData } from "../api/fetchData.js";
+import { formatDate } from "../functions/dateFunctions.js";
+import { fetchEvents } from "../api/fetchEventsData.js";
 
-//added by catalina
 const eventsHeroContent = {
     headingText: "Jeux Olympiques 2024",
     paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
@@ -23,9 +26,39 @@ const ctaButtonEvents = {
 };
 
 export default class HomeStruct extends DOM.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cardsSportHP: []
+        };
+    }
+
+    async componentDidMount() {
+        const sportsData = await fetchEventsData();
+        const validTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
+
+        const cardsSportHP = sportsData.map(event => {
+            const title = event.fields.sports;
+
+            if (validTitles.includes(title)) {
+                const cardProps = {
+                    type: "sport",
+                    title: event.fields.sports,
+                    date: formatDate(event.fields.start_date),
+                    site: event.fields.nom_site,
+                    image: imageMapping[event.fields.sports] || imageMapping.default
+                };
+                return DOM.createElement(CardComponent, cardProps, []);
+            }
+            return null;
+        }).filter(card => card !== null); // Filter out null values
+
+        this.setState({ cardsSportHP });
+    }
 
     render() {
         const navbar = DOM.createElement(getNavbarStructure, []);
+        const { cardsSportHP } = this.state;
 
         return {
             tag: "div",
@@ -56,7 +89,7 @@ export default class HomeStruct extends DOM.Component {
                                         {
                                             tag: 'TEXT_NODE',
                                             content: "Découvrez les lieux emblématiques des compétitions.",
-                                        }
+                                        },
                                     ]
                                 },
                                 getCtaButtonStructure(ctaButtonSpots)
@@ -83,6 +116,11 @@ export default class HomeStruct extends DOM.Component {
                                             content: "Explorez les sports qui feront vibrer la France.",
                                         }
                                     ]
+                                },
+                                {
+                                    tag: "div",
+                                    props: { class: "sport-cards" },
+                                    children: cardsSportHP
                                 },
                                 getCtaButtonStructure(ctaButtonEvents)
                             ]
