@@ -58,14 +58,11 @@ export default class EventsStruct extends DOM.Component {
     render() {
         const { todayCardComponents, thisWeekCardComponents, allCardComponents } = this.state;
 
-        const filtercomponent = DOM.createElement(filterComponent, []);
-        const navbar = DOM.createElement(getNavbarStructure, []);
-
         return {
             tag: "div",
             props: { class: "sport" },
             children: [
-                navbar,
+                DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(sportsHeroContent),
                 {
                     tag: "main",
@@ -139,7 +136,9 @@ export default class EventsStruct extends DOM.Component {
                                     tag: "h2",
                                     children: [{ tag: 'TEXT_NODE', content: "Événements"}],
                                 },
-                                filtercomponent,
+                                DOM.createElement(filterComponent, {
+                                    onChangeEvent = this.render()
+                                }),
                                 {
                                     tag: "div",
                                     props: { class: "sport-cards" },

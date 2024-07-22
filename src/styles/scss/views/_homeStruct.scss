@@ -1,16 +1,66 @@
-@import '../partials/_mixin.scss';
-
 .home {
     .hero-section {
-        @include hero-section-home-responsive
+        @include hero-section-home-responsive;
     }
     .section1, .section2, .section3 {
         display: flex;
         flex-direction: column;
     }
+    .section2 {
+        .sport-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+    }
     .section3 {
         .map-item {
             @include map-item-responsive;
+            .map-info {
+                .info-cta-map {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    @media screen and (max-width: $resolution-tablet) {
+                        flex-direction: column;
+                        align-content: flex-end;
+                        flex-wrap: wrap;
+                    }
+                    h6 {
+                        color: #18A0FB;
+                        transform: rotate(-20.28deg);
+                        width: rem(185.225);
+                        @media screen and (max-width: $resolution-tablet) {
+                            transform: rotate(20.28deg);
+                        }
+                    }
+                    .arrow-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-left: 10px;
+                        @media screen and (min-width: $resolution-tablet) {
+                            .arrow-desktop {
+                                display: block;
+                            }
+                            .arrow-mobile {
+                                display: none;
+                            }
+                        }
+                        @media screen and (max-width: $resolution-tablet) {
+                            .arrow-desktop {
+                                display: none;
+                            }
+                            .arrow-mobile {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
         }
+    }
+    .cta-container {
+        margin-top: rem(81);
     }
 }

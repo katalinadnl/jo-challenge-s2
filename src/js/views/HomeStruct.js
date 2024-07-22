@@ -22,7 +22,7 @@ const ctaButtonSpots = {
 
 const ctaButtonEvents = {
     paragraphText: "En savoir plus",
-    href: "/evenements"
+    href: "/sports"
 };
 
 export default class HomeStruct extends DOM.Component {
@@ -170,15 +170,45 @@ export default class HomeStruct extends DOM.Component {
                                                         {
                                                             tag: 'TEXT_NODE',
                                                             content: "Explorez les événements sportifs et les meilleurs spots de Paris grâce à notre carte interactive. Que vous soyez amateur de sport ou simplement à la recherche de nouvelles expériences, cette carte vous guidera à travers les incontournables de la capitale.",
-                                                        }]
+                                                        }
+                                                    ]
                                                 },
                                                 {
-                                                    tag: "h6",
+                                                    tag: "div",
+                                                    props: { class: "info-cta-map" },
                                                     children: [
                                                         {
-                                                            tag: 'TEXT_NODE',
-                                                            content: "Appuyez sur la carte pour plus de détails",
-                                                        }]
+                                                            tag: "h6",
+                                                            children: [
+                                                                {
+                                                                    tag: 'TEXT_NODE',
+                                                                    content: "Appuyez sur la carte pour plus de détails",
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            tag: "div",
+                                                            props: { class: "arrow-container" },
+                                                            children: [
+                                                                {
+                                                                    tag: "img",
+                                                                    props: {
+                                                                        src: "../../styles/images/arrow_HP.png",
+                                                                        alt: "Flèche",
+                                                                        class: "arrow-desktop"
+                                                                    },
+                                                                },
+                                                                {
+                                                                    tag: "img",
+                                                                    props: {
+                                                                        src: "../../styles/images/arrow_HP_mobile.png",
+                                                                        alt: "Flèche",
+                                                                        class: "arrow-mobile"
+                                                                    },
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
