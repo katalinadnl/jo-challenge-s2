@@ -241,25 +241,6 @@ export default class CardComponent extends DOM.Component {
                                     }
                                 ]
                             },
-                            {
-                                tag: "a",
-                                props: {
-                                    class: "link",
-                                    href: this.props.linkMap,
-                                },
-                                children: [
-                                    {
-                                    tag: 'TEXT_NODE',
-                                    content: this.props.textLinkMap,
-                                    },
-                                    {
-                                        tag: 'i',
-                                        props: {
-                                            class: "fa-sharp fa-solid fa-arrow-right fa-lg",
-                                        }
-                                    }
-                                ]
-                            }
                         ]
                     },
                 ]
