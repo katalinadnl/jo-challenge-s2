@@ -4,6 +4,7 @@ import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 import { fetchEventsData } from "../api/fetchData.js";
+import { filterComponent } from "../components/Filter.js";
 
 const eventsHeroContent = {
     headingText: "DÉCOUVREZ LES ÉVÉNEMENTS QUI VOUS PLAISENT",
@@ -41,6 +42,7 @@ export default class EventsStruct extends DOM.Component {
     render() {
         const { cardComponents } = this.state;
 
+        const filtercomponent = DOM.createElement(filterComponent, []);
         const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
@@ -60,6 +62,7 @@ export default class EventsStruct extends DOM.Component {
                                     tag: "h2",
                                     children: [{ tag: 'TEXT_NODE', content: "Événements"}],
                                 },
+                                filtercomponent,
                                 {
                                     tag: "div",
                                     props: { class: "events-cards" },
