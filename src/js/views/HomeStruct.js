@@ -57,14 +57,13 @@ export default class HomeStruct extends DOM.Component {
     }
 
     render() {
-        const navbar = DOM.createElement(getNavbarStructure, []);
         const { cardsSportHP } = this.state;
 
         return {
             tag: "div",
             props: { class: "home" },
             children: [
-                navbar,
+                DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",

@@ -137,7 +137,7 @@ export default class EventsStruct extends DOM.Component {
                                     children: [{ tag: 'TEXT_NODE', content: "Événements"}],
                                 },
                                 DOM.createElement(filterComponent, {
-                                    onChangeEvent = this.render()
+                                    /*onChangeEvent = this.render()*/
                                 }),
                                 {
                                     tag: "div",
