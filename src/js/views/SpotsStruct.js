@@ -57,13 +57,12 @@ export default class SpotsStruct extends DOM.Component {
         : [{ tag: 'p', children: [{ tag: 'TEXT_NODE', content: 'Loading spots...' }] }];
 
 
-        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "spots body-content" },
             children: [
-            navbar,
-            createHeroComponent(eventsHeroContent),
+                DOM.createElement(getNavbarStructure, []),
+                createHeroComponent(eventsHeroContent),
                 {
                     tag: "h1",
                     children: [""]

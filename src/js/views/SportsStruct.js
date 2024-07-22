@@ -4,6 +4,7 @@ import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 import { fetchEventsData } from "../api/fetchData.js";
+import { filterComponent } from "../components/Filter.js";
 import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
 
@@ -53,13 +54,11 @@ export default class EventsStruct extends DOM.Component {
     render() {
         const { todayCardComponents, thisWeekCardComponents, allCardComponents } = this.state;
 
-        const navbar = DOM.createElement(getNavbarStructure, []);
-
         return {
             tag: "div",
             props: { class: "sport" },
             children: [
-                navbar,
+                DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(sportsHeroContent),
                 {
                     tag: "main",
@@ -130,6 +129,7 @@ export default class EventsStruct extends DOM.Component {
                             props: { class: "sport-section" },
                             children: [
                                 {
+       
                                     tag: "h3",
                                     props: { class: "this-week-title" },
                                     children: [{
@@ -137,6 +137,9 @@ export default class EventsStruct extends DOM.Component {
                                         content: "Tous les sports",
                                     }]
                                 },
+                                DOM.createElement(filterComponent, {
+                                    /*onChangeEvent = this.render()*/
+                                }),
                                 {
                                     tag: "div",
                                     props: { class: "sport-cards" },

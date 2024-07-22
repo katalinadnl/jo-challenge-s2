@@ -68,12 +68,11 @@ export default class EventsStruct extends DOM.Component {
     render() {
         const { cardComponents } = this.state;
 
-        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "event" },
             children: [
-                navbar,
+                DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",

@@ -179,13 +179,12 @@ export default class MapStruct extends DOM.Component {
   }
 
   render() {
-    const navbar = DOM.createElement(getNavbarStructure, []);
 
     return {
       tag: "div",
       props: { class: "map body-content" },
       children: [
-        navbar,
+        DOM.createElement(getNavbarStructure, []),
         createHeroComponent(eventsHeroContent),
         {
           tag: "section",
