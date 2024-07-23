@@ -1,14 +1,18 @@
 import Component from "../components/Component.js";
 
+
 export function isClassComponent(component) {
-    if (typeof component !== 'function') { //a tester component.toString().startsWith('class ')
+    if (typeof component !== 'function') {
         return false;
+    }
+    if (component.toString().startsWith('class ')) {
+        return true;
     }
     try {
         component();
         return false;
     } catch (error) {
-        if (/^[C|c]lass constructor/.test(error.message)) { //
+        if (/^[C|c]lass constructor/.test(error.message)) {
             return true;
         }
         return false;
@@ -90,7 +94,6 @@ export function generateStructure(structure) {
     if (structure.instance && structure.instance.setRoot) {
         structure.instance.setRoot(element);
 
-        // Remove this part to avoid multiple calls to componentDidMount
          if (structure.instance.isRender && structure.instance.componentDidMount) {
              setTimeout(()=>structure.instance.componentDidMount(), 0);
          }
