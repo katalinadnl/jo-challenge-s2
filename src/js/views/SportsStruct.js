@@ -51,8 +51,32 @@ export default class EventsStruct extends DOM.Component {
         this.setState({ todayCardComponents, thisWeekCardComponents, allCardComponents });
     }
 
+    updateEventData = (filter) => {
+        const { id, value } = filter;
+        let filteredEvents = [];
+
+        switch (id) {
+            case "site-name":
+                filteredEvents = this.state.allCardComponents.filter(card => card.props.site === value);
+                break;
+            case "sport":
+                filteredEvents = this.state.allCardComponents.filter(card => card.props.title === value);
+                break;
+            case "start-date":
+                filteredEvents = this.state.allCardComponents.filter(card => new Date(card.props.date) >= new Date(value));
+                break;
+            case "end-date":
+                filteredEvents = this.state.allCardComponents.filter(card => new Date(card.props.date) <= new Date(value));
+                break;
+            default:
+                break;
+        }
+
+        this.setState({ filteredCardComponents: filteredEvents });
+    }
+
     render() {
-        const { todayCardComponents, thisWeekCardComponents, allCardComponents } = this.state;
+        const { todayCardComponents, thisWeekCardComponents, allCardComponents, filteredCardComponents } = this.state;
 
         return {
             tag: "div",
@@ -158,7 +182,6 @@ export default class EventsStruct extends DOM.Component {
                             props: { class: "sport-section" },
                             children: [
                                 {
-       
                                     tag: "h3",
                                     props: { class: "this-week-title" },
                                     children: [{
@@ -167,12 +190,12 @@ export default class EventsStruct extends DOM.Component {
                                     }]
                                 },
                                 DOM.createElement(filterComponent, {
-                                    /*onChangeEvent = this.render()*/
+                                    onChangeEvent: this.updateEventData,
                                 }),
                                 {
                                     tag: "div",
                                     props: { class: "sport-cards" },
-                                    children: allCardComponents,
+                                    children: filteredCardComponents || allCardComponents,
                                 },
                             ],
                         },

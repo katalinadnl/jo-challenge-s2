@@ -30,17 +30,21 @@ export class filterComponent extends DOM.Component {
         ;
     }
 
-    updateEventData = () => {
-        // const expensiveProducts = products.filter(product => product.price > 50);
+    updateEventData = (e, type) => {
+        e.preventDefault()
+        const {id, value} = e.target;
+        this.props.onChangeEvent({
+            id: id,
+            value: value,
+            type: type
+        });
     }
 
     createDropdown = (id, placeholder, labels = []) => ({
         tag: "select",
         props: {id, class: "dropdown"},
         events: {
-            change: [() => {
-                console.log('Dropdown changed:', id);
-            }]
+            change: [(e) => this.updateEventData(e, id)]
         },
         children: [
             {
