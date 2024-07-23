@@ -1,18 +1,16 @@
 import Component from "../components/Component.js";
 
 
-export function isClassComponent(component) {
+export default function isClassComponent(component) {
     if (typeof component !== 'function') {
         return false;
-    }
-    if (component.toString().startsWith('class ')) {
-        return true;
     }
     try {
         component();
         return false;
     } catch (error) {
-        if (/^[C|c]lass constructor/.test(error.message)) {
+        const classRegex = /^class\s+\w+/;
+        if (classRegex.test(component.toString())) {
             return true;
         }
         return false;
