@@ -5,6 +5,7 @@ import MapStruct from "./views/MapStruct.js";
 import SpotsStruct from "./views/SpotsStruct.js";
 import InformationsStruct from "./views/InformationsStruct.js";
 import Page404Struct from "./views/Page404Struct.js";
+import { generateStructure } from "./core/generateStructure.js";
 
 export const routes = [
     { path: "/", component: HomeStruct },

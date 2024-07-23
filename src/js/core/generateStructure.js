@@ -1,8 +1,12 @@
 import Component from "../components/Component.js";
 
+
 export function isClassComponent(component) {
     if (typeof component !== 'function') {
         return false;
+    }
+    if (component.toString().startsWith('class ')) {
+        return true;
     }
     try {
         component();
@@ -90,9 +94,9 @@ export function generateStructure(structure) {
     if (structure.instance && structure.instance.setRoot) {
         structure.instance.setRoot(element);
 
-        if (structure.instance.isRender && structure.instance.componentDidMount) {
-            structure.instance.componentDidMount();
-        }
+         if (structure.instance.isRender && structure.instance.componentDidMount) {
+             setTimeout(()=>structure.instance.componentDidMount(), 0);
+         }
     }
 
     return element;
@@ -101,4 +105,4 @@ export function generateStructure(structure) {
 export const DOM = {
     createElement,
     Component: Component,
-}
+};
