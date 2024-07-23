@@ -43,8 +43,7 @@ export default class SpotsStruct extends DOM.Component {
                 buttonDetails: "Voir en détails",
                 buttonMap: "Voir sur la carte"
             };
-            console.log(spotsMapping[event.fields.sports]);
-
+            
             const cardComponent = DOM.createElement(CardComponent, cardProps, []);
             CardComponents.push(cardComponent);
 

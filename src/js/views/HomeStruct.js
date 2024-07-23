@@ -9,6 +9,7 @@ import { fetchEventsData } from "../api/fetchData.js";
 import { formatDate } from "../functions/dateFunctions.js";
 import { fetchEvents } from "../api/fetchEventsData.js";
 import { fetchSpotsData } from "../api/fetchSpotsData.js";
+import spotsMapping from "../mappings/spotsMapping.js";
 
 const eventsHeroContent = {
     headingText: "Jeux Olympiques 2024",
@@ -57,6 +58,27 @@ export default class HomeStruct extends DOM.Component {
             return null;
         }).filter(card => card !== null); // Filter out null values
 
+        //cards des spots
+        const cardsSpotHP = spotsData.map(event => {
+            const mappingKey = event.fields.sports;
+            const spotData = spotsMapping[mappingKey] || spotsMapping.default;
+
+
+            if (validTitles.includes(mappingKey)) {
+                const cardProps = {
+                    type: "spot",
+                    SpotName : spotData.spot,
+                    SiteNameLabel: event.fields.nom_site,
+                    SportLabel:  event.fields.sports,
+                    StartDateLabel: formatDate(event.fields.start_date),
+                    EndDateLabel: formatDate(event.fields.end_date),
+                    image: spotsMapping[event.fields.sports] || spotsMapping.default,
+                };
+                return DOM.createElement(CardComponent, cardProps, []);
+            }
+            return null;
+        }).filter(card => card !== null); // Filter out null values
+
         const cardsEventHP = spotsData.filter(event =>
             validSpotsTitles.includes(event.fields.sports)
         ).map(event => {
@@ -71,6 +93,11 @@ export default class HomeStruct extends DOM.Component {
             return DOM.createElement(CardComponent, cardProps, []);
         });
 
+        this.setState({ cardsSportHP, cardsEventHP, cardsSpotHP });
+    }
+
+    render() {
+        const { cardsSportHP, cardsEventHP, cardsSpotHP } = this.state;
         this.setState({ cardsSportHP, cardsEventHP });
     }
 
@@ -112,8 +139,8 @@ export default class HomeStruct extends DOM.Component {
                                 {
                                     tag: "div",
                                     props: { class: "sport-cards" },
-                                    children: cardsEventHP
-                                },
+                                    children: cardsSpotHP
+                 },
                                 getCtaButtonStructure(ctaButtonSpots)
                             ]
                         },
