@@ -8,6 +8,9 @@ import imageMapping from "../mappings/sportsImagesMapping.js";
 import { fetchEventsData } from "../api/fetchData.js";
 import { formatDate } from "../functions/dateFunctions.js";
 import { fetchEvents } from "../api/fetchEventsData.js";
+import { fetchSpotsData } from "../api/fetchSpotsData.js";
+import spotsMapping from "../mappings/spotsMapping.js";
+
 
 const eventsHeroContent = {
     headingText: "Jeux Olympiques 2024",
@@ -29,13 +32,16 @@ export default class HomeStruct extends DOM.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cardsSportHP: []
+            cardsSportHP: [],
+            cardsEventHP: []
         };
     }
 
     async componentDidMount() {
         const sportsData = await fetchEventsData();
+        const spotsData = await fetchSpotsData();
         const validTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
+        const validSpotsTitles = ["Surf (SRF)", "Para Triathlon (PTRI)", "Volley-ball de plage (VBV)"];
 
         const cardsSportHP = sportsData.map(event => {
             const title = event.fields.sports;
@@ -53,11 +59,47 @@ export default class HomeStruct extends DOM.Component {
             return null;
         }).filter(card => card !== null); // Filter out null values
 
-        this.setState({ cardsSportHP });
+        //cards des spots
+        const cardsSpotHP = spotsData.map(event => {
+            const mappingKey = event.fields.sports;
+            const spotData = spotsMapping[mappingKey] || spotsMapping.default;
+
+
+            if (validTitles.includes(mappingKey)) {
+                const cardProps = {
+                    type: "spot",
+                    SpotName : spotData.spot,
+                    SiteNameLabel: event.fields.nom_site,
+                    SportLabel:  event.fields.sports,
+                    StartDateLabel: formatDate(event.fields.start_date),
+                    EndDateLabel: formatDate(event.fields.end_date),
+                    image: spotsMapping[event.fields.sports] || spotsMapping.default,
+                };
+                return DOM.createElement(CardComponent, cardProps, []);
+            }
+            return null;
+        }).filter(card => card !== null); // Filter out null values
+
+
+        const cardsEventHP = spotsData.filter(event =>
+            validSpotsTitles.includes(event.fields.sports)
+        ).map(event => {
+            const cardProps = {
+                type: "spot",
+                title: event.fields.nom_site,
+                date: formatDate(event.fields.start_date),
+                site: event.fields.nom_site,
+                image: imageMapping[event.fields.nom_site] || imageMapping.default
+            };
+            console.log(event.fields.nom_site);
+            return DOM.createElement(CardComponent, cardProps, []);
+        });
+
+        this.setState({ cardsSportHP, cardsEventHP, cardsSpotHP });
     }
 
     render() {
-        const { cardsSportHP } = this.state;
+        const { cardsSportHP, cardsEventHP, cardsSpotHP } = this.state;
 
         return {
             tag: "div",
@@ -91,6 +133,11 @@ export default class HomeStruct extends DOM.Component {
                                         },
                                     ]
                                 },
+                                {
+                                    tag: "div",
+                                    props: { class: "sport-cards" },
+                                    children: cardsSpotHP
+                                },
                                 getCtaButtonStructure(ctaButtonSpots)
                             ]
                         },
@@ -104,7 +151,7 @@ export default class HomeStruct extends DOM.Component {
                                         {
                                             tag: 'TEXT_NODE',
                                             content: "Les différents sports olympiques",
-                                        }
+                                        },
                                     ]
                                 },
                                 {
@@ -192,7 +239,7 @@ export default class HomeStruct extends DOM.Component {
                                                                 {
                                                                     tag: "img",
                                                                     props: {
-                                                                        src: "../../styles/images/arrow_HP.png",
+                                                                        src: "../../styles/images/arrow_2.png",
                                                                         alt: "Flèche",
                                                                         class: "arrow-desktop"
                                                                     },
@@ -200,7 +247,7 @@ export default class HomeStruct extends DOM.Component {
                                                                 {
                                                                     tag: "img",
                                                                     props: {
-                                                                        src: "../../styles/images/arrow_HP_mobile.png",
+                                                                        src: "../../styles/images/arrow_1.png",
                                                                         alt: "Flèche",
                                                                         class: "arrow-mobile"
                                                                     },
