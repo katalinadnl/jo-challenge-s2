@@ -5,12 +5,11 @@ import { DOM } from "../core/generateStructure.js";
 
 export default class InformationsStruct extends DOM.Component{
     render() {
-        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "information" },
             children: [
-                navbar,
+                DOM.createElement(getNavbarStructure, []),
                 {
                     tag: "main",
                     props: { class: "body-content" },

@@ -1,5 +1,4 @@
 import {DOM} from "../core/generateStructure.js";
-import {getCtaButtonStructure} from "./CtaButton.js";
 
 
 export default class CardComponent extends DOM.Component {
@@ -161,39 +160,12 @@ export default class CardComponent extends DOM.Component {
                 children: [
                     {
                         tag: "div",
-                        props: { class: "tags-informations" },
+                        props: { class: "box-tarif" },
                         children: [
                             {
-                                tag: "div",
-                                props: { class: "info" },
-                                children: [{
-                                    tag: 'TEXT_NODE',
-                                    content: this.props.address,
-                                }]
-                            },
-                            {
-                                tag: "div",
-                                props: { class: "tarif-date" },
-                                children: [
-                                    {
-                                        tag: "div",
-                                        props: { class: "info" },
-                                        children: [{
-                                            tag: 'TEXT_NODE',
-                                            content: this.props.tarif,
-                                        }]
-                                    },
-                                    {
-                                        tag: "div",
-                                        props: { class: "info" },
-                                        children: [{
-                                            tag: 'TEXT_NODE',
-                                            content: this.props.date,
-                                        }]
-                                    },
-                             ]
-
-                            },
+                                tag: 'TEXT_NODE',
+                                content: this.props.tarif,
+                            }
                         ]
                     },
                     {
@@ -209,13 +181,59 @@ export default class CardComponent extends DOM.Component {
                             },
                             {
                                 tag: "div",
+                                props: { class: "date-address" },
+                                children: [
+                                    {
+                                        tag: "div",
+                                        props: { class: "address"},
+                                        children: [
+                                            {
+                                                tag: 'i',
+                                                props: {
+                                                    class: "fa-solid fa-location-dot",
+                                                }
+                                            },
+                                            {
+                                                tag: "a",
+                                                props: {
+                                                    href: this.props.linkMap,
+                                                },
+                                                children: [
+                                                    {
+                                                        tag: 'TEXT_NODE',
+                                                        content: this.props.address,
+                                                    }
+                                                ]
+                                            }
+                                        ]
+
+                                    },
+                                    {
+                                        tag: "div",
+                                        props: { class: "date"},
+                                        children: [
+                                            {
+                                                tag: 'i',
+                                                props: {
+                                                    class: "fa-solid fa-calendar-days",
+                                                }
+                                            },
+                                            {
+                                                tag: 'TEXT_NODE',
+                                                content: this.props.date,
+                                            }
+                                        ]
+                                    },
+                                ]
+                            },
+                            {
+                                tag: "div",
                                 props: { class: "card-description" },
                                 children: [{
                                     tag: 'TEXT_NODE',
                                     content: this.props.description,
                                 }]
                             }
-
                         ]
                     },
                     {
@@ -241,25 +259,6 @@ export default class CardComponent extends DOM.Component {
                                     }
                                 ]
                             },
-                            {
-                                tag: "a",
-                                props: {
-                                    class: "link",
-                                    href: this.props.linkMap,
-                                },
-                                children: [
-                                    {
-                                    tag: 'TEXT_NODE',
-                                    content: this.props.textLinkMap,
-                                    },
-                                    {
-                                        tag: 'i',
-                                        props: {
-                                            class: "fa-sharp fa-solid fa-arrow-right fa-lg",
-                                        }
-                                    }
-                                ]
-                            }
                         ]
                     },
                 ]
