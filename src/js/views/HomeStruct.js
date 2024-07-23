@@ -98,11 +98,6 @@ export default class HomeStruct extends DOM.Component {
 
     render() {
         const { cardsSportHP, cardsEventHP, cardsSpotHP } = this.state;
-        this.setState({ cardsSportHP, cardsEventHP });
-    }
-
-    render() {
-        const { cardsSportHP, cardsEventHP } = this.state;
 
         return {
             tag: "div",
@@ -140,7 +135,7 @@ export default class HomeStruct extends DOM.Component {
                                     tag: "div",
                                     props: { class: "sport-cards" },
                                     children: cardsSpotHP
-                 },
+                                },
                                 getCtaButtonStructure(ctaButtonSpots)
                             ]
                         },
