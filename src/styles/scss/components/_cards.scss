@@ -140,7 +140,7 @@
 
 
 .event-card {
-    width: 45%;
+    width: calc(45% - 16px); /* This calculation ensures two cards fit in one row considering the gap */
     height: 500px;
     flex-shrink: 0;
     display: flex;
@@ -162,11 +162,11 @@
 
         .date-address {
             display: flex;
+            flex-wrap: wrap;
             gap: 32px;
 
-
             .address, .date {
-                a{
+                a {
                     color: inherit;
                     text-decoration: none;
                 }
@@ -176,9 +176,7 @@
             }
             .address {
                 color: #018C86;
-
             }
-
         }
     }
 
@@ -190,7 +188,6 @@
         width: fit-content;
         color: #FFF;
         background: #000;
-
     }
 
     .link {
@@ -199,7 +196,7 @@
         justify-content: space-between;
         gap: 16px;
         a {
-            color: $black;
+            color: #000; /* Changed to hex value */
             text-decoration: none;
             font-weight: 700;
             border: #000 solid 2px;
@@ -209,10 +206,19 @@
             align-items: center;
 
             &:hover {
-                background-color: $black;
-                color: $white;
+                background-color: #000; /* Changed to hex value */
+                color: #FFF; /* Changed to hex value */
             }
         }
+    }
+
+    @media screen and (max-width: $resolution-large-desktop) {
+        width: 100%;
+        height: fit-content;
+    }
+    @media screen and (max-width: $resolution-tablet) {
+        width: 80%;
+        height: fit-content;
     }
 
 }

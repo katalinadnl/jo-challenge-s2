@@ -6,16 +6,15 @@
     .events-cards-section {
         display: flex;
         flex-wrap: wrap;
-        gap: rem(32);
+        gap: 24px;
         justify-content: space-between;
         align-items: center;
-        padding: rem(64) rem(0);
+        padding: 64px 0;
 
         @media screen and (max-width: $resolution-large-desktop) {
+            gap: 16px;
             justify-content: center;
-            align-items: center;
+
         }
-
     }
-
 }
