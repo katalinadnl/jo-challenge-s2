@@ -20,7 +20,7 @@ export default class SpotsStruct extends DOM.Component {
     constructor(props) { 
         super(props); 
         this.state = { 
-            cardspot: [],
+            cardspot: [], 
         };
     }
 
@@ -32,21 +32,22 @@ export default class SpotsStruct extends DOM.Component {
 
             const cardProps = {
                 type: "spot",
-                SiteName: event.fields.nom_site,
+                spot : spotsMapping[event.fields.sports.spot] || spotsMapping.default, 
+                SiteNameLabel: event.fields.nom_site,
                 SportLabel:  event.fields.sports,
                 StartDateLabel: formatDate(event.fields.start_date),
                 EndDateLabel: formatDate(event.fields.end_date),
-                image: spotsMapping[event.fields.nom_site] || spotsMapping.default, //permet de récupérer l'image correspondant au spot
+                image: spotsMapping[event.fields.sports] || spotsMapping.default, 
                 buttonDetails: "Voir en détails",
                 buttonMap: "Voir sur la carte" 
-
-
             };
+            console.log(spotsMapping[event.fields.sports]);
+
             const cardComponent = DOM.createElement(CardComponent, cardProps, []);
             CardComponents.push(cardComponent);
 
-            if (!spotsMapping[event.fields.spots]) {
-                console.log(`Missing image for spot: ${event.fields.spots}`);
+            if (!spotsMapping[event.fields.sports]) {
+                console.log(`Missing image for spot: ${event.fields.sports}`);
             }
         });
 

@@ -26,7 +26,7 @@ export default class CardComponent extends DOM.Component {
                 props: {
                     class: "sport-card card",
                     style: {
-                        backgroundImage: `url(${this.props.image})`
+                        backgroundImage: `url(${this.props.image})`,
                     },
                 },
                 children: [
@@ -50,7 +50,7 @@ export default class CardComponent extends DOM.Component {
                                 children: [
                                     {
                                         tag: 'TEXT_NODE',
-                                        content: this.props.title,
+                                        content: this.props.SpotName,
                                     },
                                 ],
 
@@ -75,7 +75,11 @@ export default class CardComponent extends DOM.Component {
         } else if (this.props.type === "spot") {
             return {
                 tag: "div",
-                props: { class: "spots-card" },
+                props: { class: "spots-card",
+                    style: {
+                        backgroundImage:  `url(${this.props.image.image})`
+                    },
+                },
                 children: [
                     {
                     tag: "div",
@@ -90,6 +94,16 @@ export default class CardComponent extends DOM.Component {
                                 content: this.props.SportLabel,
                             }
                         ],
+                        },
+                        {
+                            tag: "p",
+                            props: { class: "spots-card-label" },
+                            children: [
+                                {
+                                    tag: 'TEXT_NODE',
+                                    content: this.props.SiteNameLabel,
+                                }
+                            ],
                         },
                         {
                             tag: "p",
@@ -118,7 +132,7 @@ export default class CardComponent extends DOM.Component {
                                 tag: "h4",
                                 children: [{
                                     tag: 'TEXT_NODE',
-                                    content: this.props.SiteName,
+                                    content: this.props.spot,
                                 },]
                             },
                             {
