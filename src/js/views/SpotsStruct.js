@@ -34,7 +34,7 @@ export default class SpotsStruct extends DOM.Component {
 
             const cardProps = {
                 type: "spot",
-                spot : spotData.spot,
+                SpotName : spotData.spot,
                 SiteNameLabel: event.fields.nom_site,
                 SportLabel:  event.fields.sports,
                 StartDateLabel: formatDate(event.fields.start_date),
