@@ -44,7 +44,7 @@ export default class MapStruct extends DOM.Component {
       map = await createGMap(data); // Ensure createGMap is awaited if it contains asynchronous operations
 
       // Afficher toutes les cartes par défaut
-      updateResultsSection(this.state.sitesData);
+
 
       // Ajouter le gestionnaire d'événements pour le bouton "Appliquer"
       const applyFiltersButton = document.getElementById("applyFilters");
@@ -111,6 +111,9 @@ export default class MapStruct extends DOM.Component {
                 {
                   tag: "div",
                   props: { id: "results-container" }, // Ajout de l'ID results-container
+                  children: [
+                    updateResultsSection(this.state.sitesData??[])
+                   ] // Ajout de la section des résultats
                 }
               ],
             },

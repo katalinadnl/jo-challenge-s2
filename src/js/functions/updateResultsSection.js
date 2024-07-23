@@ -44,14 +44,7 @@ import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 
 export function updateResultsSection(filteredSites) {
-  const resultsContainer = document.getElementById("results-container");
-
-  if (!resultsContainer) {
-    console.error("Results container not found");
-    return;
-  }
-
-  const cardComponents = filteredSites.map(site => 
+  const cardComponents = filteredSites.map(site =>
     DOM.createElement(CardComponent, {
       site: site,
       type: "spot",
@@ -72,7 +65,5 @@ export function updateResultsSection(filteredSites) {
     children: cardComponents,
   };
 
-  const generatedResults = DOM.generateStructure(resultsStructure);
-  resultsContainer.innerHTML = "";
-  resultsContainer.appendChild(generatedResults);
+  return resultsStructure;
 }
