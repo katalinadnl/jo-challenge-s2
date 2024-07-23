@@ -89,10 +89,11 @@ export function generateStructure(structure) {
 
     if (structure.instance && structure.instance.setRoot) {
         structure.instance.setRoot(element);
-
-        if (structure.instance.isRender && structure.instance.componentDidMount) {
-            structure.instance.componentDidMount();
-        }
+        
+        // Remove this part to avoid multiple calls to componentDidMount
+        // if (structure.instance.isRender && structure.instance.componentDidMount) {
+        //     structure.instance.componentDidMount();
+        // }
     }
 
     return element;
@@ -100,5 +101,6 @@ export function generateStructure(structure) {
 
 export const DOM = {
     createElement,
-    Component: Component,
-}
+    Component,
+    generateStructure
+};

@@ -16,7 +16,7 @@ export default class Component {
         this.isRender = false; // set the isRender to false
         const newElement = generateStructure(this.render()); // generate the new structure
         const element = this.__rootElement; // get the root element
-        const parent = element.parentElement; // get the parent element
+        const parent = element ? element.parentElement : null; // get the parent element
 
         if (parent && element) {
             if (this.componentWillUnmount) {
