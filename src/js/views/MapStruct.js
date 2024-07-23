@@ -10,7 +10,7 @@ import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
 import { updateResultsSection } from "../functions/updateResultsSection.js"; // Correct import
 
 const eventsHeroContent = {
-  headingText: "Carte intéractive",
+  headingText: "Déplacez-vous dans les rues de Paris 2024",
   paragraphText: " Découvrez Paris 2024 en détail ! Plongez dans l'Aventure des jeux à travers notre carte interactive.",
 };
 

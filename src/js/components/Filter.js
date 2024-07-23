@@ -30,17 +30,21 @@ export class filterComponent extends DOM.Component {
         ;
     }
 
-    updateEventData = () => {
-        // const expensiveProducts = products.filter(product => product.price > 50);
+    updateEventData = (e, type) => {
+        e.preventDefault()
+        const {id, value} = e.target;
+        this.props.onChangeEvent({
+            id: id,
+            value: value,
+            type: type
+        });
     }
 
     createDropdown = (id, placeholder, labels = []) => ({
         tag: "select",
-        props: {id, class: "dropdown"},
+        props: {id, class: "filter-dropdown"},
         events: {
-            change: [() => {
-                console.log('Dropdown changed:', id);
-            }]
+            change: [(e) => this.updateEventData(e, id)]
         },
         children: [
             {
@@ -64,10 +68,10 @@ export class filterComponent extends DOM.Component {
             tag: "div",
             props: {class: "filter-component"},
             children: [
-                this.createDropdown("site-name", "Select Site", siteNames),
-                this.createDropdown("sport", "Select Sport", sportLabels),
-                this.createDropdown("start-date", "Select Start Date", startDateLabels.map(date => new Date(date).toISOString().split("T")[0])),
-                this.createDropdown("end-date", "Select End Date", endDateLabels.map(date => new Date(date).toISOString().split("T")[0])),
+                this.createDropdown("site-name", "Le lieu", siteNames),
+                this.createDropdown("sport", "Le sport", sportLabels),
+                this.createDropdown("start-date", "La date de début", startDateLabels.map(date => new Date(date).toISOString().split("T")[0])),
+                this.createDropdown("end-date", "La date de fin", endDateLabels.map(date => new Date(date).toISOString().split("T")[0])),
             ]
         };
     }
