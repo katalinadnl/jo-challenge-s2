@@ -145,36 +145,52 @@
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 32px;
     border-radius: 5px;
     background: #FFF;
     box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    padding: 24px;
-
-    .tags-informations{
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        .tarif-date {
-            display: flex;
-            flex-direction: row;
-            gap: 16px;
-        }
-        .info {
-            padding: 8px 12px;
-            background-color: rgba(255, 255, 255, 0.70);
-            border: 2px solid black;
-            border-radius: 5px;
-        }
-
-    }
+    padding: 98px 32px;
 
     .text-section {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        color: black;
+        flex-grow: 1;
+        gap: 16px;
+        h4 {
+            margin: 0;
+        }
+
+        .date-address {
+            display: flex;
+            gap: 32px;
+
+
+            .address, .date {
+                a{
+                    color: inherit;
+                    text-decoration: none;
+                }
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .address {
+                color: #018C86;
+
+            }
+
+        }
+    }
+
+    .box-tarif {
+        padding: 8px 12px;
+        background-color: rgba(255, 255, 255, 0.50);
+        border: 2px solid black;
+        border-radius: 5px;
+        width: fit-content;
+        color: #FFF;
+        background: #000;
+
     }
 
     .link {
@@ -197,11 +213,6 @@
                 color: $white;
             }
         }
-    }
-
-    @media screen and (max-width: $resolution-large-desktop) {
-        width: 100%;
-        height: auto;
     }
 
 }
