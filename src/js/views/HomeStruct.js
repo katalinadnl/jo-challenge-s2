@@ -40,7 +40,8 @@ export default class HomeStruct extends DOM.Component {
         const sportsData = await fetchEventsData();
         const spotsData = await fetchSpotsData();
         const validTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
-        const validSpotsTitles = ["Surf (SRF)", "Para Triathlon (PTRI)", "Volley-ball de plage (VBV)"];
+        const validSpotsTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
+
 
         const cardsSportHP = sportsData.map(event => {
             const title = event.fields.sports;
