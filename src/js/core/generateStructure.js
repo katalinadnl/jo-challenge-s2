@@ -1,7 +1,7 @@
 import Component from "../components/Component.js";
 
 
-export default function isClassComponent(component) {
+export function isClassComponent(component) {
     if (typeof component !== 'function') {
         return false;
     }
