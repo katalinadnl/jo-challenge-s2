@@ -47,7 +47,6 @@ const imageMapping = {
     "Cyclisme VTT (MTB)": "../../sources/sports/VTT.jpg",
     "Para Tir à l'arc (PARC), Para Athlétisme - arrivée Marathon (PATM)": "../../sources/sports/PATM.jpeg",
     "BMX freestyle (BMF)": "../../sources/sports/BMF.png",
-    "Skateboard (SKB)": "../../sources/sports/SKB.png",
     "Para Athlétisme - départ Marathon (PATM)": "../../sources/sports/PATM.jpeg",
     "default": "../../sources/sports/Default.png",
     "Goalball (PGBL)": "../../sources/sports/PGBL.jpg",

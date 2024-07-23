@@ -1,3 +1,4 @@
+// components/EventsStruct.js
 import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
@@ -16,64 +17,124 @@ function formatDate(dateString) {
     return `${day}/${month}/${year}`;
 }
 
-function truncateDescription(title, description, maxLength = 350) {
-    if (title.length < 60) {
-        if (description.length > maxLength) {
-            return `${description.substring(0, maxLength)}...`;
-        }
-    } else {
-        if (description.length > 150) {
-            return `${description.substring(0, 100)}...`;
-        }
-    }
-    return description;
-}
-
 export default class EventsStruct extends DOM.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cardComponents: []
+            cardComponents: [],
+            start: 0,
+            rowsPerPage: 10,
+            totalCount: 0,
+            loading: false,
         };
+        this.observer = null;
+        this.loadMore = this.loadMore.bind(this);
+        this.intersectionObserverCallback = this.intersectionObserverCallback.bind(this);
     }
 
     async componentDidMount() {
-        try {
-            const eventsData = await fetchEvents();
-            console.log('Events data:', eventsData); // Debugging statement
+        await this.loadMore();
+        this.initializeObserver();
+    }
 
-            const cardComponents = eventsData.map(event => {
+    async loadMore() {
+        if (this.state.loading || (this.state.totalCount && this.state.cardComponents.length >= this.state.totalCount)) {
+            console.log('No more data to load or already loading.');
+            return;
+        }
+
+        this.setState({ loading: true });
+
+        try {
+            const { start, rowsPerPage, cardComponents } = this.state;
+            console.log(`Loading more data from start=${start}, rowsPerPage=${rowsPerPage}`);
+
+            const { totalCount, records } = await fetchEvents(start, rowsPerPage);
+            console.log(`Fetched ${records.length} records, total count is ${totalCount}`);
+
+            const newCardComponents = records.map(event => {
                 const cardProps = {
                     type: "event",
                     title: event.title,
                     date: formatDate(event.starting_date),
-                    description: truncateDescription(event.title || "Title not provided", event.description || "Description not provided"),
-                    tarif: event.tarif,
+                    description: event.description,
+                    tarif: event.tarif || "Pas de tarif indiqué",
                     address: event.address,
                     linkJO: event.external_link || "https://olympics.com/fr/paris-2024",
                     textLinkJO: "En savoir plus",
-                    linkMap: "/carte",
+                    linkMap: `/carte?lat=${event.latitude}&lon=${event.longitude}`,
                     textLinkMap: "Voir sur la carte",
-
                 };
-                console.log('Card props:', cardProps); // Debugging statement
+                console.log('Card props:', cardProps);
                 return DOM.createElement(CardComponent, cardProps, []);
             });
-            this.setState({ cardComponents });
+
+            this.setState({
+                cardComponents: cardComponents.concat(newCardComponents),
+                start: start + rowsPerPage,
+                totalCount,
+                loading: false,
+            }, () => {
+                this.reinitializeObserver();
+            });
         } catch (error) {
-            console.error('Error in componentDidMount:', error); // Debugging statement
+            console.error('Error loading more events:', error);
+            this.setState({ loading: false });
+        }
+    }
+
+    initializeObserver() {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 1.0,
+        };
+
+        this.observer = new IntersectionObserver(this.intersectionObserverCallback, options);
+        this.observeLoadMoreTrigger();
+        console.log('Observer initialized.');
+    }
+
+    observeLoadMoreTrigger() {
+        const loadMoreTrigger = document.querySelector('.load-more-trigger');
+        if (loadMoreTrigger) {
+            this.observer.observe(loadMoreTrigger);
+            console.log('Observer is observing load-more-trigger.');
+        } else {
+            console.log('load-more-trigger not found.');
+        }
+    }
+
+    reinitializeObserver() {
+        if (this.observer) {
+            this.observer.disconnect();
+        }
+        this.initializeObserver();
+    }
+
+    intersectionObserverCallback(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log('Load more trigger intersected.');
+                this.loadMore();
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.observer) {
+            this.observer.disconnect();
         }
     }
 
     render() {
-        const { cardComponents } = this.state;
+        const { cardComponents, loading } = this.state;
 
-        const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
             props: { class: "event" },
             children: [
-                navbar,
+                DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(eventsHeroContent),
                 {
                     tag: "main",
@@ -82,13 +143,24 @@ export default class EventsStruct extends DOM.Component {
                         {
                             tag: "section",
                             props: { class: "events-cards-section" },
-                            children:
-                                cardComponents,
+                            children: [
+                                ...cardComponents,
+                                {
+                                    tag: "div",
+                                    props: { class: "load-more-trigger" },
+                                    children: []
+                                },
+                                loading && {
+                                    tag: "div",
+                                    props: { class: "loading" },
+                                    children: ["Loading..."]
+                                }
+                            ].filter(Boolean),
                         },
-                    ]
+                    ],
                 },
-                getFooterStructure()
-            ]
+                getFooterStructure(),
+            ],
         };
     }
 }

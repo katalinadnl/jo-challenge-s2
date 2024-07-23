@@ -1,78 +1,43 @@
 @import '../partials/_mixin.scss';
 @import '../partials/_variables.scss';
 
-
-
 .filter-component {
   border-radius: rem(15);
   background: $white;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   width: 100%;
   box-sizing: border-box;
-  padding : rem(30);
+  padding: rem(30);
   top: rem(20);
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap : rem(21);
+  gap: rem(21);
 }
 
-.filter{
-    background-color: $white;
-    border: rem(1.5) solid $black;
-    border-radius : rem(5);
-    color : $black; 
-    cursor: pointer;
-    height: rem(40);
-    aspect-ratio: 37/8;
-    list-style: none;
-    position: relative;
-    z-index: 50;
-      box-sizing: border-box;
-}
-
-.filter:not(:hover) .filter-list{
-  display: none;
-}
-
-.filter-list{
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  box-sizing: border-box;
-  width: 100%;
-  height: rem(250);
-  overflow-x: auto;
-
-  right:0;
-  top: 50%;
-  border: 1px solid black;
-  border-radius : rem(5);
-  padding: 0;
+.dropdown {
   background-color: $white;
-}
-
-.filter-value {
-  list-style: none;
-  box-sizing: border-box;
-  width: 100%;
-  background-color: $white;
-  color : $black;
-  cursor: pointer;
-  border: 5px solid $white;
+  border: rem(1.5) solid $black;
   border-radius: rem(5);
+  color: $black;
+  padding: rem(10);
+  font-size: rem(14);
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
   text-align: left;
-
 }
 
-.filter-value:hover{
-  background-color: $light-blue;
+.filter-button {
+  background-color: $white;
+  border: rem(1.5) solid $black;
+  border-radius: rem(5);
+  color: $black;
+  padding: rem(10);
+  font-size: rem(14);
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
-
-.cta-container{
-margin-left: auto;
-}
-
-   
-

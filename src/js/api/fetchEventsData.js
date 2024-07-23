@@ -1,39 +1,17 @@
-/*export async function fetchEvents() {
-    const rowsPerPage = 100;
-    let allRecords = [];
-    let start = 0;
-    let totalCount = 0;
-
+// api/fetchEventsData.js
+export async function fetchEvents(start = 0, rowsPerPage = 10) {
     try {
-        // Fetch the first page to get the total count
-        const initialResponse = await fetch(
+        const response = await fetch(
             `https://data.paris2024.org/api/explore/v2.1/catalog/datasets/games_map_events_fr/records?rows=${rowsPerPage}&start=${start}`
         );
-        const initialData = await initialResponse.json();
-        totalCount = initialData.total_count;
-        allRecords = initialData.results;
-
-        // Fetch subsequent pages
-        while (allRecords.length < totalCount) {
-            start += rowsPerPage;
-            const response = await fetch(
-                `https://data.paris2024.org/api/explore/v2.1/catalog/datasets/games_map_events_fr/records?rows=${rowsPerPage}&start=${start}`
-            );
-            const data = await response.json();
-            allRecords = allRecords.concat(data.results);
-        }
-
-        console.log('Fetched all records:', allRecords); // Debugging statement
-        return allRecords;
+        const data = await response.json();
+        console.log(`Fetched data from start=${start}, rowsPerPage=${rowsPerPage}:`, data); // Debugging statement
+        return {
+            totalCount: data.total_count,
+            records: data.results
+        };
     } catch (error) {
-        console.error('Error fetching events data:', error); // Debugging statement
-        return [];
+        console.error('Error fetching events data:', error);
+        return { totalCount: 0, records: [] };
     }
-}*/
-export async function fetchEvents() {
-    const response = await fetch(
-        "https://data.paris2024.org/api/explore/v2.1/catalog/datasets/games_map_events_fr/records?rows=10"
-    );
-    const data = await response.json();
-    return data.results;
 }
