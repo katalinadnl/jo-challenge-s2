@@ -87,7 +87,7 @@ export default class EventsStruct extends DOM.Component {
         const currentScroll = window.scrollY + window.innerHeight;
 
         if (currentScroll >= documentHeight) {
-            console.log('je suis en bas de la page')
+            this.loadMore();
         }
     }
 
