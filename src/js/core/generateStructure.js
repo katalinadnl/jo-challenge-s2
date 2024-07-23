@@ -78,6 +78,10 @@ export function generateStructure(structure) {
     if (structure.events) {
         for (const eventName in structure.events) {
             for (const eventListeners of structure.events[eventName]) {
+                if (eventName === "scroll") {
+                    window.addEventListener(eventName, eventListeners);
+                }
+
                 element.addEventListener(eventName, eventListeners);
             }
         }

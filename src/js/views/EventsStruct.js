@@ -27,14 +27,10 @@ export default class EventsStruct extends DOM.Component {
             totalCount: 0,
             loading: false,
         };
-        this.observer = null;
-        this.loadMore = this.loadMore.bind(this);
-        this.intersectionObserverCallback = this.intersectionObserverCallback.bind(this);
     }
 
     async componentDidMount() {
         await this.loadMore();
-        this.initializeObserver();
     }
 
     async loadMore() {
@@ -83,47 +79,15 @@ export default class EventsStruct extends DOM.Component {
         }
     }
 
-    initializeObserver() {
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 1.0,
-        };
 
-        this.observer = new IntersectionObserver(this.intersectionObserverCallback, options);
-        this.observeLoadMoreTrigger();
-        console.log('Observer initialized.');
-    }
+    handleLoadMore = (e) => {
+        e.preventDefault();
 
-    observeLoadMoreTrigger() {
-        const loadMoreTrigger = document.querySelector('.load-more-trigger');
-        if (loadMoreTrigger) {
-            this.observer.observe(loadMoreTrigger);
-            console.log('Observer is observing load-more-trigger.');
-        } else {
-            console.log('load-more-trigger not found.');
-        }
-    }
+        const documentHeight = document.documentElement.scrollHeight;
+        const currentScroll = window.scrollY + window.innerHeight;
 
-    reinitializeObserver() {
-        if (this.observer) {
-            this.observer.disconnect();
-        }
-        this.initializeObserver();
-    }
-
-    intersectionObserverCallback(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                console.log('Load more trigger intersected.');
-                this.loadMore();
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        if (this.observer) {
-            this.observer.disconnect();
+        if (currentScroll >= documentHeight) {
+            this.loadMore();
         }
     }
 
@@ -147,6 +111,9 @@ export default class EventsStruct extends DOM.Component {
                                 ...cardComponents,
                                 {
                                     tag: "div",
+                                    events: {
+                                        scroll: [this.handleLoadMore],
+                                    },
                                     props: { class: "load-more-trigger" },
                                     children: []
                                 },
