@@ -56,9 +56,6 @@
     position: relative;
     border-radius: rem(4);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-image:
-    linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
-     url("../images/daphne-be-frenchie-MEdhnk_6Hn4-unsplash.jpg");
     background-size: cover;
     flex-shrink: 0;
 
@@ -89,6 +86,8 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
 
         p, h4{
             margin: 0px !important;

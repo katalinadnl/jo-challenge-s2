@@ -73,11 +73,3 @@ export default imageMapping;
 
 
 
-
-
-
-
-
-
-
-

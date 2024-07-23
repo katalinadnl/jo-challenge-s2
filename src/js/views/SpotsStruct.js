@@ -17,9 +17,9 @@ const spotsHeroContent = {
 
 
 export default class SpotsStruct extends DOM.Component {
-    constructor(props) { 
-        super(props); 
-        this.state = { 
+    constructor(props) {
+        super(props);
+        this.state = {
             cardspot: [],
         };
     }
@@ -29,24 +29,27 @@ export default class SpotsStruct extends DOM.Component {
         const CardComponents = [];
 
         spotsData.forEach(event => {
+            const mappingKey = event.fields.sports;
+            const spotData = spotsMapping[mappingKey] || spotsMapping.default;
 
             const cardProps = {
                 type: "spot",
-                SiteName: event.fields.nom_site,
+                SpotName : spotData.spot,
+                SiteNameLabel: event.fields.nom_site,
                 SportLabel:  event.fields.sports,
                 StartDateLabel: formatDate(event.fields.start_date),
                 EndDateLabel: formatDate(event.fields.end_date),
-                image: spotsMapping[event.fields.nom_site] || spotsMapping.default, //permet de récupérer l'image correspondant au spot
+                image: spotsMapping[event.fields.sports] || spotsMapping.default,
                 buttonDetails: "Voir en détails",
-                buttonMap: "Voir sur la carte" 
-
-
+                buttonMap: "Voir sur la carte"
             };
+            console.log(spotsMapping[event.fields.sports]);
+
             const cardComponent = DOM.createElement(CardComponent, cardProps, []);
             CardComponents.push(cardComponent);
 
-            if (!spotsMapping[event.fields.spots]) {
-                console.log(`Missing image for spot: ${event.fields.spots}`);
+            if (!spotsMapping[event.fields.sports]) {
+                console.log(`Missing image for spot: ${event.fields.sports}`);
             }
         });
 
@@ -56,7 +59,7 @@ export default class SpotsStruct extends DOM.Component {
     render() {
         const { CardComponents } = this.state;
 
-       
+
         const navbar = DOM.createElement(getNavbarStructure, []);
         return {
             tag: "div",
@@ -132,9 +135,9 @@ export default class SpotsStruct extends DOM.Component {
                         }
 
                     ]
-                }, 
+                },
                 getFooterStructure()
-           ] 
-        }; 
+           ]
+        };
     }
 }

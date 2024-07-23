@@ -1,105 +1,334 @@
 const spotsMapping = {
-    "Para Triathlon (PTRI)": "../../sources/sports/PTRI.jpg",
-    "Football (FBL)": "../../sources/sports/FBL.jpg",
-    "Volley-ball de plage (VBV)": "../../sources/sports/VBV.png",
-    "Escrime fauteuil (PWFE), Para Taekwondo (PTKW)": "../../sources/sports/PWFE.jpg",
-    "Basketball fauteuil (PWBK)": "../../sources/sports/PWBK.jpg",
-    "Athlétisme - arrivée Marathon (ATM), Cyclisme sur route - départ Contre-la-montre (CRD), Tir à l'arc (ARC)": "../../sources/sports/CRD.jpg",
-    "Escalade (CLB)": "../../sources/sports/CLB.png",
-    "Skateboard (SKB)": "../../sources/sports/SKB.png",
-    "Parc Urbain la Concorde (FCO)": "../../sources/sports/FCO.png",
-    "Boxe (BOX), Pentathlon moderne (MDN)": "../../sources/sports/BOX.png",
-    "Canoë-kayak slalom (CSL)": "../../sources/sports/Canoë_kayak_slalom.jpg",
-    "Cérémonie d'ouverture Paralympique (POC)": "../../sources/sports/POC.jpg",
-    "Golf (GLF)": "../../sources/sports/GLF.png",
-    "Basketball (BKB), Handball (HBL)": "../../sources/sports/Basketball.png",
-    "Tennis de table (TTE)": "../../sources/sports/TTE.jpg",
-    "Tennis de table para (PTTE)": "../../sources/sports/PTTE.png",
-    "Handball (HBL), Haltérophilie (WLF)": "../../sources/sports/HBL.jpg",
-    "Para Athlétisme (PATH), Cérémonie de clôture Paralympique (PCC)": "../../sources/sports/PATH.jpg",
-    "Aviron (ROW), Canoë - course en ligne (CSP)": "../../sources/sports/ROW.png",
-    "Hockey (HOC)": "../../sources/sports/HOC.png",
-    "Cyclisme sur route - arrivée Contre-la-montre (CRD), Natation marathon (OWS), Triathlon (TRI)": "../../sources/sports/CRD.jpg",
-    "Basketball (BKB), Gymnastique artistique (GAR), Gymnastique trampoline (GTR)": "../../sources/sports/GYMART.jpg",
-    "Judo (JUD), Lutte (WRE)": "../../sources/sports/JUD.png",
-    "Badminton (BDM), Gymnastique rythmique (GRY)": "../../sources/sports/BDM.png",
-    "Para badminton (PBDM), Para Haltérophilie (PPWL)": "../../sources/sports/PBDM.png",
-    "Para cyclisme sur route (PCRD)": "../../sources/sports/PCRD.png",
-    "Para Tir Sportif (PSHO)": "../../sources/sports/PSHO.jpg",
-    "Para Natation (PSWM)": "../../sources/sports/PSWM.jpg",
-    "Cécifoot (PFBB)": "../../sources/sports/PFBB.jpg",
-    "Escrime (FEN), Taekwondo (TKW)": "../../sources/sports/FEN.png",
-    "Voile (SAL)": "../../sources/sports/SAL.jpg",
-    "Volleyball assis (PVBS)": "../../sources/sports/PVBS.avif",
-    "Tennis fauteuil (PWTE)": "../../sources/sports/PWTE.jpg",
-    "Tennis (TEN), Boxe (BOX)": "../../sources/sports/Default.png",
-    "Volley-ball (VVO)": "../../sources/sports/VVO.jpg",
-    "Boccia (PBOC)": "../../sources/sports/PBOC.webp",
-    "Surf (SRF)": "../../sources/sports/SRF.png",
-    "Para Cyclisme sur piste (PCTR)": "../../sources/sports/PCRT.jpg",
-    "Sports équestres - dressage (EQD), Sports équestres - concours complet (EQE), Sports équestres - saut d'obstacles (EQJ), Pentathlon moderne (MPN)": "../../sources/sports/EQD.png",
-    "Para Equitation (PEQU)": "../../sources/sports/PEQU.jpg",
-    "Para Aviron (PROW), Para Canoë (PCSP)": "../../sources/sports/PROW.jpg",
-    "Natation artistique (SWA), Plongeon (DIV), Water-polo (WPO)": "../../sources/sports/SWA.jpg",
-    "Para Judo (PJUD), Rugby fauteuil (PWRU)": "../../sources/sports/PWRU.jpg",
-    "Tir (SHO)": "../../sources/sports/SHO.jpg",
-    "Natation (SWM), Water-polo (WPO)": "../../sources/sports/SWM.jpg",
-    "Cyclisme VTT (MTB)": "../../sources/sports/VTT.jpg",
-    "Para Tir à l'arc (PARC), Para Athlétisme - arrivée Marathon (PATM)": "../../sources/sports/PATM.jpeg",
-    "BMX freestyle (BMF)": "../../sources/sports/BMF.png",
-    "Skateboard (SKB)": "../../sources/sports/SKB.png",
-    "Para Athlétisme - départ Marathon (PATM)": "../../sources/sports/PATM.jpeg",
-    "default": "../../sources/sports/Default.png",
-    "Goalball (PGBL)": "../../sources/sports/PGBL.jpg",
-    "Athlétisme (ATH), Rugby à 7 (RU7), Cérémonie de clôture (OCC)": "../../sources/sports/ATH.png",
-    "Athlétisme marche (ATW), Cyclisme sur route - Course sur route (CRD)": "../../sources/sports/ATW.jpg",
-    "Cyclisme sur piste (CTR)": "../../sources/sports/CTR.png",
-    "BMX Racing (BMX)": "../../sources/sports/BMX.jpg",
-
+    "Para Triathlon (PTRI)": {
+        image: "../../styles/images/spots/AA.png",
+        spot: "La Felicità",
+        content: "La Felicità est un immense food-market en direct producteurs où tout est 100% fait maison. Venez vous balader dans les allées, humer le fumet fou des pizzas napolitaines, et kiffez l'ambiance festive.",
+        horaires: "Tous les jours de 8h à 2h",
+    },
+    "Football (FBL)": {
+        image: "../../styles/images/spots/BDX.jpg",
+        spot: "Stadium XYZ",
+        content: "Stadium XYZ est le lieu incontournable pour les amateurs de football. Profitez des écrans géants pour suivre les matchs en direct avec une ambiance électrique.",
+        horaires: "du Mardi au Dimanche de 10h à 23h",
+    },
+    "Volley-ball de plage (VBV)": {
+        image: "../../styles/images/spots/FLC.png",
+        spot: "Beach ABC",
+        content: "Beach ABC est l'endroit idéal pour vivre les matchs de volley-ball de plage. Sable fin, cocktails exotiques, et ambiance estivale au rendez-vous.",
+        horaires: "Tous les jours de 9h à 22h",
+    },
+    "Escrime fauteuil (PWFE), Para Taekwondo (PTKW)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Arena DEF",
+        content: "Arena DEF propose des retransmissions des compétitions d'escrime et de para taekwondo dans une atmosphère sportive et conviviale.",
+        horaires: "Lundi - Vendredi : 11h - 22h, Samedi - Dimanche : 10h - 23h",
+    },
+    "Basketball fauteuil (PWBK)": {
+        image: "../../styles/images/spots/PAIII.png",
+        spot: "Court GHI",
+        content: "Court GHI est le spot parfait pour les fans de basketball fauteuil, avec des retransmissions en direct et des événements spéciaux.",
+        horaires: "Tous les jours de 10h à 23h",
+    },
+    "Athlétisme - arrivée Marathon (ATM), Cyclisme sur route - départ Contre-la-montre (CRD), Tir à l'arc (ARC)": {
+        image: "../../styles/images/spots/PC.png",
+        spot: "Track JKL",
+        content: "Track JKL offre une vue imprenable sur les épreuves d'athlétisme et de cyclisme, avec un grand écran et une ambiance festive.",
+        horaires: "Tous les jours de 8h à 22h",
+    },
+    "Escalade (CLB)": {
+        image: "../../styles/images/spots/PM.png",
+        spot: "Wall MNO",
+        content: "Wall MNO est le spot incontournable pour les passionnés d'escalade, avec des retransmissions des compétitions et des ateliers d'initiation.",
+        horaires: "Lundi - Vendredi : 10h - 21h, Samedi - Dimanche : 9h - 22h",
+    },
+    "Skateboard (SKB)": {
+        image: "../../styles/images/spots/SYM.png",
+        spot: "Skate Park Sym",
+        content: "Skate Park Sym est le lieu idéal pour regarder les compétitions de skateboard, avec des démonstrations en live et une ambiance urbaine.",
+        horaires: "Tous les jours de 10h à 20h",
+    },
+    "Parc Urbain la Concorde (FCO)": {
+        image: "../../styles/images/spots/TE.png",
+        spot: "Concorde Park",
+        content: "Concorde Park est un espace vert en plein cœur de Paris, parfait pour suivre les épreuves en plein air avec des installations confortables.",
+        horaires: "Tous les jours de 7h à 22h",
+    },
+    "Boxe (BOX), Pentathlon moderne (MDN)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Boxing Hub",
+        content: "Boxing Hub diffuse les combats de boxe et les épreuves de pentathlon moderne dans une atmosphère dynamique et sportive.",
+        horaires: "Lundi - Samedi : 10h - 23h, Dimanche : 11h - 20h",
+    },
+    "Canoë-kayak slalom (CSL)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "River Spot",
+        content: "River Spot offre une expérience immersive pour les épreuves de canoë-kayak slalom avec des retransmissions en direct au bord de l'eau.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "Cérémonie d'ouverture Paralympique (POC)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Opening Arena",
+        content: "Opening Arena est le lieu de rendez-vous pour vivre la cérémonie d'ouverture des Jeux Paralympiques en direct avec une ambiance festive.",
+        horaires: "Tous les jours de 8h à minuit",
+    },
+    "Golf (GLF)": {
+        image: "../../styles/images/spots/TGN.jpg",
+        spot: "Golf Club Paris",
+        content: "Golf Club Paris retransmet les compétitions de golf dans un cadre élégant et serein, idéal pour les amateurs de ce sport.",
+        horaires: "Lundi - Dimanche : 7h - 21h",
+    },
+    "Basketball (BKB), Handball (HBL)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Sports Complex XYZ",
+        content: "Sports Complex XYZ est l'endroit parfait pour suivre les matchs de basketball et de handball avec une ambiance conviviale.",
+        horaires: "Lundi - Vendredi : 10h - 22h, Samedi - Dimanche : 9h - 23h",
+    },
+    "Tennis de table (TTE)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Ping Pong Arena",
+        content: "Ping Pong Arena diffuse les compétitions de tennis de table dans un cadre moderne et animé.",
+        horaires: "Tous les jours de 10h à 22h",
+    },
+    "Tennis de table para (PTTE)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Ping Pong Center",
+        content: "Para Ping Pong Center offre des retransmissions des compétitions de tennis de table para avec des installations adaptées.",
+        horaires: "Tous les jours de 10h à 21h",
+    },
+    "Handball (HBL), Haltérophilie (WLF)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Fitness Arena",
+        content: "Fitness Arena est le lieu idéal pour suivre les compétitions de handball et d'haltérophilie dans une atmosphère dynamique.",
+        horaires: "Lundi - Vendredi : 9h - 22h, Samedi - Dimanche : 10h - 23h",
+    },
+    "Para Athlétisme (PATH), Cérémonie de clôture Paralympique (PCC)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Paralympic Stadium",
+        content: "Paralympic Stadium propose des retransmissions des compétitions de para athlétisme et la cérémonie de clôture dans une ambiance festive.",
+        horaires: "Tous les jours de 8h à minuit",
+    },
+    "Aviron (ROW), Canoë - course en ligne (CSP)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Rowing Club",
+        content: "Rowing Club diffuse les compétitions d'aviron et de canoë en ligne avec une vue sur l'eau et une atmosphère détendue.",
+        horaires: "Tous les jours de 7h à 21h",
+    },
+    "Hockey (HOC)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Hockey Field",
+        content: "Hockey Field propose des retransmissions des matchs de hockey sur un grand écran avec des gradins confortables.",
+        horaires: "Lundi - Dimanche : 9h - 22h",
+    },
+    "Cyclisme sur route - arrivée Contre-la-montre (CRD), Natation marathon (OWS), Triathlon (TRI)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Endurance Park",
+        content: "Endurance Park offre une expérience immersive pour les épreuves de cyclisme, natation marathon et triathlon avec des écrans géants.",
+        horaires: "Tous les jours de 8h à 20h",
+    },
+    "Basketball (BKB), Gymnastique artistique (GAR), Gymnastique trampoline (GTR)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Olympic Arena",
+        content: "Olympic Arena est le lieu parfait pour suivre les compétitions de basketball et de gymnastique dans une ambiance festive.",
+        horaires: "Tous les jours de 9h à 23h",
+    },
+    "Judo (JUD), Lutte (WRE)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Martial Arts Center",
+        content: "Martial Arts Center propose des retransmissions des compétitions de judo et de lutte avec une ambiance sportive.",
+        horaires: "Lundi - Samedi : 10h - 22h, Dimanche : 11h - 20h",
+    },
+    "Badminton (BDM), Gymnastique rythmique (GRY)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Rhythm & Racket Arena",
+        content: "Rhythm & Racket Arena diffuse les compétitions de badminton et de gymnastique rythmique dans un cadre convivial.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "Para badminton (PBDM), Para Haltérophilie (PPWL)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Sports Center",
+        content: "Para Sports Center offre des retransmissions des compétitions de para badminton et de para haltérophilie avec des installations adaptées.",
+        horaires: "Tous les jours de 10h à 21h",
+    },
+    "Para cyclisme sur route (PCRD)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Cycling Track",
+        content: "Para Cycling Track propose une expérience immersive pour suivre les compétitions de para cyclisme sur route avec des écrans géants.",
+        horaires: "Tous les jours de 8h à 20h",
+    },
+    "Para Tir Sportif (PSHO)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Shooting Range",
+        content: "Shooting Range diffuse les compétitions de para tir sportif dans une atmosphère calme et concentrée.",
+        horaires: "Tous les jours de 9h à 19h",
+    },
+    "Para Natation (PSWM)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Aquatic Center",
+        content: "Aquatic Center offre des retransmissions des compétitions de para natation avec une ambiance aquatique et festive.",
+        horaires: "Tous les jours de 7h à 22h",
+    },
+    "Cécifoot (PFBB)": {
+        image: "../../styles/images/spots/CTE.png",
+        spot: "Blind Football Arena",
+        content: "Blind Football Arena propose des retransmissions des compétitions de cécifoot avec des commentaires adaptés et une ambiance chaleureuse.",
+        horaires: "Tous les jours de 9h à 20h",
+    },
+    "Escrime (FEN), Taekwondo (TKW)": {
+        image: "../../styles/images/spots/GPP.jpg",
+        spot: "Duel Arena",
+        content: "Duel Arena diffuse les compétitions d'escrime et de taekwondo dans une atmosphère compétitive et énergique.",
+        horaires: "Lundi - Samedi : 10h - 22h, Dimanche : 11h - 21h",
+    },
+    "Voile (SAL)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Sailing Club",
+        content: "Sailing Club offre une expérience unique pour suivre les compétitions de voile avec une vue imprenable sur l'eau.",
+        horaires: "Tous les jours de 8h à 19h",
+    },
+    "Volleyball assis (PVBS)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Volley Arena",
+        content: "Para Volley Arena propose des retransmissions des compétitions de volleyball assis avec une ambiance inclusive et dynamique.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "Tennis fauteuil (PWTE)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Wheelchair Tennis Court",
+        content: "Wheelchair Tennis Court diffuse les compétitions de tennis fauteuil dans un cadre accessible et accueillant.",
+        horaires: "Tous les jours de 10h à 21h",
+    },
+    "Tennis (TEN), Boxe (BOX)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Sports Hub",
+        content: "Sports Hub propose des retransmissions des compétitions de tennis et de boxe dans une ambiance sportive et festive.",
+        horaires: "Tous les jours de 9h à 23h",
+    },
+    "Volley-ball (VVO)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Volleyball Court",
+        content: "Volleyball Court offre une ambiance animée pour suivre les compétitions de volleyball avec des écrans géants et des gradins confortables.",
+        horaires: "Tous les jours de 10h à 22h",
+    },
+    "Boccia (PBOC)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Boccia Center",
+        content: "Boccia Center propose des retransmissions des compétitions de boccia avec des installations adaptées et une atmosphère conviviale.",
+        horaires: "Tous les jours de 9h à 20h",
+    },
+    "Surf (SRF)": {
+        image: "../../styles/images/spots/BTH.jpg",
+        spot: "Surf Club",
+        content: "Surf Club diffuse les compétitions de surf avec une ambiance détendue et des activités aquatiques pour tous.",
+        horaires: "Lundi - Dimanche : 7h - 19h",
+    },
+    "Para Cyclisme sur piste (PCTR)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Velodrome",
+        content: "Velodrome propose des retransmissions des compétitions de para cyclisme sur piste avec une atmosphère dynamique et sportive.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "Sports équestres - dressage (EQD), Sports équestres - concours complet (EQE), Sports équestres - saut d'obstacles (EQJ), Pentathlon moderne (MPN)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Equestrian Center",
+        content: "Equestrian Center offre une expérience immersive pour suivre les compétitions équestres et de pentathlon moderne dans un cadre élégant.",
+        horaires: "Tous les jours de 7h à 20h",
+    },
+    "Para Equitation (PEQU)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Equestrian Arena",
+        content: "Para Equestrian Arena diffuse les compétitions de para équitation dans une atmosphère inclusive et élégante.",
+        horaires: "Tous les jours de 8h à 19h",
+    },
+    "Para Aviron (PROW), Para Canoë (PCSP)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Rowing Club",
+        content: "Para Rowing Club propose des retransmissions des compétitions de para aviron et de para canoë avec une vue sur l'eau.",
+        horaires: "Tous les jours de 7h à 21h",
+    },
+    "Natation artistique (SWA), Plongeon (DIV), Water-polo (WPO)": {
+        image: "../../styles/images/spots/PA3.jpg",
+        spot: "Aquatic Arts Center",
+        content: "Aquatic Arts Center offre des retransmissions des compétitions de natation artistique, plongeon et water-polo dans une ambiance festive.",
+        horaires: "Tous les jours de 8h à 22h",
+    },
+    "Para Judo (PJUD), Rugby fauteuil (PWRU)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Adaptive Sports Center",
+        content: "Adaptive Sports Center propose des retransmissions des compétitions de para judo et de rugby fauteuil dans un cadre inclusif.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "Tir (SHO)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Shooting Arena",
+        content: "Shooting Arena diffuse les compétitions de tir dans une atmosphère calme et concentrée, idéale pour les amateurs de précision.",
+        horaires: "Tous les jours de 8h à 18h",
+    },
+    "Natation (SWM), Water-polo (WPO)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Swim Center",
+        content: "Swim Center propose des retransmissions des compétitions de natation et de water-polo dans un cadre aquatique et festif.",
+        horaires: "Tous les jours de 7h à 21h",
+    },
+    "Cyclisme VTT (MTB)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Mountain Bike Park",
+        content: "Mountain Bike Park offre une expérience immersive pour suivre les compétitions de cyclisme VTT avec des pistes et des retransmissions en direct.",
+        horaires: "Tous les jours de 8h à 20h",
+    },
+    "Para Tir à l'arc (PARC), Para Athlétisme - arrivée Marathon (PATM)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Para Archery Field",
+        content: "Para Archery Field propose des retransmissions des compétitions de para tir à l'arc et de para athlétisme dans un cadre inclusif.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "BMX freestyle (BMF)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Freestyle Park",
+        content: "Freestyle Park diffuse les compétitions de BMX freestyle avec des rampes et des pistes pour les amateurs de sensations fortes.",
+        horaires: "Tous les jours de 9h à 19h",
+    },
+    "Para Athlétisme - départ Marathon (PATM)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Marathon Start Point",
+        content: "Marathon Start Point propose des retransmissions des départs de para marathon avec une ambiance motivante et dynamique.",
+        horaires: "Tous les jours de 7h à 14h",
+    },
+    "default": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Olympic Viewing Spot",
+        content: "Olympic Viewing Spot diffuse une variété de compétitions olympiques dans une ambiance festive et conviviale.",
+        horaires: "Tous les jours de 8h à 22h",
+    },
+    "Goalball (PGBL)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Goalball Arena",
+        content: "Goalball Arena propose des retransmissions des compétitions de goalball avec des commentaires adaptés et une ambiance chaleureuse.",
+        horaires: "Tous les jours de 9h à 20h",
+    },
+    "Athlétisme (ATH), Rugby à 7 (RU7), Cérémonie de clôture (OCC)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Closing Ceremony Center",
+        content: "Closing Ceremony Center offre une expérience immersive pour suivre les compétitions d'athlétisme, de rugby à 7 et la cérémonie de clôture dans une ambiance festive.",
+        horaires: "Tous les jours de 9h à minuit",
+    },
+    "Athlétisme marche (ATW), Cyclisme sur route - Course sur route (CRD)": {
+        image: "../../styles/images/spots/CEC.jpg",
+        spot: "Race Track Center",
+        content: "Race Track Center propose des retransmissions des compétitions de marche athlétique et de cyclisme sur route avec des installations modernes.",
+        horaires: "Tous les jours de 8h à 20h",
+    },
+    "Cyclisme sur piste (CTR)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "Track Cycling Arena",
+        content: "Track Cycling Arena diffuse les compétitions de cyclisme sur piste dans une ambiance compétitive et énergique.",
+        horaires: "Tous les jours de 9h à 21h",
+    },
+    "BMX Racing (BMX)": {
+        image: "../../styles/images/spots/GP.png",
+        spot: "BMX Racing Park",
+        content: "BMX Racing Park offre une expérience immersive pour suivre les compétitions de BMX racing avec des pistes et des retransmissions en direct.",
+        horaires: "Tous les jours de 9h à 19h",
+    },
 };
 
 export default spotsMapping;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
