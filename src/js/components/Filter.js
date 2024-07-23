@@ -1,77 +1,60 @@
 import {DOM} from "../core/generateStructure.js";
-//import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
-//import { updateResultsSection } from "../functions/updateResultsSection.js";
-//import { populateDropdowns } from "../functions/populateDropdowns.js";
 
 export class filterComponent extends DOM.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            siteNames: [],
-            sportLabels: [],
-            startDateLabels: [],
-            endDateLabels: [],
-            eventsData: []
-        };
     }
 
-     componentDidMount() {
-        fetch(
-            "https://data.paris2024.org/api/records/1.0/search/?dataset=paris-2024-sites-de-competition&rows=100"
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({ eventsData: data.records })
-                this.setState({ siteNames: data.records.map(event => event.fields.nom_site) });
-                this.setState({ sportLabels: data.records.map(event => event.fields.sports) });
-                this.setState({ startDateLabels: data.records.map(event => event.fields.start_date) });
-                this.setState({ endDateLabels: data.records.map(event => event.fields.end_date) });
-            });
-        ;
-    }
+    componentDidMount() {}
 
-    updateEventData = (e, type) => {
-        e.preventDefault()
+    updateEventData = (e) => {
         const {id, value} = e.target;
-        this.props.onChangeEvent({
-            id: id,
-            value: value,
-            type: type
-        });
+        this.props.onChangeEvent(id, value);
     }
 
-    createDropdown = (id, placeholder, labels = []) => ({
+    createDropdown = (id, placeholder, labels = [], selectedValue) => ({
         tag: "select",
         props: {id, class: "filter-dropdown"},
         events: {
-            change: [(e) => this.updateEventData(e, id)]
+            change: [(e) => this.updateEventData(e)]
         },
         children: [
             {
                 tag: "option",
-                props: {value: ""},
+                props: {},
                 children: [{tag: 'TEXT_NODE', content: placeholder}]
             },
-            ...labels.map(label => ({
-                tag: "option",
-                props: {value: label},
-                children: [{tag: 'TEXT_NODE', content: label}]
-            }))
+            ...labels.map(label => {
+                if (selectedValue === label) {
+                    return ({
+                        tag: "option",
+                        props: {value: label, selected: ""},
+                        children: [{tag: 'TEXT_NODE', content: label}]
+                    })
+                } else {
+                    return ({
+                        tag: "option",
+                        props: {value: label},
+                        children: [{tag: 'TEXT_NODE', content: label}]
+                    })
+                }
+
+            })
         ]
     });
 
-
     render() {
-        const {siteNames, sportLabels, startDateLabels, endDateLabels, eventsData} = this.state;
-
         return {
             tag: "div",
             props: {class: "filter-component"},
             children: [
-                this.createDropdown("site-name", "Le lieu", siteNames),
-                this.createDropdown("sport", "Le sport", sportLabels),
-                this.createDropdown("start-date", "La date de début", startDateLabels.map(date => new Date(date).toISOString().split("T")[0])),
-                this.createDropdown("end-date", "La date de fin", endDateLabels.map(date => new Date(date).toISOString().split("T")[0])),
+                ...this.props.fieldsToFilterOn.map(field => {
+                    if (field.name === this.props.selectedValue.fieldToFilterOn) {
+                        return this.createDropdown(field.name, field.placeholder, this.props.data.map(data => data[field.name]).sort(), this.props.selectedValue.value);
+                    } else {
+                        return this.createDropdown(field.name, field.placeholder, this.props.data.map(data => data[field.name]).sort());
+                    }
+                })
             ]
         };
     }

@@ -5,6 +5,7 @@ import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 import { fetchEvents } from "../api/fetchEventsData.js";
+import {filterComponent} from "../components/Filter.js";
 
 const eventsHeroContent = {
     headingText: "DÉCOUVREZ LES ÉVÉNEMENTS QUI VOUS PLAISENT",
@@ -91,6 +92,27 @@ export default class EventsStruct extends DOM.Component {
         }
     }
 
+
+    updateEventData = (filter) => {
+        const { id, value } = filter;
+        let filteredEvents = [];
+
+        console.log('Filter:', filter);
+
+        switch (id) {
+            case "site-name":
+                filteredEvents = this.state.cardComponents.filter(card => card.props.site === value);
+                break;
+            case "start-date":
+                filteredEvents = this.state.cardComponents.filter(card => new Date(card.props.date) >= new Date(value));
+                break;
+            default:
+                break;
+        }
+
+        this.setState({ filteredCardComponents: filteredEvents });
+    }
+
     render() {
         const { cardComponents, loading } = this.state;
 
@@ -104,6 +126,10 @@ export default class EventsStruct extends DOM.Component {
                     tag: "main",
                     props: { class: "body-content" },
                     children: [
+                        DOM.createElement(filterComponent, {
+                            onChangeEvent: this.updateEventData,
+                            url: 'explore',
+                        }),
                         {
                             tag: "section",
                             props: { class: "events-cards-section" },

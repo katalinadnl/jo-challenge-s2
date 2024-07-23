@@ -1,96 +1,94 @@
 import getNavbarStructure from "../components/Navbar.js";
-import { getFooterStructure } from "../components/Footer.js";
-import { createHeroComponent } from "../components/HeroSection.js";
+import {getFooterStructure} from "../components/Footer.js";
+import {createHeroComponent} from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
-import { DOM } from "../core/generateStructure.js";
-import { fetchEventsData } from "../api/fetchData.js";
-import { filterComponent } from "../components/Filter.js";
-import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
+import {DOM} from "../core/generateStructure.js";
+import {fetchEventsData} from "../api/fetchData.js";
+import {filterComponent} from "../components/Filter.js";
+import {formatDate, isToday, isThisWeek} from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
+import moment from "../lib/moment/moment.js";
 
 const sportsHeroContent = {
     headingText: "VIVEZ LES PLUS GRANDS ÉVÉNEMENTS SPORTIFS",
     paragraphText: "Plongez dans l'excitation des compétitions sportives mondiales et découvrez les événements à ne pas manquer cette saison.",
 };
 
-export default class EventsStruct extends DOM.Component {
+export default class SportsStruct extends DOM.Component {
+    GET_ALL_COMPETITION_LOCATION_URL = 'https://data.paris2024.org/api/records/1.0/search/?dataset=paris-2024-sites-de-competition&rows=100';
+
     constructor(props) {
         super(props);
         this.state = {
+            allEventsData: [],
             todayCardComponents: [],
             thisWeekCardComponents: [],
-            allCardComponents: []
+            allCardComponents: [],
+            selectedValue: {},
         };
     }
 
     async componentDidMount() {
         const eventsData = await fetchEventsData();
-        const todayCardComponents = [];
-        const thisWeekCardComponents = [];
-        const allCardComponents = [];
-
-        eventsData.forEach(event => {
-
-            const cardProps = {
+        const allEventsData = eventsData.map(event => {
+            return {
+                codeSite: event.fields.code_site,
                 type: "sport",
                 title: event.fields.sports,
                 date: formatDate(event.fields.start_date),
                 site: event.fields.nom_site,
                 image: imageMapping[event.fields.sports] || imageMapping.default
             };
-            const cardComponent = DOM.createElement(CardComponent, cardProps, []);
+        })
+        
+
+        const todayCardComponents = [];
+        const thisWeekCardComponents = [];
+        const allCardComponents = [];
+
+        allEventsData.forEach(event => {
+            const cardComponent = DOM.createElement(CardComponent, event, []);
             allCardComponents.push(cardComponent);
 
-            if (isToday(event.fields.start_date)) {
+            if (isToday(event.start_date)) {
                 todayCardComponents.push(cardComponent);
-            } else if (isThisWeek(event.fields.start_date)) {
+            } else if (isThisWeek(event.start_date)) {
                 thisWeekCardComponents.push(cardComponent);
             }
         });
 
-        this.setState({ todayCardComponents, thisWeekCardComponents, allCardComponents });
+        this.setState({allEventsData, todayCardComponents, thisWeekCardComponents, allCardComponents});
     }
 
-    updateEventData = (filter) => {
-        const { id, value } = filter;
+    updateEventData = (fieldToFilterOn, value) => {
         let filteredEvents = [];
-
-        switch (id) {
-            case "site-name":
-                filteredEvents = this.state.allCardComponents.filter(card => card.props.site === value);
-                break;
-            case "sport":
-                filteredEvents = this.state.allCardComponents.filter(card => card.props.title === value);
-                break;
-            case "start-date":
-                filteredEvents = this.state.allCardComponents.filter(card => new Date(card.props.date) >= new Date(value));
-                break;
-            case "end-date":
-                filteredEvents = this.state.allCardComponents.filter(card => new Date(card.props.date) <= new Date(value));
-                break;
-            default:
-                break;
+        if (fieldToFilterOn === 'startDate') {
+            filteredEvents = this.state.allCardComponents.filter(card => moment(card.props.date, "dd/MM/yyyy").toDate() >= moment(value, "dd/MM/yyyy").toDate());
+        } else if (fieldToFilterOn === 'endDate') {
+            filteredEvents = this.state.allCardComponents.filter(card => moment(card.props.date, "dd/MM/yyyy").toDate() <= moment(value, "dd/MM/yyyy").toDate());
+        } else {
+            filteredEvents = this.state.allCardComponents.filter(card => card.props[fieldToFilterOn] === value);
         }
 
-        this.setState({ filteredCardComponents: filteredEvents });
+        this.setState({selectedValue: {fieldToFilterOn, value}, filteredCardComponents: filteredEvents});
     }
 
     render() {
-        const { todayCardComponents, thisWeekCardComponents, allCardComponents, filteredCardComponents } = this.state;
+        const {allEventsData, todayCardComponents, thisWeekCardComponents, allCardComponents, filteredCardComponents, selectedValue} = this.state;
 
         return {
             tag: "div",
-            props: { class: "sport" },
+            props: {class: "sport"},
             children: [
                 DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(sportsHeroContent),
                 {
                     tag: "main",
-                    props: { class: "body-content" },
+                    props: {class: "body-content"},
                     children: [
                         {
                             tag: "div",
-                            props: { class: "info-slider-sports" },
+                            props: {class: "info-slider-sports"},
                             children: [
                                 {
                                     tag: "h6",
@@ -103,7 +101,7 @@ export default class EventsStruct extends DOM.Component {
                                 },
                                 {
                                     tag: "div",
-                                    props: { class: "arrow-container" },
+                                    props: {class: "arrow-container"},
                                     children: [
                                         {
                                             tag: "img",
@@ -123,11 +121,11 @@ export default class EventsStruct extends DOM.Component {
                             children: [
                                 {
                                     tag: "div",
-                                    props: { class: "today" },
+                                    props: {class: "today"},
                                     children: [
                                         {
                                             tag: "h3",
-                                            props: { class: "today-title" },
+                                            props: {class: "today-title"},
                                             children: [{
                                                 tag: 'TEXT_NODE',
                                                 content: "Aujourd'hui",
@@ -135,26 +133,26 @@ export default class EventsStruct extends DOM.Component {
                                         },
                                         {
                                             tag: "div",
-                                            props: { class: "slider-container" },
+                                            props: {class: "slider-container"},
                                             children: todayCardComponents.length > 0 ? todayCardComponents.map(card => ({
                                                 tag: "div",
-                                                props: { class: "slider-slide" },
+                                                props: {class: "slider-slide"},
                                                 children: [card]
                                             })) : [{
                                                 tag: 'p',
-                                                props: { class: 'no-cards-message' },
-                                                children: [{ tag: 'TEXT_NODE', content: "Aucun événement aujourd'hui." }]
+                                                props: {class: 'no-cards-message'},
+                                                children: [{tag: 'TEXT_NODE', content: "Aucun événement aujourd'hui."}]
                                             }]
                                         }
                                     ]
                                 },
                                 {
                                     tag: "div",
-                                    props: { class: "this-week" },
+                                    props: {class: "this-week"},
                                     children: [
                                         {
                                             tag: "h3",
-                                            props: { class: "this-week-title" },
+                                            props: {class: "this-week-title"},
                                             children: [{
                                                 tag: 'TEXT_NODE',
                                                 content: "Cette semaine",
@@ -162,15 +160,18 @@ export default class EventsStruct extends DOM.Component {
                                         },
                                         {
                                             tag: "div",
-                                            props: { class: "slider-container" },
+                                            props: {class: "slider-container"},
                                             children: thisWeekCardComponents.length > 0 ? thisWeekCardComponents.map(card => ({
                                                 tag: "div",
-                                                props: { class: "slider-slide" },
+                                                props: {class: "slider-slide"},
                                                 children: [card]
                                             })) : [{
                                                 tag: 'p',
-                                                props: { class: 'no-cards-message' },
-                                                children: [{ tag: 'TEXT_NODE', content: "Aucun événement cette semaine." }]
+                                                props: {class: 'no-cards-message'},
+                                                children: [{
+                                                    tag: 'TEXT_NODE',
+                                                    content: "Aucun événement cette semaine."
+                                                }]
                                             }]
                                         }
                                     ]
@@ -179,22 +180,33 @@ export default class EventsStruct extends DOM.Component {
                         },
                         {
                             tag: "section",
-                            props: { class: "sport-section" },
+                            props: {class: "sport-section"},
                             children: [
                                 {
                                     tag: "h3",
-                                    props: { class: "this-week-title" },
+                                    props: {class: "this-week-title"},
                                     children: [{
                                         tag: 'TEXT_NODE',
                                         content: "Tous les sports",
                                     }]
                                 },
                                 DOM.createElement(filterComponent, {
+                                    fieldsToFilterOn: [
+                                        {name: "title", placeholder: "Le sport"},
+                                        {name: "site", placeholder: "Le lieu"},
+                                        {name: "startDate", placeholder: "La date de début"}],
                                     onChangeEvent: this.updateEventData,
+                                    data: allEventsData.map(event => {
+                                        return {
+                                            ...event,
+                                            startDate: event.date
+                                        };
+                                    }),
+                                    selectedValue: selectedValue,
                                 }),
                                 {
                                     tag: "div",
-                                    props: { class: "sport-cards" },
+                                    props: {class: "sport-cards"},
                                     children: filteredCardComponents || allCardComponents,
                                 },
                             ],
