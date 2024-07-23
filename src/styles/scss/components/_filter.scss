@@ -2,42 +2,23 @@
 @import '../partials/_variables.scss';
 
 .filter-component {
-  border-radius: rem(15);
-  background: $white;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 0.9375rem;
+  background: var(--white);
+  box-shadow: rem(4) rem(4) rem(20) rgba(0, 0, 0, 0.25);
   width: 100%;
-  box-sizing: border-box;
-  padding: rem(30);
-  top: rem(20);
-  text-align: center;
+  height: rem(82);
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: rem(21);
-}
-
-.dropdown {
-  background-color: $white;
-  border: rem(1.5) solid $black;
-  border-radius: rem(5);
-  color: $black;
-  padding: rem(10);
-  font-size: rem(14);
-  cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: left;
-}
-
-.filter-button {
-  background-color: $white;
-  border: rem(1.5) solid $black;
-  border-radius: rem(5);
-  color: $black;
-  padding: rem(10);
-  font-size: rem(14);
-  cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center;
+  justify-content: space-evenly;
+  #site-name, #sport, #start-date, #end-date {
+    width: rem(184);
+    height: rem(39);
+    padding: rem(8) rem(16);
+    border-radius: rem(5);
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg width="9" height="4.5" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 1L5.5 5.5L1 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right rem(16) center / rem(16);
+  }
 }

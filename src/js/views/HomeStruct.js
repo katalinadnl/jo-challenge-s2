@@ -11,7 +11,6 @@ import { fetchEvents } from "../api/fetchEventsData.js";
 import { fetchSpotsData } from "../api/fetchSpotsData.js";
 import spotsMapping from "../mappings/spotsMapping.js";
 
-
 const eventsHeroContent = {
     headingText: "Jeux Olympiques 2024",
     paragraphText: "Bienvenue aux Jeux Olympiques 2024 à Paris ! Découvrez l'excitation de cet événement prestigieux au cœur de la capitale.",
@@ -80,7 +79,6 @@ export default class HomeStruct extends DOM.Component {
             return null;
         }).filter(card => card !== null); // Filter out null values
 
-
         const cardsEventHP = spotsData.filter(event =>
             validSpotsTitles.includes(event.fields.sports)
         ).map(event => {
@@ -100,6 +98,11 @@ export default class HomeStruct extends DOM.Component {
 
     render() {
         const { cardsSportHP, cardsEventHP, cardsSpotHP } = this.state;
+        this.setState({ cardsSportHP, cardsEventHP });
+    }
+
+    render() {
+        const { cardsSportHP, cardsEventHP } = this.state;
 
         return {
             tag: "div",
@@ -137,7 +140,7 @@ export default class HomeStruct extends DOM.Component {
                                     tag: "div",
                                     props: { class: "sport-cards" },
                                     children: cardsSpotHP
-                                },
+                 },
                                 getCtaButtonStructure(ctaButtonSpots)
                             ]
                         },
