@@ -84,7 +84,7 @@ export default class EventsStruct extends DOM.Component {
                                         {
                                             tag: "img",
                                             props: {
-                                                src: "../../styles/images/arrow_HP.png",
+                                                src: "../../styles/images/arrow_2.png",
                                                 alt: "Flèche",
                                                 class: "arrow-desktop"
                                             },
