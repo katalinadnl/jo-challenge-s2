@@ -174,7 +174,7 @@ export default class MapStruct extends DOM.Component {
                 },
                 {
                   tag: "h3",
-                  children: [{ tag: "TEXT_NODE", content: "Résultats-Sports" }],
+                  children: [{ tag: "TEXT_NODE", content: "Compétitions sportives" }],
                 },
                 {
                   tag: "div",
@@ -183,7 +183,7 @@ export default class MapStruct extends DOM.Component {
                 },
                 {
                   tag: "h3",
-                  children: [{ tag: "TEXT_NODE", content: "Résultats-Spots" }],
+                  children: [{ tag: "TEXT_NODE", content: "Lieux d'observation" }],
                 },
                 {
                   tag: "div",
@@ -193,7 +193,7 @@ export default class MapStruct extends DOM.Component {
                 {
                   tag: "h3",
                   children: [
-                    { tag: "TEXT_NODE", content: "Résultats-Événements" },
+                    { tag: "TEXT_NODE", content: "Événements culturels" },
                   ],
                 },
                 {
