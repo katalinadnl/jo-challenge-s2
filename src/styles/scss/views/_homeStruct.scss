@@ -9,8 +9,8 @@
     .section1,.section2 {
         .sport-cards, .spot-cards {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
+            @include sport-cards-home-responsive;
         }
     }
     .section1 {
