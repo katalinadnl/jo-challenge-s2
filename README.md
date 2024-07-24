@@ -4,31 +4,35 @@
 
 
 ## Listing des fonctionnalitées avec les taches par personne
-| N/A      | N/A       | Personne en charge |
-|-----------------|-----------|--------------------|
-| Pages Generales | Home Page | Camille |
-|                 | Sport | Catalina |
-|                 | Carte | Nadime |
-|                 | Événiments | Catalina |
-|                 | Spot | Alice |
-|                 | 404 | Camille |
-|                 | Information des Spots | Alice |
-|-----------------|-----------|--------------------|
-| Structure du projet | Generate Structure| Catalina |
-|                 | Browser Router | Catalina |
-|                 | Component | Catalina |
-|                 | Routes | Camille |
-| Composants      | CardComponent | Catalina |
-|                 | HeroSection | Catalina |
-|                 | Filtre | Camille |
-|                 | Navbar | Camille |
-|                 | Footer | Camille |
-|                 | CtaButton | Camille |
-| Cards           | Les cards sport | Catalina |
-|                 | Les cards event | Catalina |
-|                 | Les cards spots | Alice |
-| Mise en place des API/mappings| fetchData.js | Nadime |
-|                               | fetchEventsData.js | Nadime |
+| N/A                           | N/A                                         | Personne en charge |
+|-------------------------------|---------------------------------------------|--------------------|
+| Pages Generales               | Home Page                                   | <p style="color: blue;">Camille</p> |
+|                               | Sport                                       | <p style="color: orange;">Catalina</p> |
+|                               | Carte                                       | <p style="color: blue;">Nadime</p> |
+|                               | Événiments                                  | <p style="color: orange;">Catalina</p> |
+|                               | Spot                                        | <p style="color: blue;">Alice</p> |
+|                               | 404                                         | <p style="color: blue;">Camille</p> |
+|                               | Information des Spots                       | <p style="color: blue;">Alice</p> |
+|-------------------------------|---------------------------------------------|------------------------|
+| Structure du projet           | Generate Structure                          | <p style="color: orange;">Catalina</p> |
+|                               | Browser Router                              | <p style="color: orange;">Catalina</p> |
+|                               | Component                                   | <p style="color: orange;">Catalina</p> |
+|                               | Routes                                      | <p style="color: blue;">Camille</p> |
+|-------------------------------|---------------------------------------------|------------------------|
+| Composants                    | CardComponent                               | <p style="color: orange;">Catalina</p> |
+|                               | HeroSection                                 | <p style="color: orange;">Catalina</p> |
+|                               | Filtre + implementation sur toutes les pages| <p style="color: blue;">Camille</p> |
+|                               | Navbar                                      | <p style="color: blue;">Camille</p> |
+|                               | Footer                                      | <p style="color: blue;">Camille</p> |
+|                               | CtaButton                                   | <p style="color: blue;">Camille</p> |
+|-------------------------------|---------------------------------------------|------------------------|
+| Cards                         | Les cards sport                             | <p style="color: orange;">Catalina</p> |
+|                               | Les cards event                             | <p style="color: blue;">Catalina</p> |
+|                               | Les cards spots                             | <p style="color: blue;">Alice</p> |
+|-------------------------------|---------------------------------------------|------------------------|
+| Mise en place des API/mappings| fetchSportsData.js                          | <p style="color: blue;">Nadime</p> |
+|                               | fetchEventsData.js                          | <p style="color: orange;">Catalina</p> |
+|                               | Mappings                                    | <p style="color: blue;">Alice/Catalina</p> |
 
 
 
