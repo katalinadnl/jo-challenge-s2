@@ -127,17 +127,17 @@ export default class MapStruct extends DOM.Component {
     const navbar = DOM.createElement(getNavbarStructure, []);
     const structure = {
       tag: "div",
-      props: { class: "map body-content" },
+      props: { class: "map" }, // Utiliser la même classe que pour la page d'accueil
       children: [
         navbar,
         createHeroComponent(eventsHeroContent),
         {
-          tag: "section",
-          props: { class: "section1" },
+          tag: "main",
+          props: { class: "body-content" }, // Utiliser la même classe que pour la page d'accueil
           children: [
             {
-              tag: "div",
-              props: { class: "map" },
+              tag: "section",
+              props: { class: "section1" }, // Utiliser la même classe que pour la page d'accueil
               children: [
                 {
                   tag: "h2",
@@ -178,7 +178,7 @@ export default class MapStruct extends DOM.Component {
                 },
                 {
                   tag: "div",
-                  props: { id: "results-container" },
+                  props: { id: "results-container", class: "sport-cards" },
                   children: allCardComponents,
                 },
                 {
@@ -187,7 +187,7 @@ export default class MapStruct extends DOM.Component {
                 },
                 {
                   tag: "div",
-                  props: { id: "spots-container" },
+                  props: { id: "spots-container", class: "spot-cards" },
                   children: allSpotComponents,
                 },
                 {
@@ -198,7 +198,7 @@ export default class MapStruct extends DOM.Component {
                 },
                 {
                   tag: "div",
-                  props: { id: "events-container" },
+                  props: { id: "events-container", class: "events-cards-section" },
                   children: allEventComponents,
                 },
               ],
