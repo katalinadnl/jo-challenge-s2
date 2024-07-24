@@ -1,6 +1,7 @@
 import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { DOM } from "../core/generateStructure.js";
+import { fetchSpotsData } from "../api/fetchSpotsData.js";
 import spotsMapping from "../mappings/spotsMapping.js";
 
 export default class InformationsStruct extends DOM.Component {
@@ -11,10 +12,14 @@ export default class InformationsStruct extends DOM.Component {
         };
     }
 
+
+
+
     componentDidMount() {
         const id = parseInt(this.props.params[0], 10); // prendre l'id du spot dans l'url
         const spotData = this.getSpotDataById(id);
 
+      
         if (spotData) {
             this.setState({ spotData });
         }
@@ -35,7 +40,7 @@ export default class InformationsStruct extends DOM.Component {
         if (!spotData) {
             return {
                 tag: "div",
-                props: { class: "information" },
+                props: { class: "informations" },
                 children: [
                     DOM.createElement(getNavbarStructure, []),
                     {
@@ -64,7 +69,7 @@ export default class InformationsStruct extends DOM.Component {
 
         return {
             tag: "div",
-            props: { class: "information" },
+            props: { class: "informations" },
             children: [
                 DOM.createElement(getNavbarStructure, []),
                 {
@@ -82,8 +87,14 @@ export default class InformationsStruct extends DOM.Component {
                                         content: spotData.spot,
                                     }]
                                 },
-                            ]
-                        },
+                                    {
+                                    tag: "div",
+                                    props: { class: "img-spot" },
+                                    children: [{
+                                        tag: 'img',
+                                        props: { src: spotData.image, alt: spotData.spot }
+                                    }]
+                                },
                         {
                             tag: "section",
                             props: { class: "section2" },
@@ -96,8 +107,47 @@ export default class InformationsStruct extends DOM.Component {
                                     }]
                                 },
                             ]
-                        }
-                    ]
+                        },
+                        {
+                            tag: "h3",
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: 'Coordonnées',
+                            }
+                        ]
+                        },
+                        {
+                            tag: "div",
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: spotData.nom_site
+                            }
+                        ]
+                        },
+                        {
+                            tag: 'a',
+                            props: { class: "link", href: 'this.props.`/carte?lat=${coordonnees}&lon=${coordonnees}' },
+                            children: [
+                                {
+                                    tag: 'TEXT_NODE',
+                                    content: "Voir sur la carte"
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            children: [{
+                                tag: 'TEXT_NODE',
+                                content: spotData.horaires
+                            }]
+                        },
+                            ]
+                        },
+                        ]
+
+                    
+                        
+                    
                 },
                 getFooterStructure()
             ]

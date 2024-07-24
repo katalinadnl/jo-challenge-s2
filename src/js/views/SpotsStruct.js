@@ -26,13 +26,6 @@ export default class SpotsStruct extends DOM.Component {
         };
     }
 
-  /*  generateSpotId(spotName) {
-        const spotsArray = Object.keys(spotsMapping);
-        const spotIndex = spotsArray.findIndex(key => spotsMapping[key].spot === spotName);
-        return spotIndex + 1;
-    }*/
-
-
     async componentDidMount() {
         const spotsData = await fetchSpotsData();
         const CardComponents = [];
@@ -53,7 +46,8 @@ export default class SpotsStruct extends DOM.Component {
                 StartDateLabel: formatDate(event.fields.start_date),
                 EndDateLabel: formatDate(event.fields.end_date),
                 image: spotsMapping[event.fields.sports] || spotsMapping.default,
-                spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
+                spotLinkMap: `/carte?lat=${coordonnees}&lon=${coordonnees}`, //TODO: change to real coordinates                 spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
+
                 spotTextLinkMap: "Voir sur la carte",
                 spotLinkDetails: `/spots/${spotId}`, //TODO: chager pour lien détails
                 spotTextLinkDetails: "Voir en détails",
@@ -101,21 +95,51 @@ export default class SpotsStruct extends DOM.Component {
 
         const navbar = DOM.createElement(getNavbarStructure, []);
         return {
-            tag: "main",
-            props: { class: "spots body-content" },
+            tag: "div",
+            props: { class: "spots" },
             children: [
+                
                 DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(spotsHeroContent),
                 {
-                    tag: "h1",
-                    children: [""]
-                },
+                    tag: "main",
+                    props: { class: "body-content" },
+                    children: [
+                        {
+                            tag: "div",
+                            props: { class: "info-slider-spots" },
+                            children: [
+                                {
+                                    tag: "h6",
+                                    children: [
+                                        {
+                                            tag: 'TEXT_NODE',
+                                            content: "Faites défiler horizontalement pour découvrir les événements actuels",
+                                        }
+                                    ]
+                                },
+                                {
+                                    tag: "div",
+                                    props: { class: "arrow-container" },
+                                    children: [
+                                        {
+                                            tag: "img",
+                                            props: {
+                                                src: "../../styles/images/arrow_2.png",
+                                                alt: "Flèche",
+                                                class: "arrow-desktop"
+                                            },
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
                 {
                     tag: "section",
                     props: { class: "section-selection" },
                     children: [
                         {
-                            tag: "h2",
+                            tag: "h3",
                             children: [{
                                 tag: 'TEXT_NODE',
                                 content: "Notre sélection",
@@ -146,7 +170,7 @@ export default class SpotsStruct extends DOM.Component {
                     props: { class: "section-selection sport-section" },
                     children: [
                         {
-                            tag: "h2",
+                            tag: "h3",
                             children: [{
                                 tag: 'TEXT_NODE',
                                 content: "Trouvez l'endroit idéal",
@@ -184,6 +208,8 @@ export default class SpotsStruct extends DOM.Component {
                         }
                     ]
                 },
+            ]
+        },
                 getFooterStructure()
             ]
         };
