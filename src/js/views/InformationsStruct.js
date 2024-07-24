@@ -1,17 +1,67 @@
 import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
-import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
-import { createHeroComponent } from "../components/HeroSection.js";
-import { fetchSpotsData } from "../api/fetchSpotsData.js";
-import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 import spotsMapping from "../mappings/spotsMapping.js";
 
+export default class InformationsStruct extends DOM.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            spotData: null,
+        };
+    }
 
-export default class InformationsStruct extends DOM.Component{
+    componentDidMount() {
+        const id = parseInt(this.props.params[0], 10); // prendre l'id du spot dans l'url
+        const spotData = this.getSpotDataById(id);
 
- 
+        if (spotData) {
+            this.setState({ spotData });
+        }
+    }
+
+    getSpotDataById(id) {
+        const spotsArray = Object.keys(spotsMapping);
+        if (id > 0 && id <= spotsArray.length) {
+            const key = spotsArray[id - 1];
+            return spotsMapping[key];
+        }
+        return null;
+    }
+
     render() {
+        const { spotData } = this.state;
+
+        if (!spotData) {
+            return {
+                tag: "div",
+                props: { class: "information" },
+                children: [
+                    DOM.createElement(getNavbarStructure, []),
+                    {
+                        tag: "main",
+                        props: { class: "body-content" },
+                        children: [
+                            {
+                                tag: "section",
+                                props: { class: "section1" },
+                                children: [
+                                    {
+                                        tag: "h1",
+                                        children: [{
+                                            tag: 'TEXT_NODE',
+                                            content: "Spot not found",
+                                        }]
+                                    },
+                                ]
+                            },
+                        ]
+                    },
+                    getFooterStructure()
+                ]
+            };
+        }
+
         return {
             tag: "div",
             props: { class: "information" },
@@ -29,7 +79,7 @@ export default class InformationsStruct extends DOM.Component{
                                     tag: "h1",
                                     children: [{
                                         tag: 'TEXT_NODE',
-                                        content: this.props.spot,
+                                        content: spotData.spot,
                                     }]
                                 },
                             ]
@@ -42,8 +92,7 @@ export default class InformationsStruct extends DOM.Component{
                                     tag: "p",
                                     children: [{
                                         tag: 'TEXT_NODE',
-                                        content: this.props.spotDetails,
-
+                                        content: spotData.content,
                                     }]
                                 },
                             ]

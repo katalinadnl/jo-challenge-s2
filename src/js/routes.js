@@ -13,6 +13,6 @@ export const routes = [
     { path: "/evenements", component: EventsStruct },
     { path: "/carte", component: MapStruct },
     { path: "/spots", component: SpotsStruct },
-    { path: "/informations", component: InformationsStruct },
+    { path: "/spots/:id", component: InformationsStruct },
     { path: "*", component: Page404Struct }
 ];

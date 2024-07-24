@@ -1,17 +1,26 @@
-import {generateStructure, createElement, isClassComponent, DOM} from "../core/generateStructure.js";
+import { generateStructure, createElement, isClassComponent, DOM } from "../core/generateStructure.js";
 
-const BrowserRouter = function (routes, rootElement) { // function to handle the browser routing
-    const generatePage = () => { // function to generate the page
-        const pathname = window.location.pathname; // get the pathname
-        const route = routes.find(route => route.path === pathname) || routes.find(route => route.path === '*'); // find the route
+const BrowserRouter = function(routes, rootElement) {
+    const generatePage = () => {
+        const pathname = window.location.pathname;
+
+        const route = routes.find(route => {
+            const routePath = route.path.replace(/:\w+/g, '(.+)');
+            const match = pathname.match(new RegExp(`^${routePath}$`));
+            return match;
+        }) || routes.find(route => route.path === '*');
+
         let g;
         if (route) {
-            if(isClassComponent(route.component)) {
+            const routePath = route.path.replace(/:\w+/g, '(.+)');
+            const match = pathname.match(new RegExp(`^${routePath}$`));
+
+            if (isClassComponent(route.component)) {
                 const component = route.component;
-                const page = DOM.createElement(component);
+                const page = DOM.createElement(component, { params: match && match.slice(1) });
                 g = generateStructure(page);
             } else if (typeof route.component === "function") {
-                g = new route.component();
+                g = new route.component({ params: match && match.slice(1) });
             } else {
                 g = generateStructure(route.component);
             }
@@ -22,24 +31,24 @@ const BrowserRouter = function (routes, rootElement) { // function to handle the
                 rootElement.appendChild(g);
             }
         } else {
-            console.error(`Pas de route pour la route "${pathname}"`);
+            console.error('No route found');
         }
     };
 
-    generatePage(); // generate the page
+    generatePage();
 
-    const oldPushState = history.pushState; // save the old push state
-    history.pushState = function (state, title, url) { // override the push state
-        oldPushState.call(history, state, title, url); // call the old push state
-        window.dispatchEvent(new Event('popstate')); // dispatch a popstate event
+    const oldPushState = history.pushState;
+    history.pushState = function(state, title, url) {
+        oldPushState.call(history, state, title, url);
+        window.dispatchEvent(new Event('popstate'));
     };
 
-    window.onpopstate = generatePage; // on popstate, generate the page
+    window.onpopstate = generatePage;
 };
 
 export default BrowserRouter;
 
-export function BrowserLink(props) { // function to create a link
+export function BrowserLink(props) {
     return {
         tag: "a",
         props: {
