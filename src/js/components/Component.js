@@ -1,5 +1,5 @@
-import { generateStructure }  from "../core/generateStructure.js";// import the generateStructure function
-// This is a base class for all components. It has a setState method which updates the state and re-renders the component.
+import { generateStructure }  from "../core/generateStructure.js";
+
 export default class Component {
 
     constructor(props = {}) {
@@ -7,16 +7,16 @@ export default class Component {
         this.props = props;
     }
 
-    setState(newState) { // method to update the state
-        this.state = { ...this.state, ...newState }; // update the state
-        this.updateComponent(); // call the updateComponent
+    setState(newState) { // method to set the state
+        this.state = { ...this.state, ...newState };
+        this.updateComponent();
     }
 
     updateComponent() { // method to update the component
-        this.isRender = false; // set the isRender to false
-        const newElement = generateStructure(this.render()); // generate the new structure
-        const element = this.__rootElement; // get the root element
-        const parent = element ? element.parentElement : null; // get the parent element
+        this.isRender = false;
+        const newElement = generateStructure(this.render()); // generate the new struct
+        const element = this.__rootElement;
+        const parent = element ? element.parentElement : null;
 
         if (parent && element) {
             if (this.componentWillUnmount) {
@@ -33,8 +33,8 @@ export default class Component {
         }
     }
 
-    setRoot(element) { // method to set the root element
-        this.__rootElement = element; // set the root element
+    setRoot(element) {
+        this.__rootElement = element;
     }
 
 

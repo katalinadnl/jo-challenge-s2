@@ -1,4 +1,3 @@
-// components/EventsStruct.js
 import getNavbarStructure from "../components/Navbar.js";
 import {getFooterStructure} from "../components/Footer.js";
 import {createHeroComponent} from "../components/HeroSection.js";
