@@ -19,6 +19,19 @@ function formatDate(dateString) {
     return `${day}/${month}/${year}`;
 }
 
+function truncateDescription(title, description, address, maxLength = 500) {
+    if (title.length < 60 && address.length < 45) {
+        if (description.length > maxLength) {
+            return `${description.substring(0, maxLength)}...`;
+        }
+    } else {
+        if (description.length > 150) {
+            return `${description.substring(0, 200)}...`;
+        }
+    }
+    return description;
+}
+
 export default class EventsStruct extends DOM.Component {
     constructor(props) {
         super(props);
@@ -70,7 +83,7 @@ export default class EventsStruct extends DOM.Component {
                     type: "event",
                     title: record.title,
                     date: formatDate(record.starting_date),
-                    description: record.description,
+                    description: truncateDescription(record.title || "Title not provided", record.description || "Description not provided" , record.address || "Address not provided"),
                     tarif: record.tarif || "Pas de tarif indiqué",
                     address: record.address,
                     linkJO: record.external_link || "https://olympics.com/fr/paris-2024",

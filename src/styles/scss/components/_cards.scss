@@ -147,7 +147,7 @@
 
 
 .event-card {
-    width: calc(45% - 16px); /* This calculation ensures two cards fit in one row considering the gap */
+    width: calc(45% - 16px);
     height: 500px;
     flex-shrink: 0;
     display: flex;
@@ -219,14 +219,9 @@
         }
     }
 
-    @media screen and (max-width: $resolution-large-desktop) {
-        width: 100%;
-        height: fit-content;
-    }
     @media screen and (max-width: $resolution-tablet) {
         width: 80%;
         height: fit-content;
     }
 
 }
-
