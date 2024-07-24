@@ -1,82 +1,77 @@
-# Olympic Games 2024
+# Jeux Olympiques 2024
 
 ## Description du projet
 
+L'application a pour objectif de fournir aux utilisateurs une expérience interactive pour les Jeux Olympiques de 2024, en mettant en avant les meilleurs endroits (spots) depuis lesquels ils peuvent observer les événements sportifs en direct, les sports et événiments programmés et permet également la recherche filtrée sur toutes les pages. Elle offre aussi une carte interactive avec des informations détaillées sur les lieux des événements
 
-## Listing des fonctionnalitées avec les taches par personne
-| N/A                           | N/A                                         | Personne en charge |
-|-------------------------------|---------------------------------------------|--------------------|
-| Pages Generales               | Home Page                                   | <p style="color: blue;">Camille</p> |
-|                               | Sport                                       | <p style="color: orange;">Catalina</p> |
-|                               | Carte                                       | <p style="color: blue;">Nadime</p> |
-|                               | Événiments                                  | <p style="color: orange;">Catalina</p> |
-|                               | Spot                                        | <p style="color: blue;">Alice</p> |
-|                               | 404                                         | <p style="color: blue;">Camille</p> |
-|                               | Information des Spots                       | <p style="color: blue;">Alice</p> |
-|-------------------------------|---------------------------------------------|------------------------|
-| Structure du projet           | Generate Structure                          | <p style="color: orange;">Catalina</p> |
-|                               | Browser Router                              | <p style="color: orange;">Catalina</p> |
-|                               | Component                                   | <p style="color: orange;">Catalina</p> |
-|                               | Routes                                      | <p style="color: blue;">Camille</p> |
-|-------------------------------|---------------------------------------------|------------------------|
-| Composants                    | CardComponent                               | <p style="color: orange;">Catalina</p> |
-|                               | HeroSection                                 | <p style="color: orange;">Catalina</p> |
-|                               | Filtre + implementation sur toutes les pages| <p style="color: blue;">Camille</p> |
-|                               | Navbar                                      | <p style="color: blue;">Camille</p> |
-|                               | Footer                                      | <p style="color: blue;">Camille</p> |
-|                               | CtaButton                                   | <p style="color: blue;">Camille</p> |
-|-------------------------------|---------------------------------------------|------------------------|
-| Cards                         | Les cards sport                             | <p style="color: orange;">Catalina</p> |
-|                               | Les cards event                             | <p style="color: blue;">Catalina</p> |
-|                               | Les cards spots                             | <p style="color: blue;">Alice</p> |
-|-------------------------------|---------------------------------------------|------------------------|
-| Mise en place des API/mappings| fetchSportsData.js                          | <p style="color: blue;">Nadime</p> |
-|                               | fetchEventsData.js                          | <p style="color: orange;">Catalina</p> |
-|                               | Mappings                                    | <p style="color: blue;">Alice/Catalina</p> |
+## Listing des fonctionnalités avec les tâches par personne
 
-
-
-
-
+| Catégorie                     | Tâche                                      | Personne en charge  |
+|-------------------------------|--------------------------------------------|---------------------|
+| Pages Générales               | Home Page                                  | Camille             |
+|                               | 404                                        | Camille             |
+|                               | Sport                                      | Catalina            |
+|                               | Événements                                 | Catalina            |
+|                               | Carte                                      | Nadime              |
+|                               | Spot                                       | Alice               |
+|                               | Information des Spots                      | Alice               |
+|-------------------------------|--------------------------------------------|---------------------|
+| Structure du projet           | GenerateStructure                          | Catalina            |
+|                               | BrowserRouter                              | Catalina            |
+|                               | Composant                                  | Catalina            |
+|                               | Routes                                     | Camille             |
+|-------------------------------|--------------------------------------------|---------------------|
+| Composants                    | Composant Card                             | Catalina            |
+|                               | Section Héro                               | Catalina            |
+|                               | Filtre + Implémentation sur toutes les pages| Camille            |
+|                               | Navbar                                     | Camille             |
+|                               | Footer                                     | Camille             |
+|                               | Bouton CTA                                 | Camille             |
+|-------------------------------|--------------------------------------------|---------------------|
+| Cartes                        | Cartes des sports                          | Catalina            |
+|                               | Cartes des événements                      | Catalina            |
+|                               | Cartes des spots                           | Alice               |
+|-------------------------------|--------------------------------------------|---------------------|
+| Mise en place des API/mappings| fetchSportsData.js                         | Nadime              |
+|                               | fetchEventsData.js                         | Catalina            |
+|                               | Mappings                                   | Alice/Catalina      |
 
 ## Installation
-To install and run this project locally, follow these steps:
 
-1. Clone the repository:
+Pour installer et exécuter ce projet localement, suivez ces étapes :
+
+1. Clonez le dépôt :
     ```
     git clone https://github.com/katalinadnl/jo-challenge-s2.git
     ```
 
-2. Navigate to the project directory:
+2. Naviguez jusqu'au répertoire du projet :
     ```
     cd jo-challenge-s2
     ```
 
-3. Build and start the containers
-
+3. Construisez et démarrez les conteneurs :
     ```
     docker compose up -d
     ```
 
-3. Install dependencies:
+4. Installez les dépendances :
     ```
     npm install
     ```
 
-4. Start the development server for the styles:
+5. Démarrez le serveur de développement pour les styles :
     ```
     npm run watch
     ```
 
-## Usage
+## Utilisation
 
-Open your browser and go to http://localhost:8080 to use the application.
+Ouvrez votre navigateur et allez à l'adresse http://localhost:8088 pour utiliser l'application.
 
+## Membres de l'équipe
 
-## Team Members
-- DANILA Catalina
-- GIRARD Camille
-- LEMERRE Alice
-- NEFFATI Nadime
-
-
+- [DANILA Catalina](https://github.com/katalinadnl)
+- [GIRARD Camille](https://github.com/camille-girard)
+- [LEMERRE Alice](https://github.com/AliceLemerre)
+- [NEFFATI Nadime](https://github.com/nneffati2u)
