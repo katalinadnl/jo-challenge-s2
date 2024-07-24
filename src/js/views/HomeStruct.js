@@ -5,9 +5,8 @@ import { getCtaButtonStructure } from "../components/CtaButton.js";
 import { DOM } from "../core/generateStructure.js";
 import CardComponent from "../components/CardComponent.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
-import { fetchEventsData } from "../api/fetchData.js";
+import { fetchSports } from "../api/fetchSportsData.js";
 import { formatDate } from "../functions/dateFunctions.js";
-import { fetchEvents } from "../api/fetchEventsData.js";
 import { fetchSpotsData } from "../api/fetchSpotsData.js";
 import spotsMapping from "../mappings/spotsMapping.js";
 
@@ -37,7 +36,7 @@ export default class HomeStruct extends DOM.Component {
     }
 
     async componentDidMount() {
-        const sportsData = await fetchEventsData();
+        const sportsData = await fetchSports();
         const spotsData = await fetchSpotsData();
         const validTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
         const validSpotsTitles = [ "Para Triathlon (PTRI)", "Golf (GLF)", "Natation artistique (SWA), Plongeon (DIV), Water-polo (WPO)"];

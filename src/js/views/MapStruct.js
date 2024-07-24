@@ -3,7 +3,7 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
-import { fetchEventsData } from "../api/fetchData.js";
+import { fetchSports } from "../api/fetchSportsData.js";
 import { fetchSpotsData } from "../api/fetchSpotsData.js";
 import { fetchEvents } from "../api/fetchEventsData.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
@@ -38,7 +38,7 @@ export default class MapStruct extends DOM.Component {
     }
 
     try {
-      const eventsData = await fetchEventsData();
+      const eventsData = await fetchSports();
       const spotsData = await fetchSpotsData();
       const { records: newEventsData } = await fetchEvents(0, 100);
 

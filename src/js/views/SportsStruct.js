@@ -3,7 +3,7 @@ import { getFooterStructure } from "../components/Footer.js";
 import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
-import { fetchEventsData } from "../api/fetchData.js";
+import { fetchSports } from "../api/fetchSportsData.js";
 import { filterComponent } from "../components/Filter.js";
 import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
@@ -32,7 +32,7 @@ export default class SportsStruct extends DOM.Component {
     }
 
     async componentDidMount() {
-        const eventsData = await fetchEventsData();
+        const eventsData = await fetchSports();
         const allEventsData = eventsData.map(event => {
             return {
                 codeSite: event.fields.code_site,

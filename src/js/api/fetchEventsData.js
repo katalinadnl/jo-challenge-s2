@@ -1,4 +1,3 @@
-// api/fetchEventsData.js
 export async function fetchEvents(start = 0, rowsPerPage = 10, fieldToFilterOn = '', filterValue = '') {
     try {
         let response = {};
