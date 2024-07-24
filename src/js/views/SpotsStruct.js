@@ -46,7 +46,7 @@ export default class SpotsStruct extends DOM.Component {
                 StartDateLabel: formatDate(event.fields.start_date),
                 EndDateLabel: formatDate(event.fields.end_date),
                 image: spotsMapping[event.fields.sports] || spotsMapping.default,
-                spotLinkMap: `/carte?lat=${coordonnees}&lon=${coordonnees}`, //TODO: change to real coordinates                 spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
+                spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates               spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
 
                 spotTextLinkMap: "Voir sur la carte",
                 spotLinkDetails: `/spots/${spotId}`, //TODO: chager pour lien détails
@@ -98,43 +98,14 @@ export default class SpotsStruct extends DOM.Component {
             tag: "div",
             props: { class: "spots" },
             children: [
-                
+
                 DOM.createElement(getNavbarStructure, []),
                 createHeroComponent(spotsHeroContent),
                 {
                     tag: "main",
                     props: { class: "body-content" },
                     children: [
-                        {
-                            tag: "div",
-                            props: { class: "info-slider-spots" },
-                            children: [
-                                {
-                                    tag: "h6",
-                                    children: [
-                                        {
-                                            tag: 'TEXT_NODE',
-                                            content: "Faites défiler horizontalement pour découvrir les événements actuels",
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag: "div",
-                                    props: { class: "arrow-container" },
-                                    children: [
-                                        {
-                                            tag: "img",
-                                            props: {
-                                                src: "../../styles/images/arrow_2.png",
-                                                alt: "Flèche",
-                                                class: "arrow-desktop"
-                                            },
-                                        },
-                                    ]
-                                }
-                            ]
-                        },
-                {
+                            {
                     tag: "section",
                     props: { class: "section-selection" },
                     children: [
@@ -149,7 +120,7 @@ export default class SpotsStruct extends DOM.Component {
                             tag: "p",
                             children: [{
                                 tag: 'TEXT_NODE',
-                                content: "Les plus beaux spots de Paris",
+                                content: "Faites défiler horizontalement pour découvrir les plus beaux spots de Paris 2024",
                             }]
                         },
                         {
