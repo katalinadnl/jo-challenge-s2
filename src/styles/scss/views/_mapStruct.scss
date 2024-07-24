@@ -1,40 +1,73 @@
 .map {
-    .hero-section {
-        @include hero-section-map-responsive;
+  .hero-section {
+    @include hero-section-map-responsive;
+  }
+
+  .section1 {
+    display: flex;
+    flex-direction: column;
+
+    .map-item {
+      width: 100%;
+      height: 500px;
     }
 
-    .map {
+    .sport-cards,
+    .spot-cards,
+    .events-cards-section {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .sport-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(40);
+
+      @media screen and (max-width: $resolution-large-desktop) {
+        gap: rem(0);
+        justify-content: space-between;
+      }
+      @media screen and (max-width: $resolution-tablet) {
+        justify-content: center;
+      }
+    }
+
+    .spot-cards {
+      .spots-card {
+        width: rem(350);
+        aspect-ratio: 14 / 19;
+        position: relative;
+        box-shadow: 0 rem(4) rem(4) rgba(0, 0, 0, 0.25);
+        background-size: cover;
+        flex-shrink: 0;
+        background-position: center;
         display: flex;
         flex-direction: column;
-        .map-item {
-            width: 100%;
-            height: 500px;
-        }
-    }
-    .results-section {
-        padding: 20px;
-      
-        h2 {
-          text-align: start;
-          margin-bottom: 20px;
-        }
-      
-        .results-cards {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-      
-          .card {
-            flex: 0 1 calc(33.333% - 20px); // 3 cards per row
-            margin: 10px;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 10px;
-          }
+        justify-content: space-between;
+        border-radius: rem(5);
+        cursor: pointer;
+        margin: rem(20);
+
+        .spots-card-description {
+          border-radius: rem(5);
         }
       }
-      
-}
+    }
 
+    .events-cards-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(24);
+      justify-content: space-between;
+      align-items: center;
+      padding: rem(64) 0;
+
+      @media screen and (max-width: $resolution-large-desktop) {
+        gap: rem(16);
+        justify-content: center;
+      }
+    }
+  }
+}
