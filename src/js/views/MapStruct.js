@@ -4,8 +4,16 @@ import { createHeroComponent } from "../components/HeroSection.js";
 import CardComponent from "../components/CardComponent.js";
 import { DOM } from "../core/generateStructure.js";
 import { fetchEventsData } from "../api/fetchData.js";
+<<<<<<< Updated upstream
 import { fetchSpotsData } from "../api/fetchSpotsData.js";
 import { fetchEvents } from "../api/fetchEventsData.js";
+=======
+import { populateDropdowns } from "../functions/populateDropdowns.js";
+import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
+import { updateResultsSection } from "../functions/updateResultsSection.js";
+import { createResultsSection } from "../functions/ResultsSection.js";
+import { createGMap, addMarkers, clearMarkers } from "../functions/map.js";
+>>>>>>> Stashed changes
 import imageMapping from "../mappings/sportsImagesMapping.js";
 import spotsMapping from "../mappings/spotsMapping.js";
 import { formatDate } from "../functions/dateFunctions.js";

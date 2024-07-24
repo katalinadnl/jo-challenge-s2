@@ -5,7 +5,7 @@ const spotsMapping = {
       spot: "La Felicità",
       content: "La Felicità est un immense food-market en direct producteurs où tout est 100% fait maison. Venez vous balader dans les allées, humer le fumet fou des pizzas napolitaines, et kiffez l'ambiance festive.",
       horaires: "Ouvert tous les jours de 8h à 2h",
-      coordonnees: {"latitude": "48.8566", "longitude": "2.3522"},
+      coordonnees: {"lat": "48.8566", "lon": "2.3522"},
   },
   "Football (FBL)": {
       id: 2,
@@ -13,7 +13,7 @@ const spotsMapping = {
       spot: "écrans géants",
       content: "Stadium XYZ est le lieu incontournable pour les amateurs de football. Profitez des écrans géants pour suivre les matchs en direct avec une ambiance électrique.",
       horaires: "Ouvert du Mardi au Dimanche de 10h à 23h",
-      coordonnees: {"latitude": "48.8602", "longitude": "2.3285"}
+      coordonnees: {"lat": "48.8602", "lon": "2.3285"}
   },
   "Volley-ball de plage (VBV)": {
       id: 3,
@@ -21,7 +21,7 @@ const spotsMapping = {
       spot: "Vue sur le stade de la Tour Eiffel",
       content: "Notre toit terrasse est l'endroit idéal pour vivre les matchs de volley-ball de plage en direct, avec une vue imprenable sur la Tour Eiffel.",
       horaires: "Ouvert tous les jours de 9h à 22h",
-      coordonnees: {"latitude": "48.8639", "longitude": "2.3317"}
+      coordonnees: {"lat": "48.8639", "lon": "2.3317"}
   },
   "Escrime fauteuil (PWFE), Para Taekwondo (PTKW)": {
       id: 4,
@@ -29,7 +29,7 @@ const spotsMapping = {
       spot: "Arena DEF",
       content: "Arena DEF propose des retransmissions des compétitions d'escrime et de para taekwondo dans une atmosphère sportive et conviviale.",
       horaires: "Ouvert du Mardi au Dimanche de 10h à 23h",
-      coordonnees: {"latitude": "48.8615", "longitude": "2.3348"}
+      coordonnees: {"lat": "48.8615", "lon": "2.3348"}
   },
   "Basketball fauteuil (PWBK)": {
       id: 5,
@@ -37,7 +37,7 @@ const spotsMapping = {
       spot: "Parc de Bercy",
       content: "Le parc de Bercy est le spot parfait pour les fans de basketball fauteuil, avec des retransmissions en direct sur écrans géants installés pour l'occasion, venez profiter des épreuves au grand air.",
       horaires: "Ouvert tous les jours de 10h à 23h",
-      coordonnees: {"latitude": "48.8570", "longitude": "2.3419"}
+      coordonnees: {"lat": "48.8570", "lon": "2.3419"}
   },
   "Athlétisme - arrivée Marathon (ATM), Cyclisme sur route - départ Contre-la-montre (CRD), Tir à l'arc (ARC)": {
       id: 6,
@@ -45,7 +45,7 @@ const spotsMapping = {
       spot: "Vue sur l'arrivée marathon",
       content: "Ce balcon vous offre une vue imprenable sur les épreuves d'athlétisme et de cyclisme.",
       horaires: "Ouvert tous les jours de 8h à 22h",
-      coordonnees: {"latitude": "48.8650", "longitude": "2.3466"}
+      coordonnees: {"lat": "48.8650", "lon": "2.3466"}
   },
   "Escalade (CLB)": {
       id: 7,
@@ -53,7 +53,7 @@ const spotsMapping = {
       spot: "The Wall",
       content: "the Wall est le spot incontournable pour les passionnés d'escalade, pendant les épreuves profitez des retransmissions des compétitions en direct et des ateliers d'initiation.",
       horaires: "Ouvert tous les jours de 7h à 23h",
-      coordonnees: {"latitude": "48.8590", "longitude": "2.3520"}
+      coordonnees: {"lat": "48.8590", "lon": "2.3520"}
   },
   "Skateboard (SKB)": {
       id: 8,
@@ -61,7 +61,7 @@ const spotsMapping = {
       spot: "EGP18",
       content: "L’Espace Glisse de Paris 18 ou EGP18 est un skatepark couvert se situant à Paris. D’une surface de 3 500 m², il s’agit du plus grand skatepark en béton couvert de France. Il est situé dans le 18e arrondissement de Paris. Il a été inauguré en février 2008. L'EGP vous ouvre exceptionnelement ses portes dès 8h pour regarder les directs et les rediffusions des compétitions de skateboard, avec des démonstrations en live et une ambiance urbaine.",
       horaires: "Ouvert tous les jours de 8h à 22h",
-      coordonnees: {"latitude": "48.8585", "longitude": "2.3545"}
+      coordonnees: {"lat": "48.8585", "lon": "2.3545"}
   },
   "Parc Urbain la Concorde (FCO)": {
       id: 9,
@@ -69,7 +69,7 @@ const spotsMapping = {
       spot: "Balcon place de la Concorde",
       content: "Ce balcon vous offre une vue imprenable sur les épreuves d'athlétisme et de cyclisme.",
       horaires: "Ouvert tous les jours de 7h à 22h",
-      coordonnees: {"latitude": "48.8568", "longitude": "2.3621"}
+      coordonnees: {"lat": "48.8568", "lon": "2.3621"}
   },
   "Boxe (BOX), Pentathlon moderne (MDN)": {
       id: 10,
@@ -77,7 +77,7 @@ const spotsMapping = {
       spot: "Le 104",
       content: "Situé dans le 19e arrondissement de Paris, le CENTQUATRE-PARIS est un espace de résidences artistiques, de production et de diffusion d'arts pour les publics et les artistes du monde entier. Pensé comme une plateforme collaborative, il donne accès à l’ensemble des arts actuels : spectacles, concerts, expositions, ateliers et rencontres se croisent au travers d’une programmation résolument populaire, contemporaine et exigeante.",
       horaires: "Ouvert tous les jours de 8h à 22h",
-      coordonnees: {"latitude": "48.8640", "longitude": "2.3333"}
+      coordonnees: {"lat": "48.8640", "lon": "2.3333"}
   },
   "Canoë-kayak slalom (CSL)": {
       id: 11,
@@ -109,7 +109,7 @@ const spotsMapping = {
       spot: "Le chopp'ing",
       content: "Le chopp'ing est le bar Lillois de référence pour ceux qui aiment transpirer, s’enflammer, vibrer avec leur équipe préféré. Plus qu’un bar et loin du PMU, le chopp'ing est un bar multisport qui contente les passionnés de sport dans les grandes largesses. Retrouvez les épreuves de Handball et de Basketball en direct.",
       horaires: "Ouvert tous les jours de 8h à 22h",
-      coordonnees: {"latitude": "50.6964", "longitude": "3.0500"}
+      coordonnees: {"lat": "50.6964", "lon": "3.0500"}
   },
   "Tennis de table (TTE)": {
       id: 15,
