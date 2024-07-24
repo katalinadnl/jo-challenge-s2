@@ -1,6 +1,6 @@
 const imageMapping = {
     "Para Triathlon (PTRI)": "../../sources/sports/PTRI.jpg",
-    "Football (FBL)": "../../sources/sports/FBL.png",
+    "Football (FBL)": "../../sources/sports/FBL.jpg",
     "Volley-ball de plage (VBV)": "../../sources/sports/VBV.png",
     "Escrime fauteuil (PWFE), Para Taekwondo (PTKW)": "../../sources/sports/PWFE.jpg",
     "Basketball fauteuil (PWBK)": "../../sources/sports/PWBK.jpg",
