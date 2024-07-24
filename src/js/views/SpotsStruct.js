@@ -26,6 +26,13 @@ export default class SpotsStruct extends DOM.Component {
         };
     }
 
+  /*  generateSpotId(spotName) {
+        const spotsArray = Object.keys(spotsMapping);
+        const spotIndex = spotsArray.findIndex(key => spotsMapping[key].spot === spotName);
+        return spotIndex + 1;
+    }*/
+
+
     async componentDidMount() {
         const spotsData = await fetchSpotsData();
         const CardComponents = [];
@@ -34,8 +41,11 @@ export default class SpotsStruct extends DOM.Component {
         spotsData.forEach(event => {
             const mappingKey = event.fields.sports;
             const spotData = spotsMapping[mappingKey] || spotsMapping.default;
+            const spotId = spotData.id;
+
 
             const cardProps = {
+                id: spotId,
                 type: "spot",
                 SpotName: spotData.spot,
                 SiteNameLabel: event.fields.nom_site,
@@ -45,7 +55,7 @@ export default class SpotsStruct extends DOM.Component {
                 image: spotsMapping[event.fields.sports] || spotsMapping.default,
                 spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
                 spotTextLinkMap: "Voir sur la carte",
-                spotLinkDetails: `/spot?=${spotData.spot}`, //TODO: change for details link
+                spotLinkDetails: `/spots/${spotId}`, //TODO: chager pour lien détails
                 spotTextLinkDetails: "Voir en détails",
             };
 

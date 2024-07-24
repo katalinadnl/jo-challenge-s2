@@ -68,6 +68,7 @@ export default class HomeStruct extends DOM.Component {
             if  (validSpotsTitles.includes(mappingKey)) {
                 const cardProps = {
                     type: "spot",
+                    id: spotData.id,
                     SpotName : spotData.spot,
                     SiteNameLabel: event.fields.nom_site,
                     SportLabel:  event.fields.sports,
@@ -76,7 +77,7 @@ export default class HomeStruct extends DOM.Component {
                     image: spotsMapping[event.fields.sports] || spotsMapping.default,
                     spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`,
                     spotTextLinkMap: "Voir sur la carte",
-                    spotLinkDetails: `/spot?=${spotData.spot}`,
+                    spotLinkDetails: `/spots/${spotData.id}`,
                     spotTextLinkDetails: "Voir en détails",
                 };
                 return DOM.createElement(CardComponent, cardProps, []);
