@@ -13,6 +13,7 @@ export const routes = [
     { path: "/evenements", component: EventsStruct },
     { path: "/carte", component: MapStruct },
     { path: "/spots", component: SpotsStruct },
-    { path: "/informations", component: InformationsStruct },
+    { path: "/spot/:id", component: InformationsStruct }, //vérifier la route et les imports js
+   // { path: "/informations", component: InformationsStruct },
     { path: "*", component: Page404Struct }
 ];

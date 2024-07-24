@@ -63,7 +63,6 @@
 
     &-label{
         padding: rem(3) rem(9);
-        max-height: rem(29);
         background-color: rgb(255, 255, 255, 0.5);
         border : rem(1) Solid $black;
         border-radius: rem(8);
@@ -72,6 +71,7 @@
         font-weight: 700;
         border-radius: rem(4);
         margin: 0;
+        text-align: right;
     }
 
 
