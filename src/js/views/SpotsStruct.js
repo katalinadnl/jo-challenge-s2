@@ -14,7 +14,9 @@ const spotsHeroContent = {
     paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
 };
 
-
+/*function cleanSportName(sport) {
+    return sport.replace(/\s*\([^)]*\)/g, '');
+}*/
 
 export default class SpotsStruct extends DOM.Component {
     constructor(props) {
@@ -37,13 +39,15 @@ export default class SpotsStruct extends DOM.Component {
                 SpotName : spotData.spot,
                 SiteNameLabel: event.fields.nom_site,
                 SportLabel:  event.fields.sports,
-                StartDateLabel: formatDate(event.fields.start_date),
+                StartDateLabel: formatDate(event.fields.start_date), //ajouter début
                 EndDateLabel: formatDate(event.fields.end_date),
                 image: spotsMapping[event.fields.sports] || spotsMapping.default,
-                buttonDetails: "Voir en détails",
-                buttonMap: "Voir sur la carte"
+                spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
+                spotTextLinkMap: "Voir sur la carte",
+                spotLinkDetails: `/spot?=${spotData.spot}`, //TODO: chager pour lien détails
+                spotTextLinkDetails: "Voir en détails",
             };
-            
+
             const cardComponent = DOM.createElement(CardComponent, cardProps, []);
             CardComponents.push(cardComponent);
 
@@ -61,10 +65,11 @@ export default class SpotsStruct extends DOM.Component {
 
         const navbar = DOM.createElement(getNavbarStructure, []);
         return {
-            tag: "div",
+            tag: "main",
             props: { class: "spots body-content" },
             children: [
-            navbar,
+            DOM.createElement(getNavbarStructure, []),
+             
             createHeroComponent(spotsHeroContent),
                 {
                     tag: "h1",
@@ -95,7 +100,7 @@ export default class SpotsStruct extends DOM.Component {
                             children: [
                                 {
                                     tag: "div",
-                                    props: { class: "slider" },
+                                    props: { class: "slider slider-slide" },
                                     children: CardComponents //Array(6).fill(cards)
                                 }
                             ]
@@ -104,7 +109,7 @@ export default class SpotsStruct extends DOM.Component {
                 },
                 {
                     tag: "section",
-                    props: { class: "section-selection" },
+                    props: { class: "section-selection sport-section" },
                     children: [
                         {
                             tag: "h2",

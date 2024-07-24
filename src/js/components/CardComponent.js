@@ -144,18 +144,39 @@ export default class CardComponent extends DOM.Component {
                                 {
                                     tag: "div",
                                     props: { class: "spots-card-button spots-card-button-details" },
-                                    children: [{
-                                        tag: 'TEXT_NODE',
-                                        content: this.props.buttonDetails,
-                                    }]
+                                    children: [
+                                        {
+                                            tag: "a",
+                                            props: {
+                                                href: this.props.spotLinkDetails,
+                                            },
+                                            children: [
+                                                {
+                                                tag: 'TEXT_NODE',
+                                                content: this.props.spotTextLinkDetails,
+                                                }
+                                            ]
+                                        }
+
+                                    ]
                                 },
                                 {
                                     tag: "div",
-                                    props: { class: "spots-card-button spots-card-button-map" },
+                                    props: { class: "link spots-card-button spots-card-button-map" },
+                                    href: this.props.spotLinkMap,
+
                                     children: [
                                         {
-                                            tag: 'TEXT_NODE',
-                                            content: this.props.buttonMap,
+                                            tag: "a",
+                                            props: {
+                                                href: this.props.spotLinkMap,
+                                            },
+                                            children: [
+                                                {
+                                                tag: 'TEXT_NODE',
+                                                content: this.props.spotTextLinkMap,
+                                                }
+                                            ]
                                         }
 
                                     ]
