@@ -1,227 +1,45 @@
-@import '../partials/variables';
-@import '../partials/mixin';
-@import '../partials/functions';
-
-.sport-card {
-    &.card {
-        width: 350px;
-        height: 400px;
-        flex-shrink: 0;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 20px;
-
-        .date-time {
-            margin-left: auto;
-            margin-right: 20px;
-            margin-top: 16px;
-            padding: 8px 12px;
-            background-color: rgba(255, 255, 255, 0.50);
-            border: 2px solid black;
-            border-radius: 5px;
-        }
-
-        .text-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            border-radius: 0px 0px 5px 5px;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
-            color: white;
-            transition: height 0.3s ease;
-
-            h4 {
-                margin: 0px;
-            }
-
-            .card-description {
-                color: white;
-            }
-
-        }
-        }
-    }
-
-
-.spots-card{
-    width: rem(350);
-    //height: 475px;
-    aspect-ratio: 14/19;
-    position: relative;
-    border-radius: rem(4);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;
-
-
-    &-label{
-        padding: rem(3) rem(9);
-        background-color: rgb(255, 255, 255, 0.5);
-        border : rem(1) Solid $black;
-        border-radius: rem(8);
-        color: $black;
-        font-size: rem(12);
-        font-weight: 700;
-        border-radius: rem(4);
-        margin: 0;
-        text-align: right;
-    }
-
-
-    &-description{
-        box-sizing: border-box;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        max-height: rem(350);
-        width: 100%;
-        padding: rem(16);
-        border-radius: rem(4);
-
-        color: $white;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-
-
-        p, h4{
-            margin: 0px !important;
-            max-width: 60%;
-            line-height: 1;
-        }
-
-    a{
-        text-decoration: none;
-        color: inherit;
-    }
-
-    }
-
-    &-buttons{
-        margin: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &-button{
-        max-width: 45%;
-        padding: rem(8) rem(18);
-        border: rem(1) solid $white;
-        border-radius: rem(50);
-
-        &-details{
-            bottom: rem(16);
-            left: rem(16);
-
-        }
-        &-map{
-            bottom: rem(16);
-            right: rem(16);
-        }
-    }
-}
-.spots-card:not(:hover) .spots-card-buttons {
-    display: none;
+.spots {
+    .hero-section {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%), url(../images/ski.jpg) lightgray 0.812px -0.096px / 100% 172.973% no-repeat;
+        @include hero-section-spots-responsive;    
+     }
 }
 
-
-.label-list{
-    position: absolute;
-    top: rem(16);
-    right: rem(16);
+.spots-list-container{
     display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: rem(8);
-    max-width: 50%;
-}
-
-
-.event-card {
-    width: calc(45% - 16px);
-    height: 500px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    border-radius: 5px;
-    background: #FFF;
-    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
-    padding: 98px 32px;
-
-    .text-section {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        gap: 16px;
-        h4 {
-            margin: 0;
-        }
-
-        .date-address {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-
-            .address, .date {
-                a {
-                    color: inherit;
-                    text-decoration: none;
-                }
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            .address {
-                color: #018C86;
-            }
-        }
+    justify-content: center;
     }
-
-    .box-tarif {
-        padding: 8px 12px;
-        background-color: rgba(255, 255, 255, 0.50);
-        border: 2px solid black;
-        border-radius: 5px;
-        width: fit-content;
-        color: #FFF;
-        background: #000;
-    }
-
-    .link {
-        margin-top: 16px;
+    
+    
+    .spots-list{
         display: flex;
         justify-content: space-between;
-        gap: 16px;
-        a {
-            color: #000; /* Changed to hex value */
-            text-decoration: none;
-            font-weight: 700;
-            border: #000 solid 2px;
-            padding: 8px 16px;
-            border-radius: 5px;
-            gap: 16px;
-            align-items: center;
+        flex-wrap: wrap;
+        gap: rem(40);
+        margin: 0 auto;
 
-            &:hover {
-                background-color: #000; /* Changed to hex value */
-                color: #FFF; /* Changed to hex value */
-            }
+        
+        @media screen and (max-width: $resolution-large-desktop) {
+            justify-content: space-between;
+        }
+        @media screen and (max-width: $resolution-tablet) {
+            justify-content: center;
         }
     }
 
-    @media screen and (max-width: $resolution-tablet) {
-        width: 80%;
-        height: fit-content;
+    .slider{
+        overflow-y: hidden;
+        overflow-x: auto;
+        display: flex;     
+        gap: 24px;   
+    
     }
 
-}
+    .slider::-webkit-scrollbar {
+        display: none;
+      }
+
+    .slider {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    }
