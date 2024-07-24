@@ -24,7 +24,7 @@ export default class CardComponent extends DOM.Component {
                     click: [this.handleClick],
                 },
                 props: {
-                    class: "sport-card card",
+                    class: "sport-card",
                     style: {
                         backgroundImage: `url(${this.props.image})`,
                     },
@@ -281,6 +281,7 @@ export default class CardComponent extends DOM.Component {
                                 props: {
                                     class: "link",
                                     href: this.props.linkJO,
+                                    target: "_blank",
                                 },
                                 children: [
                                     {

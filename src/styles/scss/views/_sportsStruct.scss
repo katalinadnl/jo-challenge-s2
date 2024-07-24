@@ -14,7 +14,7 @@
                 width: rem(318.382);
             }
             .arrow-container {
-                margin-right: 300px;
+                margin-right: rem(300);
                 img {
                     transform: rotate(138deg);
                 }
@@ -50,8 +50,8 @@
     .slider-slide {
         flex: 0 0 auto;
         scroll-snap-align: start;
-        min-width: 200px;  /* Adjust this width based on your card size */
-        margin-right: 10px;  /* Space between slides */
+        min-width: rem(200);  /* Adjust this width based on your card size */
+        margin-right: rem(10);  /* Space between slides */
     }
 
 
