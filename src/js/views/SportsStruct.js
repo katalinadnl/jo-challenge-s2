@@ -9,6 +9,7 @@ import {formatDate, isToday, isThisWeek} from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
 import moment from "../lib/moment/moment.js";
 
+
 const sportsHeroContent = {
     headingText: "VIVEZ LES PLUS GRANDS ÉVÉNEMENTS SPORTIFS",
     paragraphText: "Plongez dans l'excitation des compétitions sportives mondiales et découvrez les événements à ne pas manquer cette saison.",

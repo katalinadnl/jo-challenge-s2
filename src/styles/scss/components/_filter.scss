@@ -10,7 +10,9 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  #site-name, #sport, #start-date, #end-date {
+  margin: rem(32) 0 rem(64) 0;
+
+  #title, #site, #startDate, #location, #starting_date, #SpotName,#SportLabel {
     width: rem(184);
     height: rem(39);
     padding: rem(8) rem(16);
