@@ -1,30 +1,16 @@
 # Olympic Games 2024
 
-## Project Description
-The Olympic Spots 2024 application is designed to provide users with an interactive experience for the 2024 Olympic Games. The app highlights the best spots from which users can watch live sports events. It features an interactive map with detailed information about event locations, scheduled sports, and offers filtered searches along with other bonus functionalities.
-
-## Table of Contents
-- [Project Description](#project-description)
-- [Main Features](#main-features)
-- [Bonus Features](#bonus-features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Team Members](#team-members)
+## Description du projet
 
 
-## Main Features
-- Interactive Map: Visualize Olympic event locations, including the Seine, Stade de France, and other sites.
-- Best Spots: Recommendations on the best places to watch events, such as bridges, balconies, or other prime viewpoints.
-- Event Listing: Access a complete list of scheduled sports events with details on sports, dates, and locations.
-- Spot Details: Detailed information on selected spots, including photos, descriptions, and practical info like peak hours and available facilities.
-- Filtered Search: Search for events based on sport type, spot type (bridge, balcony, etc.), and event date.
+## Listing des fonctionnalitées avec les taches par personne
+| N/A      | N/A       | Personne en charge |
+|----------|-----------|--------------------|
+| Pages Generales | Row 1, Col 2 | Row 1, Col 3 |
+| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
+| Row 3, Col 1 | Row 3, Col 2 | Row 3, Col 3 |
 
-## Bonus Features
-- Live Data Scraping: Collect real-time information about events, such as live results, spectator comments, and related news.
-- Scroll and Frame Synchronization: Ensure smooth navigation by synchronizing page scrolling with real-time updates.
-- User Geolocation: Use user geolocation to show nearby spots and recommend the best places based on the current position.
-- External API Integration: Interact with external APIs like Google Maps for directions and other geographical information.
-- Service Worker for Notifications: Send notifications to users about event updates, schedule changes, or other important information.
+
 
 ## Installation
 To install and run this project locally, follow these steps:

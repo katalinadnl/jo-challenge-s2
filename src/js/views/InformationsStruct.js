@@ -13,13 +13,10 @@ export default class InformationsStruct extends DOM.Component {
     }
 
 
-
-
     componentDidMount() {
         const id = parseInt(this.props.params[0], 10); // prendre l'id du spot dans l'url
         const spotData = this.getSpotDataById(id);
 
-      
         if (spotData) {
             this.setState({ spotData });
         }
@@ -145,9 +142,9 @@ export default class InformationsStruct extends DOM.Component {
                         },
                         ]
 
-                    
-                        
-                    
+
+
+
                 },
                 getFooterStructure()
             ]
