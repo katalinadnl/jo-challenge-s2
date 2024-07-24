@@ -196,8 +196,8 @@ const spotsMapping = {
     "Para Natation (PSWM)": {
         image: "../../styles/images/spots/LDA.avif",
         spot: "Tour esplanade de la Défense",
-        content: "La Défense Arena est une immense salle de spectacles et de sports, offrant des événements variés allant des concerts aux matchs de rugby. Venez vivre des moments inoubliables dans une ambiance électrique et festive.",        horaires: "Tous les jours de 7h à 21h",
-        horaires: "Tous les jours de 7h à 22h",
+        content: "La Défense Arena est une immense salle de spectacles et de sports, offrant des événements variés allant des concerts aux matchs de rugby. Venez vivre des moments inoubliables dans une ambiance électrique et festive.",
+        horaires: "Tous les jours de 9h à 19h",
     coordonnees: {}
   },
     "Cécifoot (PFBB)": { //ok

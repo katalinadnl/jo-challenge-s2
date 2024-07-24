@@ -40,7 +40,7 @@ export default class HomeStruct extends DOM.Component {
         const sportsData = await fetchEventsData();
         const spotsData = await fetchSpotsData();
         const validTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
-        const validSpotsTitles = ["Para Equitation (PEQU)", "Surf (SRF)", "Canoë-kayak slalom (CSL)"];
+        const validSpotsTitles = [ "Para Triathlon (PTRI)", "Golf (GLF)", "Natation artistique (SWA), Plongeon (DIV), Water-polo (WPO)"];
 
 
         const cardsSportHP = sportsData.map(event => {
@@ -65,7 +65,7 @@ export default class HomeStruct extends DOM.Component {
             const spotData = spotsMapping[mappingKey] || spotsMapping.default;
 
 
-            if (validTitles.includes(mappingKey)) {
+            if  (validSpotsTitles.includes(mappingKey)) {
                 const cardProps = {
                     type: "spot",
                     SpotName : spotData.spot,
@@ -74,6 +74,10 @@ export default class HomeStruct extends DOM.Component {
                     StartDateLabel: formatDate(event.fields.start_date),
                     EndDateLabel: formatDate(event.fields.end_date),
                     image: spotsMapping[event.fields.sports] || spotsMapping.default,
+                    spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`,
+                    spotTextLinkMap: "Voir sur la carte",
+                    spotLinkDetails: `/spot?=${spotData.spot}`,
+                    spotTextLinkDetails: "Voir en détails",
                 };
                 return DOM.createElement(CardComponent, cardProps, []);
             }
