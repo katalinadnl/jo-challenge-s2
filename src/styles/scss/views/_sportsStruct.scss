@@ -37,19 +37,19 @@
         display: flex;
         overflow-x: scroll;
         scroll-snap-type: x mandatory;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
     .slider-container::-webkit-scrollbar {
-        display: none;  /* Chrome, Safari, Opera */
+        display: none;
     }
 
     .slider-slide {
         flex: 0 0 auto;
         scroll-snap-align: start;
-        min-width: rem(200);  /* Adjust this width based on your card size */
-        margin-right: rem(10);  /* Space between slides */
+        min-width: rem(200);
+        margin-right: rem(10);
     }
 
     .cta-container {
