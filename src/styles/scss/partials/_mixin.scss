@@ -332,3 +332,29 @@
     flex-direction: row;
   }
 }
+
+
+@mixin filter-component-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    #title, #site, #startDate, #location, #starting_date, #SpotName,#SportLabel {
+      margin: rem(10) rem(25);
+      &:last-child {
+        margin-right: rem(25);
+      }
+    }
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    flex-direction: row;
+    width: fit-content;
+    height: rem(82);
+    #title, #site, #startDate, #location, #starting_date, #SpotName,#SportLabel {
+      margin-right: rem(25);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

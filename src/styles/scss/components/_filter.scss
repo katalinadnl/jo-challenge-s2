@@ -5,12 +5,11 @@
   border-radius: 0.9375rem;
   background: var(--white);
   box-shadow: rem(4) rem(4) rem(20) rgba(0, 0, 0, 0.25);
-  width: 100%;
-  height: rem(82);
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin: rem(32) 0 rem(64) 0;
+  padding: 0 rem(33);
 
   #title, #site, #startDate, #location, #starting_date, #SpotName,#SportLabel {
     width: rem(184);
@@ -23,4 +22,5 @@
     appearance: none;
     background: url('data:image/svg+xml;utf8,<svg width="9" height="4.5" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 1L5.5 5.5L1 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right rem(16) center / rem(16);
   }
+  @include filter-component-responsive;
 }
