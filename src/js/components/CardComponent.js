@@ -1,5 +1,4 @@
 import {DOM} from "../core/generateStructure.js";
-import {getCtaButtonStructure} from "./CtaButton.js";
 
 
 export default class CardComponent extends DOM.Component {
