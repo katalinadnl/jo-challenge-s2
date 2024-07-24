@@ -7,7 +7,7 @@ import { populateDropdowns } from "../functions/populateDropdowns.js";
 import { getFilterValues, filterSites } from "../functions/filterFunctions.js";
 import { updateResultsSection } from "../functions/updateResultsSection.js";
 import { createResultsSection } from "../functions/ResultsSection.js";
-import createFilterComponent from "../components/FilterComponent.js";
+
 import { createGMap, addMarkers, clearMarkers } from "../functions/map.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
 
@@ -97,7 +97,7 @@ export default class MapStruct extends DOM.Component {
                     { tag: 'TEXT_NODE', content: "Filtrez les résultats par sport, date, sport, et emplacement pour personnaliser votre expérience olympique." },
                   ],
                 },
-                createFilterComponent({ applyFilters: this.applyFilters }),
+                //createFilterComponent({ applyFilters: this.applyFilters }),
                 {
                   tag: "div",
                   props: { class: "map-item", id: "map" },
