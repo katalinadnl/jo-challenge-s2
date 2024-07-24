@@ -8,6 +8,7 @@ import { filterComponent } from "../components/Filter.js";
 import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
 import moment from "../lib/moment/moment.js";
+import { truncateTitleSport } from "../functions/truncateFunctions.js";
 
 
 const sportsHeroContent = {
@@ -36,7 +37,7 @@ export default class SportsStruct extends DOM.Component {
             return {
                 codeSite: event.fields.code_site,
                 type: "sport",
-                title: event.fields.sports,
+                title: truncateTitleSport(event.fields.sports),
                 date: formatDate(event.fields.start_date),
                 startDate: event.fields.start_date, // Add the raw start date for comparison
                 site: event.fields.nom_site,

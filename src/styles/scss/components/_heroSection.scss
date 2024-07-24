@@ -3,7 +3,7 @@
 
 .body-content .hero-section {
     background-size: cover;
-    height: 650px;
+    height: rem(650);
     padding: 0;
     margin: 0 rem(-104);
     display: flex;
@@ -34,14 +34,14 @@
 }
 
 .line {
-    width: 2px;
-    height: 60px;
-    margin-right: 12px;
+    width: rem(2);
+    height: rem(60);
+    margin-right: rem(12);
 }
 
 .line-and-text p {
-    width: 520px;
-    @media (max-width: 767px) {
+    width: rem(520);
+    @media (max-width: rem(767)) {
         width: 100%;
 
     }

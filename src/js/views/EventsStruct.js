@@ -7,6 +7,7 @@ import {DOM} from "../core/generateStructure.js";
 import {fetchAllEventsDates, fetchAllEventsLocation, fetchAllEventsTitle, fetchEvents} from "../api/fetchEventsData.js";
 import {filterComponent} from "../components/Filter.js";
 import moment from "../lib/moment/moment.js";
+import { truncateDescriptionEvent } from "../functions/truncateFunctions.js";
 
 const eventsHeroContent = {
     headingText: "DÉCOUVREZ LES ÉVÉNEMENTS QUI VOUS PLAISENT",
@@ -17,19 +18,6 @@ function formatDate(dateString) {
     const [date] = dateString.split('T');
     const [year, month, day] = date.split('-');
     return `${day}/${month}/${year}`;
-}
-
-function truncateDescription(title, description, address, maxLength = 500) {
-    if (title.length < 60 && address.length < 45) {
-        if (description.length > maxLength) {
-            return `${description.substring(0, maxLength)}...`;
-        }
-    } else {
-        if (description.length > 150) {
-            return `${description.substring(0, 200)}...`;
-        }
-    }
-    return description;
 }
 
 export default class EventsStruct extends DOM.Component {
@@ -83,7 +71,7 @@ export default class EventsStruct extends DOM.Component {
                     type: "event",
                     title: record.title,
                     date: formatDate(record.starting_date),
-                    description: truncateDescription(record.title || "Title not provided", record.description || "Description not provided" , record.address || "Address not provided"),
+                    description: truncateDescriptionEvent(record.title || "Title not provided", record.description || "Description not provided" , record.address || "Address not provided"),
                     tarif: record.tarif || "Pas de tarif indiqué",
                     address: record.address,
                     linkJO: record.external_link || "https://olympics.com/fr/paris-2024",
