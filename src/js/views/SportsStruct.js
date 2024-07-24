@@ -9,11 +9,17 @@ import { formatDate, isToday, isThisWeek } from "../functions/dateFunctions.js";
 import imageMapping from "../mappings/sportsImagesMapping.js";
 import moment from "../lib/moment/moment.js";
 import { truncateTitleSport } from "../functions/truncateFunctions.js";
+import { getCtaButtonStructure } from "../components/CtaButton.js";
 
 
 const sportsHeroContent = {
     headingText: "VIVEZ LES PLUS GRANDS ÉVÉNEMENTS SPORTIFS",
     paragraphText: "Plongez dans l'excitation des compétitions sportives mondiales et découvrez les événements à ne pas manquer cette saison.",
+};
+
+const ctaButton = {
+    paragraphText: "Voir sur la carte",
+    href: "/carte"
 };
 
 export default class SportsStruct extends DOM.Component {
@@ -155,7 +161,8 @@ export default class SportsStruct extends DOM.Component {
                                                 props: { class: 'no-cards-message' },
                                                 children: [{ tag: 'TEXT_NODE', content: "Aucun événement aujourd'hui." }]
                                             }]
-                                        }
+                                        },
+                                        getCtaButtonStructure(ctaButton),
                                     ]
                                 },
                                 {
@@ -185,7 +192,8 @@ export default class SportsStruct extends DOM.Component {
                                                     content: "Aucun événement cette semaine."
                                                 }]
                                             }]
-                                        }
+                                        },
+                                        getCtaButtonStructure(ctaButton),
                                     ]
                                 }
                             ]
