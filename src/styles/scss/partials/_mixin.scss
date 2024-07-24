@@ -361,3 +361,37 @@
     }
   }
 }
+
+@mixin sport-cards-home-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    justify-content: center;
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    justify-content: space-around;
+  }
+}
+
+@mixin info-slider-sports-responsive {
+  margin-top: 0;
+  @media screen and (min-width: $resolution-phone) {
+    align-items: center;
+    h6 {
+      text-align: center;
+      transform: rotate(0);
+    }
+    .arrow-container {
+      margin-right: 0;
+    }
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    align-items: flex-end;
+    margin-top: rem(32);
+    h6 {
+      text-align: left;
+      transform: rotate(19.078deg);
+    }
+    .arrow-container {
+      margin-right: rem(300);
+    }
+  }
+}
