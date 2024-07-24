@@ -1,7 +1,6 @@
 import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { DOM } from "../core/generateStructure.js";
-import { fetchSpotsData } from "../api/fetchSpotsData.js";
 import spotsMapping from "../mappings/spotsMapping.js";
 
 export default class InformationsStruct extends DOM.Component {

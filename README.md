@@ -5,10 +5,33 @@
 
 ## Listing des fonctionnalitées avec les taches par personne
 | N/A      | N/A       | Personne en charge |
-|----------|-----------|--------------------|
-| Pages Generales | Row 1, Col 2 | Row 1, Col 3 |
-| Row 2, Col 1 | Row 2, Col 2 | Row 2, Col 3 |
-| Row 3, Col 1 | Row 3, Col 2 | Row 3, Col 3 |
+|-----------------|-----------|--------------------|
+| Pages Generales | Home Page | Camille |
+|                 | Sport | Catalina |
+|                 | Carte | Nadime |
+|                 | Événiments | Catalina |
+|                 | Spot | Alice |
+|                 | 404 | Camille |
+|                 | Information des Spots | Alice |
+|-----------------|-----------|--------------------|
+| Structure du projet | Generate Structure| Catalina |
+|                 | Browser Router | Catalina |
+|                 | Component | Catalina |
+|                 | Routes | Camille |
+| Composants      | CardComponent | Catalina |
+|                 | HeroSection | Catalina |
+|                 | Filtre | Camille |
+|                 | Navbar | Camille |
+|                 | Footer | Camille |
+|                 | CtaButton | Camille |
+| Cards           | Les cards sport | Catalina |
+|                 | Les cards event | Catalina |
+|                 | Les cards spots | Alice |
+| Mise en place des API/mappings| fetchData.js | Nadime |
+|                               | fetchEventsData.js | Nadime |
+
+
+
 
 
 
