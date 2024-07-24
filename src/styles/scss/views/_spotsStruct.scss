@@ -3,11 +3,40 @@
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%), url(../images/ski.jpg) lightgray 0.812px -0.096px / 100% 172.973% no-repeat;
         @include hero-section-spots-responsive;    
      }
+
+     //position: relative;
+}
+
+.body-content {
+    .info-slider-spots {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: rem(2);
+        position: absolute;
+        right: 0;
+
+        h6 {
+            color: #018C86;
+            transform: rotate(19.078deg);
+            width: rem(318.382);
+        }
+        .arrow-container {
+            margin-right: 300px;
+            margin-top: rem(-80);
+
+           
+            img {
+                transform: rotate(138deg);
+            }
+        }
+    }
 }
 
 .spots-list-container{
     display: flex;
     justify-content: center;
+
     }
     
     
@@ -17,6 +46,16 @@
         flex-wrap: wrap;
         gap: 40px;
         margin: 0 auto;
+
+        
+    @media screen and (max-width: $resolution-large-desktop) {
+        justify-content: space-between;
+    }
+    @media screen and (max-width: $resolution-tablet) {
+        justify-content: center;
+    }
+      
+
     }
 
     .slider{
