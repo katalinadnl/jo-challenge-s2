@@ -61,35 +61,47 @@ export async function createGMap(sites) {
 
     await initMap(); // Ensure initMap is awaited
   } catch (error) {
-    console.error('Error creating map:', error);
+    console.error("Error creating map:", error);
   }
 }
 
-export function addMarkers(sites, Marker) {
-  clearMarkers(); // Clear previous markers
+export function addMarkers(sites, Marker, map) {
+  clearMarkers();
   const customIconUrl = "../../styles/images/logo_desktop.png";
   let newMarkers = [];
 
   sites.forEach((site) => {
-    let lat = parseFloat(site.fields.latitude.replace(",", "."));
-    let lng = parseFloat(site.fields.longitude.replace(",", "."));
+    const fields = site.fields || site;
+    let lat = parseFloat(
+      typeof fields.latitude === "string"
+        ? fields.latitude.replace(",", ".")
+        : fields.lat
+    );
+    let lng = parseFloat(
+      typeof fields.longitude === "string"
+        ? fields.longitude.replace(",", ".")
+        : fields.lon
+    );
 
     if (isNaN(lat) || isNaN(lng)) {
       if (site.geometry && site.geometry.coordinates) {
-        lng = site.geometry.coordinates[0];
-        lat = site.geometry.coordinates[1];
+        lng = parseFloat(site.geometry.coordinates[0]);
+        lat = parseFloat(site.geometry.coordinates[1]);
       }
     }
 
     if (isNaN(lat) || isNaN(lng)) {
-      console.error(`Invalid position for site: ${site.fields.nom_site}`, site);
+      console.error(
+        `Invalid position for site: ${fields.nom_site || fields.title}`,
+        site
+      );
       return;
     }
 
     const marker = new Marker({
       position: { lat: lat, lng: lng },
       map,
-      title: site.fields.nom_site,
+      title: fields.nom_site || fields.title || "Unknown site",
       icon: {
         url: customIconUrl,
         scaledSize: new google.maps.Size(55, 55),
@@ -100,11 +112,9 @@ export function addMarkers(sites, Marker) {
   });
 
   if (newMarkers.length === 1) {
-    // Center the map on the single marker and zoom in
     map.setCenter(newMarkers[0].getPosition());
-    map.setZoom(15); // Adjust zoom level as needed
+    map.setZoom(15);
   } else if (newMarkers.length > 1) {
-    // Adjust the map bounds to fit all markers
     const bounds = new google.maps.LatLngBounds();
     newMarkers.forEach((marker) => bounds.extend(marker.getPosition()));
     map.fitBounds(bounds);
@@ -113,10 +123,7 @@ export function addMarkers(sites, Marker) {
   console.log("Markers added:", markers.length);
 }
 
-
 export function clearMarkers() {
   markers.forEach((marker) => marker.setMap(null));
-  markers.length = 0; // Clear the array
+  markers.length = 0;
 }
-
-
