@@ -13,7 +13,7 @@ export default class InformationsStruct extends DOM.Component {
 
 
     componentDidMount() {
-        const id = parseInt(this.props.params[0], 10); // prendre l'id du spot dans l'url
+        const id = parseInt(this.props.params[0], 10);
         const spotData = this.getSpotDataById(id);
 
         if (spotData) {
@@ -65,7 +65,7 @@ export default class InformationsStruct extends DOM.Component {
 
         return {
             tag: "div",
-            props: { class: "informations" },
+            props: { class: "informations spots" },
             children: [
                 DOM.createElement(getNavbarStructure, []),
                 {
@@ -83,67 +83,72 @@ export default class InformationsStruct extends DOM.Component {
                                         content: spotData.spot,
                                     }]
                                 },
-                                    {
-                                    tag: "div",
-                                    props: { class: "img-spot" },
-                                    children: [{
-                                        tag: 'img',
-                                        props: { src: spotData.image, alt: spotData.spot }
-                                    }]
-                                },
+                            ]
+                        },
                         {
                             tag: "section",
-                            props: { class: "section2" },
+                            props: { class: "content-container" },
                             children: [
                                 {
-                                    tag: "p",
-                                    children: [{
-                                        tag: 'TEXT_NODE',
-                                        content: spotData.content,
-                                    }]
+                                    tag: "section",
+                                    props: { class: "section2" },
+                                    children: [
+                                        {
+                                            tag: "div",
+                                            props: { class: "img-spot" },
+                                            children: [{
+                                                tag: 'img',
+                                                props: { src: spotData.image, alt: spotData.spot }
+                                            }]
+                                        },
+                                    ]
+                                },
+                                {
+                                    tag: "section",
+                                    props: { class: "section3" },
+                                    children: [
+                                        {
+                                            tag: "p",
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: spotData.content,
+                                            }]
+                                        },
+                                        {
+                                            tag: "h3",
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: 'Infos pratiques',
+                                            }]
+                                        },
+                                        {
+                                            tag: "div",
+                                            children: [{
+                                                tag: 'TEXT_NODE',
+                                                content: spotData.horaires
+                                            }]
+                                        },
+                                        {
+                                            tag: "div",
+                                            props: { class: "link" },
+                                            children: [
+                                                {
+                                                    tag: 'a',
+                                                    props: { href: `/carte?lat=${spotData.coordonnees.lat}&lon=${spotData.coordonnees.lon}` },
+                                                    children: [
+                                                        {
+                                                            tag: 'TEXT_NODE',
+                                                            content: "Voir sur la carte"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                    ]
                                 },
                             ]
                         },
-                        {
-                            tag: "h3",
-                            children: [{
-                                tag: 'TEXT_NODE',
-                                content: 'Coordonnées',
-                            }
-                        ]
-                        },
-                        {
-                            tag: "div",
-                            children: [{
-                                tag: 'TEXT_NODE',
-                                content: spotData.nom_site
-                            }
-                        ]
-                        },
-                        {
-                            tag: 'a',
-                            props: { class: "link", href: 'this.props.`/carte?lat=${coordonnees}&lon=${coordonnees}' },
-                            children: [
-                                {
-                                    tag: 'TEXT_NODE',
-                                    content: "Voir sur la carte"
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            children: [{
-                                tag: 'TEXT_NODE',
-                                content: spotData.horaires
-                            }]
-                        },
-                            ]
-                        },
-                        ]
-
-
-
-
+                    ]
                 },
                 getFooterStructure()
             ]
