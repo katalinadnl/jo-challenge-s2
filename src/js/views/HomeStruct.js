@@ -134,7 +134,7 @@ export default class HomeStruct extends DOM.Component {
                                 },
                                 {
                                     tag: "div",
-                                    props: { class: "sport-cards" },
+                                    props: { class: "spot-cards" },
                                     children: cardsSpotHP
                                 },
                                 getCtaButtonStructure(ctaButtonSpots)
