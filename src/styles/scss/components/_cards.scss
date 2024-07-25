@@ -68,11 +68,11 @@
 
     &-label{
         padding: rem(3) rem(9);
-        background-color: rgb(255, 255, 255, 0.5);
+        background-color: rgb(255, 255, 255, 0.7);
         border : rem(1) Solid $black;
         border-radius: rem(8);
         color: $black;
-        font-size: rem(12);
+        font-size: rem(13.5);
         font-weight: 700;
         border-radius: rem(4);
         margin: 0;
@@ -102,13 +102,6 @@
             line-height: 1;
         }
 
-        h3{
-            margin-bottom: rem(16);
-        }
-
-        h4{
-            padding-bottom: rem(8);
-        }
 
     a{
         text-decoration: none;
@@ -144,12 +137,14 @@
 .spots-card:not(:hover) .spots-card-buttons {
     visibility: hidden;
     height: 0;
+
 }
 
 @media screen and (max-width: $resolution-tablet) {
     .spots-card:not(:hover) .spots-card-buttons {
         visibility: visible;
         height: auto;
+
     }}
 
 
@@ -182,6 +177,7 @@
         flex-direction: column;
         flex-grow: 1;
         gap: rem(16);
+
         h4 {
             margin: 0;
         }
