@@ -50,7 +50,6 @@ export default class EventsStruct extends DOM.Component {
 
     async loadMore() {
         if (this.state.loading || (this.state.totalCount && this.state.cardComponents.length >= this.state.totalCount)) {
-            console.log('No more data to load or already loading.');
             return;
         }
 
@@ -58,7 +57,6 @@ export default class EventsStruct extends DOM.Component {
 
         try {
             const {start, rowsPerPage, cardComponents, selectedValue} = this.state;
-            console.log(`Loading more data from start=${start}, rowsPerPage=${rowsPerPage}`);
 
             const {
                 totalCount,
@@ -80,7 +78,6 @@ export default class EventsStruct extends DOM.Component {
                     location: record.location,
                 };
             });
-            console.log(`Fetched ${records.length} records, total count is ${totalCount}`);
 
             const newCardComponents = allEvents.map(event => {
                 return DOM.createElement(CardComponent, event, []);
