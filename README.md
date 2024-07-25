@@ -1,5 +1,12 @@
 # Jeux Olympiques 2024
 
+## Membres de l'équipe
+
+- [DANILA Catalina](https://github.com/katalinadnl) (katalinadnl)
+- [GIRARD Camille](https://github.com/camille-girard) (camille-girard)
+- [LEMERRE Alice](https://github.com/AliceLemerre) (AliceLemerre)
+- [NEFFATI Nadime](https://github.com/nneffati2u) (nneffati2u)
+
 ## Description du projet
 
 L'application a pour objectif de fournir aux utilisateurs une expérience interactive pour les Jeux Olympiques de 2024, en mettant en avant les meilleurs endroits (spots) depuis lesquels ils peuvent observer les événements sportifs en direct, les sports et événiments programmés et permet également la recherche filtrée sur toutes les pages. Elle offre aussi une carte interactive avec des informations détaillées sur les lieux des événements
@@ -73,9 +80,4 @@ Pour installer et exécuter ce projet localement, suivez ces étapes :
 
 Ouvrez votre navigateur et allez à l'adresse http://localhost:8088 pour utiliser l'application.
 
-## Membres de l'équipe
 
-- [DANILA Catalina](https://github.com/katalinadnl)
-- [GIRARD Camille](https://github.com/camille-girard)
-- [LEMERRE Alice](https://github.com/AliceLemerre)
-- [NEFFATI Nadime](https://github.com/nneffati2u)
