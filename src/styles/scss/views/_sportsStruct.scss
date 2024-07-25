@@ -3,7 +3,7 @@
         @include hero-section-sport-responsive;
     }
     .body-content {
-       /*  .info-slider-sports {
+        .info-slider-sports {
             display: flex;
             flex-direction: column;
             h6 {
@@ -17,7 +17,7 @@
                 }
             }
             @include info-slider-sports-responsive;
-        }*/
+        }
     }
     .sport-cards {
         display: flex;
