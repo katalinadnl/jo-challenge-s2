@@ -166,10 +166,10 @@
 
 @mixin p-font {
   @media screen and (min-width: $resolution-phone) {
-    font-size: rem(12);
+    font-size: rem(16);
   }
   @media screen and (min-width: $resolution-tablet) {
-    font-size: rem(14);
+    font-size: rem(16);
   }
   @media screen and (min-width: $resolution-small-desktop) {
     font-size: rem(18);
