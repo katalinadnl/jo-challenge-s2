@@ -1,4 +1,4 @@
-import { generateStructure, createElement, isClassComponent, DOM } from "../core/generateStructure.js";
+import { generateStructure, isClassComponent, DOM } from "../core/generateStructure.js";
 
 const BrowserRouter = function(routes, rootElement) {
     const generatePage = () => {
