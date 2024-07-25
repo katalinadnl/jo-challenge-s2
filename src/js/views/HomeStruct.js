@@ -94,7 +94,7 @@ export default class HomeStruct extends DOM.Component {
                 site: event.fields.nom_site,
                 image: imageMapping[event.fields.nom_site] || imageMapping.default
             };
-            console.log(event.fields.nom_site);
+
             return DOM.createElement(CardComponent, cardProps, []);
         });
 
