@@ -8,7 +8,6 @@ export default class getNavbarStructure extends DOM.Component {
 
     toggleBurgerMenu = (event) => {
         event.preventDefault();
-        console.log(this.state.isBurgerMenuOpen);
         this.setState({ isBurgerMenuOpen: !this.state.isBurgerMenuOpen });
     }
 

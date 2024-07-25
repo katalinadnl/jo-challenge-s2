@@ -9,7 +9,6 @@ export default class CardComponent extends DOM.Component {
 
     handleClick = (event) => {
         event.preventDefault();
-        console.log(this.state.expanded);
         this.setState({ expanded: !this.state.expanded });
     }
 
