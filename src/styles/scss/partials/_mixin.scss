@@ -24,7 +24,7 @@
 @mixin body-content-responsive {
   @media screen and (min-width: $resolution-phone) {
     padding: 0 rem(16);
-    margin-top: 140px;
+    margin-top: rem(140);
   }
   @media screen and (min-width: $resolution-tablet) {
     padding: 0 rem(104);
@@ -297,6 +297,7 @@
   @media screen and (min-width: $resolution-phone) {
     display: flex;
     flex-direction: column;
+    margin-top: rem(6);
     .map-info {
       margin-right: 0;
       width: 100%;
@@ -310,8 +311,9 @@
   }
   @media screen and (min-width: $resolution-tablet) {
     flex-direction: row;
+    margin-top: rem(77);
     .map-info {
-      margin-right: 60px;
+      margin-right: rem(60);
       width: 50%;
     }
     .map-img {
@@ -326,10 +328,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: rem(30) 0 rem(39) 0;
 
   }
   @media screen and (min-width: $resolution-tablet) {
     flex-direction: row;
+    margin: rem(78) 0 rem(30) 0;
+
   }
 }
 
@@ -393,5 +398,52 @@
     .arrow-container {
       margin-right: rem(300);
     }
+  }
+}
+
+@mixin page404-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    .body-content {
+      margin-top: 0;
+      .section1 {
+        flex-direction: column;
+        margin-top: rem(99);
+        .img404 {
+          .carousel {
+            display: flex;
+            justify-content: center;
+            img {
+              width: rem(158);
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    .body-content {
+        margin-top: rem(16);
+      .section1 {
+        flex-direction: row;
+        margin-top: rem(198);
+        .img404 {
+          .carousel {
+            display: block;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin information-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    margin-top: rem(99);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    margin-top: rem(198);
   }
 }
