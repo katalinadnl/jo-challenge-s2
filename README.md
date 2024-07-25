@@ -28,9 +28,9 @@ L'application a pour objectif de fournir aux utilisateurs une expérience intera
 |                               | Footer                                     | Camille             |
 |                               | Bouton CTA                                 | Camille             |
 |-------------------------------|--------------------------------------------|---------------------|
-| Cartes                        | Cartes des sports                          | Catalina            |
-|                               | Cartes des événements                      | Catalina            |
-|                               | Cartes des spots                           | Alice               |
+| Cartes                        | Cards des sports                           | Catalina            |
+|                               | Cards des événements                       | Catalina            |
+|                               | Cards des spots                            | Alice               |
 |-------------------------------|--------------------------------------------|---------------------|
 | Mise en place des API/mappings| fetchSportsData.js                         | Nadime              |
 |                               | fetchEventsData.js                         | Catalina            |
