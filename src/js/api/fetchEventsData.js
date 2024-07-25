@@ -11,7 +11,6 @@ export async function fetchEvents(start = 0, rowsPerPage = 10, fieldToFilterOn =
             );
         }
         const data = await response.json();
-        console.log(`Fetched data from start=${start}, rowsPerPage=${rowsPerPage}:`, data); // Debugging statement
         return {
             totalCount: data.total_count,
             records: data.results
