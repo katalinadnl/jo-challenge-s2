@@ -73,6 +73,8 @@ export default class MapStruct extends DOM.Component {
           image: spotsMapping[event.fields.sports] || spotsMapping.default,
           spotLinkDetails: `/spots/${spotData.id}`,
           spotTextLinkDetails: "Voir en détails",
+          spotLinkMap: `/carte`,
+          spotTextLinkMap: "Voir sur la carte",
         };
 
         return DOM.createElement(CardComponent, cardProps, []);
@@ -89,6 +91,7 @@ export default class MapStruct extends DOM.Component {
           linkJO: event.external_link || "https://olympics.com/fr/paris-2024",
           textLinkJO: "En savoir plus",
           location: event.location,
+          linkMap: `/carte?lat=${event.latitude}&lon=${event.longitude}`
         };
 
         return DOM.createElement(CardComponent, cardProps, []);
@@ -127,17 +130,17 @@ export default class MapStruct extends DOM.Component {
     const navbar = DOM.createElement(getNavbarStructure, []);
     const structure = {
       tag: "div",
-      props: { class: "map" }, 
+      props: { class: "map" },
       children: [
         navbar,
         createHeroComponent(eventsHeroContent),
         {
           tag: "main",
-          props: { class: "body-content" }, 
+          props: { class: "body-content" },
           children: [
             {
               tag: "section",
-              props: { class: "section1" }, 
+              props: { class: "section1" },
               children: [
                 {
                   tag: "h2",
