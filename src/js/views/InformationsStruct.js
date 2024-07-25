@@ -2,6 +2,8 @@ import getNavbarStructure from "../components/Navbar.js";
 import { getFooterStructure } from "../components/Footer.js";
 import { DOM } from "../core/generateStructure.js";
 import spotsMapping from "../mappings/spotsMapping.js";
+import SpotsStruct from "./SpotsStruct.js";
+
 
 export default class InformationsStruct extends DOM.Component {
     constructor(props) {
@@ -12,7 +14,7 @@ export default class InformationsStruct extends DOM.Component {
     }
 
 
-    componentDidMount() {
+    async componentDidMount() {
         const id = parseInt(this.props.params[0], 10);
         const spotData = this.getSpotDataById(id);
 

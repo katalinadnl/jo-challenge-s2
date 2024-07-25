@@ -3,7 +3,7 @@
         @include hero-section-sport-responsive;
     }
     .body-content {
-        .info-slider-sports {
+       /*  .info-slider-sports {
             display: flex;
             flex-direction: column;
             h6 {
@@ -11,13 +11,13 @@
                 transform: rotate(19.078deg);
                 width: rem(318.382);
             }
-            .arrow-container {
+           .arrow-container {
                 img {
                     transform: rotate(138deg);
                 }
             }
             @include info-slider-sports-responsive;
-        }
+        }*/
     }
     .sport-cards {
         display: flex;
