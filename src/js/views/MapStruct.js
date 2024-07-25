@@ -127,17 +127,17 @@ export default class MapStruct extends DOM.Component {
     const navbar = DOM.createElement(getNavbarStructure, []);
     const structure = {
       tag: "div",
-      props: { class: "map" }, // Utiliser la même classe que pour la page d'accueil
+      props: { class: "map" }, 
       children: [
         navbar,
         createHeroComponent(eventsHeroContent),
         {
           tag: "main",
-          props: { class: "body-content" }, // Utiliser la même classe que pour la page d'accueil
+          props: { class: "body-content" }, 
           children: [
             {
               tag: "section",
-              props: { class: "section1" }, // Utiliser la même classe que pour la page d'accueil
+              props: { class: "section1" }, 
               children: [
                 {
                   tag: "h2",
