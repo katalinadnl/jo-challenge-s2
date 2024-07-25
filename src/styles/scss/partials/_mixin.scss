@@ -438,3 +438,12 @@
     }
   }
 }
+
+@mixin information-responsive {
+  @media screen and (min-width: $resolution-phone) {
+    margin-top: rem(99);
+  }
+  @media screen and (min-width: $resolution-tablet) {
+    margin-top: rem(198);
+  }
+}
