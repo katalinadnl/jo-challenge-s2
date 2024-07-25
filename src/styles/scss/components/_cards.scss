@@ -187,21 +187,19 @@
             flex-wrap: wrap;
             gap: rem(32);
 
+            .address {
+                color: #018C86;
+            }
+
             .address, .date {
-            
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+
                 display: flex;
                 align-items: center;
                 gap: rem(8);
-            }
-
-            .address, .date a {
-               
-                    color: inherit;
-                    text-decoration: none;
-                
-            }
-            .address {
-                color: #018C86;
             }
         }
     }
