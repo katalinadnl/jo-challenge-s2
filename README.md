@@ -9,7 +9,7 @@
 
 ## Description du projet
 
-L'application a pour objectif de fournir aux utilisateurs une expérience interactive pour les Jeux Olympiques de 2024, en mettant en avant les meilleurs endroits (spots) depuis lesquels ils peuvent observer les événements sportifs en direct, les sports et événiments programmés et permet également la recherche filtrée sur toutes les pages. Elle offre aussi une carte interactive avec des informations détaillées sur les lieux des événements
+L'application a pour objectif de fournir aux utilisateurs une expérience interactive pour les Jeux Olympiques de 2024, en mettant en avant les meilleurs endroits (spots) depuis lesquels ils peuvent observer les événements sportifs en direct, les sports et événements programmés et permet également la recherche filtrée sur toutes les pages. Elle offre aussi une carte interactive avec des informations détaillées sur les lieux des événements
 
 ## Maquettes
 
