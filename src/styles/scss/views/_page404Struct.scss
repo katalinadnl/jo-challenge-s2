@@ -5,7 +5,6 @@
     .section1 {
       display: flex;
       justify-content: space-around;
-      margin-top: rem(198);
       .description404 {
         display: flex;
         flex-direction: column;
@@ -15,4 +14,5 @@
       }
     }
   }
+  @include page404-responsive;
 }

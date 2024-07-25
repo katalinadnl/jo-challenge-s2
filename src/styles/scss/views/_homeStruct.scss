@@ -13,7 +13,11 @@
             @include sport-cards-home-responsive;
         }
     }
+    .section2, .section3 {
+        margin-top: rem(64);
+    }
     .section1 {
+        margin-top: rem(32);
         .spot-cards {
             .spots-card {
                 width: rem(350);
@@ -54,6 +58,7 @@
                         width: rem(185.225);
                         @media screen and (max-width: $resolution-tablet) {
                             transform: rotate(20.28deg);
+                            width: rem(127.451);
                         }
                     }
                     .arrow-container {
@@ -81,8 +86,5 @@
                 }
             }
         }
-    }
-    .cta-container {
-        margin-top: rem(81);
     }
 }
