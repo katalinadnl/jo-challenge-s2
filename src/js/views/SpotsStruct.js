@@ -11,7 +11,7 @@ import spotsMapping from "../mappings/spotsMapping.js";
 
 const spotsHeroContent = {
     headingText: "Découvrez les meilleurs spots",
-    paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et capacité d’accueil",
+    paragraphText: "Nous avons recensé tous les meilleurs endroits d’où observer les Jeux Olympiques. Chaque spot est étiqueté par épreuve, lieu et dates de début et de fin.",
 };
 
 export default class SpotsStruct extends DOM.Component {
