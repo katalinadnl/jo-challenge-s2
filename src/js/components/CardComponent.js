@@ -128,7 +128,7 @@ export default class CardComponent extends DOM.Component {
                         props: { class: "spots-card-description" },
                         children: [
                             {
-                                tag: "h4",
+                                tag: "h3",
                                 children: [{
                                     tag: 'TEXT_NODE',
                                     content: this.props.SpotName,

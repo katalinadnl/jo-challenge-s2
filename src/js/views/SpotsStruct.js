@@ -49,7 +49,7 @@ export default class SpotsStruct extends DOM.Component {
                 spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates               spotLinkMap: `/carte?lat=${event.fields.end_date}&lon=${event.fields.end_date}`, //TODO: change to real coordinates
 
                 spotTextLinkMap: "Voir sur la carte",
-                spotLinkDetails: `/spots/${spotId}`, //TODO: chager pour lien détails
+                spotLinkDetails: `/spots/${spotId}`, 
                 spotTextLinkDetails: "Voir en détails",
             };
 
@@ -173,7 +173,7 @@ export default class SpotsStruct extends DOM.Component {
                                 {
                                     tag: "div",
                                     props: { class: "spots-list" },
-                                    children: filteredCardComponents //Array(15).fill(cards)
+                                    children: filteredCardComponents
                                 }
                             ]
                         }
