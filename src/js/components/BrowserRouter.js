@@ -4,16 +4,26 @@ const BrowserRouter = function(routes, rootElement) {
     const generatePage = () => {
         const pathname = window.location.pathname;
 
-        const route = routes.find(route => {
-            const routePath = route.path.replace(/:\w+/g, '(.+)');
+        // trouver la route correspondante
+        let route = routes.find(route => {
+            if (route.path === '*') return false;
+            const routePath = route.path.replace(/:\w+/g, '([^/]+)');
             const match = pathname.match(new RegExp(`^${routePath}$`));
             return match;
-        }) || routes.find(route => route.path === '*');
+        });
+
+        // si aucune route n'est trouvée, on prend la route par défaut
+        if (!route) {
+            route = routes.find(route => route.path === '*');
+        }
 
         let g;
         if (route) {
-            const routePath = route.path.replace(/:\w+/g, '(.+)');
-            const match = pathname.match(new RegExp(`^${routePath}$`));
+            let match;
+            if (route.path !== '*') {
+                const routePath = route.path.replace(/:\w+/g, '([^/]+)');
+                match = pathname.match(new RegExp(`^${routePath}$`));
+            }
 
             if (isClassComponent(route.component)) {
                 const component = route.component;
